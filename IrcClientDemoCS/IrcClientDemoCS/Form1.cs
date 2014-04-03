@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TechLifeForum;
+using System.Threading;
 
 namespace IrcClientDemoCS
 {
@@ -18,8 +19,12 @@ namespace IrcClientDemoCS
         }
         IrcClient irc;
         Boolean Listening = false;
-        public string Server = "";
-        public static int intConnPort;
+        private static int intConnPort;
+        private static string serverName;
+        private static string channel;
+        private static string user;
+        private static string oauth;
+
         
         private void txtSend_KeyDown(object sender, KeyEventArgs e)
         {
@@ -35,13 +40,20 @@ namespace IrcClientDemoCS
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            irc = new IrcClient("irc.twitch.tv", 6667);
+            irc = new IrcClient(serverName, intConnPort);
+            irc.Nick = user;
+            irc.ServerPass = oauth;
+            /*irc = new IrcClient("irc.twitch.tv", 6667);
             irc.Nick = "wornoutbot";
-            irc.ServerPass = "oauth:5apvk3gardkvm4ekpp1wdf5vazso8jq";
+            irc.ServerPass = "oauth:5apvk3gardkvm4ekpp1wdf5vazso8jq";*/
             irc.Disconnect();
+            irc.Connect();
+            
+
             if (Listening == false) AddListeners();
             
-            irc.Connect();
+            
+            
         }
         private void AddListeners()
         {
@@ -49,6 +61,15 @@ namespace IrcClientDemoCS
             // you can also subscribe to events
             // using a regular method that accepted
             // the required parameters
+            irc.OnConnect += () =>
+            {
+                // once we're connected show it and enable the send button
+                rtbOutput.AppendText("Connected!\n");
+                irc.JoinChannel(channel);
+                //irc.JoinChannel("#wornoutwasd");
+                btnSend.Enabled = true;
+            };
+
             Listening = true;
             irc.ChannelMessage += (c, u, m) =>
             {
@@ -60,6 +81,7 @@ namespace IrcClientDemoCS
                 rtbOutput.AppendText(m + "\n");
                 rtbOutput.ScrollToCaret();
             };
+
             irc.UpdateUsers += (c, u) =>
             {
                 lstUsers.Items.Clear();
@@ -69,18 +91,13 @@ namespace IrcClientDemoCS
             {
                 MessageBox.Show(ex.Message);
             };
-            irc.OnConnect += () =>
-            {
-                // once we're connected show it and enable the send button
-                rtbOutput.AppendText("Connected!\n");
-                irc.JoinChannel("#wornoutwasd");
-                btnSend.Enabled = true;
-            };
+
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            irc.SendMessage("#wornoutwasd", txtSend.Text);
+            //irc.SendMessage("#wornoutwasd", txtSend.Text);
+            irc.SendMessage(channel, txtSend.Text);
             rtbOutput.AppendText("You:\t" + txtSend.Text + "\r\n");
             txtSend.Clear();
             txtSend.Focus();
@@ -89,19 +106,26 @@ namespace IrcClientDemoCS
         private void btnTest_Click(object sender, EventArgs e)
         {
             lblCurrentServer.Text = Convert.ToString(intConnPort);
-
-            
+ 
         }
 
         private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            irc.Disconnect();
         }
 
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConnectionsForm c1 = new ConnectionsForm();
-            c1.ShowDialog(); //shows manage window
+            c1.ShowDialog(); //shows connection management window
+            if (c1.DialogResult == DialogResult.OK)
+            {
+                intConnPort = c1.getPort();
+                serverName = c1.getServer();
+                channel = c1.getChannel();
+                user = c1.getUser();
+                oauth = c1.getOauth();
+            }
         }
     }
 }
