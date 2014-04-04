@@ -45,6 +45,7 @@ namespace IrcClientDemoCS
             
         }
 
+
         private void cancelButton_Click(object sender, EventArgs e)
         {
             /*tells the main form that the user canceled their decision and

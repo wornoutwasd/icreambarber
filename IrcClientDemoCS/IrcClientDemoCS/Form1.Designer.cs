@@ -44,21 +44,25 @@
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.coinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblCurrentServer = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.lblDebug = new System.Windows.Forms.Label();
+            this.lblPort = new System.Windows.Forms.Label();
+            this.lblChannel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstUsers
             // 
             this.lstUsers.FormattingEnabled = true;
-            this.lstUsers.Location = new System.Drawing.Point(617, 102);
+            this.lstUsers.Location = new System.Drawing.Point(617, 133);
             this.lstUsers.Name = "lstUsers";
-            this.lstUsers.Size = new System.Drawing.Size(120, 420);
+            this.lstUsers.Size = new System.Drawing.Size(120, 394);
             this.lstUsers.TabIndex = 1;
             // 
             // txtSend
             // 
-            this.txtSend.Location = new System.Drawing.Point(12, 502);
+            this.txtSend.Location = new System.Drawing.Point(12, 533);
             this.txtSend.Name = "txtSend";
             this.txtSend.Size = new System.Drawing.Size(519, 20);
             this.txtSend.TabIndex = 2;
@@ -66,7 +70,7 @@
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(536, 499);
+            this.btnSend.Location = new System.Drawing.Point(536, 530);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 3;
@@ -76,15 +80,15 @@
             // 
             // rtbOutput
             // 
-            this.rtbOutput.Location = new System.Drawing.Point(12, 109);
+            this.rtbOutput.Location = new System.Drawing.Point(12, 133);
             this.rtbOutput.Name = "rtbOutput";
-            this.rtbOutput.Size = new System.Drawing.Size(599, 387);
+            this.rtbOutput.Size = new System.Drawing.Size(599, 394);
             this.rtbOutput.TabIndex = 4;
             this.rtbOutput.Text = "";
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(12, 80);
+            this.btnConnect.Location = new System.Drawing.Point(12, 104);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 23);
             this.btnConnect.TabIndex = 5;
@@ -94,7 +98,7 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(125, 80);
+            this.btnTest.Location = new System.Drawing.Point(142, 104);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(75, 23);
             this.btnTest.TabIndex = 6;
@@ -115,7 +119,7 @@
             this.coinsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(749, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1067, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "Blank";
             // 
@@ -175,25 +179,64 @@
             this.lblCurrentServer.AutoSize = true;
             this.lblCurrentServer.Location = new System.Drawing.Point(25, 28);
             this.lblCurrentServer.Name = "lblCurrentServer";
-            this.lblCurrentServer.Size = new System.Drawing.Size(34, 13);
+            this.lblCurrentServer.Size = new System.Drawing.Size(92, 13);
             this.lblCurrentServer.TabIndex = 9;
-            this.lblCurrentServer.Text = "Blank";
+            this.lblCurrentServer.Text = "No Current Server";
             // 
-            // label1
+            // lblUserName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(139, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Blank";
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Location = new System.Drawing.Point(25, 57);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(114, 13);
+            this.lblUserName.TabIndex = 10;
+            this.lblUserName.Text = "No Current User Name";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(743, 133);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(312, 394);
+            this.richTextBox1.TabIndex = 11;
+            this.richTextBox1.Text = "";
+            // 
+            // lblDebug
+            // 
+            this.lblDebug.AutoSize = true;
+            this.lblDebug.Location = new System.Drawing.Point(855, 113);
+            this.lblDebug.Name = "lblDebug";
+            this.lblDebug.Size = new System.Drawing.Size(39, 13);
+            this.lblDebug.TabIndex = 12;
+            this.lblDebug.Text = "Debug";
+            // 
+            // lblPort
+            // 
+            this.lblPort.AutoSize = true;
+            this.lblPort.Location = new System.Drawing.Point(25, 70);
+            this.lblPort.Name = "lblPort";
+            this.lblPort.Size = new System.Drawing.Size(80, 13);
+            this.lblPort.TabIndex = 13;
+            this.lblPort.Text = "No Current Port";
+            // 
+            // lblChannel
+            // 
+            this.lblChannel.AutoSize = true;
+            this.lblChannel.Location = new System.Drawing.Point(25, 42);
+            this.lblChannel.Name = "lblChannel";
+            this.lblChannel.Size = new System.Drawing.Size(100, 13);
+            this.lblChannel.TabIndex = 15;
+            this.lblChannel.Text = "No Current Channel";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 534);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1067, 562);
+            this.Controls.Add(this.lblChannel);
+            this.Controls.Add(this.lblPort);
+            this.Controls.Add(this.lblDebug);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.lblCurrentServer);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnTest);
@@ -230,7 +273,11 @@
         private System.Windows.Forms.ToolStripMenuItem coinsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem1;
         private System.Windows.Forms.Label lblCurrentServer;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label lblDebug;
+        private System.Windows.Forms.Label lblPort;
+        private System.Windows.Forms.Label lblChannel;
     }
 }
 

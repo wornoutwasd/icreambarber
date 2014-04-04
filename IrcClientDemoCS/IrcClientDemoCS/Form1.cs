@@ -106,6 +106,7 @@ namespace IrcClientDemoCS
         private void btnTest_Click(object sender, EventArgs e)
         {
             lblCurrentServer.Text = Convert.ToString(intConnPort);
+            updateLabels();
  
         }
 
@@ -127,5 +128,15 @@ namespace IrcClientDemoCS
                 oauth = c1.getOauth();
             }
         }
+
+        public void updateLabels()
+        {
+            
+            lblChannel.Text = channel;
+            lblCurrentServer.Text = serverName;
+            lblPort.Text = intConnPort.ToString();
+            lblUserName.Text = user;
+        }
+
     }
 }
