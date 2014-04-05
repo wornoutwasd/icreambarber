@@ -70,6 +70,7 @@ namespace IrcClientDemoCS
             {
                 // once we're connected show it and enable the send button
                 rtbOutput.AppendText("Connected!\n");
+                
                 irc.JoinChannel(channel);
                 //irc.JoinChannel("#wornoutwasd");
                 btnSend.Enabled = true;
@@ -91,7 +92,8 @@ namespace IrcClientDemoCS
             };
             irc.DebugChannelMessage += (m) =>
             {
-                
+                //can't get this to work because it is not in the right thread? how do you add it to thread?
+                rtbDebug.AppendText(m + "\n");
 
             };
             irc.UpdateUsers += (c, u) =>

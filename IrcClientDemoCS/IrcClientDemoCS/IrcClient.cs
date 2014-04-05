@@ -349,6 +349,7 @@ namespace TechLifeForum
 
             while ((inputLine = reader.ReadLine()) != null)
             {
+                
                 ParseData(inputLine);
                 Console.Write(inputLine);
             }//end while
@@ -359,7 +360,11 @@ namespace TechLifeForum
         /// <param name="data">message from the server</param>
         private void ParseData(string data)
         {
-            Fire_DebugChannel(data);
+            //can't add debug window do to thread issues - fix!
+            op.Post(x => Fire_DebugChannel((string)x), data);
+                        
+            //Fire_DebugChannel(data);
+            
             // split the data into parts
             string[] ircData = data.Split(' ');
             
@@ -383,6 +388,7 @@ namespace TechLifeForum
                     //if (OnConnect != null) OnConnect();
                     break;
                 case "353": // member list
+                    
                     op.Post(x => Fire_UpdateUsers((oUserList)x), new oUserList(ircData[4], JoinArray(ircData, 5).Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)));
                     //if (UpdateUsers != null)
                     //    UpdateUsers(ircData[4], JoinArray(ircData, 5).Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
