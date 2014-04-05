@@ -76,19 +76,24 @@ namespace IrcClientDemoCS
             };
 
             Listening = true;
-
+            
             //confusing as fuck
             irc.ChannelMessage += (c, u, m) =>
             {
                 rtbOutput.AppendText(u + ":\t" + m + "\n");
                 rtbOutput.ScrollToCaret();
+                
             };
             irc.ServerMessage += (m) =>
             {
                 rtbOutput.AppendText(m + "\n");
                 rtbOutput.ScrollToCaret();
             };
+            irc.DebugChannelMessage += (m) =>
+            {
+                
 
+            };
             irc.UpdateUsers += (c, u) =>
             {
                 lstUsers.Items.Clear();
@@ -145,6 +150,8 @@ namespace IrcClientDemoCS
             lblUserName.Text = user;
         }
 
+        //Menu Items
+        #region
         private void botMessagesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BotMessagesForm b1 = new BotMessagesForm();
@@ -181,6 +188,7 @@ namespace IrcClientDemoCS
             AboutForm af1 = new AboutForm();
             af1.ShowDialog();
         }
+        #endregion
 
 
     }

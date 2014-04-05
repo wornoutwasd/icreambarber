@@ -132,13 +132,17 @@ namespace TechLifeForum
         public event UserJoinedEventDelegate UserJoined;
         public event UserLeftEventDelegate UserLeft;
         public event UserNickChangeEventDelegate UserNickChange;
+        //added to try to see what i can parse / how the delegates work
+        public event DebugChannelMesssageEventDelegate DebugChannelMessage;
 
         public event ChannelMesssageEventDelegate ChannelMessage;
         public event NoticeMessageEventDelegate NoticeMessage;
         public event PrivateMessageEventDelegate PrivateMessage;
         public event ServerMessageEventDelegate ServerMessage;
-
+        //added to try to see what i can parse / how the delegates work
+        public event DebugServerMessageEventDelegate DebugServerMessage;
         public event NickTakenEventDelegate NickTaken;
+
 
         public event ConnectedEventDelegate OnConnect;
         //public event DisconnectedEventDelegate Disconnected;
@@ -223,6 +227,13 @@ namespace TechLifeForum
             // op.Post((x)=>Fire_Connected(),null);
             //
             if (OnConnect != null) OnConnect();
+        }
+        private void Fire_DebugChannel(string message)
+        {
+            //
+            // op.Post((x)=>Fire_Connected(),null);
+            //
+            if (DebugChannelMessage != null) DebugChannelMessage(message);
         }
         private void Fire_ExceptionThrown(Exception ex)
         {
@@ -348,7 +359,7 @@ namespace TechLifeForum
         /// <param name="data">message from the server</param>
         private void ParseData(string data)
         {
-            
+            Fire_DebugChannel(data);
             // split the data into parts
             string[] ircData = data.Split(' ');
             
@@ -382,7 +393,7 @@ namespace TechLifeForum
                     //{
                     //    NickTaken(ircData[3]);
                     //}
-
+                    
                     if (ircData[3] == _altNick)
                     {
                         Random rand = new Random();
@@ -578,7 +589,14 @@ namespace TechLifeForum
                 this.New = New;
             }
         }
-
+        public struct oDebug
+        {
+            public string Message;
+            public oDebug(string Message)
+            {
+                this.Message = Message;
+            }
+        }
         #endregion
     }
 

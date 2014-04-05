@@ -10,7 +10,9 @@ namespace TechLifeForum
     public delegate void NickTakenEventDelegate(string nick);
 
     public delegate void ServerMessageEventDelegate(string message);
+    public delegate void DebugServerMessageEventDelegate(string message);
     public delegate void ChannelMesssageEventDelegate(string Channel, string User, string Message);
+    public delegate void DebugChannelMesssageEventDelegate(string Message);
     public delegate void NoticeMessageEventDelegate(string User, string Message);
     public delegate void PrivateMessageEventDelegate(string User, string Message);
 
