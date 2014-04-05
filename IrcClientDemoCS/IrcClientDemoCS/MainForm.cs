@@ -76,6 +76,8 @@ namespace IrcClientDemoCS
             };
 
             Listening = true;
+
+            //confusing as fuck
             irc.ChannelMessage += (c, u, m) =>
             {
                 rtbOutput.AppendText(u + ":\t" + m + "\n");
