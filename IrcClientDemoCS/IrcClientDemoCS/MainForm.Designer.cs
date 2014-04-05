@@ -175,12 +175,14 @@
             this.pointSettingsToolStripMenuItem.Name = "pointSettingsToolStripMenuItem";
             this.pointSettingsToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.pointSettingsToolStripMenuItem.Text = "Point Settings";
+            this.pointSettingsToolStripMenuItem.Click += new System.EventHandler(this.pointSettingsToolStripMenuItem_Click);
             // 
             // userAccountsToolStripMenuItem
             // 
             this.userAccountsToolStripMenuItem.Name = "userAccountsToolStripMenuItem";
             this.userAccountsToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.userAccountsToolStripMenuItem.Text = "User Accounts";
+            this.userAccountsToolStripMenuItem.Click += new System.EventHandler(this.userAccountsToolStripMenuItem_Click);
             // 
             // drawingsToolStripMenuItem
             // 
@@ -193,20 +195,23 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // graphicAlertsToolStripMenuItem
             // 
             this.graphicAlertsToolStripMenuItem.Name = "graphicAlertsToolStripMenuItem";
             this.graphicAlertsToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
             this.graphicAlertsToolStripMenuItem.Text = "Graphic Alerts";
+            this.graphicAlertsToolStripMenuItem.Click += new System.EventHandler(this.graphicAlertsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // lblCurrentServer
             // 

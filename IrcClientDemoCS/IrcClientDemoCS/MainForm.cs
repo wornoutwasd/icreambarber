@@ -152,5 +152,36 @@ namespace IrcClientDemoCS
             
         }
 
+        private void userAccountsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserAccountsForm ua1 = new UserAccountsForm();
+            ua1.ShowDialog();
+        }
+
+        private void pointSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PointSettingsForm ps1 = new PointSettingsForm();
+            ps1.ShowDialog();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DrawingsForm df1 = new DrawingsForm();
+            df1.ShowDialog();
+        }
+
+        private void graphicAlertsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GraphicAlertsForm ga1 = new GraphicAlertsForm();
+            ga1.ShowDialog();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm af1 = new AboutForm();
+            af1.ShowDialog();
+        }
+
+
     }
 }
