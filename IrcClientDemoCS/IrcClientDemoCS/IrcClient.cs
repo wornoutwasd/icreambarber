@@ -348,9 +348,10 @@ namespace TechLifeForum
         /// <param name="data">message from the server</param>
         private void ParseData(string data)
         {
+            
             // split the data into parts
             string[] ircData = data.Split(' ');
-
+            
             // if the message starts with PING we must PONG back
             if (data.Length > 4)
             {
@@ -441,6 +442,7 @@ namespace TechLifeForum
                         //        ircData[0].Substring(1, ircData[0].IndexOf('!') - 1),
                         //        JoinArray(ircData, 3));
                         //}
+                        
                     }
                     break;
                 case "PART":

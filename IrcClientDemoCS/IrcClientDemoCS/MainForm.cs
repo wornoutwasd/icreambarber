@@ -24,8 +24,13 @@ namespace IrcClientDemoCS
         private static string channel;
         private static string user;
         private static string oauth;
-
         
+
+        public void debugupdate(string dbupdate)
+        { 
+            
+        }
+
         private void txtSend_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -91,7 +96,7 @@ namespace IrcClientDemoCS
             {
                 MessageBox.Show(ex.Message);
             };
-
+            
         }
 
         private void btnSend_Click(object sender, EventArgs e)

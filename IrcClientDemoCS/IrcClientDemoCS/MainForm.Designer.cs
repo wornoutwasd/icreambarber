@@ -40,13 +40,6 @@
             this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disconnectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblCurrentServer = new System.Windows.Forms.Label();
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.lblDebug = new System.Windows.Forms.Label();
-            this.lblPort = new System.Windows.Forms.Label();
-            this.lblChannel = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.botMessagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pointSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userAccountsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +47,13 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graphicAlertsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblCurrentServer = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.rtbDebug = new System.Windows.Forms.RichTextBox();
+            this.lblDebug = new System.Windows.Forms.Label();
+            this.lblPort = new System.Windows.Forms.Label();
+            this.lblChannel = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,23 +145,68 @@
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.connectToolStripMenuItem.Text = "Manage";
             this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.disconnectToolStripMenuItem.Text = "Connect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
             // disconnectToolStripMenuItem1
             // 
             this.disconnectToolStripMenuItem1.Name = "disconnectToolStripMenuItem1";
-            this.disconnectToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.disconnectToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
             this.disconnectToolStripMenuItem1.Text = "Disconnect";
             this.disconnectToolStripMenuItem1.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
+            // 
+            // botMessagesToolStripMenuItem
+            // 
+            this.botMessagesToolStripMenuItem.Name = "botMessagesToolStripMenuItem";
+            this.botMessagesToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.botMessagesToolStripMenuItem.Text = "Bot Messages";
+            this.botMessagesToolStripMenuItem.Click += new System.EventHandler(this.botMessagesToolStripMenuItem_Click);
+            // 
+            // pointSettingsToolStripMenuItem
+            // 
+            this.pointSettingsToolStripMenuItem.Name = "pointSettingsToolStripMenuItem";
+            this.pointSettingsToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.pointSettingsToolStripMenuItem.Text = "Point Settings";
+            // 
+            // userAccountsToolStripMenuItem
+            // 
+            this.userAccountsToolStripMenuItem.Name = "userAccountsToolStripMenuItem";
+            this.userAccountsToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.userAccountsToolStripMenuItem.Text = "User Accounts";
+            // 
+            // drawingsToolStripMenuItem
+            // 
+            this.drawingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem});
+            this.drawingsToolStripMenuItem.Name = "drawingsToolStripMenuItem";
+            this.drawingsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.drawingsToolStripMenuItem.Text = "Drawings";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.newToolStripMenuItem.Text = "New";
+            // 
+            // graphicAlertsToolStripMenuItem
+            // 
+            this.graphicAlertsToolStripMenuItem.Name = "graphicAlertsToolStripMenuItem";
+            this.graphicAlertsToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.graphicAlertsToolStripMenuItem.Text = "Graphic Alerts";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
             // 
             // lblCurrentServer
             // 
@@ -181,13 +226,13 @@
             this.lblUserName.TabIndex = 10;
             this.lblUserName.Text = "No Current User Name";
             // 
-            // richTextBox1
+            // rtbDebug
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(743, 133);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(312, 394);
-            this.richTextBox1.TabIndex = 11;
-            this.richTextBox1.Text = "";
+            this.rtbDebug.Location = new System.Drawing.Point(743, 133);
+            this.rtbDebug.Name = "rtbDebug";
+            this.rtbDebug.Size = new System.Drawing.Size(312, 394);
+            this.rtbDebug.TabIndex = 11;
+            this.rtbDebug.Text = "";
             // 
             // lblDebug
             // 
@@ -222,52 +267,7 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // botMessagesToolStripMenuItem
-            // 
-            this.botMessagesToolStripMenuItem.Name = "botMessagesToolStripMenuItem";
-            this.botMessagesToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.botMessagesToolStripMenuItem.Text = "Bot Messages";
-            this.botMessagesToolStripMenuItem.Click += new System.EventHandler(this.botMessagesToolStripMenuItem_Click);
-            // 
-            // pointSettingsToolStripMenuItem
-            // 
-            this.pointSettingsToolStripMenuItem.Name = "pointSettingsToolStripMenuItem";
-            this.pointSettingsToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
-            this.pointSettingsToolStripMenuItem.Text = "Point Settings";
-            // 
-            // userAccountsToolStripMenuItem
-            // 
-            this.userAccountsToolStripMenuItem.Name = "userAccountsToolStripMenuItem";
-            this.userAccountsToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.userAccountsToolStripMenuItem.Text = "User Accounts";
-            // 
-            // drawingsToolStripMenuItem
-            // 
-            this.drawingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem});
-            this.drawingsToolStripMenuItem.Name = "drawingsToolStripMenuItem";
-            this.drawingsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.drawingsToolStripMenuItem.Text = "Drawings";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newToolStripMenuItem.Text = "New";
-            // 
-            // graphicAlertsToolStripMenuItem
-            // 
-            this.graphicAlertsToolStripMenuItem.Name = "graphicAlertsToolStripMenuItem";
-            this.graphicAlertsToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
-            this.graphicAlertsToolStripMenuItem.Text = "Graphic Alerts";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
-            // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -275,7 +275,7 @@
             this.Controls.Add(this.lblChannel);
             this.Controls.Add(this.lblPort);
             this.Controls.Add(this.lblDebug);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.rtbDebug);
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.lblCurrentServer);
             this.Controls.Add(this.menuStrip1);
@@ -286,7 +286,7 @@
             this.Controls.Add(this.txtSend);
             this.Controls.Add(this.lstUsers);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Twitch IRC Bot";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -311,7 +311,7 @@
         private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem1;
         private System.Windows.Forms.Label lblCurrentServer;
         private System.Windows.Forms.Label lblUserName;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtbDebug;
         private System.Windows.Forms.Label lblDebug;
         private System.Windows.Forms.Label lblPort;
         private System.Windows.Forms.Label lblChannel;
