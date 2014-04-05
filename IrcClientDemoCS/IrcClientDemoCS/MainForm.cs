@@ -62,7 +62,7 @@ namespace IrcClientDemoCS
         }
         private void AddListeners()
         {
-            // hopefully these are self explanitory
+            // hopefully these are self explanitory (nope)
             // you can also subscribe to events
             // using a regular method that accepted
             // the required parameters
@@ -101,6 +101,16 @@ namespace IrcClientDemoCS
                 lstUsers.Items.Clear();
                 lstUsers.Items.AddRange(u);
             };
+            //update users only works on initial load, adding userjoined / left -dave
+            irc.UserJoined += (c, u) =>
+            {
+                lstUsers.Items.Add(u);
+            };
+            irc.UserLeft += (c, u) =>
+            {
+                lstUsers.Items.Remove(u);
+            };
+
             irc.ExceptionThrown += (ex) =>
             {
                 MessageBox.Show(ex.Message);

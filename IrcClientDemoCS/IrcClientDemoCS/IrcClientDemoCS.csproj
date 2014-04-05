@@ -124,6 +124,7 @@
     </Compile>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="BotMessagesForm.resx">
       <DependentUpon>BotMessagesForm.cs</DependentUpon>

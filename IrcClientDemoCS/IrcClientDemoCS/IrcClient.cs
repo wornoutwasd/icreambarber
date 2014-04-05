@@ -163,7 +163,12 @@ namespace TechLifeForum
             // op.Post(x => Fire_UserJoined((oUserJoined)x), new oUserJoined(channel,user));
             //
 
-            if (UserJoined != null) UserJoined(o.Channel, o.User);
+            //does not fire update users! needs fixed -dave
+            if (UserJoined != null)
+            {
+                UserJoined(o.Channel, o.User);
+                
+            }
         }
         private void Fire_UserLeft(oUserLeft o)
         {
@@ -417,6 +422,8 @@ namespace TechLifeForum
                     break;
                 case "JOIN": // someone joined
                     op.Post(x => Fire_UserJoined((oUserJoined)x), new oUserJoined(ircData[2], ircData[0].Substring(1, ircData[0].IndexOf("!") - 1)));
+                    
+                    
                     //if (UserJoined != null)
                     //    UserJoined(ircData[2], ircData[0].Substring(1, ircData[0].IndexOf("!") - 1));
                     //Send("NAMES " + ircData[2]);
@@ -462,12 +469,17 @@ namespace TechLifeForum
                         
                     }
                     break;
-                case "PART":
+                case "PART":// in Twitch.tv chat someone Left, this was blank and i suppose what the "quit" should be.
+                    op.Post(x => Fire_UserLeft((oUserLeft)x), new oUserLeft(ircData[2], ircData[0].Substring(1, data.IndexOf("!") - 1)));
+                    //if (UserLeft != null)
+                    //    UserLeft(ircData[2], ircData[0].Substring(1, data.IndexOf("!") - 1));
+                    //Send("NAMES " + ircData[2]); - NAMES does not work in twitch.tv -dave
+                    break;
                 case "QUIT":// someone left
                     op.Post(x => Fire_UserLeft((oUserLeft)x), new oUserLeft(ircData[2], ircData[0].Substring(1, data.IndexOf("!") - 1)));
                     //if (UserLeft != null)
                     //    UserLeft(ircData[2], ircData[0].Substring(1, data.IndexOf("!") - 1));
-                    Send("NAMES " + ircData[2]);
+                    //Send("NAMES " + ircData[2]);- NAMES does not work in twitch.tv -dave
                     break;
                 default:
                     // still using this while debugging
