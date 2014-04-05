@@ -40,15 +40,19 @@
             this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disconnectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.giveAwaysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.coinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblCurrentServer = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.lblDebug = new System.Windows.Forms.Label();
             this.lblPort = new System.Windows.Forms.Label();
             this.lblChannel = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.botMessagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pointSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userAccountsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.drawingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.graphicAlertsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,8 +119,11 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connectionsToolStripMenuItem,
-            this.giveAwaysToolStripMenuItem,
-            this.coinsToolStripMenuItem});
+            this.botMessagesToolStripMenuItem,
+            this.pointSettingsToolStripMenuItem,
+            this.userAccountsToolStripMenuItem,
+            this.drawingsToolStripMenuItem,
+            this.graphicAlertsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1067, 24);
@@ -153,26 +160,6 @@
             this.disconnectToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.disconnectToolStripMenuItem1.Text = "Disconnect";
             this.disconnectToolStripMenuItem1.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
-            // 
-            // giveAwaysToolStripMenuItem
-            // 
-            this.giveAwaysToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionsToolStripMenuItem});
-            this.giveAwaysToolStripMenuItem.Name = "giveAwaysToolStripMenuItem";
-            this.giveAwaysToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.giveAwaysToolStripMenuItem.Text = "Give Aways";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.optionsToolStripMenuItem.Text = "Options";
-            // 
-            // coinsToolStripMenuItem
-            // 
-            this.coinsToolStripMenuItem.Name = "coinsToolStripMenuItem";
-            this.coinsToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.coinsToolStripMenuItem.Text = "Coins";
             // 
             // lblCurrentServer
             // 
@@ -227,6 +214,51 @@
             this.lblChannel.TabIndex = 15;
             this.lblChannel.Text = "No Current Channel";
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // botMessagesToolStripMenuItem
+            // 
+            this.botMessagesToolStripMenuItem.Name = "botMessagesToolStripMenuItem";
+            this.botMessagesToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.botMessagesToolStripMenuItem.Text = "Bot Messages";
+            this.botMessagesToolStripMenuItem.Click += new System.EventHandler(this.botMessagesToolStripMenuItem_Click);
+            // 
+            // pointSettingsToolStripMenuItem
+            // 
+            this.pointSettingsToolStripMenuItem.Name = "pointSettingsToolStripMenuItem";
+            this.pointSettingsToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.pointSettingsToolStripMenuItem.Text = "Point Settings";
+            // 
+            // userAccountsToolStripMenuItem
+            // 
+            this.userAccountsToolStripMenuItem.Name = "userAccountsToolStripMenuItem";
+            this.userAccountsToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.userAccountsToolStripMenuItem.Text = "User Accounts";
+            // 
+            // drawingsToolStripMenuItem
+            // 
+            this.drawingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem});
+            this.drawingsToolStripMenuItem.Name = "drawingsToolStripMenuItem";
+            this.drawingsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.drawingsToolStripMenuItem.Text = "Drawings";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Text = "New";
+            // 
+            // graphicAlertsToolStripMenuItem
+            // 
+            this.graphicAlertsToolStripMenuItem.Name = "graphicAlertsToolStripMenuItem";
+            this.graphicAlertsToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.graphicAlertsToolStripMenuItem.Text = "Graphic Alerts";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,9 +300,6 @@
         private System.Windows.Forms.ToolStripMenuItem connectionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem giveAwaysToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem coinsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem1;
         private System.Windows.Forms.Label lblCurrentServer;
         private System.Windows.Forms.Label lblUserName;
@@ -278,6 +307,13 @@
         private System.Windows.Forms.Label lblDebug;
         private System.Windows.Forms.Label lblPort;
         private System.Windows.Forms.Label lblChannel;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolStripMenuItem botMessagesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pointSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userAccountsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem drawingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem graphicAlertsToolStripMenuItem;
     }
 }
 

@@ -138,5 +138,12 @@ namespace IrcClientDemoCS
             lblUserName.Text = user;
         }
 
+        private void botMessagesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BotMessagesForm b1 = new BotMessagesForm();
+            b1.ShowDialog();//shows bot messages form
+            
+        }
+
     }
 }

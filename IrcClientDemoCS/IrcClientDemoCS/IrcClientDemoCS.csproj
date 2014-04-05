@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BotMessagesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BotMessagesForm.Designer.cs">
+      <DependentUpon>BotMessagesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConnectionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="IrcClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BotMessagesForm.resx">
+      <DependentUpon>BotMessagesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConnectionsForm.resx">
       <DependentUpon>ConnectionsForm.cs</DependentUpon>
     </EmbeddedResource>

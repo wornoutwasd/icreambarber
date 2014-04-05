@@ -40,100 +40,94 @@
             this.btnConnectionSave = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.lstConnectionList = new System.Windows.Forms.ListBox();
+            this.lblConnectionsList = new System.Windows.Forms.Label();
+            this.grpConnInputs = new System.Windows.Forms.GroupBox();
+            this.grpConnInputs.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtServer
             // 
-            this.txtServer.Location = new System.Drawing.Point(147, 15);
-            this.txtServer.Margin = new System.Windows.Forms.Padding(4);
+            this.txtServer.Location = new System.Drawing.Point(60, 13);
             this.txtServer.Name = "txtServer";
-            this.txtServer.Size = new System.Drawing.Size(252, 22);
+            this.txtServer.Size = new System.Drawing.Size(190, 20);
             this.txtServer.TabIndex = 0;
             this.txtServer.Text = "irc.twitch.tv";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 18);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(16, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 17);
+            this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Server:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(77, 50);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(8, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 17);
+            this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Channel:";
             // 
             // txtChannel
             // 
-            this.txtChannel.Location = new System.Drawing.Point(147, 47);
-            this.txtChannel.Margin = new System.Windows.Forms.Padding(4);
+            this.txtChannel.Location = new System.Drawing.Point(60, 39);
             this.txtChannel.Name = "txtChannel";
-            this.txtChannel.Size = new System.Drawing.Size(252, 22);
+            this.txtChannel.Size = new System.Drawing.Size(190, 20);
             this.txtChannel.TabIndex = 2;
             this.txtChannel.Text = "#wornoutwasd";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(96, 82);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(22, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 17);
+            this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "User:";
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(147, 79);
-            this.txtUser.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUser.Location = new System.Drawing.Point(60, 65);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(252, 22);
+            this.txtUser.Size = new System.Drawing.Size(190, 20);
             this.txtUser.TabIndex = 4;
             this.txtUser.Text = "wornoutbot";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(88, 114);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(16, 94);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 17);
+            this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "Oauth:";
             // 
             // txtOauth
             // 
             this.txtOauth.BackColor = System.Drawing.SystemColors.MenuText;
-            this.txtOauth.Location = new System.Drawing.Point(147, 111);
-            this.txtOauth.Margin = new System.Windows.Forms.Padding(4);
+            this.txtOauth.Location = new System.Drawing.Point(60, 91);
             this.txtOauth.Name = "txtOauth";
-            this.txtOauth.Size = new System.Drawing.Size(252, 22);
+            this.txtOauth.Size = new System.Drawing.Size(190, 20);
             this.txtOauth.TabIndex = 6;
             this.txtOauth.Text = "oauth:5apvk3gardkvm4ekpp1wdf5vazso8jq";
             // 
             // txtmPort
             // 
-            this.txtmPort.Location = new System.Drawing.Point(147, 144);
-            this.txtmPort.Margin = new System.Windows.Forms.Padding(4);
+            this.txtmPort.Location = new System.Drawing.Point(60, 118);
             this.txtmPort.Name = "txtmPort";
-            this.txtmPort.Size = new System.Drawing.Size(252, 22);
+            this.txtmPort.Size = new System.Drawing.Size(190, 20);
             this.txtmPort.TabIndex = 8;
             this.txtmPort.Text = "6667";
             // 
             // btnConnectionSave
             // 
-            this.btnConnectionSave.Location = new System.Drawing.Point(147, 180);
-            this.btnConnectionSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnConnectionSave.Location = new System.Drawing.Point(60, 147);
             this.btnConnectionSave.Name = "btnConnectionSave";
-            this.btnConnectionSave.Size = new System.Drawing.Size(115, 30);
+            this.btnConnectionSave.Size = new System.Drawing.Size(86, 24);
             this.btnConnectionSave.TabIndex = 9;
             this.btnConnectionSave.Text = "Save";
             this.btnConnectionSave.UseVisualStyleBackColor = true;
@@ -142,43 +136,72 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(100, 148);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(25, 121);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 17);
+            this.label5.Size = new System.Drawing.Size(29, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Port:";
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(292, 180);
+            this.cancelButton.Location = new System.Drawing.Point(169, 147);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(107, 31);
+            this.cancelButton.Size = new System.Drawing.Size(80, 25);
             this.cancelButton.TabIndex = 11;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // lstConnectionList
+            // 
+            this.lstConnectionList.FormattingEnabled = true;
+            this.lstConnectionList.Location = new System.Drawing.Point(12, 25);
+            this.lstConnectionList.Name = "lstConnectionList";
+            this.lstConnectionList.Size = new System.Drawing.Size(120, 160);
+            this.lstConnectionList.TabIndex = 12;
+            // 
+            // lblConnectionsList
+            // 
+            this.lblConnectionsList.AutoSize = true;
+            this.lblConnectionsList.Location = new System.Drawing.Point(32, 9);
+            this.lblConnectionsList.Name = "lblConnectionsList";
+            this.lblConnectionsList.Size = new System.Drawing.Size(66, 13);
+            this.lblConnectionsList.TabIndex = 13;
+            this.lblConnectionsList.Text = "Connections";
+            // 
+            // grpConnInputs
+            // 
+            this.grpConnInputs.Controls.Add(this.label1);
+            this.grpConnInputs.Controls.Add(this.txtServer);
+            this.grpConnInputs.Controls.Add(this.txtChannel);
+            this.grpConnInputs.Controls.Add(this.cancelButton);
+            this.grpConnInputs.Controls.Add(this.label2);
+            this.grpConnInputs.Controls.Add(this.label5);
+            this.grpConnInputs.Controls.Add(this.txtUser);
+            this.grpConnInputs.Controls.Add(this.btnConnectionSave);
+            this.grpConnInputs.Controls.Add(this.label3);
+            this.grpConnInputs.Controls.Add(this.txtmPort);
+            this.grpConnInputs.Controls.Add(this.txtOauth);
+            this.grpConnInputs.Controls.Add(this.label4);
+            this.grpConnInputs.Location = new System.Drawing.Point(138, 9);
+            this.grpConnInputs.Name = "grpConnInputs";
+            this.grpConnInputs.Size = new System.Drawing.Size(264, 178);
+            this.grpConnInputs.TabIndex = 14;
+            this.grpConnInputs.TabStop = false;
+            // 
             // ConnectionsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 223);
-            this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnConnectionSave);
-            this.Controls.Add(this.txtmPort);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtOauth);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtUser);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtChannel);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtServer);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.ClientSize = new System.Drawing.Size(415, 199);
+            this.Controls.Add(this.grpConnInputs);
+            this.Controls.Add(this.lblConnectionsList);
+            this.Controls.Add(this.lstConnectionList);
             this.Name = "ConnectionsForm";
             this.Text = "Connections";
+            this.grpConnInputs.ResumeLayout(false);
+            this.grpConnInputs.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,5 +221,8 @@
         private System.Windows.Forms.Button btnConnectionSave;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.ListBox lstConnectionList;
+        private System.Windows.Forms.Label lblConnectionsList;
+        private System.Windows.Forms.GroupBox grpConnInputs;
     }
 }
