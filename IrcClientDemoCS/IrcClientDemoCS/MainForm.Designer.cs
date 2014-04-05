@@ -54,6 +54,7 @@
             this.lblPort = new System.Windows.Forms.Label();
             this.lblChannel = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btnTestSend = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -195,7 +196,7 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -272,11 +273,22 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // btnTestSend
+            // 
+            this.btnTestSend.Location = new System.Drawing.Point(236, 104);
+            this.btnTestSend.Name = "btnTestSend";
+            this.btnTestSend.Size = new System.Drawing.Size(75, 23);
+            this.btnTestSend.TabIndex = 16;
+            this.btnTestSend.Text = "Test Send";
+            this.btnTestSend.UseVisualStyleBackColor = true;
+            this.btnTestSend.Click += new System.EventHandler(this.btnTestSend_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 562);
+            this.Controls.Add(this.btnTestSend);
             this.Controls.Add(this.lblChannel);
             this.Controls.Add(this.lblPort);
             this.Controls.Add(this.lblDebug);
@@ -328,6 +340,7 @@
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem graphicAlertsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Button btnTestSend;
     }
 }
 

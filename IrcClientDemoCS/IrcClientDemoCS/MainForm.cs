@@ -94,6 +94,7 @@ namespace IrcClientDemoCS
             {
                 //can't get this to work because it is not in the right thread? how do you add it to thread?
                 rtbDebug.AppendText(m + "\n");
+                rtbDebug.ScrollToCaret();
 
             };
             irc.UpdateUsers += (c, u) =>
@@ -201,6 +202,11 @@ namespace IrcClientDemoCS
             af1.ShowDialog();
         }
         #endregion
+
+        private void btnTestSend_Click(object sender, EventArgs e)
+        {
+            irc.SendMessage(channel, "Welcome!");
+        }
 
 
     }
