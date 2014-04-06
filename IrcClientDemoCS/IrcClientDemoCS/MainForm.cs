@@ -106,6 +106,7 @@ namespace IrcClientDemoCS
             irc.UserJoined += (c, u) =>
             {
                 lstUsers.Items.Add(u);
+                irc.SendMessage(channel, "Welcome!" + u);
             };
             irc.UserLeft += (c, u) =>
             {

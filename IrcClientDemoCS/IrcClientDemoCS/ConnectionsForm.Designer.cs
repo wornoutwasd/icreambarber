@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtServer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,7 +44,14 @@
             this.lstConnectionList = new System.Windows.Forms.ListBox();
             this.lblConnectionsList = new System.Windows.Forms.Label();
             this.grpConnInputs = new System.Windows.Forms.GroupBox();
+            this.cbDefault = new System.Windows.Forms.CheckBox();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.commandBotDataSet = new IrcClientDemoCS.CommandBotDataSet();
+            this.iRCConnectionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iRCConnectionsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.IRCConnectionsTableAdapter();
             this.grpConnInputs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iRCConnectionsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtServer
@@ -52,7 +60,7 @@
             this.txtServer.Name = "txtServer";
             this.txtServer.Size = new System.Drawing.Size(190, 20);
             this.txtServer.TabIndex = 0;
-            this.txtServer.Text = "irc.twitch.tv";
+            this.txtServer.TextChanged += new System.EventHandler(this.txtServer_TextChanged);
             // 
             // label1
             // 
@@ -78,7 +86,6 @@
             this.txtChannel.Name = "txtChannel";
             this.txtChannel.Size = new System.Drawing.Size(190, 20);
             this.txtChannel.TabIndex = 2;
-            this.txtChannel.Text = "#wornoutwasd";
             // 
             // label3
             // 
@@ -95,7 +102,6 @@
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(190, 20);
             this.txtUser.TabIndex = 4;
-            this.txtUser.Text = "wornoutbot";
             // 
             // label4
             // 
@@ -125,7 +131,7 @@
             // 
             // btnConnectionSave
             // 
-            this.btnConnectionSave.Location = new System.Drawing.Point(60, 147);
+            this.btnConnectionSave.Location = new System.Drawing.Point(78, 178);
             this.btnConnectionSave.Name = "btnConnectionSave";
             this.btnConnectionSave.Size = new System.Drawing.Size(86, 24);
             this.btnConnectionSave.TabIndex = 9;
@@ -144,8 +150,8 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(169, 147);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelButton.Location = new System.Drawing.Point(169, 178);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(80, 25);
             this.cancelButton.TabIndex = 11;
@@ -155,11 +161,14 @@
             // 
             // lstConnectionList
             // 
+            this.lstConnectionList.DataSource = this.iRCConnectionsBindingSource;
+            this.lstConnectionList.DisplayMember = "ServerAddress";
             this.lstConnectionList.FormattingEnabled = true;
             this.lstConnectionList.Location = new System.Drawing.Point(12, 25);
             this.lstConnectionList.Name = "lstConnectionList";
             this.lstConnectionList.Size = new System.Drawing.Size(120, 160);
             this.lstConnectionList.TabIndex = 12;
+            this.lstConnectionList.ValueMember = "ServerAddress";
             // 
             // lblConnectionsList
             // 
@@ -172,6 +181,8 @@
             // 
             // grpConnInputs
             // 
+            this.grpConnInputs.Controls.Add(this.cbDefault);
+            this.grpConnInputs.Controls.Add(this.btnNew);
             this.grpConnInputs.Controls.Add(this.label1);
             this.grpConnInputs.Controls.Add(this.txtServer);
             this.grpConnInputs.Controls.Add(this.txtChannel);
@@ -186,22 +197,59 @@
             this.grpConnInputs.Controls.Add(this.label4);
             this.grpConnInputs.Location = new System.Drawing.Point(138, 9);
             this.grpConnInputs.Name = "grpConnInputs";
-            this.grpConnInputs.Size = new System.Drawing.Size(264, 178);
+            this.grpConnInputs.Size = new System.Drawing.Size(264, 208);
             this.grpConnInputs.TabIndex = 14;
             this.grpConnInputs.TabStop = false;
+            // 
+            // cbDefault
+            // 
+            this.cbDefault.AutoSize = true;
+            this.cbDefault.Location = new System.Drawing.Point(61, 145);
+            this.cbDefault.Name = "cbDefault";
+            this.cbDefault.Size = new System.Drawing.Size(69, 17);
+            this.cbDefault.TabIndex = 14;
+            this.cbDefault.Text = "Default ?";
+            this.cbDefault.UseVisualStyleBackColor = true;
+            // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(6, 178);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(66, 24);
+            this.btnNew.TabIndex = 12;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // commandBotDataSet
+            // 
+            this.commandBotDataSet.DataSetName = "CommandBotDataSet";
+            this.commandBotDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // iRCConnectionsBindingSource
+            // 
+            this.iRCConnectionsBindingSource.DataMember = "IRCConnections";
+            this.iRCConnectionsBindingSource.DataSource = this.commandBotDataSet;
+            // 
+            // iRCConnectionsTableAdapter
+            // 
+            this.iRCConnectionsTableAdapter.ClearBeforeFill = true;
             // 
             // ConnectionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 199);
+            this.ClientSize = new System.Drawing.Size(566, 251);
             this.Controls.Add(this.grpConnInputs);
             this.Controls.Add(this.lblConnectionsList);
             this.Controls.Add(this.lstConnectionList);
             this.Name = "ConnectionsForm";
             this.Text = "Connections";
+            this.Load += new System.EventHandler(this.ConnectionsForm_Load);
             this.grpConnInputs.ResumeLayout(false);
             this.grpConnInputs.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iRCConnectionsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,5 +272,10 @@
         private System.Windows.Forms.ListBox lstConnectionList;
         private System.Windows.Forms.Label lblConnectionsList;
         private System.Windows.Forms.GroupBox grpConnInputs;
+        private System.Windows.Forms.CheckBox cbDefault;
+        private System.Windows.Forms.Button btnNew;
+        private CommandBotDataSet commandBotDataSet;
+        private System.Windows.Forms.BindingSource iRCConnectionsBindingSource;
+        private CommandBotDataSetTableAdapters.IRCConnectionsTableAdapter iRCConnectionsTableAdapter;
     }
 }

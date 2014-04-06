@@ -16,6 +16,7 @@ namespace IrcClientDemoCS
         private String user;
         private String oauth;
         private int port;
+        public DataTable dt;
 
         public ConnectionsForm()
         {
@@ -25,6 +26,8 @@ namespace IrcClientDemoCS
             user = "";
             oauth = "";
             port = 0;
+            
+            
         }
 
         /// <summary>
@@ -91,6 +94,29 @@ namespace IrcClientDemoCS
         public int getPort()
         {
             return port;
+        }
+
+        private void ConnectionsForm_Load(object sender, EventArgs e)
+        {
+                        // TODO: This line of code loads data into the 'commandBotDataSet.IRCConnections' table. You can move, or remove it, as needed.
+            this.iRCConnectionsTableAdapter.Fill(this.commandBotDataSet.IRCConnections);
+            txtServer.Text = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["ServerAddress"].ToString();
+            txtChannel.Text = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["Channel"].ToString();
+            txtmPort.Text = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["Port"].ToString();
+            txtOauth.Text = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["OAuth"].ToString();
+            txtUser.Text = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["User"].ToString();
+            cbDefault.Checked = Convert.ToBoolean(commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["DefaultServer"]);
+        }
+
+        private void txtServer_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            
+            
         }
     }
 }

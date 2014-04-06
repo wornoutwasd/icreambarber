@@ -3560,6 +3560,11 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         public virtual int Update(bool DefaultServer, string ServerAddress, string Channel, string User, string OAuth, int Port, int Original_Id, bool Original_DefaultServer, string Original_ServerAddress, string Original_Channel, string Original_User, string Original_OAuth, int Original_Port) {
             return this.Update(DefaultServer, ServerAddress, Channel, User, OAuth, Port, Original_Id, Original_DefaultServer, Original_ServerAddress, Original_Channel, Original_User, Original_OAuth, Original_Port, Original_Id);
         }
+
+        internal void Fill(System.Data.DataTable dt2)
+        {
+            throw new System.NotImplementedException();
+        }
     }
     
     /// <summary>
