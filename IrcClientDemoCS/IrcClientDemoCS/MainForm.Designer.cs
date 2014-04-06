@@ -35,18 +35,6 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnTest = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.connectionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disconnectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.botMessagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pointSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userAccountsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.drawingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.graphicAlertsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblCurrentServer = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.rtbDebug = new System.Windows.Forms.RichTextBox();
@@ -58,12 +46,8 @@
             this.tcMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.grpConnInputs = new System.Windows.Forms.GroupBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.cbDefault = new System.Windows.Forms.CheckBox();
             this.btnNew = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -80,6 +64,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblConnectionsList = new System.Windows.Forms.Label();
             this.lstConnectionList = new System.Windows.Forms.ListBox();
+            this.iRCConnectionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.commandBotDataSet = new IrcClientDemoCS.CommandBotDataSet();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnBotMessageClear = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -95,6 +87,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.lblPointTickTimer = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -103,36 +99,44 @@
             this.label16 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.iRCConnectionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.commandBotDataSet = new IrcClientDemoCS.CommandBotDataSet();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.iRCConnectionsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.IRCConnectionsTableAdapter();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.commandBotDataSet1 = new IrcClientDemoCS.CommandBotDataSet();
             this.usersTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.UsersTableAdapter();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.menuStrip1.SuspendLayout();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.membershipLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currentPointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inGameDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.totalPointsEarnedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage5.SuspendLayout();
             this.grpConnInputs.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iRCConnectionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSet)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstUsers
             // 
             this.lstUsers.FormattingEnabled = true;
-            this.lstUsers.Location = new System.Drawing.Point(602, 35);
+            this.lstUsers.Location = new System.Drawing.Point(514, 35);
             this.lstUsers.Name = "lstUsers";
             this.lstUsers.Size = new System.Drawing.Size(140, 173);
             this.lstUsers.TabIndex = 1;
@@ -159,7 +163,7 @@
             // 
             this.rtbOutput.Location = new System.Drawing.Point(3, 35);
             this.rtbOutput.Name = "rtbOutput";
-            this.rtbOutput.Size = new System.Drawing.Size(595, 176);
+            this.rtbOutput.Size = new System.Drawing.Size(505, 176);
             this.rtbOutput.TabIndex = 4;
             this.rtbOutput.Text = "";
             // 
@@ -188,103 +192,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.connectionsToolStripMenuItem,
-            this.botMessagesToolStripMenuItem,
-            this.pointSettingsToolStripMenuItem,
-            this.userAccountsToolStripMenuItem,
-            this.drawingsToolStripMenuItem,
-            this.graphicAlertsToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1059, 24);
-            this.menuStrip1.TabIndex = 8;
-            this.menuStrip1.Text = "Blank";
-            // 
-            // connectionsToolStripMenuItem
-            // 
-            this.connectionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.connectToolStripMenuItem,
-            this.disconnectToolStripMenuItem,
-            this.disconnectToolStripMenuItem1});
-            this.connectionsToolStripMenuItem.Name = "connectionsToolStripMenuItem";
-            this.connectionsToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
-            this.connectionsToolStripMenuItem.Text = "Connections";
-            // 
-            // connectToolStripMenuItem
-            // 
-            this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.connectToolStripMenuItem.Text = "Manage";
-            this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
-            // 
-            // disconnectToolStripMenuItem
-            // 
-            this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.disconnectToolStripMenuItem.Text = "Connect";
-            this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
-            // 
-            // disconnectToolStripMenuItem1
-            // 
-            this.disconnectToolStripMenuItem1.Name = "disconnectToolStripMenuItem1";
-            this.disconnectToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
-            this.disconnectToolStripMenuItem1.Text = "Disconnect";
-            this.disconnectToolStripMenuItem1.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
-            // 
-            // botMessagesToolStripMenuItem
-            // 
-            this.botMessagesToolStripMenuItem.Name = "botMessagesToolStripMenuItem";
-            this.botMessagesToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.botMessagesToolStripMenuItem.Text = "Bot Messages";
-            this.botMessagesToolStripMenuItem.Click += new System.EventHandler(this.botMessagesToolStripMenuItem_Click);
-            // 
-            // pointSettingsToolStripMenuItem
-            // 
-            this.pointSettingsToolStripMenuItem.Name = "pointSettingsToolStripMenuItem";
-            this.pointSettingsToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
-            this.pointSettingsToolStripMenuItem.Text = "Point Settings";
-            this.pointSettingsToolStripMenuItem.Click += new System.EventHandler(this.pointSettingsToolStripMenuItem_Click);
-            // 
-            // userAccountsToolStripMenuItem
-            // 
-            this.userAccountsToolStripMenuItem.Name = "userAccountsToolStripMenuItem";
-            this.userAccountsToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.userAccountsToolStripMenuItem.Text = "User Accounts";
-            this.userAccountsToolStripMenuItem.Click += new System.EventHandler(this.userAccountsToolStripMenuItem_Click);
-            // 
-            // drawingsToolStripMenuItem
-            // 
-            this.drawingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem});
-            this.drawingsToolStripMenuItem.Name = "drawingsToolStripMenuItem";
-            this.drawingsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.drawingsToolStripMenuItem.Text = "Drawings";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newToolStripMenuItem.Text = "New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
-            // 
-            // graphicAlertsToolStripMenuItem
-            // 
-            this.graphicAlertsToolStripMenuItem.Name = "graphicAlertsToolStripMenuItem";
-            this.graphicAlertsToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
-            this.graphicAlertsToolStripMenuItem.Text = "Graphic Alerts";
-            this.graphicAlertsToolStripMenuItem.Click += new System.EventHandler(this.graphicAlertsToolStripMenuItem_Click);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
             // lblCurrentServer
             // 
             this.lblCurrentServer.AutoSize = true;
@@ -305,9 +212,11 @@
             // 
             // rtbDebug
             // 
-            this.rtbDebug.Location = new System.Drawing.Point(748, 35);
+            this.rtbDebug.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbDebug.Location = new System.Drawing.Point(660, 35);
             this.rtbDebug.Name = "rtbDebug";
-            this.rtbDebug.Size = new System.Drawing.Size(292, 173);
+            this.rtbDebug.Size = new System.Drawing.Size(383, 173);
             this.rtbDebug.TabIndex = 11;
             this.rtbDebug.Text = "";
             // 
@@ -366,10 +275,11 @@
             this.tcMain.Controls.Add(this.tabPage5);
             this.tcMain.Controls.Add(this.tabPage6);
             this.tcMain.Controls.Add(this.tabPage7);
-            this.tcMain.Location = new System.Drawing.Point(0, 27);
+            this.tcMain.Controls.Add(this.tabPage8);
+            this.tcMain.Location = new System.Drawing.Point(0, 1);
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
-            this.tcMain.Size = new System.Drawing.Size(1059, 276);
+            this.tcMain.Size = new System.Drawing.Size(1059, 270);
             this.tcMain.TabIndex = 17;
             // 
             // tabPage1
@@ -390,7 +300,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1051, 250);
+            this.tabPage1.Size = new System.Drawing.Size(1051, 244);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Chat";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -403,63 +313,14 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1051, 250);
+            this.tabPage2.Size = new System.Drawing.Size(1051, 244);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Connections";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.groupBox2);
-            this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1051, 250);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Bot Messages";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.groupBox4);
-            this.tabPage4.Controls.Add(this.groupBox3);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1051, 250);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Point Settings";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.dataGridView1);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1051, 250);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "User Accounts";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1051, 250);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Drawings";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(1051, 250);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Graphic Alerts";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
             // grpConnInputs
             // 
+            this.grpConnInputs.Controls.Add(this.btnDelete);
             this.grpConnInputs.Controls.Add(this.cbDefault);
             this.grpConnInputs.Controls.Add(this.btnNew);
             this.grpConnInputs.Controls.Add(this.label1);
@@ -480,10 +341,19 @@
             this.grpConnInputs.TabIndex = 17;
             this.grpConnInputs.TabStop = false;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(6, 178);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(66, 24);
+            this.btnDelete.TabIndex = 15;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
             // cbDefault
             // 
             this.cbDefault.AutoSize = true;
-            this.cbDefault.Location = new System.Drawing.Point(61, 145);
+            this.cbDefault.Location = new System.Drawing.Point(104, 144);
             this.cbDefault.Name = "cbDefault";
             this.cbDefault.Size = new System.Drawing.Size(69, 17);
             this.cbDefault.TabIndex = 14;
@@ -492,7 +362,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(6, 178);
+            this.btnNew.Location = new System.Drawing.Point(6, 148);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(66, 24);
             this.btnNew.TabIndex = 12;
@@ -524,7 +394,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(169, 178);
+            this.cancelButton.Location = new System.Drawing.Point(169, 167);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(80, 25);
@@ -559,7 +429,7 @@
             // 
             // btnConnectionSave
             // 
-            this.btnConnectionSave.Location = new System.Drawing.Point(78, 178);
+            this.btnConnectionSave.Location = new System.Drawing.Point(78, 167);
             this.btnConnectionSave.Name = "btnConnectionSave";
             this.btnConnectionSave.Size = new System.Drawing.Size(86, 24);
             this.btnConnectionSave.TabIndex = 9;
@@ -612,6 +482,7 @@
             // 
             // lstConnectionList
             // 
+            this.lstConnectionList.DataSource = this.iRCConnectionsBindingSource;
             this.lstConnectionList.DisplayMember = "ServerAddress";
             this.lstConnectionList.FormattingEnabled = true;
             this.lstConnectionList.Location = new System.Drawing.Point(8, 26);
@@ -619,6 +490,79 @@
             this.lstConnectionList.Size = new System.Drawing.Size(120, 186);
             this.lstConnectionList.TabIndex = 15;
             this.lstConnectionList.ValueMember = "ServerAddress";
+            // 
+            // iRCConnectionsBindingSource
+            // 
+            this.iRCConnectionsBindingSource.DataMember = "IRCConnections";
+            this.iRCConnectionsBindingSource.DataSource = this.commandBotDataSet;
+            // 
+            // commandBotDataSet
+            // 
+            this.commandBotDataSet.DataSetName = "CommandBotDataSet";
+            this.commandBotDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.groupBox5);
+            this.tabPage3.Controls.Add(this.groupBox2);
+            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Bot Messages";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.btnBotMessageClear);
+            this.groupBox5.Controls.Add(this.label19);
+            this.groupBox5.Controls.Add(this.listBox1);
+            this.groupBox5.Controls.Add(this.label18);
+            this.groupBox5.Location = new System.Drawing.Point(588, 3);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(455, 191);
+            this.groupBox5.TabIndex = 14;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Message Que";
+            // 
+            // btnBotMessageClear
+            // 
+            this.btnBotMessageClear.Location = new System.Drawing.Point(204, 141);
+            this.btnBotMessageClear.Name = "btnBotMessageClear";
+            this.btnBotMessageClear.Size = new System.Drawing.Size(245, 23);
+            this.btnBotMessageClear.TabIndex = 15;
+            this.btnBotMessageClear.Text = "Clear Messages";
+            this.btnBotMessageClear.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(37, 65);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(144, 65);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "The Bot Timer is to prevent\r\n       Message Overload\r\n(20 messages in 30 seconds)" +
+    "\r\nMessage Overload results in\r\n            8 Hour Ban!";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(204, 14);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(245, 121);
+            this.listBox1.TabIndex = 1;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(108, 16);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(90, 13);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "2 Second TIMER";
             // 
             // groupBox2
             // 
@@ -633,7 +577,7 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Location = new System.Drawing.Point(298, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(284, 141);
+            this.groupBox2.Size = new System.Drawing.Size(284, 191);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bot Commands";
@@ -724,7 +668,7 @@
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Location = new System.Drawing.Point(8, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(284, 141);
+            this.groupBox1.Size = new System.Drawing.Size(284, 191);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Greeting";
@@ -769,6 +713,47 @@
             this.label13.Size = new System.Drawing.Size(53, 13);
             this.label13.TabIndex = 0;
             this.label13.Text = "Message:";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.groupBox6);
+            this.tabPage4.Controls.Add(this.groupBox4);
+            this.tabPage4.Controls.Add(this.groupBox3);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Point Settings";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.lblPointTickTimer);
+            this.groupBox6.Location = new System.Drawing.Point(8, 77);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(292, 68);
+            this.groupBox6.TabIndex = 7;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Point Clock";
+            // 
+            // lblPointTickTimer
+            // 
+            this.lblPointTickTimer.AutoSize = true;
+            this.lblPointTickTimer.Font = new System.Drawing.Font("Impact", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPointTickTimer.Location = new System.Drawing.Point(6, 16);
+            this.lblPointTickTimer.Name = "lblPointTickTimer";
+            this.lblPointTickTimer.Size = new System.Drawing.Size(283, 43);
+            this.lblPointTickTimer.TabIndex = 0;
+            this.lblPointTickTimer.Text = "Countdown Timer";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Location = new System.Drawing.Point(306, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(737, 142);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Membership Levels";
             // 
             // groupBox3
             // 
@@ -846,24 +831,57 @@
             this.label17.TabIndex = 0;
             this.label17.Text = "Add";
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.button1);
+            this.tabPage5.Controls.Add(this.dataGridView1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "User Accounts";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
             // dataGridView1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeight = 25;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.userNameDataGridViewTextBoxColumn,
+            this.membershipLevelDataGridViewTextBoxColumn,
+            this.currentPointsDataGridViewTextBoxColumn,
+            this.inGameDataGridViewCheckBoxColumn,
+            this.totalPointsEarnedDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.usersBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1051, 250);
-            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.RowHeadersWidth = 40;
+            this.dataGridView1.Size = new System.Drawing.Size(1048, 204);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // iRCConnectionsBindingSource
+            // tabPage6
             // 
-            this.iRCConnectionsBindingSource.DataMember = "IRCConnections";
-            this.iRCConnectionsBindingSource.DataSource = this.commandBotDataSet;
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Drawings";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // commandBotDataSet
+            // tabPage7
             // 
-            this.commandBotDataSet.DataSetName = "CommandBotDataSet";
-            this.commandBotDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Graphic Alerts";
+            this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // iRCConnectionsTableAdapter
             // 
@@ -872,61 +890,102 @@
             // usersBindingSource
             // 
             this.usersBindingSource.DataMember = "Users";
-            this.usersBindingSource.DataSource = this.commandBotDataSet1;
-            // 
-            // commandBotDataSet1
-            // 
-            this.commandBotDataSet1.DataSetName = "CommandBotDataSet";
-            this.commandBotDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.usersBindingSource.DataSource = this.commandBotDataSet;
             // 
             // usersTableAdapter
             // 
             this.usersTableAdapter.ClearBeforeFill = true;
             // 
-            // groupBox4
+            // idDataGridViewTextBoxColumn
             // 
-            this.groupBox4.Location = new System.Drawing.Point(8, 77);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(355, 112);
-            this.groupBox4.TabIndex = 7;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Membership Levels";
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // userNameDataGridViewTextBoxColumn
+            // 
+            this.userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
+            this.userNameDataGridViewTextBoxColumn.HeaderText = "UserName";
+            this.userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
+            // 
+            // membershipLevelDataGridViewTextBoxColumn
+            // 
+            this.membershipLevelDataGridViewTextBoxColumn.DataPropertyName = "MembershipLevel";
+            this.membershipLevelDataGridViewTextBoxColumn.HeaderText = "MembershipLevel";
+            this.membershipLevelDataGridViewTextBoxColumn.Name = "membershipLevelDataGridViewTextBoxColumn";
+            // 
+            // currentPointsDataGridViewTextBoxColumn
+            // 
+            this.currentPointsDataGridViewTextBoxColumn.DataPropertyName = "CurrentPoints";
+            this.currentPointsDataGridViewTextBoxColumn.HeaderText = "CurrentPoints";
+            this.currentPointsDataGridViewTextBoxColumn.Name = "currentPointsDataGridViewTextBoxColumn";
+            // 
+            // inGameDataGridViewCheckBoxColumn
+            // 
+            this.inGameDataGridViewCheckBoxColumn.DataPropertyName = "InGame";
+            this.inGameDataGridViewCheckBoxColumn.HeaderText = "InGame";
+            this.inGameDataGridViewCheckBoxColumn.Name = "inGameDataGridViewCheckBoxColumn";
+            // 
+            // totalPointsEarnedDataGridViewTextBoxColumn
+            // 
+            this.totalPointsEarnedDataGridViewTextBoxColumn.DataPropertyName = "TotalPointsEarned";
+            this.totalPointsEarnedDataGridViewTextBoxColumn.HeaderText = "TotalPointsEarned";
+            this.totalPointsEarnedDataGridViewTextBoxColumn.Name = "totalPointsEarnedDataGridViewTextBoxColumn";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Location = new System.Drawing.Point(8, 218);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "About";
+            this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 303);
+            this.ClientSize = new System.Drawing.Size(1059, 271);
             this.Controls.Add(this.tcMain);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Twitch Commander";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tcMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
             this.grpConnInputs.ResumeLayout(false);
             this.grpConnInputs.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iRCConnectionsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSet)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iRCConnectionsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSet1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -939,11 +998,6 @@
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem connectionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem1;
         private System.Windows.Forms.Label lblCurrentServer;
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.RichTextBox rtbDebug;
@@ -951,13 +1005,6 @@
         private System.Windows.Forms.Label lblPort;
         private System.Windows.Forms.Label lblChannel;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.ToolStripMenuItem botMessagesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pointSettingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem userAccountsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem drawingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem graphicAlertsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btnTestSend;
         private System.Windows.Forms.TabControl tcMain;
         private System.Windows.Forms.TabPage tabPage1;
@@ -1007,14 +1054,30 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource iRCConnectionsBindingSource;
-        private CommandBotDataSet commandBotDataSet;
-        private CommandBotDataSetTableAdapters.IRCConnectionsTableAdapter iRCConnectionsTableAdapter;
-        private System.Windows.Forms.BindingSource usersBindingSource;
-        private CommandBotDataSet commandBotDataSet1;
-        private CommandBotDataSetTableAdapters.UsersTableAdapter usersTableAdapter;
         private System.Windows.Forms.GroupBox groupBox4;
+        private CommandBotDataSet commandBotDataSet;
+        private System.Windows.Forms.BindingSource iRCConnectionsBindingSource;
+        private CommandBotDataSetTableAdapters.IRCConnectionsTableAdapter iRCConnectionsTableAdapter;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnBotMessageClear;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label lblPointTickTimer;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource usersBindingSource;
+        private CommandBotDataSetTableAdapters.UsersTableAdapter usersTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn membershipLevelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currentPointsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn inGameDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalPointsEarnedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabPage tabPage8;
     }
 }
 

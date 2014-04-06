@@ -13,17 +13,61 @@ namespace IrcClientDemoCS
 {
     public partial class MainForm : Form
     {
-        public MainForm()
-        {
-            InitializeComponent();
-        }
+        //Varibles
         IrcClient irc;
         Boolean Listening = false;
-        private static int intConnPort;
+        private static int ConnPort;
         private static string serverName;
         private static string channel;
         private static string user;
         private static string oauth;
+        
+        
+        public MainForm()
+        {
+
+            InitializeComponent();
+
+
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'commandBotDataSet.Users' table. You can move, or remove it, as needed.
+            this.usersTableAdapter.Fill(this.commandBotDataSet.Users);
+            
+            //**Load Default Connection Information - Comment this out if your DB is not setup yet
+            this.iRCConnectionsTableAdapter.Fill(this.commandBotDataSet.IRCConnections);
+            serverName = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["ServerAddress"].ToString();
+            channel = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["Channel"].ToString();
+            ConnPort = Convert.ToInt16(commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["Port"].ToString());
+            oauth = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["OAuth"].ToString();
+            user = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["User"].ToString();
+            
+
+
+            //**********Connections Tab
+            #region
+            // TODO: This line of code loads data into the 'commandBotDataSet.IRCConnections' table. You can move, or remove it, as needed.
+
+            txtServer.Text = serverName;
+            txtChannel.Text = channel;
+            txtmPort.Text = ConnPort.ToString();
+            txtOauth.Text = oauth;
+            txtUser.Text = user;
+            cbDefault.Checked = Convert.ToBoolean(commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["DefaultServer"]);
+            #endregion
+            //*********Chat Tab
+            #region
+            lblChannel.Text = channel;
+            lblCurrentServer.Text = serverName;
+            lblPort.Text = ConnPort.ToString();
+            lblUserName.Text = user;
+            #endregion
+
+        }
+       
         
 
         public void debugupdate(string dbupdate)
@@ -45,7 +89,7 @@ namespace IrcClientDemoCS
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            irc = new IrcClient(serverName, intConnPort);
+            irc = new IrcClient(serverName, ConnPort);
             irc.Nick = user;
             irc.ServerPass = oauth;
             /*irc = new IrcClient("irc.twitch.tv", 6667);
@@ -131,7 +175,7 @@ namespace IrcClientDemoCS
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            lblCurrentServer.Text = Convert.ToString(intConnPort);
+            lblCurrentServer.Text = Convert.ToString(ConnPort);
             updateLabels();
  
         }
@@ -147,7 +191,7 @@ namespace IrcClientDemoCS
             c1.ShowDialog(); //shows connection management window
             if (c1.DialogResult == DialogResult.OK)
             {
-                intConnPort = c1.getPort();
+                ConnPort = c1.getPort();
                 serverName = c1.getServer();
                 channel = c1.getChannel();
                 user = c1.getUser();
@@ -160,7 +204,7 @@ namespace IrcClientDemoCS
             
             lblChannel.Text = channel;
             lblCurrentServer.Text = serverName;
-            lblPort.Text = intConnPort.ToString();
+            lblPort.Text = ConnPort.ToString();
             lblUserName.Text = user;
         }
 
@@ -208,6 +252,8 @@ namespace IrcClientDemoCS
         {
             irc.SendMessage(channel, "Welcome!");
         }
+
+
 
 
     }
