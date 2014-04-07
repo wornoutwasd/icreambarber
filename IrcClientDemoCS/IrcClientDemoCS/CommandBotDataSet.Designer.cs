@@ -24,13 +24,15 @@ namespace IrcClientDemoCS {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class CommandBotDataSet : global::System.Data.DataSet {
         
+        private IRCConnectionsDataTable tableIRCConnections;
+        
         private MembershipLevelsDataTable tableMembershipLevels;
         
-        private UserTransactionsDataTable tableUserTransactions;
+        private SettingsDataTable tableSettings;
         
         private UsersDataTable tableUsers;
         
-        private IRCConnectionsDataTable tableIRCConnections;
+        private UserTransactionsDataTable tableUserTransactions;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -60,17 +62,20 @@ namespace IrcClientDemoCS {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                if ((ds.Tables["IRCConnections"] != null)) {
+                    base.Tables.Add(new IRCConnectionsDataTable(ds.Tables["IRCConnections"]));
+                }
                 if ((ds.Tables["MembershipLevels"] != null)) {
                     base.Tables.Add(new MembershipLevelsDataTable(ds.Tables["MembershipLevels"]));
                 }
-                if ((ds.Tables["UserTransactions"] != null)) {
-                    base.Tables.Add(new UserTransactionsDataTable(ds.Tables["UserTransactions"]));
+                if ((ds.Tables["Settings"] != null)) {
+                    base.Tables.Add(new SettingsDataTable(ds.Tables["Settings"]));
                 }
                 if ((ds.Tables["Users"] != null)) {
                     base.Tables.Add(new UsersDataTable(ds.Tables["Users"]));
                 }
-                if ((ds.Tables["IRCConnections"] != null)) {
-                    base.Tables.Add(new IRCConnectionsDataTable(ds.Tables["IRCConnections"]));
+                if ((ds.Tables["UserTransactions"] != null)) {
+                    base.Tables.Add(new UserTransactionsDataTable(ds.Tables["UserTransactions"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -94,6 +99,16 @@ namespace IrcClientDemoCS {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public IRCConnectionsDataTable IRCConnections {
+            get {
+                return this.tableIRCConnections;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public MembershipLevelsDataTable MembershipLevels {
             get {
                 return this.tableMembershipLevels;
@@ -104,9 +119,9 @@ namespace IrcClientDemoCS {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public UserTransactionsDataTable UserTransactions {
+        public SettingsDataTable Settings {
             get {
-                return this.tableUserTransactions;
+                return this.tableSettings;
             }
         }
         
@@ -124,9 +139,9 @@ namespace IrcClientDemoCS {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public IRCConnectionsDataTable IRCConnections {
+        public UserTransactionsDataTable UserTransactions {
             get {
-                return this.tableIRCConnections;
+                return this.tableUserTransactions;
             }
         }
         
@@ -197,17 +212,20 @@ namespace IrcClientDemoCS {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
+                if ((ds.Tables["IRCConnections"] != null)) {
+                    base.Tables.Add(new IRCConnectionsDataTable(ds.Tables["IRCConnections"]));
+                }
                 if ((ds.Tables["MembershipLevels"] != null)) {
                     base.Tables.Add(new MembershipLevelsDataTable(ds.Tables["MembershipLevels"]));
                 }
-                if ((ds.Tables["UserTransactions"] != null)) {
-                    base.Tables.Add(new UserTransactionsDataTable(ds.Tables["UserTransactions"]));
+                if ((ds.Tables["Settings"] != null)) {
+                    base.Tables.Add(new SettingsDataTable(ds.Tables["Settings"]));
                 }
                 if ((ds.Tables["Users"] != null)) {
                     base.Tables.Add(new UsersDataTable(ds.Tables["Users"]));
                 }
-                if ((ds.Tables["IRCConnections"] != null)) {
-                    base.Tables.Add(new IRCConnectionsDataTable(ds.Tables["IRCConnections"]));
+                if ((ds.Tables["UserTransactions"] != null)) {
+                    base.Tables.Add(new UserTransactionsDataTable(ds.Tables["UserTransactions"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -242,16 +260,22 @@ namespace IrcClientDemoCS {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
+            this.tableIRCConnections = ((IRCConnectionsDataTable)(base.Tables["IRCConnections"]));
+            if ((initTable == true)) {
+                if ((this.tableIRCConnections != null)) {
+                    this.tableIRCConnections.InitVars();
+                }
+            }
             this.tableMembershipLevels = ((MembershipLevelsDataTable)(base.Tables["MembershipLevels"]));
             if ((initTable == true)) {
                 if ((this.tableMembershipLevels != null)) {
                     this.tableMembershipLevels.InitVars();
                 }
             }
-            this.tableUserTransactions = ((UserTransactionsDataTable)(base.Tables["UserTransactions"]));
+            this.tableSettings = ((SettingsDataTable)(base.Tables["Settings"]));
             if ((initTable == true)) {
-                if ((this.tableUserTransactions != null)) {
-                    this.tableUserTransactions.InitVars();
+                if ((this.tableSettings != null)) {
+                    this.tableSettings.InitVars();
                 }
             }
             this.tableUsers = ((UsersDataTable)(base.Tables["Users"]));
@@ -260,10 +284,10 @@ namespace IrcClientDemoCS {
                     this.tableUsers.InitVars();
                 }
             }
-            this.tableIRCConnections = ((IRCConnectionsDataTable)(base.Tables["IRCConnections"]));
+            this.tableUserTransactions = ((UserTransactionsDataTable)(base.Tables["UserTransactions"]));
             if ((initTable == true)) {
-                if ((this.tableIRCConnections != null)) {
-                    this.tableIRCConnections.InitVars();
+                if ((this.tableUserTransactions != null)) {
+                    this.tableUserTransactions.InitVars();
                 }
             }
         }
@@ -276,14 +300,22 @@ namespace IrcClientDemoCS {
             this.Namespace = "http://tempuri.org/CommandBotDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableMembershipLevels = new MembershipLevelsDataTable();
-            base.Tables.Add(this.tableMembershipLevels);
-            this.tableUserTransactions = new UserTransactionsDataTable();
-            base.Tables.Add(this.tableUserTransactions);
-            this.tableUsers = new UsersDataTable();
-            base.Tables.Add(this.tableUsers);
             this.tableIRCConnections = new IRCConnectionsDataTable();
             base.Tables.Add(this.tableIRCConnections);
+            this.tableMembershipLevels = new MembershipLevelsDataTable();
+            base.Tables.Add(this.tableMembershipLevels);
+            this.tableSettings = new SettingsDataTable();
+            base.Tables.Add(this.tableSettings);
+            this.tableUsers = new UsersDataTable();
+            base.Tables.Add(this.tableUsers);
+            this.tableUserTransactions = new UserTransactionsDataTable();
+            base.Tables.Add(this.tableUserTransactions);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeIRCConnections() {
+            return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -294,7 +326,7 @@ namespace IrcClientDemoCS {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeUserTransactions() {
+        private bool ShouldSerializeSettings() {
             return false;
         }
         
@@ -306,7 +338,7 @@ namespace IrcClientDemoCS {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeIRCConnections() {
+        private bool ShouldSerializeUserTransactions() {
             return false;
         }
         
@@ -366,16 +398,375 @@ namespace IrcClientDemoCS {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void IRCConnectionsRowChangeEventHandler(object sender, IRCConnectionsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void MembershipLevelsRowChangeEventHandler(object sender, MembershipLevelsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void UserTransactionsRowChangeEventHandler(object sender, UserTransactionsRowChangeEvent e);
+        public delegate void SettingsRowChangeEventHandler(object sender, SettingsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void UsersRowChangeEventHandler(object sender, UsersRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void IRCConnectionsRowChangeEventHandler(object sender, IRCConnectionsRowChangeEvent e);
+        public delegate void UserTransactionsRowChangeEventHandler(object sender, UserTransactionsRowChangeEvent e);
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class IRCConnectionsDataTable : global::System.Data.TypedTableBase<IRCConnectionsRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnDefaultServer;
+            
+            private global::System.Data.DataColumn columnServerAddress;
+            
+            private global::System.Data.DataColumn columnChannel;
+            
+            private global::System.Data.DataColumn columnUser;
+            
+            private global::System.Data.DataColumn columnOAuth;
+            
+            private global::System.Data.DataColumn columnPort;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public IRCConnectionsDataTable() {
+                this.TableName = "IRCConnections";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal IRCConnectionsDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected IRCConnectionsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DefaultServerColumn {
+                get {
+                    return this.columnDefaultServer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ServerAddressColumn {
+                get {
+                    return this.columnServerAddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ChannelColumn {
+                get {
+                    return this.columnChannel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UserColumn {
+                get {
+                    return this.columnUser;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OAuthColumn {
+                get {
+                    return this.columnOAuth;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PortColumn {
+                get {
+                    return this.columnPort;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public IRCConnectionsRow this[int index] {
+                get {
+                    return ((IRCConnectionsRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event IRCConnectionsRowChangeEventHandler IRCConnectionsRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event IRCConnectionsRowChangeEventHandler IRCConnectionsRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event IRCConnectionsRowChangeEventHandler IRCConnectionsRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event IRCConnectionsRowChangeEventHandler IRCConnectionsRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddIRCConnectionsRow(IRCConnectionsRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public IRCConnectionsRow AddIRCConnectionsRow(bool DefaultServer, string ServerAddress, string Channel, string User, string OAuth, int Port) {
+                IRCConnectionsRow rowIRCConnectionsRow = ((IRCConnectionsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        DefaultServer,
+                        ServerAddress,
+                        Channel,
+                        User,
+                        OAuth,
+                        Port};
+                rowIRCConnectionsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowIRCConnectionsRow);
+                return rowIRCConnectionsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public IRCConnectionsRow FindById(int Id) {
+                return ((IRCConnectionsRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                IRCConnectionsDataTable cln = ((IRCConnectionsDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new IRCConnectionsDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnDefaultServer = base.Columns["DefaultServer"];
+                this.columnServerAddress = base.Columns["ServerAddress"];
+                this.columnChannel = base.Columns["Channel"];
+                this.columnUser = base.Columns["User"];
+                this.columnOAuth = base.Columns["OAuth"];
+                this.columnPort = base.Columns["Port"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnDefaultServer = new global::System.Data.DataColumn("DefaultServer", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDefaultServer);
+                this.columnServerAddress = new global::System.Data.DataColumn("ServerAddress", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnServerAddress);
+                this.columnChannel = new global::System.Data.DataColumn("Channel", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnChannel);
+                this.columnUser = new global::System.Data.DataColumn("User", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUser);
+                this.columnOAuth = new global::System.Data.DataColumn("OAuth", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOAuth);
+                this.columnPort = new global::System.Data.DataColumn("Port", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPort);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
+                this.columnId.Unique = true;
+                this.columnDefaultServer.AllowDBNull = false;
+                this.columnServerAddress.AllowDBNull = false;
+                this.columnServerAddress.MaxLength = 50;
+                this.columnChannel.AllowDBNull = false;
+                this.columnChannel.MaxLength = 50;
+                this.columnUser.AllowDBNull = false;
+                this.columnUser.MaxLength = 50;
+                this.columnOAuth.AllowDBNull = false;
+                this.columnOAuth.MaxLength = 50;
+                this.columnPort.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public IRCConnectionsRow NewIRCConnectionsRow() {
+                return ((IRCConnectionsRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new IRCConnectionsRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(IRCConnectionsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.IRCConnectionsRowChanged != null)) {
+                    this.IRCConnectionsRowChanged(this, new IRCConnectionsRowChangeEvent(((IRCConnectionsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.IRCConnectionsRowChanging != null)) {
+                    this.IRCConnectionsRowChanging(this, new IRCConnectionsRowChangeEvent(((IRCConnectionsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.IRCConnectionsRowDeleted != null)) {
+                    this.IRCConnectionsRowDeleted(this, new IRCConnectionsRowChangeEvent(((IRCConnectionsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.IRCConnectionsRowDeleting != null)) {
+                    this.IRCConnectionsRowDeleting(this, new IRCConnectionsRowChangeEvent(((IRCConnectionsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveIRCConnectionsRow(IRCConnectionsRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                CommandBotDataSet ds = new CommandBotDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "IRCConnectionsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -690,20 +1081,30 @@ namespace IrcClientDemoCS {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class UserTransactionsDataTable : global::System.Data.TypedTableBase<UserTransactionsRow> {
+        public partial class SettingsDataTable : global::System.Data.TypedTableBase<SettingsRow> {
             
             private global::System.Data.DataColumn columnId;
             
-            private global::System.Data.DataColumn columnUserName;
+            private global::System.Data.DataColumn columnGreeting;
             
-            private global::System.Data.DataColumn columnTransactionTime;
+            private global::System.Data.DataColumn columnGreetingPosition;
             
-            private global::System.Data.DataColumn columnAmount;
+            private global::System.Data.DataColumn columnBalanceCommand;
+            
+            private global::System.Data.DataColumn columnGambleCommand;
+            
+            private global::System.Data.DataColumn columnTradeCommand;
+            
+            private global::System.Data.DataColumn columnPointsPerTick;
+            
+            private global::System.Data.DataColumn columnTickMinutes;
+            
+            private global::System.Data.DataColumn columnEarnPoints;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserTransactionsDataTable() {
-                this.TableName = "UserTransactions";
+            public SettingsDataTable() {
+                this.TableName = "Settings";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -711,7 +1112,7 @@ namespace IrcClientDemoCS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal UserTransactionsDataTable(global::System.Data.DataTable table) {
+            internal SettingsDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -728,7 +1129,7 @@ namespace IrcClientDemoCS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected UserTransactionsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected SettingsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -743,25 +1144,65 @@ namespace IrcClientDemoCS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UserNameColumn {
+            public global::System.Data.DataColumn GreetingColumn {
                 get {
-                    return this.columnUserName;
+                    return this.columnGreeting;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TransactionTimeColumn {
+            public global::System.Data.DataColumn GreetingPositionColumn {
                 get {
-                    return this.columnTransactionTime;
+                    return this.columnGreetingPosition;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn AmountColumn {
+            public global::System.Data.DataColumn BalanceCommandColumn {
                 get {
-                    return this.columnAmount;
+                    return this.columnBalanceCommand;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GambleCommandColumn {
+                get {
+                    return this.columnGambleCommand;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TradeCommandColumn {
+                get {
+                    return this.columnTradeCommand;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PointsPerTickColumn {
+                get {
+                    return this.columnPointsPerTick;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TickMinutesColumn {
+                get {
+                    return this.columnTickMinutes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EarnPointsColumn {
+                get {
+                    return this.columnEarnPoints;
                 }
             }
             
@@ -776,55 +1217,60 @@ namespace IrcClientDemoCS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserTransactionsRow this[int index] {
+            public SettingsRow this[int index] {
                 get {
-                    return ((UserTransactionsRow)(this.Rows[index]));
+                    return ((SettingsRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event UserTransactionsRowChangeEventHandler UserTransactionsRowChanging;
+            public event SettingsRowChangeEventHandler SettingsRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event UserTransactionsRowChangeEventHandler UserTransactionsRowChanged;
+            public event SettingsRowChangeEventHandler SettingsRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event UserTransactionsRowChangeEventHandler UserTransactionsRowDeleting;
+            public event SettingsRowChangeEventHandler SettingsRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event UserTransactionsRowChangeEventHandler UserTransactionsRowDeleted;
+            public event SettingsRowChangeEventHandler SettingsRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddUserTransactionsRow(UserTransactionsRow row) {
+            public void AddSettingsRow(SettingsRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserTransactionsRow AddUserTransactionsRow(int Id, string UserName, System.DateTime TransactionTime, double Amount) {
-                UserTransactionsRow rowUserTransactionsRow = ((UserTransactionsRow)(this.NewRow()));
+            public SettingsRow AddSettingsRow(string Greeting, string GreetingPosition, string BalanceCommand, string GambleCommand, string TradeCommand, double PointsPerTick, int TickMinutes, bool EarnPoints) {
+                SettingsRow rowSettingsRow = ((SettingsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Id,
-                        UserName,
-                        TransactionTime,
-                        Amount};
-                rowUserTransactionsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowUserTransactionsRow);
-                return rowUserTransactionsRow;
+                        null,
+                        Greeting,
+                        GreetingPosition,
+                        BalanceCommand,
+                        GambleCommand,
+                        TradeCommand,
+                        PointsPerTick,
+                        TickMinutes,
+                        EarnPoints};
+                rowSettingsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSettingsRow);
+                return rowSettingsRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserTransactionsRow FindById(int Id) {
-                return ((UserTransactionsRow)(this.Rows.Find(new object[] {
+            public SettingsRow FindById(int Id) {
+                return ((SettingsRow)(this.Rows.Find(new object[] {
                             Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                UserTransactionsDataTable cln = ((UserTransactionsDataTable)(base.Clone()));
+                SettingsDataTable cln = ((SettingsDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -832,16 +1278,21 @@ namespace IrcClientDemoCS {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new UserTransactionsDataTable();
+                return new SettingsDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
-                this.columnUserName = base.Columns["UserName"];
-                this.columnTransactionTime = base.Columns["TransactionTime"];
-                this.columnAmount = base.Columns["Amount"];
+                this.columnGreeting = base.Columns["Greeting"];
+                this.columnGreetingPosition = base.Columns["GreetingPosition"];
+                this.columnBalanceCommand = base.Columns["BalanceCommand"];
+                this.columnGambleCommand = base.Columns["GambleCommand"];
+                this.columnTradeCommand = base.Columns["TradeCommand"];
+                this.columnPointsPerTick = base.Columns["PointsPerTick"];
+                this.columnTickMinutes = base.Columns["TickMinutes"];
+                this.columnEarnPoints = base.Columns["EarnPoints"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -849,46 +1300,69 @@ namespace IrcClientDemoCS {
             private void InitClass() {
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
-                this.columnUserName = new global::System.Data.DataColumn("UserName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUserName);
-                this.columnTransactionTime = new global::System.Data.DataColumn("TransactionTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTransactionTime);
-                this.columnAmount = new global::System.Data.DataColumn("Amount", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAmount);
+                this.columnGreeting = new global::System.Data.DataColumn("Greeting", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGreeting);
+                this.columnGreetingPosition = new global::System.Data.DataColumn("GreetingPosition", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGreetingPosition);
+                this.columnBalanceCommand = new global::System.Data.DataColumn("BalanceCommand", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBalanceCommand);
+                this.columnGambleCommand = new global::System.Data.DataColumn("GambleCommand", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGambleCommand);
+                this.columnTradeCommand = new global::System.Data.DataColumn("TradeCommand", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTradeCommand);
+                this.columnPointsPerTick = new global::System.Data.DataColumn("PointsPerTick", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPointsPerTick);
+                this.columnTickMinutes = new global::System.Data.DataColumn("TickMinutes", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTickMinutes);
+                this.columnEarnPoints = new global::System.Data.DataColumn("EarnPoints", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEarnPoints);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
                 this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
-                this.columnUserName.AllowDBNull = false;
-                this.columnUserName.MaxLength = 50;
-                this.columnTransactionTime.AllowDBNull = false;
-                this.columnAmount.AllowDBNull = false;
+                this.columnGreeting.AllowDBNull = false;
+                this.columnGreeting.MaxLength = 2147483647;
+                this.columnGreetingPosition.AllowDBNull = false;
+                this.columnGreetingPosition.MaxLength = 50;
+                this.columnBalanceCommand.AllowDBNull = false;
+                this.columnBalanceCommand.MaxLength = 50;
+                this.columnGambleCommand.AllowDBNull = false;
+                this.columnGambleCommand.MaxLength = 50;
+                this.columnTradeCommand.AllowDBNull = false;
+                this.columnTradeCommand.MaxLength = 50;
+                this.columnPointsPerTick.AllowDBNull = false;
+                this.columnTickMinutes.AllowDBNull = false;
+                this.columnEarnPoints.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserTransactionsRow NewUserTransactionsRow() {
-                return ((UserTransactionsRow)(this.NewRow()));
+            public SettingsRow NewSettingsRow() {
+                return ((SettingsRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new UserTransactionsRow(builder);
+                return new SettingsRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(UserTransactionsRow);
+                return typeof(SettingsRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.UserTransactionsRowChanged != null)) {
-                    this.UserTransactionsRowChanged(this, new UserTransactionsRowChangeEvent(((UserTransactionsRow)(e.Row)), e.Action));
+                if ((this.SettingsRowChanged != null)) {
+                    this.SettingsRowChanged(this, new SettingsRowChangeEvent(((SettingsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -896,8 +1370,8 @@ namespace IrcClientDemoCS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.UserTransactionsRowChanging != null)) {
-                    this.UserTransactionsRowChanging(this, new UserTransactionsRowChangeEvent(((UserTransactionsRow)(e.Row)), e.Action));
+                if ((this.SettingsRowChanging != null)) {
+                    this.SettingsRowChanging(this, new SettingsRowChangeEvent(((SettingsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -905,8 +1379,8 @@ namespace IrcClientDemoCS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.UserTransactionsRowDeleted != null)) {
-                    this.UserTransactionsRowDeleted(this, new UserTransactionsRowChangeEvent(((UserTransactionsRow)(e.Row)), e.Action));
+                if ((this.SettingsRowDeleted != null)) {
+                    this.SettingsRowDeleted(this, new SettingsRowChangeEvent(((SettingsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -914,14 +1388,14 @@ namespace IrcClientDemoCS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.UserTransactionsRowDeleting != null)) {
-                    this.UserTransactionsRowDeleting(this, new UserTransactionsRowChangeEvent(((UserTransactionsRow)(e.Row)), e.Action));
+                if ((this.SettingsRowDeleting != null)) {
+                    this.SettingsRowDeleting(this, new SettingsRowChangeEvent(((SettingsRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveUserTransactionsRow(UserTransactionsRow row) {
+            public void RemoveSettingsRow(SettingsRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -948,7 +1422,7 @@ namespace IrcClientDemoCS {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "UserTransactionsDataTable";
+                attribute2.FixedValue = "SettingsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1332,26 +1806,20 @@ namespace IrcClientDemoCS {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class IRCConnectionsDataTable : global::System.Data.TypedTableBase<IRCConnectionsRow> {
+        public partial class UserTransactionsDataTable : global::System.Data.TypedTableBase<UserTransactionsRow> {
             
             private global::System.Data.DataColumn columnId;
             
-            private global::System.Data.DataColumn columnDefaultServer;
+            private global::System.Data.DataColumn columnTransactionTime;
             
-            private global::System.Data.DataColumn columnServerAddress;
+            private global::System.Data.DataColumn columnUserName;
             
-            private global::System.Data.DataColumn columnChannel;
-            
-            private global::System.Data.DataColumn columnUser;
-            
-            private global::System.Data.DataColumn columnOAuth;
-            
-            private global::System.Data.DataColumn columnPort;
+            private global::System.Data.DataColumn columnAmount;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public IRCConnectionsDataTable() {
-                this.TableName = "IRCConnections";
+            public UserTransactionsDataTable() {
+                this.TableName = "UserTransactions";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1359,7 +1827,7 @@ namespace IrcClientDemoCS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal IRCConnectionsDataTable(global::System.Data.DataTable table) {
+            internal UserTransactionsDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1376,7 +1844,7 @@ namespace IrcClientDemoCS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected IRCConnectionsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected UserTransactionsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1391,49 +1859,25 @@ namespace IrcClientDemoCS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DefaultServerColumn {
+            public global::System.Data.DataColumn TransactionTimeColumn {
                 get {
-                    return this.columnDefaultServer;
+                    return this.columnTransactionTime;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ServerAddressColumn {
+            public global::System.Data.DataColumn UserNameColumn {
                 get {
-                    return this.columnServerAddress;
+                    return this.columnUserName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChannelColumn {
+            public global::System.Data.DataColumn AmountColumn {
                 get {
-                    return this.columnChannel;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UserColumn {
-                get {
-                    return this.columnUser;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OAuthColumn {
-                get {
-                    return this.columnOAuth;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PortColumn {
-                get {
-                    return this.columnPort;
+                    return this.columnAmount;
                 }
             }
             
@@ -1448,58 +1892,55 @@ namespace IrcClientDemoCS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public IRCConnectionsRow this[int index] {
+            public UserTransactionsRow this[int index] {
                 get {
-                    return ((IRCConnectionsRow)(this.Rows[index]));
+                    return ((UserTransactionsRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event IRCConnectionsRowChangeEventHandler IRCConnectionsRowChanging;
+            public event UserTransactionsRowChangeEventHandler UserTransactionsRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event IRCConnectionsRowChangeEventHandler IRCConnectionsRowChanged;
+            public event UserTransactionsRowChangeEventHandler UserTransactionsRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event IRCConnectionsRowChangeEventHandler IRCConnectionsRowDeleting;
+            public event UserTransactionsRowChangeEventHandler UserTransactionsRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event IRCConnectionsRowChangeEventHandler IRCConnectionsRowDeleted;
+            public event UserTransactionsRowChangeEventHandler UserTransactionsRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddIRCConnectionsRow(IRCConnectionsRow row) {
+            public void AddUserTransactionsRow(UserTransactionsRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public IRCConnectionsRow AddIRCConnectionsRow(bool DefaultServer, string ServerAddress, string Channel, string User, string OAuth, int Port) {
-                IRCConnectionsRow rowIRCConnectionsRow = ((IRCConnectionsRow)(this.NewRow()));
+            public UserTransactionsRow AddUserTransactionsRow(int Id, System.DateTime TransactionTime, string UserName, double Amount) {
+                UserTransactionsRow rowUserTransactionsRow = ((UserTransactionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
-                        DefaultServer,
-                        ServerAddress,
-                        Channel,
-                        User,
-                        OAuth,
-                        Port};
-                rowIRCConnectionsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowIRCConnectionsRow);
-                return rowIRCConnectionsRow;
+                        Id,
+                        TransactionTime,
+                        UserName,
+                        Amount};
+                rowUserTransactionsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowUserTransactionsRow);
+                return rowUserTransactionsRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public IRCConnectionsRow FindById(int Id) {
-                return ((IRCConnectionsRow)(this.Rows.Find(new object[] {
+            public UserTransactionsRow FindById(int Id) {
+                return ((UserTransactionsRow)(this.Rows.Find(new object[] {
                             Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                IRCConnectionsDataTable cln = ((IRCConnectionsDataTable)(base.Clone()));
+                UserTransactionsDataTable cln = ((UserTransactionsDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1507,19 +1948,16 @@ namespace IrcClientDemoCS {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new IRCConnectionsDataTable();
+                return new UserTransactionsDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
-                this.columnDefaultServer = base.Columns["DefaultServer"];
-                this.columnServerAddress = base.Columns["ServerAddress"];
-                this.columnChannel = base.Columns["Channel"];
-                this.columnUser = base.Columns["User"];
-                this.columnOAuth = base.Columns["OAuth"];
-                this.columnPort = base.Columns["Port"];
+                this.columnTransactionTime = base.Columns["TransactionTime"];
+                this.columnUserName = base.Columns["UserName"];
+                this.columnAmount = base.Columns["Amount"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1527,62 +1965,46 @@ namespace IrcClientDemoCS {
             private void InitClass() {
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
-                this.columnDefaultServer = new global::System.Data.DataColumn("DefaultServer", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDefaultServer);
-                this.columnServerAddress = new global::System.Data.DataColumn("ServerAddress", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnServerAddress);
-                this.columnChannel = new global::System.Data.DataColumn("Channel", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChannel);
-                this.columnUser = new global::System.Data.DataColumn("User", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUser);
-                this.columnOAuth = new global::System.Data.DataColumn("OAuth", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOAuth);
-                this.columnPort = new global::System.Data.DataColumn("Port", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPort);
+                this.columnTransactionTime = new global::System.Data.DataColumn("TransactionTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTransactionTime);
+                this.columnUserName = new global::System.Data.DataColumn("UserName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserName);
+                this.columnAmount = new global::System.Data.DataColumn("Amount", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAmount);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
                 this.columnId.AllowDBNull = false;
-                this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
-                this.columnDefaultServer.AllowDBNull = false;
-                this.columnServerAddress.AllowDBNull = false;
-                this.columnServerAddress.MaxLength = 50;
-                this.columnChannel.AllowDBNull = false;
-                this.columnChannel.MaxLength = 50;
-                this.columnUser.AllowDBNull = false;
-                this.columnUser.MaxLength = 50;
-                this.columnOAuth.AllowDBNull = false;
-                this.columnOAuth.MaxLength = 50;
-                this.columnPort.AllowDBNull = false;
+                this.columnTransactionTime.AllowDBNull = false;
+                this.columnUserName.AllowDBNull = false;
+                this.columnUserName.MaxLength = 50;
+                this.columnAmount.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public IRCConnectionsRow NewIRCConnectionsRow() {
-                return ((IRCConnectionsRow)(this.NewRow()));
+            public UserTransactionsRow NewUserTransactionsRow() {
+                return ((UserTransactionsRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new IRCConnectionsRow(builder);
+                return new UserTransactionsRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(IRCConnectionsRow);
+                return typeof(UserTransactionsRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.IRCConnectionsRowChanged != null)) {
-                    this.IRCConnectionsRowChanged(this, new IRCConnectionsRowChangeEvent(((IRCConnectionsRow)(e.Row)), e.Action));
+                if ((this.UserTransactionsRowChanged != null)) {
+                    this.UserTransactionsRowChanged(this, new UserTransactionsRowChangeEvent(((UserTransactionsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1590,8 +2012,8 @@ namespace IrcClientDemoCS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.IRCConnectionsRowChanging != null)) {
-                    this.IRCConnectionsRowChanging(this, new IRCConnectionsRowChangeEvent(((IRCConnectionsRow)(e.Row)), e.Action));
+                if ((this.UserTransactionsRowChanging != null)) {
+                    this.UserTransactionsRowChanging(this, new UserTransactionsRowChangeEvent(((UserTransactionsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1599,8 +2021,8 @@ namespace IrcClientDemoCS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.IRCConnectionsRowDeleted != null)) {
-                    this.IRCConnectionsRowDeleted(this, new IRCConnectionsRowChangeEvent(((IRCConnectionsRow)(e.Row)), e.Action));
+                if ((this.UserTransactionsRowDeleted != null)) {
+                    this.UserTransactionsRowDeleted(this, new UserTransactionsRowChangeEvent(((UserTransactionsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1608,14 +2030,14 @@ namespace IrcClientDemoCS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.IRCConnectionsRowDeleting != null)) {
-                    this.IRCConnectionsRowDeleting(this, new IRCConnectionsRowChangeEvent(((IRCConnectionsRow)(e.Row)), e.Action));
+                if ((this.UserTransactionsRowDeleting != null)) {
+                    this.UserTransactionsRowDeleting(this, new UserTransactionsRowChangeEvent(((UserTransactionsRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveIRCConnectionsRow(IRCConnectionsRow row) {
+            public void RemoveUserTransactionsRow(UserTransactionsRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1642,7 +2064,7 @@ namespace IrcClientDemoCS {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "IRCConnectionsDataTable";
+                attribute2.FixedValue = "UserTransactionsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1680,205 +2102,6 @@ namespace IrcClientDemoCS {
                 }
                 xs.Add(dsSchema);
                 return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class MembershipLevelsRow : global::System.Data.DataRow {
-            
-            private MembershipLevelsDataTable tableMembershipLevels;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal MembershipLevelsRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableMembershipLevels = ((MembershipLevelsDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Id {
-                get {
-                    return ((int)(this[this.tableMembershipLevels.IdColumn]));
-                }
-                set {
-                    this[this.tableMembershipLevels.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public short MembershipLevel {
-                get {
-                    return ((short)(this[this.tableMembershipLevels.MembershipLevelColumn]));
-                }
-                set {
-                    this[this.tableMembershipLevels.MembershipLevelColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double Multiplier {
-                get {
-                    return ((double)(this[this.tableMembershipLevels.MultiplierColumn]));
-                }
-                set {
-                    this[this.tableMembershipLevels.MultiplierColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string MembershipLevelName {
-                get {
-                    return ((string)(this[this.tableMembershipLevels.MembershipLevelNameColumn]));
-                }
-                set {
-                    this[this.tableMembershipLevels.MembershipLevelNameColumn] = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class UserTransactionsRow : global::System.Data.DataRow {
-            
-            private UserTransactionsDataTable tableUserTransactions;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal UserTransactionsRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableUserTransactions = ((UserTransactionsDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Id {
-                get {
-                    return ((int)(this[this.tableUserTransactions.IdColumn]));
-                }
-                set {
-                    this[this.tableUserTransactions.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UserName {
-                get {
-                    return ((string)(this[this.tableUserTransactions.UserNameColumn]));
-                }
-                set {
-                    this[this.tableUserTransactions.UserNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime TransactionTime {
-                get {
-                    return ((global::System.DateTime)(this[this.tableUserTransactions.TransactionTimeColumn]));
-                }
-                set {
-                    this[this.tableUserTransactions.TransactionTimeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double Amount {
-                get {
-                    return ((double)(this[this.tableUserTransactions.AmountColumn]));
-                }
-                set {
-                    this[this.tableUserTransactions.AmountColumn] = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class UsersRow : global::System.Data.DataRow {
-            
-            private UsersDataTable tableUsers;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal UsersRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableUsers = ((UsersDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Id {
-                get {
-                    return ((int)(this[this.tableUsers.IdColumn]));
-                }
-                set {
-                    this[this.tableUsers.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UserName {
-                get {
-                    return ((string)(this[this.tableUsers.UserNameColumn]));
-                }
-                set {
-                    this[this.tableUsers.UserNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public short MembershipLevel {
-                get {
-                    return ((short)(this[this.tableUsers.MembershipLevelColumn]));
-                }
-                set {
-                    this[this.tableUsers.MembershipLevelColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double CurrentPoints {
-                get {
-                    return ((double)(this[this.tableUsers.CurrentPointsColumn]));
-                }
-                set {
-                    this[this.tableUsers.CurrentPointsColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool InGame {
-                get {
-                    return ((bool)(this[this.tableUsers.InGameColumn]));
-                }
-                set {
-                    this[this.tableUsers.InGameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double TotalPointsEarned {
-                get {
-                    return ((double)(this[this.tableUsers.TotalPointsEarnedColumn]));
-                }
-                set {
-                    this[this.tableUsers.TotalPointsEarnedColumn] = value;
-                }
             }
         }
         
@@ -1975,6 +2198,353 @@ namespace IrcClientDemoCS {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class MembershipLevelsRow : global::System.Data.DataRow {
+            
+            private MembershipLevelsDataTable tableMembershipLevels;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal MembershipLevelsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableMembershipLevels = ((MembershipLevelsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableMembershipLevels.IdColumn]));
+                }
+                set {
+                    this[this.tableMembershipLevels.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public short MembershipLevel {
+                get {
+                    return ((short)(this[this.tableMembershipLevels.MembershipLevelColumn]));
+                }
+                set {
+                    this[this.tableMembershipLevels.MembershipLevelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Multiplier {
+                get {
+                    return ((double)(this[this.tableMembershipLevels.MultiplierColumn]));
+                }
+                set {
+                    this[this.tableMembershipLevels.MultiplierColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MembershipLevelName {
+                get {
+                    return ((string)(this[this.tableMembershipLevels.MembershipLevelNameColumn]));
+                }
+                set {
+                    this[this.tableMembershipLevels.MembershipLevelNameColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class SettingsRow : global::System.Data.DataRow {
+            
+            private SettingsDataTable tableSettings;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal SettingsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableSettings = ((SettingsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableSettings.IdColumn]));
+                }
+                set {
+                    this[this.tableSettings.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Greeting {
+                get {
+                    return ((string)(this[this.tableSettings.GreetingColumn]));
+                }
+                set {
+                    this[this.tableSettings.GreetingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GreetingPosition {
+                get {
+                    return ((string)(this[this.tableSettings.GreetingPositionColumn]));
+                }
+                set {
+                    this[this.tableSettings.GreetingPositionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string BalanceCommand {
+                get {
+                    return ((string)(this[this.tableSettings.BalanceCommandColumn]));
+                }
+                set {
+                    this[this.tableSettings.BalanceCommandColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GambleCommand {
+                get {
+                    return ((string)(this[this.tableSettings.GambleCommandColumn]));
+                }
+                set {
+                    this[this.tableSettings.GambleCommandColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TradeCommand {
+                get {
+                    return ((string)(this[this.tableSettings.TradeCommandColumn]));
+                }
+                set {
+                    this[this.tableSettings.TradeCommandColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double PointsPerTick {
+                get {
+                    return ((double)(this[this.tableSettings.PointsPerTickColumn]));
+                }
+                set {
+                    this[this.tableSettings.PointsPerTickColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int TickMinutes {
+                get {
+                    return ((int)(this[this.tableSettings.TickMinutesColumn]));
+                }
+                set {
+                    this[this.tableSettings.TickMinutesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool EarnPoints {
+                get {
+                    return ((bool)(this[this.tableSettings.EarnPointsColumn]));
+                }
+                set {
+                    this[this.tableSettings.EarnPointsColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class UsersRow : global::System.Data.DataRow {
+            
+            private UsersDataTable tableUsers;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal UsersRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableUsers = ((UsersDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableUsers.IdColumn]));
+                }
+                set {
+                    this[this.tableUsers.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string UserName {
+                get {
+                    return ((string)(this[this.tableUsers.UserNameColumn]));
+                }
+                set {
+                    this[this.tableUsers.UserNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public short MembershipLevel {
+                get {
+                    return ((short)(this[this.tableUsers.MembershipLevelColumn]));
+                }
+                set {
+                    this[this.tableUsers.MembershipLevelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double CurrentPoints {
+                get {
+                    return ((double)(this[this.tableUsers.CurrentPointsColumn]));
+                }
+                set {
+                    this[this.tableUsers.CurrentPointsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool InGame {
+                get {
+                    return ((bool)(this[this.tableUsers.InGameColumn]));
+                }
+                set {
+                    this[this.tableUsers.InGameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double TotalPointsEarned {
+                get {
+                    return ((double)(this[this.tableUsers.TotalPointsEarnedColumn]));
+                }
+                set {
+                    this[this.tableUsers.TotalPointsEarnedColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class UserTransactionsRow : global::System.Data.DataRow {
+            
+            private UserTransactionsDataTable tableUserTransactions;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal UserTransactionsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableUserTransactions = ((UserTransactionsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableUserTransactions.IdColumn]));
+                }
+                set {
+                    this[this.tableUserTransactions.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime TransactionTime {
+                get {
+                    return ((global::System.DateTime)(this[this.tableUserTransactions.TransactionTimeColumn]));
+                }
+                set {
+                    this[this.tableUserTransactions.TransactionTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string UserName {
+                get {
+                    return ((string)(this[this.tableUserTransactions.UserNameColumn]));
+                }
+                set {
+                    this[this.tableUserTransactions.UserNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Amount {
+                get {
+                    return ((double)(this[this.tableUserTransactions.AmountColumn]));
+                }
+                set {
+                    this[this.tableUserTransactions.AmountColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class IRCConnectionsRowChangeEvent : global::System.EventArgs {
+            
+            private IRCConnectionsRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public IRCConnectionsRowChangeEvent(IRCConnectionsRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public IRCConnectionsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2012,22 +2582,22 @@ namespace IrcClientDemoCS {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class UserTransactionsRowChangeEvent : global::System.EventArgs {
+        public class SettingsRowChangeEvent : global::System.EventArgs {
             
-            private UserTransactionsRow eventRow;
+            private SettingsRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserTransactionsRowChangeEvent(UserTransactionsRow row, global::System.Data.DataRowAction action) {
+            public SettingsRowChangeEvent(SettingsRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserTransactionsRow Row {
+            public SettingsRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2080,22 +2650,22 @@ namespace IrcClientDemoCS {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class IRCConnectionsRowChangeEvent : global::System.EventArgs {
+        public class UserTransactionsRowChangeEvent : global::System.EventArgs {
             
-            private IRCConnectionsRow eventRow;
+            private UserTransactionsRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public IRCConnectionsRowChangeEvent(IRCConnectionsRow row, global::System.Data.DataRowAction action) {
+            public UserTransactionsRowChangeEvent(UserTransactionsRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public IRCConnectionsRow Row {
+            public UserTransactionsRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2113,6 +2683,429 @@ namespace IrcClientDemoCS {
 }
 namespace IrcClientDemoCS.CommandBotDataSetTableAdapters {
     
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class IRCConnectionsTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public IRCConnectionsTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "IRCConnections";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("DefaultServer", "DefaultServer");
+            tableMapping.ColumnMappings.Add("ServerAddress", "ServerAddress");
+            tableMapping.ColumnMappings.Add("Channel", "Channel");
+            tableMapping.ColumnMappings.Add("User", "User");
+            tableMapping.ColumnMappings.Add("OAuth", "OAuth");
+            tableMapping.ColumnMappings.Add("Port", "Port");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "dbo.NewDeleteCommand";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Variant, 0, global::System.Data.ParameterDirection.ReturnValue, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DefaultServer", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DefaultServer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ServerAddress", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ServerAddress", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Channel", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Channel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_User", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OAuth", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OAuth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Port", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Port", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "dbo.NewInsertCommand";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Variant, 0, global::System.Data.ParameterDirection.ReturnValue, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DefaultServer", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DefaultServer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ServerAddress", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ServerAddress", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Channel", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Channel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@User", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OAuth", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OAuth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Port", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Port", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "dbo.NewUpdateCommand";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Variant, 0, global::System.Data.ParameterDirection.ReturnValue, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DefaultServer", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DefaultServer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ServerAddress", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ServerAddress", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Channel", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Channel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@User", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OAuth", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OAuth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Port", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Port", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DefaultServer", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DefaultServer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ServerAddress", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ServerAddress", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Channel", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Channel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_User", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OAuth", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OAuth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Port", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Port", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::IrcClientDemoCS.Properties.Settings.Default.CommandBotConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "dbo.NewSelectCommand";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Variant, 0, global::System.Data.ParameterDirection.ReturnValue, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(CommandBotDataSet.IRCConnectionsDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual CommandBotDataSet.IRCConnectionsDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            CommandBotDataSet.IRCConnectionsDataTable dataTable = new CommandBotDataSet.IRCConnectionsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(CommandBotDataSet.IRCConnectionsDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(CommandBotDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "IRCConnections");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Id, bool Original_DefaultServer, string Original_ServerAddress, string Original_Channel, string Original_User, string Original_OAuth, int Original_Port) {
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Id));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((bool)(Original_DefaultServer));
+            if ((Original_ServerAddress == null)) {
+                throw new global::System.ArgumentNullException("Original_ServerAddress");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_ServerAddress));
+            }
+            if ((Original_Channel == null)) {
+                throw new global::System.ArgumentNullException("Original_Channel");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Channel));
+            }
+            if ((Original_User == null)) {
+                throw new global::System.ArgumentNullException("Original_User");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_User));
+            }
+            if ((Original_OAuth == null)) {
+                throw new global::System.ArgumentNullException("Original_OAuth");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_OAuth));
+            }
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_Port));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(bool DefaultServer, string ServerAddress, string Channel, string User, string OAuth, int Port) {
+            this.Adapter.InsertCommand.Parameters[1].Value = ((bool)(DefaultServer));
+            if ((ServerAddress == null)) {
+                throw new global::System.ArgumentNullException("ServerAddress");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(ServerAddress));
+            }
+            if ((Channel == null)) {
+                throw new global::System.ArgumentNullException("Channel");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Channel));
+            }
+            if ((User == null)) {
+                throw new global::System.ArgumentNullException("User");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(User));
+            }
+            if ((OAuth == null)) {
+                throw new global::System.ArgumentNullException("OAuth");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(OAuth));
+            }
+            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Port));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(bool DefaultServer, string ServerAddress, string Channel, string User, string OAuth, int Port, int Original_Id, bool Original_DefaultServer, string Original_ServerAddress, string Original_Channel, string Original_User, string Original_OAuth, int Original_Port, int Id) {
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((bool)(DefaultServer));
+            if ((ServerAddress == null)) {
+                throw new global::System.ArgumentNullException("ServerAddress");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(ServerAddress));
+            }
+            if ((Channel == null)) {
+                throw new global::System.ArgumentNullException("Channel");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Channel));
+            }
+            if ((User == null)) {
+                throw new global::System.ArgumentNullException("User");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(User));
+            }
+            if ((OAuth == null)) {
+                throw new global::System.ArgumentNullException("OAuth");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(OAuth));
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Port));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((bool)(Original_DefaultServer));
+            if ((Original_ServerAddress == null)) {
+                throw new global::System.ArgumentNullException("Original_ServerAddress");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_ServerAddress));
+            }
+            if ((Original_Channel == null)) {
+                throw new global::System.ArgumentNullException("Original_Channel");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Channel));
+            }
+            if ((Original_User == null)) {
+                throw new global::System.ArgumentNullException("Original_User");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_User));
+            }
+            if ((Original_OAuth == null)) {
+                throw new global::System.ArgumentNullException("Original_OAuth");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_OAuth));
+            }
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_Port));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(bool DefaultServer, string ServerAddress, string Channel, string User, string OAuth, int Port, int Original_Id, bool Original_DefaultServer, string Original_ServerAddress, string Original_Channel, string Original_User, string Original_OAuth, int Original_Port) {
+            return this.Update(DefaultServer, ServerAddress, Channel, User, OAuth, Port, Original_Id, Original_DefaultServer, Original_ServerAddress, Original_Channel, Original_User, Original_OAuth, Original_Port, Original_Id);
+        }
+    }
     
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
@@ -2286,7 +3279,8 @@ SELECT Id, MembershipLevel, Multiplier, MembershipLevelName FROM MembershipLevel
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        MembershipLevels.*\r\nFROM            MembershipLevels";
+            this._commandCollection[0].CommandText = "SELECT        Id, MembershipLevel, Multiplier, MembershipLevelName\r\nFROM         " +
+                "   MembershipLevels";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2459,7 +3453,7 @@ SELECT Id, MembershipLevel, Multiplier, MembershipLevelName FROM MembershipLevel
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class UserTransactionsTableAdapter : global::System.ComponentModel.Component {
+    public partial class SettingsTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -2473,7 +3467,7 @@ SELECT Id, MembershipLevel, Multiplier, MembershipLevelName FROM MembershipLevel
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public UserTransactionsTableAdapter() {
+        public SettingsTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -2570,45 +3564,64 @@ SELECT Id, MembershipLevel, Multiplier, MembershipLevelName FROM MembershipLevel
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "UserTransactions";
+            tableMapping.DataSetTable = "Settings";
             tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("UserName", "UserName");
-            tableMapping.ColumnMappings.Add("TransactionTime", "TransactionTime");
-            tableMapping.ColumnMappings.Add("Amount", "Amount");
+            tableMapping.ColumnMappings.Add("Greeting", "Greeting");
+            tableMapping.ColumnMappings.Add("GreetingPosition", "GreetingPosition");
+            tableMapping.ColumnMappings.Add("BalanceCommand", "BalanceCommand");
+            tableMapping.ColumnMappings.Add("GambleCommand", "GambleCommand");
+            tableMapping.ColumnMappings.Add("TradeCommand", "TradeCommand");
+            tableMapping.ColumnMappings.Add("PointsPerTick", "PointsPerTick");
+            tableMapping.ColumnMappings.Add("TickMinutes", "TickMinutes");
+            tableMapping.ColumnMappings.Add("EarnPoints", "EarnPoints");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [UserTransactions] WHERE (([Id] = @Original_Id) AND ([UserName] = @Or" +
-                "iginal_UserName) AND ([TransactionTime] = @Original_TransactionTime) AND ([Amoun" +
-                "t] = @Original_Amount))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Settings] WHERE (([Id] = @Original_Id) AND ([GreetingPosition] = @Original_GreetingPosition) AND ([BalanceCommand] = @Original_BalanceCommand) AND ([GambleCommand] = @Original_GambleCommand) AND ([TradeCommand] = @Original_TradeCommand) AND ([PointsPerTick] = @Original_PointsPerTick) AND ([TickMinutes] = @Original_TickMinutes) AND ([EarnPoints] = @Original_EarnPoints))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TransactionTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Amount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Amount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GreetingPosition", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GreetingPosition", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BalanceCommand", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceCommand", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GambleCommand", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GambleCommand", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TradeCommand", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TradeCommand", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PointsPerTick", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PointsPerTick", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TickMinutes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TickMinutes", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EarnPoints", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EarnPoints", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [UserTransactions] ([Id], [UserName], [TransactionTime], [Amount]) VA" +
-                "LUES (@Id, @UserName, @TransactionTime, @Amount);\r\nSELECT Id, UserName, Transact" +
-                "ionTime, Amount FROM UserTransactions WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Settings] ([Greeting], [GreetingPosition], [BalanceCommand], [GambleCommand], [TradeCommand], [PointsPerTick], [TickMinutes], [EarnPoints]) VALUES (@Greeting, @GreetingPosition, @BalanceCommand, @GambleCommand, @TradeCommand, @PointsPerTick, @TickMinutes, @EarnPoints);
+SELECT Id, Greeting, GreetingPosition, BalanceCommand, GambleCommand, TradeCommand, PointsPerTick, TickMinutes, EarnPoints FROM Settings WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TransactionTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Amount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Amount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Greeting", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Greeting", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GreetingPosition", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GreetingPosition", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BalanceCommand", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceCommand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GambleCommand", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GambleCommand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TradeCommand", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TradeCommand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PointsPerTick", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PointsPerTick", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TickMinutes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TickMinutes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EarnPoints", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EarnPoints", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [UserTransactions] SET [Id] = @Id, [UserName] = @UserName, [TransactionTime] = @TransactionTime, [Amount] = @Amount WHERE (([Id] = @Original_Id) AND ([UserName] = @Original_UserName) AND ([TransactionTime] = @Original_TransactionTime) AND ([Amount] = @Original_Amount));
-SELECT Id, UserName, TransactionTime, Amount FROM UserTransactions WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Settings] SET [Greeting] = @Greeting, [GreetingPosition] = @GreetingPosition, [BalanceCommand] = @BalanceCommand, [GambleCommand] = @GambleCommand, [TradeCommand] = @TradeCommand, [PointsPerTick] = @PointsPerTick, [TickMinutes] = @TickMinutes, [EarnPoints] = @EarnPoints WHERE (([Id] = @Original_Id) AND ([GreetingPosition] = @Original_GreetingPosition) AND ([BalanceCommand] = @Original_BalanceCommand) AND ([GambleCommand] = @Original_GambleCommand) AND ([TradeCommand] = @Original_TradeCommand) AND ([PointsPerTick] = @Original_PointsPerTick) AND ([TickMinutes] = @Original_TickMinutes) AND ([EarnPoints] = @Original_EarnPoints));
+SELECT Id, Greeting, GreetingPosition, BalanceCommand, GambleCommand, TradeCommand, PointsPerTick, TickMinutes, EarnPoints FROM Settings WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TransactionTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Amount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Amount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Greeting", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Greeting", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GreetingPosition", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GreetingPosition", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BalanceCommand", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceCommand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GambleCommand", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GambleCommand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TradeCommand", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TradeCommand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PointsPerTick", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PointsPerTick", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TickMinutes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TickMinutes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EarnPoints", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EarnPoints", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TransactionTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Amount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Amount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GreetingPosition", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GreetingPosition", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BalanceCommand", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BalanceCommand", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GambleCommand", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GambleCommand", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TradeCommand", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TradeCommand", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PointsPerTick", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PointsPerTick", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TickMinutes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TickMinutes", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EarnPoints", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EarnPoints", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2624,7 +3637,8 @@ SELECT Id, UserName, TransactionTime, Amount FROM UserTransactions WHERE (Id = @
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        UserTransactions.*\r\nFROM            UserTransactions";
+            this._commandCollection[0].CommandText = "SELECT        Id, Greeting, GreetingPosition, BalanceCommand, GambleCommand, Trad" +
+                "eCommand, PointsPerTick, TickMinutes, EarnPoints\r\nFROM            Settings";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2632,7 +3646,7 @@ SELECT Id, UserName, TransactionTime, Amount FROM UserTransactions WHERE (Id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CommandBotDataSet.UserTransactionsDataTable dataTable) {
+        public virtual int Fill(CommandBotDataSet.SettingsDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2645,9 +3659,9 @@ SELECT Id, UserName, TransactionTime, Amount FROM UserTransactions WHERE (Id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CommandBotDataSet.UserTransactionsDataTable GetData() {
+        public virtual CommandBotDataSet.SettingsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CommandBotDataSet.UserTransactionsDataTable dataTable = new CommandBotDataSet.UserTransactionsDataTable();
+            CommandBotDataSet.SettingsDataTable dataTable = new CommandBotDataSet.SettingsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -2655,7 +3669,7 @@ SELECT Id, UserName, TransactionTime, Amount FROM UserTransactions WHERE (Id = @
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CommandBotDataSet.UserTransactionsDataTable dataTable) {
+        public virtual int Update(CommandBotDataSet.SettingsDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -2663,7 +3677,7 @@ SELECT Id, UserName, TransactionTime, Amount FROM UserTransactions WHERE (Id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(CommandBotDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "UserTransactions");
+            return this.Adapter.Update(dataSet, "Settings");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2685,16 +3699,35 @@ SELECT Id, UserName, TransactionTime, Amount FROM UserTransactions WHERE (Id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_UserName, System.DateTime Original_TransactionTime, double Original_Amount) {
+        public virtual int Delete(int Original_Id, string Original_GreetingPosition, string Original_BalanceCommand, string Original_GambleCommand, string Original_TradeCommand, double Original_PointsPerTick, int Original_TickMinutes, bool Original_EarnPoints) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            if ((Original_UserName == null)) {
-                throw new global::System.ArgumentNullException("Original_UserName");
+            if ((Original_GreetingPosition == null)) {
+                throw new global::System.ArgumentNullException("Original_GreetingPosition");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_UserName));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_GreetingPosition));
             }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_TransactionTime));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_Amount));
+            if ((Original_BalanceCommand == null)) {
+                throw new global::System.ArgumentNullException("Original_BalanceCommand");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_BalanceCommand));
+            }
+            if ((Original_GambleCommand == null)) {
+                throw new global::System.ArgumentNullException("Original_GambleCommand");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_GambleCommand));
+            }
+            if ((Original_TradeCommand == null)) {
+                throw new global::System.ArgumentNullException("Original_TradeCommand");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_TradeCommand));
+            }
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((double)(Original_PointsPerTick));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_TickMinutes));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((bool)(Original_EarnPoints));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2715,16 +3748,40 @@ SELECT Id, UserName, TransactionTime, Amount FROM UserTransactions WHERE (Id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, string UserName, System.DateTime TransactionTime, double Amount) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
-            if ((UserName == null)) {
-                throw new global::System.ArgumentNullException("UserName");
+        public virtual int Insert(string Greeting, string GreetingPosition, string BalanceCommand, string GambleCommand, string TradeCommand, double PointsPerTick, int TickMinutes, bool EarnPoints) {
+            if ((Greeting == null)) {
+                throw new global::System.ArgumentNullException("Greeting");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(UserName));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Greeting));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(TransactionTime));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((double)(Amount));
+            if ((GreetingPosition == null)) {
+                throw new global::System.ArgumentNullException("GreetingPosition");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(GreetingPosition));
+            }
+            if ((BalanceCommand == null)) {
+                throw new global::System.ArgumentNullException("BalanceCommand");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(BalanceCommand));
+            }
+            if ((GambleCommand == null)) {
+                throw new global::System.ArgumentNullException("GambleCommand");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(GambleCommand));
+            }
+            if ((TradeCommand == null)) {
+                throw new global::System.ArgumentNullException("TradeCommand");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(TradeCommand));
+            }
+            this.Adapter.InsertCommand.Parameters[5].Value = ((double)(PointsPerTick));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(TickMinutes));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(EarnPoints));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2745,25 +3802,86 @@ SELECT Id, UserName, TransactionTime, Amount FROM UserTransactions WHERE (Id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Id, string UserName, System.DateTime TransactionTime, double Amount, int Original_Id, string Original_UserName, System.DateTime Original_TransactionTime, double Original_Amount) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
-            if ((UserName == null)) {
-                throw new global::System.ArgumentNullException("UserName");
+        public virtual int Update(
+                    string Greeting, 
+                    string GreetingPosition, 
+                    string BalanceCommand, 
+                    string GambleCommand, 
+                    string TradeCommand, 
+                    double PointsPerTick, 
+                    int TickMinutes, 
+                    bool EarnPoints, 
+                    int Original_Id, 
+                    string Original_GreetingPosition, 
+                    string Original_BalanceCommand, 
+                    string Original_GambleCommand, 
+                    string Original_TradeCommand, 
+                    double Original_PointsPerTick, 
+                    int Original_TickMinutes, 
+                    bool Original_EarnPoints, 
+                    int Id) {
+            if ((Greeting == null)) {
+                throw new global::System.ArgumentNullException("Greeting");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(UserName));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Greeting));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(TransactionTime));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(Amount));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Id));
-            if ((Original_UserName == null)) {
-                throw new global::System.ArgumentNullException("Original_UserName");
+            if ((GreetingPosition == null)) {
+                throw new global::System.ArgumentNullException("GreetingPosition");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_UserName));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(GreetingPosition));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Original_TransactionTime));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Original_Amount));
+            if ((BalanceCommand == null)) {
+                throw new global::System.ArgumentNullException("BalanceCommand");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(BalanceCommand));
+            }
+            if ((GambleCommand == null)) {
+                throw new global::System.ArgumentNullException("GambleCommand");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(GambleCommand));
+            }
+            if ((TradeCommand == null)) {
+                throw new global::System.ArgumentNullException("TradeCommand");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(TradeCommand));
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(PointsPerTick));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(TickMinutes));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(EarnPoints));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_Id));
+            if ((Original_GreetingPosition == null)) {
+                throw new global::System.ArgumentNullException("Original_GreetingPosition");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_GreetingPosition));
+            }
+            if ((Original_BalanceCommand == null)) {
+                throw new global::System.ArgumentNullException("Original_BalanceCommand");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_BalanceCommand));
+            }
+            if ((Original_GambleCommand == null)) {
+                throw new global::System.ArgumentNullException("Original_GambleCommand");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_GambleCommand));
+            }
+            if ((Original_TradeCommand == null)) {
+                throw new global::System.ArgumentNullException("Original_TradeCommand");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_TradeCommand));
+            }
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(Original_PointsPerTick));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_TickMinutes));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(Original_EarnPoints));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2784,8 +3902,24 @@ SELECT Id, UserName, TransactionTime, Amount FROM UserTransactions WHERE (Id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string UserName, System.DateTime TransactionTime, double Amount, int Original_Id, string Original_UserName, System.DateTime Original_TransactionTime, double Original_Amount) {
-            return this.Update(Original_Id, UserName, TransactionTime, Amount, Original_Id, Original_UserName, Original_TransactionTime, Original_Amount);
+        public virtual int Update(
+                    string Greeting, 
+                    string GreetingPosition, 
+                    string BalanceCommand, 
+                    string GambleCommand, 
+                    string TradeCommand, 
+                    double PointsPerTick, 
+                    int TickMinutes, 
+                    bool EarnPoints, 
+                    int Original_Id, 
+                    string Original_GreetingPosition, 
+                    string Original_BalanceCommand, 
+                    string Original_GambleCommand, 
+                    string Original_TradeCommand, 
+                    double Original_PointsPerTick, 
+                    int Original_TickMinutes, 
+                    bool Original_EarnPoints) {
+            return this.Update(Greeting, GreetingPosition, BalanceCommand, GambleCommand, TradeCommand, PointsPerTick, TickMinutes, EarnPoints, Original_Id, Original_GreetingPosition, Original_BalanceCommand, Original_GambleCommand, Original_TradeCommand, Original_PointsPerTick, Original_TickMinutes, Original_EarnPoints, Original_Id);
         }
     }
     
@@ -2969,7 +4103,8 @@ SELECT Id, UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned F
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Users.*\r\nFROM            Users";
+            this._commandCollection[0].CommandText = "SELECT        Id, UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEa" +
+                "rned\r\nFROM            Users";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3150,7 +4285,7 @@ SELECT Id, UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned F
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class IRCConnectionsTableAdapter : global::System.ComponentModel.Component {
+    public partial class UserTransactionsTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -3164,7 +4299,7 @@ SELECT Id, UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned F
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public IRCConnectionsTableAdapter() {
+        public UserTransactionsTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -3261,56 +4396,45 @@ SELECT Id, UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned F
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "IRCConnections";
+            tableMapping.DataSetTable = "UserTransactions";
             tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("DefaultServer", "DefaultServer");
-            tableMapping.ColumnMappings.Add("ServerAddress", "ServerAddress");
-            tableMapping.ColumnMappings.Add("Channel", "Channel");
-            tableMapping.ColumnMappings.Add("User", "User");
-            tableMapping.ColumnMappings.Add("OAuth", "OAuth");
-            tableMapping.ColumnMappings.Add("Port", "Port");
+            tableMapping.ColumnMappings.Add("TransactionTime", "TransactionTime");
+            tableMapping.ColumnMappings.Add("UserName", "UserName");
+            tableMapping.ColumnMappings.Add("Amount", "Amount");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [IRCConnections] WHERE (([Id] = @Original_Id) AND ([DefaultServer] = @Original_DefaultServer) AND ([ServerAddress] = @Original_ServerAddress) AND ([Channel] = @Original_Channel) AND ([User] = @Original_User) AND ([OAuth] = @Original_OAuth) AND ([Port] = @Original_Port))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [UserTransactions] WHERE (([Id] = @Original_Id) AND ([TransactionTime" +
+                "] = @Original_TransactionTime) AND ([UserName] = @Original_UserName) AND ([Amoun" +
+                "t] = @Original_Amount))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DefaultServer", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DefaultServer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ServerAddress", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ServerAddress", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Channel", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Channel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_User", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OAuth", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OAuth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Port", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Port", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TransactionTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Amount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Amount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [IRCConnections] ([DefaultServer], [ServerAddress], [Channel], [User], [OAuth], [Port]) VALUES (@DefaultServer, @ServerAddress, @Channel, @User, @OAuth, @Port);
-SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCConnections WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [UserTransactions] ([Id], [TransactionTime], [UserName], [Amount]) VA" +
+                "LUES (@Id, @TransactionTime, @UserName, @Amount);\r\nSELECT Id, TransactionTime, U" +
+                "serName, Amount FROM UserTransactions WHERE (Id = @Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DefaultServer", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DefaultServer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ServerAddress", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ServerAddress", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Channel", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Channel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@User", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OAuth", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OAuth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Port", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Port", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TransactionTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Amount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Amount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [IRCConnections] SET [DefaultServer] = @DefaultServer, [ServerAddress] = @ServerAddress, [Channel] = @Channel, [User] = @User, [OAuth] = @OAuth, [Port] = @Port WHERE (([Id] = @Original_Id) AND ([DefaultServer] = @Original_DefaultServer) AND ([ServerAddress] = @Original_ServerAddress) AND ([Channel] = @Original_Channel) AND ([User] = @Original_User) AND ([OAuth] = @Original_OAuth) AND ([Port] = @Original_Port));
-SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCConnections WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [UserTransactions] SET [Id] = @Id, [TransactionTime] = @TransactionTime, [UserName] = @UserName, [Amount] = @Amount WHERE (([Id] = @Original_Id) AND ([TransactionTime] = @Original_TransactionTime) AND ([UserName] = @Original_UserName) AND ([Amount] = @Original_Amount));
+SELECT Id, TransactionTime, UserName, Amount FROM UserTransactions WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DefaultServer", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DefaultServer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ServerAddress", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ServerAddress", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Channel", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Channel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@User", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OAuth", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OAuth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Port", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Port", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TransactionTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Amount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Amount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DefaultServer", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DefaultServer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ServerAddress", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ServerAddress", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Channel", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Channel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_User", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OAuth", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OAuth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Port", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Port", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TransactionTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Amount", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Amount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3326,7 +4450,8 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        IRCConnections.*\r\nFROM            IRCConnections";
+            this._commandCollection[0].CommandText = "SELECT        Id, TransactionTime, UserName, Amount\r\nFROM            UserTransact" +
+                "ions";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3334,7 +4459,7 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CommandBotDataSet.IRCConnectionsDataTable dataTable) {
+        public virtual int Fill(CommandBotDataSet.UserTransactionsDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3347,9 +4472,9 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CommandBotDataSet.IRCConnectionsDataTable GetData() {
+        public virtual CommandBotDataSet.UserTransactionsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CommandBotDataSet.IRCConnectionsDataTable dataTable = new CommandBotDataSet.IRCConnectionsDataTable();
+            CommandBotDataSet.UserTransactionsDataTable dataTable = new CommandBotDataSet.UserTransactionsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3357,7 +4482,7 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CommandBotDataSet.IRCConnectionsDataTable dataTable) {
+        public virtual int Update(CommandBotDataSet.UserTransactionsDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -3365,7 +4490,7 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(CommandBotDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "IRCConnections");
+            return this.Adapter.Update(dataSet, "UserTransactions");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3387,34 +4512,16 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, bool Original_DefaultServer, string Original_ServerAddress, string Original_Channel, string Original_User, string Original_OAuth, int Original_Port) {
+        public virtual int Delete(int Original_Id, System.DateTime Original_TransactionTime, string Original_UserName, double Original_Amount) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((bool)(Original_DefaultServer));
-            if ((Original_ServerAddress == null)) {
-                throw new global::System.ArgumentNullException("Original_ServerAddress");
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_TransactionTime));
+            if ((Original_UserName == null)) {
+                throw new global::System.ArgumentNullException("Original_UserName");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_ServerAddress));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_UserName));
             }
-            if ((Original_Channel == null)) {
-                throw new global::System.ArgumentNullException("Original_Channel");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Channel));
-            }
-            if ((Original_User == null)) {
-                throw new global::System.ArgumentNullException("Original_User");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_User));
-            }
-            if ((Original_OAuth == null)) {
-                throw new global::System.ArgumentNullException("Original_OAuth");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_OAuth));
-            }
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Port));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_Amount));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3435,33 +4542,16 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(bool DefaultServer, string ServerAddress, string Channel, string User, string OAuth, int Port) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((bool)(DefaultServer));
-            if ((ServerAddress == null)) {
-                throw new global::System.ArgumentNullException("ServerAddress");
+        public virtual int Insert(int Id, System.DateTime TransactionTime, string UserName, double Amount) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(TransactionTime));
+            if ((UserName == null)) {
+                throw new global::System.ArgumentNullException("UserName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(ServerAddress));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(UserName));
             }
-            if ((Channel == null)) {
-                throw new global::System.ArgumentNullException("Channel");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Channel));
-            }
-            if ((User == null)) {
-                throw new global::System.ArgumentNullException("User");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(User));
-            }
-            if ((OAuth == null)) {
-                throw new global::System.ArgumentNullException("OAuth");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(OAuth));
-            }
-            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Port));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((double)(Amount));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3482,61 +4572,25 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(bool DefaultServer, string ServerAddress, string Channel, string User, string OAuth, int Port, int Original_Id, bool Original_DefaultServer, string Original_ServerAddress, string Original_Channel, string Original_User, string Original_OAuth, int Original_Port, int Id) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((bool)(DefaultServer));
-            if ((ServerAddress == null)) {
-                throw new global::System.ArgumentNullException("ServerAddress");
+        public virtual int Update(int Id, System.DateTime TransactionTime, string UserName, double Amount, int Original_Id, System.DateTime Original_TransactionTime, string Original_UserName, double Original_Amount) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(TransactionTime));
+            if ((UserName == null)) {
+                throw new global::System.ArgumentNullException("UserName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(ServerAddress));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(UserName));
             }
-            if ((Channel == null)) {
-                throw new global::System.ArgumentNullException("Channel");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Channel));
-            }
-            if ((User == null)) {
-                throw new global::System.ArgumentNullException("User");
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(Amount));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Original_TransactionTime));
+            if ((Original_UserName == null)) {
+                throw new global::System.ArgumentNullException("Original_UserName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(User));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_UserName));
             }
-            if ((OAuth == null)) {
-                throw new global::System.ArgumentNullException("OAuth");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(OAuth));
-            }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Port));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(Original_DefaultServer));
-            if ((Original_ServerAddress == null)) {
-                throw new global::System.ArgumentNullException("Original_ServerAddress");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_ServerAddress));
-            }
-            if ((Original_Channel == null)) {
-                throw new global::System.ArgumentNullException("Original_Channel");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Channel));
-            }
-            if ((Original_User == null)) {
-                throw new global::System.ArgumentNullException("Original_User");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_User));
-            }
-            if ((Original_OAuth == null)) {
-                throw new global::System.ArgumentNullException("Original_OAuth");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_OAuth));
-            }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_Port));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Original_Amount));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3557,13 +4611,8 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(bool DefaultServer, string ServerAddress, string Channel, string User, string OAuth, int Port, int Original_Id, bool Original_DefaultServer, string Original_ServerAddress, string Original_Channel, string Original_User, string Original_OAuth, int Original_Port) {
-            return this.Update(DefaultServer, ServerAddress, Channel, User, OAuth, Port, Original_Id, Original_DefaultServer, Original_ServerAddress, Original_Channel, Original_User, Original_OAuth, Original_Port, Original_Id);
-        }
-
-        internal void Fill(System.Data.DataTable dt2)
-        {
-            throw new System.NotImplementedException();
+        public virtual int Update(System.DateTime TransactionTime, string UserName, double Amount, int Original_Id, System.DateTime Original_TransactionTime, string Original_UserName, double Original_Amount) {
+            return this.Update(Original_Id, TransactionTime, UserName, Amount, Original_Id, Original_TransactionTime, Original_UserName, Original_Amount);
         }
     }
     
@@ -3579,13 +4628,15 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         
         private UpdateOrderOption _updateOrder;
         
+        private IRCConnectionsTableAdapter _iRCConnectionsTableAdapter;
+        
         private MembershipLevelsTableAdapter _membershipLevelsTableAdapter;
         
-        private UserTransactionsTableAdapter _userTransactionsTableAdapter;
+        private SettingsTableAdapter _settingsTableAdapter;
         
         private UsersTableAdapter _usersTableAdapter;
         
-        private IRCConnectionsTableAdapter _iRCConnectionsTableAdapter;
+        private UserTransactionsTableAdapter _userTransactionsTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -3599,6 +4650,20 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
             }
             set {
                 this._updateOrder = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public IRCConnectionsTableAdapter IRCConnectionsTableAdapter {
+            get {
+                return this._iRCConnectionsTableAdapter;
+            }
+            set {
+                this._iRCConnectionsTableAdapter = value;
             }
         }
         
@@ -3621,12 +4686,12 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public UserTransactionsTableAdapter UserTransactionsTableAdapter {
+        public SettingsTableAdapter SettingsTableAdapter {
             get {
-                return this._userTransactionsTableAdapter;
+                return this._settingsTableAdapter;
             }
             set {
-                this._userTransactionsTableAdapter = value;
+                this._settingsTableAdapter = value;
             }
         }
         
@@ -3649,12 +4714,12 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public IRCConnectionsTableAdapter IRCConnectionsTableAdapter {
+        public UserTransactionsTableAdapter UserTransactionsTableAdapter {
             get {
-                return this._iRCConnectionsTableAdapter;
+                return this._userTransactionsTableAdapter;
             }
             set {
-                this._iRCConnectionsTableAdapter = value;
+                this._userTransactionsTableAdapter = value;
             }
         }
         
@@ -3677,21 +4742,25 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
                 if ((this._connection != null)) {
                     return this._connection;
                 }
+                if (((this._iRCConnectionsTableAdapter != null) 
+                            && (this._iRCConnectionsTableAdapter.Connection != null))) {
+                    return this._iRCConnectionsTableAdapter.Connection;
+                }
                 if (((this._membershipLevelsTableAdapter != null) 
                             && (this._membershipLevelsTableAdapter.Connection != null))) {
                     return this._membershipLevelsTableAdapter.Connection;
                 }
-                if (((this._userTransactionsTableAdapter != null) 
-                            && (this._userTransactionsTableAdapter.Connection != null))) {
-                    return this._userTransactionsTableAdapter.Connection;
+                if (((this._settingsTableAdapter != null) 
+                            && (this._settingsTableAdapter.Connection != null))) {
+                    return this._settingsTableAdapter.Connection;
                 }
                 if (((this._usersTableAdapter != null) 
                             && (this._usersTableAdapter.Connection != null))) {
                     return this._usersTableAdapter.Connection;
                 }
-                if (((this._iRCConnectionsTableAdapter != null) 
-                            && (this._iRCConnectionsTableAdapter.Connection != null))) {
-                    return this._iRCConnectionsTableAdapter.Connection;
+                if (((this._userTransactionsTableAdapter != null) 
+                            && (this._userTransactionsTableAdapter.Connection != null))) {
+                    return this._userTransactionsTableAdapter.Connection;
                 }
                 return null;
             }
@@ -3706,16 +4775,19 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
+                if ((this._iRCConnectionsTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 if ((this._membershipLevelsTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._userTransactionsTableAdapter != null)) {
+                if ((this._settingsTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._usersTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._iRCConnectionsTableAdapter != null)) {
+                if ((this._userTransactionsTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -3729,6 +4801,15 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(CommandBotDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._iRCConnectionsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.IRCConnections.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._iRCConnectionsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._membershipLevelsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.MembershipLevels.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -3738,12 +4819,12 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._userTransactionsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.UserTransactions.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._settingsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Settings.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._userTransactionsTableAdapter.Update(updatedRows));
+                    result = (result + this._settingsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -3756,12 +4837,12 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._iRCConnectionsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.IRCConnections.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._userTransactionsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.UserTransactions.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._iRCConnectionsTableAdapter.Update(updatedRows));
+                    result = (result + this._userTransactionsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -3775,6 +4856,14 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(CommandBotDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._iRCConnectionsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.IRCConnections.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._iRCConnectionsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._membershipLevelsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.MembershipLevels.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -3783,11 +4872,11 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._userTransactionsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.UserTransactions.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._settingsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Settings.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._userTransactionsTableAdapter.Update(addedRows));
+                    result = (result + this._settingsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -3799,11 +4888,11 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._iRCConnectionsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.IRCConnections.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._userTransactionsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.UserTransactions.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._iRCConnectionsTableAdapter.Update(addedRows));
+                    result = (result + this._userTransactionsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -3817,11 +4906,11 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(CommandBotDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._iRCConnectionsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.IRCConnections.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._userTransactionsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.UserTransactions.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._iRCConnectionsTableAdapter.Update(deletedRows));
+                    result = (result + this._userTransactionsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -3833,11 +4922,11 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._userTransactionsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.UserTransactions.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._settingsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Settings.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._userTransactionsTableAdapter.Update(deletedRows));
+                    result = (result + this._settingsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -3846,6 +4935,14 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._membershipLevelsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._iRCConnectionsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.IRCConnections.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._iRCConnectionsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -3888,13 +4985,18 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
+            if (((this._iRCConnectionsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._iRCConnectionsTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             if (((this._membershipLevelsTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._membershipLevelsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._userTransactionsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._userTransactionsTableAdapter.Connection) == false))) {
+            if (((this._settingsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._settingsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -3903,8 +5005,8 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._iRCConnectionsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._iRCConnectionsTableAdapter.Connection) == false))) {
+            if (((this._userTransactionsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._userTransactionsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -3940,6 +5042,15 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
             try {
                 // ---- Prepare for update -----------
                 //
+                if ((this._iRCConnectionsTableAdapter != null)) {
+                    revertConnections.Add(this._iRCConnectionsTableAdapter, this._iRCConnectionsTableAdapter.Connection);
+                    this._iRCConnectionsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._iRCConnectionsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._iRCConnectionsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._iRCConnectionsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._iRCConnectionsTableAdapter.Adapter);
+                    }
+                }
                 if ((this._membershipLevelsTableAdapter != null)) {
                     revertConnections.Add(this._membershipLevelsTableAdapter, this._membershipLevelsTableAdapter.Connection);
                     this._membershipLevelsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -3949,13 +5060,13 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
                         adaptersWithAcceptChangesDuringUpdate.Add(this._membershipLevelsTableAdapter.Adapter);
                     }
                 }
-                if ((this._userTransactionsTableAdapter != null)) {
-                    revertConnections.Add(this._userTransactionsTableAdapter, this._userTransactionsTableAdapter.Connection);
-                    this._userTransactionsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._userTransactionsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._userTransactionsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._userTransactionsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._userTransactionsTableAdapter.Adapter);
+                if ((this._settingsTableAdapter != null)) {
+                    revertConnections.Add(this._settingsTableAdapter, this._settingsTableAdapter.Connection);
+                    this._settingsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._settingsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._settingsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._settingsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._settingsTableAdapter.Adapter);
                     }
                 }
                 if ((this._usersTableAdapter != null)) {
@@ -3967,13 +5078,13 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
                         adaptersWithAcceptChangesDuringUpdate.Add(this._usersTableAdapter.Adapter);
                     }
                 }
-                if ((this._iRCConnectionsTableAdapter != null)) {
-                    revertConnections.Add(this._iRCConnectionsTableAdapter, this._iRCConnectionsTableAdapter.Connection);
-                    this._iRCConnectionsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._iRCConnectionsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._iRCConnectionsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._iRCConnectionsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._iRCConnectionsTableAdapter.Adapter);
+                if ((this._userTransactionsTableAdapter != null)) {
+                    revertConnections.Add(this._userTransactionsTableAdapter, this._userTransactionsTableAdapter.Connection);
+                    this._userTransactionsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._userTransactionsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._userTransactionsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._userTransactionsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._userTransactionsTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -4034,21 +5145,25 @@ SELECT Id, DefaultServer, ServerAddress, Channel, [User], OAuth, Port FROM IRCCo
                 if (workConnOpened) {
                     workConnection.Close();
                 }
+                if ((this._iRCConnectionsTableAdapter != null)) {
+                    this._iRCConnectionsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._iRCConnectionsTableAdapter]));
+                    this._iRCConnectionsTableAdapter.Transaction = null;
+                }
                 if ((this._membershipLevelsTableAdapter != null)) {
                     this._membershipLevelsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._membershipLevelsTableAdapter]));
                     this._membershipLevelsTableAdapter.Transaction = null;
                 }
-                if ((this._userTransactionsTableAdapter != null)) {
-                    this._userTransactionsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._userTransactionsTableAdapter]));
-                    this._userTransactionsTableAdapter.Transaction = null;
+                if ((this._settingsTableAdapter != null)) {
+                    this._settingsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._settingsTableAdapter]));
+                    this._settingsTableAdapter.Transaction = null;
                 }
                 if ((this._usersTableAdapter != null)) {
                     this._usersTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._usersTableAdapter]));
                     this._usersTableAdapter.Transaction = null;
                 }
-                if ((this._iRCConnectionsTableAdapter != null)) {
-                    this._iRCConnectionsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._iRCConnectionsTableAdapter]));
-                    this._iRCConnectionsTableAdapter.Transaction = null;
+                if ((this._userTransactionsTableAdapter != null)) {
+                    this._userTransactionsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._userTransactionsTableAdapter]));
+                    this._userTransactionsTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

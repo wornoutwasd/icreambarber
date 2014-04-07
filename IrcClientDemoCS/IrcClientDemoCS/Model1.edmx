@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CommandBotModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CommandBotModelStoreContainer">
+          <EntitySet Name="IRCConnections" EntityType="CommandBotModel.Store.IRCConnections" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MembershipLevels" EntityType="CommandBotModel.Store.MembershipLevels" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Settings" EntityType="CommandBotModel.Store.Settings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="CommandBotModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserTransactions" EntityType="CommandBotModel.Store.UserTransactions" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="IRCConnections">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DefaultServer" Type="bit" Nullable="false" />
+          <Property Name="ServerAddress" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Channel" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="User" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="OAuth" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Port" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MembershipLevels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipLevel" Type="smallint" Nullable="false" />
+          <Property Name="Multiplier" Type="float" Nullable="false" />
+          <Property Name="MembershipLevelName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Greeting" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GreetingPosition" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="BalanceCommand" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="GambleCommand" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TradeCommand" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PointsPerTick" Type="float" Nullable="false" />
+          <Property Name="TickMinutes" Type="int" Nullable="false" />
+          <Property Name="EarnPoints" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="MembershipLevel" Type="smallint" Nullable="false" />
+          <Property Name="CurrentPoints" Type="float" Nullable="false" />
+          <Property Name="InGame" Type="bit" Nullable="false" />
+          <Property Name="TotalPointsEarned" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTransactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="TransactionTime" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CommandBotModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CommandBotEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="IRCConnections" EntityType="CommandBotModel.IRCConnection" />
+          <EntitySet Name="MembershipLevels" EntityType="CommandBotModel.MembershipLevel" />
+          <EntitySet Name="Settings" EntityType="CommandBotModel.Setting" />
+          <EntitySet Name="Users" EntityType="CommandBotModel.User" />
+          <EntitySet Name="UserTransactions" EntityType="CommandBotModel.UserTransaction" />
+        </EntityContainer>
+        <EntityType Name="IRCConnection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DefaultServer" Type="Boolean" Nullable="false" />
+          <Property Name="ServerAddress" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Channel" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="User" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="OAuth" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Port" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MembershipLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipLevel1" Type="Int16" Nullable="false" />
+          <Property Name="Multiplier" Type="Double" Nullable="false" />
+          <Property Name="MembershipLevelName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Greeting" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="GreetingPosition" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BalanceCommand" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="GambleCommand" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="TradeCommand" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PointsPerTick" Type="Double" Nullable="false" />
+          <Property Name="TickMinutes" Type="Int32" Nullable="false" />
+          <Property Name="EarnPoints" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MembershipLevel" Type="Int16" Nullable="false" />
+          <Property Name="CurrentPoints" Type="Double" Nullable="false" />
+          <Property Name="InGame" Type="Boolean" Nullable="false" />
+          <Property Name="TotalPointsEarned" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TransactionTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CommandBotModelStoreContainer" CdmEntityContainer="CommandBotEntities">
+          <EntitySetMapping Name="IRCConnections">
+            <EntityTypeMapping TypeName="CommandBotModel.IRCConnection">
+              <MappingFragment StoreEntitySet="IRCConnections">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DefaultServer" ColumnName="DefaultServer" />
+                <ScalarProperty Name="ServerAddress" ColumnName="ServerAddress" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="OAuth" ColumnName="OAuth" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MembershipLevels">
+            <EntityTypeMapping TypeName="CommandBotModel.MembershipLevel">
+              <MappingFragment StoreEntitySet="MembershipLevels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MembershipLevel1" ColumnName="MembershipLevel" />
+                <ScalarProperty Name="Multiplier" ColumnName="Multiplier" />
+                <ScalarProperty Name="MembershipLevelName" ColumnName="MembershipLevelName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="CommandBotModel.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Greeting" ColumnName="Greeting" />
+                <ScalarProperty Name="GreetingPosition" ColumnName="GreetingPosition" />
+                <ScalarProperty Name="BalanceCommand" ColumnName="BalanceCommand" />
+                <ScalarProperty Name="GambleCommand" ColumnName="GambleCommand" />
+                <ScalarProperty Name="TradeCommand" ColumnName="TradeCommand" />
+                <ScalarProperty Name="PointsPerTick" ColumnName="PointsPerTick" />
+                <ScalarProperty Name="TickMinutes" ColumnName="TickMinutes" />
+                <ScalarProperty Name="EarnPoints" ColumnName="EarnPoints" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CommandBotModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MembershipLevel" ColumnName="MembershipLevel" />
+                <ScalarProperty Name="CurrentPoints" ColumnName="CurrentPoints" />
+                <ScalarProperty Name="InGame" ColumnName="InGame" />
+                <ScalarProperty Name="TotalPointsEarned" ColumnName="TotalPointsEarned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTransactions">
+            <EntityTypeMapping TypeName="CommandBotModel.UserTransaction">
+              <MappingFragment StoreEntitySet="UserTransactions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="TransactionTime" ColumnName="TransactionTime" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

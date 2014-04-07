@@ -28,6 +28,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lstUsers = new System.Windows.Forms.ListBox();
             this.txtSend = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
@@ -70,51 +71,61 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnBotMessageClear = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstMessageQue = new System.Windows.Forms.ListBox();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnSaveBotCommands = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtTradeCommand = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBalanceCommand = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtGambleCommand = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSaveGreeting = new System.Windows.Forms.Button();
             this.cboMessageUNPos = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtGreetingMsg = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnMembershipUpdate = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lblPointTickTimer = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dgvMembership = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnPointStart = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtPointTickPerMinute = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtPointsPerTick = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.iRCConnectionsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.IRCConnectionsTableAdapter();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usersTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.UsersTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.membershipLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currentPointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inGameDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.totalPointsEarnedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.commandBotDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iRCConnectionsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.IRCConnectionsTableAdapter();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.usersTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.UsersTableAdapter();
+            this.membershipLevelsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter();
+            this.settingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -127,10 +138,14 @@
             this.groupBox1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMembership)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            this.tabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lstUsers
@@ -185,7 +200,6 @@
             this.btnTest.TabIndex = 6;
             this.btnTest.Text = "Test 1";
             this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // contextMenuStrip1
             // 
@@ -519,7 +533,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.btnBotMessageClear);
             this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Controls.Add(this.listBox1);
+            this.groupBox5.Controls.Add(this.lstMessageQue);
             this.groupBox5.Controls.Add(this.label18);
             this.groupBox5.Location = new System.Drawing.Point(588, 3);
             this.groupBox5.Name = "groupBox5";
@@ -547,13 +561,13 @@
             this.label19.Text = "The Bot Timer is to prevent\r\n       Message Overload\r\n(20 messages in 30 seconds)" +
     "\r\nMessage Overload results in\r\n            8 Hour Ban!";
             // 
-            // listBox1
+            // lstMessageQue
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(204, 14);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(245, 121);
-            this.listBox1.TabIndex = 1;
+            this.lstMessageQue.FormattingEnabled = true;
+            this.lstMessageQue.Location = new System.Drawing.Point(204, 14);
+            this.lstMessageQue.Name = "lstMessageQue";
+            this.lstMessageQue.Size = new System.Drawing.Size(245, 121);
+            this.lstMessageQue.TabIndex = 1;
             // 
             // label18
             // 
@@ -566,14 +580,15 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnSaveBotCommands);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.txtTradeCommand);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtBalanceCommand);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.txtGambleCommand);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Location = new System.Drawing.Point(298, 3);
             this.groupBox2.Name = "groupBox2";
@@ -581,6 +596,15 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bot Commands";
+            // 
+            // btnSaveBotCommands
+            // 
+            this.btnSaveBotCommands.Location = new System.Drawing.Point(66, 141);
+            this.btnSaveBotCommands.Name = "btnSaveBotCommands";
+            this.btnSaveBotCommands.Size = new System.Drawing.Size(120, 23);
+            this.btnSaveBotCommands.TabIndex = 14;
+            this.btnSaveBotCommands.Text = "Save Bot Commands";
+            this.btnSaveBotCommands.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -591,13 +615,12 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Command:";
             // 
-            // textBox4
+            // txtTradeCommand
             // 
-            this.textBox4.Location = new System.Drawing.Point(66, 110);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(212, 20);
-            this.textBox4.TabIndex = 12;
-            this.textBox4.Text = "!Trade [User Name]";
+            this.txtTradeCommand.Location = new System.Drawing.Point(66, 110);
+            this.txtTradeCommand.Name = "txtTradeCommand";
+            this.txtTradeCommand.Size = new System.Drawing.Size(212, 20);
+            this.txtTradeCommand.TabIndex = 12;
             // 
             // label8
             // 
@@ -617,13 +640,12 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Command:";
             // 
-            // textBox2
+            // txtBalanceCommand
             // 
-            this.textBox2.Location = new System.Drawing.Point(66, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(212, 20);
-            this.textBox2.TabIndex = 9;
-            this.textBox2.Text = "!Coins";
+            this.txtBalanceCommand.Location = new System.Drawing.Point(66, 32);
+            this.txtBalanceCommand.Name = "txtBalanceCommand";
+            this.txtBalanceCommand.Size = new System.Drawing.Size(212, 20);
+            this.txtBalanceCommand.TabIndex = 9;
             // 
             // label9
             // 
@@ -643,13 +665,12 @@
             this.label10.TabIndex = 7;
             this.label10.Text = "Command:";
             // 
-            // textBox3
+            // txtGambleCommand
             // 
-            this.textBox3.Location = new System.Drawing.Point(66, 71);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(212, 20);
-            this.textBox3.TabIndex = 6;
-            this.textBox3.Text = "!Chance";
+            this.txtGambleCommand.Location = new System.Drawing.Point(66, 71);
+            this.txtGambleCommand.Name = "txtGambleCommand";
+            this.txtGambleCommand.Size = new System.Drawing.Size(212, 20);
+            this.txtGambleCommand.TabIndex = 6;
             // 
             // label11
             // 
@@ -662,9 +683,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSaveGreeting);
             this.groupBox1.Controls.Add(this.cboMessageUNPos);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtGreetingMsg);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Location = new System.Drawing.Point(8, 3);
             this.groupBox1.Name = "groupBox1";
@@ -672,6 +694,15 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Greeting";
+            // 
+            // btnSaveGreeting
+            // 
+            this.btnSaveGreeting.Location = new System.Drawing.Point(78, 141);
+            this.btnSaveGreeting.Name = "btnSaveGreeting";
+            this.btnSaveGreeting.Size = new System.Drawing.Size(120, 23);
+            this.btnSaveGreeting.TabIndex = 15;
+            this.btnSaveGreeting.Text = "Save Bot Greeting";
+            this.btnSaveGreeting.UseVisualStyleBackColor = true;
             // 
             // cboMessageUNPos
             // 
@@ -697,13 +728,13 @@
             this.label12.TabIndex = 2;
             this.label12.Text = "Show User Name:";
             // 
-            // textBox1
+            // txtGreetingMsg
             // 
-            this.textBox1.Location = new System.Drawing.Point(10, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(268, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Welcome to the Stream! ";
+            this.txtGreetingMsg.Location = new System.Drawing.Point(10, 37);
+            this.txtGreetingMsg.Name = "txtGreetingMsg";
+            this.txtGreetingMsg.Size = new System.Drawing.Size(268, 20);
+            this.txtGreetingMsg.TabIndex = 1;
+            this.txtGreetingMsg.Text = " ";
             // 
             // label13
             // 
@@ -716,6 +747,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.AutoScroll = true;
+            this.tabPage4.Controls.Add(this.btnMembershipUpdate);
             this.tabPage4.Controls.Add(this.groupBox6);
             this.tabPage4.Controls.Add(this.groupBox4);
             this.tabPage4.Controls.Add(this.groupBox3);
@@ -725,6 +758,16 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Point Settings";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnMembershipUpdate
+            // 
+            this.btnMembershipUpdate.Location = new System.Drawing.Point(558, 214);
+            this.btnMembershipUpdate.Name = "btnMembershipUpdate";
+            this.btnMembershipUpdate.Size = new System.Drawing.Size(199, 23);
+            this.btnMembershipUpdate.TabIndex = 8;
+            this.btnMembershipUpdate.Text = "update membership";
+            this.btnMembershipUpdate.UseVisualStyleBackColor = true;
+            this.btnMembershipUpdate.Click += new System.EventHandler(this.btnMembershipUpdate_Click);
             // 
             // groupBox6
             // 
@@ -748,21 +791,32 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.dgvMembership);
             this.groupBox4.Location = new System.Drawing.Point(306, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(737, 142);
+            this.groupBox4.Size = new System.Drawing.Size(734, 208);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Membership Levels";
             // 
+            // dgvMembership
+            // 
+            this.dgvMembership.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMembership.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMembership.Location = new System.Drawing.Point(3, 16);
+            this.dgvMembership.Name = "dgvMembership";
+            this.dgvMembership.Size = new System.Drawing.Size(728, 189);
+            this.dgvMembership.TabIndex = 0;
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnPointStart);
             this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.txtPointTickPerMinute);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.txtPointsPerTick);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Location = new System.Drawing.Point(8, 3);
             this.groupBox3.Name = "groupBox3";
@@ -770,6 +824,15 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Point Timer";
+            // 
+            // btnPointStart
+            // 
+            this.btnPointStart.Location = new System.Drawing.Point(7, 39);
+            this.btnPointStart.Name = "btnPointStart";
+            this.btnPointStart.Size = new System.Drawing.Size(75, 23);
+            this.btnPointStart.TabIndex = 7;
+            this.btnPointStart.Text = "Start";
+            this.btnPointStart.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
@@ -790,12 +853,12 @@
             this.label14.TabIndex = 5;
             this.label14.Text = "Minutes";
             // 
-            // textBox5
+            // txtPointTickPerMinute
             // 
-            this.textBox5.Location = new System.Drawing.Point(137, 39);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(78, 20);
-            this.textBox5.TabIndex = 4;
+            this.txtPointTickPerMinute.Location = new System.Drawing.Point(137, 39);
+            this.txtPointTickPerMinute.Name = "txtPointTickPerMinute";
+            this.txtPointTickPerMinute.Size = new System.Drawing.Size(78, 20);
+            this.txtPointTickPerMinute.TabIndex = 4;
             // 
             // label15
             // 
@@ -815,12 +878,12 @@
             this.label16.TabIndex = 2;
             this.label16.Text = "Points";
             // 
-            // textBox6
+            // txtPointsPerTick
             // 
-            this.textBox6.Location = new System.Drawing.Point(137, 13);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(78, 20);
-            this.textBox6.TabIndex = 1;
+            this.txtPointsPerTick.Location = new System.Drawing.Point(137, 13);
+            this.txtPointsPerTick.Name = "txtPointsPerTick";
+            this.txtPointsPerTick.Size = new System.Drawing.Size(78, 20);
+            this.txtPointsPerTick.TabIndex = 1;
             // 
             // label17
             // 
@@ -841,6 +904,16 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "User Accounts";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Location = new System.Drawing.Point(8, 218);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -864,37 +937,6 @@
             this.dataGridView1.RowHeadersWidth = 40;
             this.dataGridView1.Size = new System.Drawing.Size(1048, 204);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1051, 244);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Drawings";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(1051, 244);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Graphic Alerts";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // iRCConnectionsTableAdapter
-            // 
-            this.iRCConnectionsTableAdapter.ClearBeforeFill = true;
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "Users";
-            this.usersBindingSource.DataSource = this.commandBotDataSet;
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -933,24 +975,78 @@
             this.totalPointsEarnedDataGridViewTextBoxColumn.HeaderText = "TotalPointsEarned";
             this.totalPointsEarnedDataGridViewTextBoxColumn.Name = "totalPointsEarnedDataGridViewTextBoxColumn";
             // 
-            // button1
+            // usersBindingSource
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(8, 218);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.usersBindingSource.DataMember = "Users";
+            this.usersBindingSource.DataSource = this.commandBotDataSet;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Drawings";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Graphic Alerts";
+            this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.textBox7);
+            this.tabPage8.Controls.Add(this.label20);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Size = new System.Drawing.Size(1051, 244);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "About";
             this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(374, 41);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(326, 183);
+            this.textBox7.TabIndex = 1;
+            this.textBox7.Text = resources.GetString("textBox7.Text");
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(405, 16);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(161, 13);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Copyright 2014 - David Campbell";
+            // 
+            // commandBotDataSetBindingSource
+            // 
+            this.commandBotDataSetBindingSource.DataSource = this.commandBotDataSet;
+            this.commandBotDataSetBindingSource.Position = 0;
+            // 
+            // iRCConnectionsTableAdapter
+            // 
+            this.iRCConnectionsTableAdapter.ClearBeforeFill = true;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // membershipLevelsTableAdapter
+            // 
+            this.membershipLevelsTableAdapter.ClearBeforeFill = true;
+            // 
+            // settingsTableAdapter
+            // 
+            this.settingsTableAdapter.ClearBeforeFill = true;
             // 
             // MainForm
             // 
@@ -980,11 +1076,16 @@
             this.tabPage4.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMembership)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1033,26 +1134,26 @@
         private System.Windows.Forms.ListBox lstConnectionList;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtTradeCommand;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBalanceCommand;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtGambleCommand;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cboMessageUNPos;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtGreetingMsg;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtPointTickPerMinute;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtPointsPerTick;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.GroupBox groupBox4;
         private CommandBotDataSet commandBotDataSet;
@@ -1062,7 +1163,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnBotMessageClear;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstMessageQue;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label lblPointTickTimer;
@@ -1078,6 +1179,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPointsEarnedDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnSaveBotCommands;
+        private System.Windows.Forms.Button btnPointStart;
+        private System.Windows.Forms.Button btnSaveGreeting;
+        private System.Windows.Forms.BindingSource commandBotDataSetBindingSource;
+        private System.Windows.Forms.Button btnMembershipUpdate;
+        private System.Windows.Forms.DataGridView dgvMembership;
+        private CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter membershipLevelsTableAdapter;
+        private CommandBotDataSetTableAdapters.SettingsTableAdapter settingsTableAdapter;
+        
     }
 }
 

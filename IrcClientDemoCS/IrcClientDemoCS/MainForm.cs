@@ -21,8 +21,15 @@ namespace IrcClientDemoCS
         private static string channel;
         private static string user;
         private static string oauth;
-        
-        
+        private static string greeting;
+        private static string balancecmd;
+        private static string tradecmd;
+        private static string gamblecmd;
+        private static bool greetingposition;
+        private static string pointspertick;
+        private static string minutespertick;
+        DataTable dt = new DataTable();
+
         public MainForm()
         {
 
@@ -34,6 +41,9 @@ namespace IrcClientDemoCS
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            
+            // TODO: This line of code loads data into the 'commandBotDataSet.MembershipLevels' table. You can move, or remove it, as needed.
+            this.membershipLevelsTableAdapter.Fill(this.commandBotDataSet.MembershipLevels);
             // TODO: This line of code loads data into the 'commandBotDataSet.Users' table. You can move, or remove it, as needed.
             this.usersTableAdapter.Fill(this.commandBotDataSet.Users);
             
@@ -65,6 +75,53 @@ namespace IrcClientDemoCS
             lblPort.Text = ConnPort.ToString();
             lblUserName.Text = user;
             #endregion
+            //**************Bot Commands Tab
+            #region
+            //Current default - pull from database            
+            this.settingsTableAdapter.Fill(this.commandBotDataSet.Settings);
+            
+            //set selected value
+            if (commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["GreetingPosition"].ToString() == "Before")
+            {
+                cboMessageUNPos.SelectedIndex = 0;
+            }
+            else
+            {
+                cboMessageUNPos.SelectedIndex = 1;
+            }
+
+            greeting = commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["Greeting"].ToString();
+            balancecmd = commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["BalanceCommand"].ToString();
+            gamblecmd = commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["GambleCommand"].ToString();            
+            tradecmd = commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["TradeCommand"].ToString();
+
+            txtGreetingMsg.Text = greeting;
+            txtBalanceCommand.Text = balancecmd;
+            txtGambleCommand.Text = gamblecmd;
+            txtTradeCommand.Text = tradecmd;
+
+
+            #endregion
+            //***************Point Settings Tab
+            #region
+
+            //Settings table adapter already connected in the bot commands tab in the region above
+            pointspertick = commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["PointsPerTick"].ToString();
+            minutespertick = commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["TickMinutes"].ToString();
+
+            txtPointsPerTick.Text = pointspertick;
+            txtPointTickPerMinute.Text = minutespertick;
+
+
+            #endregion
+            //*************Gridview Datasets
+            #region
+            
+            membershipLevelsTableAdapter.Fill(this.commandBotDataSet.MembershipLevels);
+            dt = commandBotDataSet.MembershipLevels;
+            dgvMembership.DataSource = dt;
+            #endregion
+
 
         }
        
@@ -91,10 +148,7 @@ namespace IrcClientDemoCS
         {
             irc = new IrcClient(serverName, ConnPort);
             irc.Nick = user;
-            irc.ServerPass = oauth;
-            /*irc = new IrcClient("irc.twitch.tv", 6667);
-            irc.Nick = "wornoutbot";
-            irc.ServerPass = "oauth:5apvk3gardkvm4ekpp1wdf5vazso8jq";*/
+            irc.ServerPass = oauth;            
             irc.Disconnect();
             irc.Connect();
             
@@ -104,6 +158,7 @@ namespace IrcClientDemoCS
             
             
         }
+        //fires when event delegates from IRC thread are accessed.
         private void AddListeners()
         {
             // hopefully these are self explanitory (nope)
@@ -166,91 +221,54 @@ namespace IrcClientDemoCS
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            //irc.SendMessage("#wornoutwasd", txtSend.Text);
+            //does not submit to debug because it is outside of that fire event - add delegate to sendmessage maybe? -dave
+
             irc.SendMessage(channel, txtSend.Text);
             rtbOutput.AppendText("You:\t" + txtSend.Text + "\r\n");
             txtSend.Clear();
             txtSend.Focus();
         }
+                
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            lblCurrentServer.Text = Convert.ToString(ConnPort);
-            updateLabels();
- 
-        }
-
-        private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            irc.Disconnect();
-        }
-
-        private void connectToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ConnectionsForm c1 = new ConnectionsForm();
-            c1.ShowDialog(); //shows connection management window
-            if (c1.DialogResult == DialogResult.OK)
-            {
-                ConnPort = c1.getPort();
-                serverName = c1.getServer();
-                channel = c1.getChannel();
-                user = c1.getUser();
-                oauth = c1.getOauth();
-            }
-        }
-
-        public void updateLabels()
-        {
-            
-            lblChannel.Text = channel;
-            lblCurrentServer.Text = serverName;
-            lblPort.Text = ConnPort.ToString();
-            lblUserName.Text = user;
-        }
-
-        //Menu Items
-        #region
-        private void botMessagesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            BotMessagesForm b1 = new BotMessagesForm();
-            b1.ShowDialog();//shows bot messages form
-            
-        }
-
-        private void userAccountsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UserAccountsForm ua1 = new UserAccountsForm();
-            ua1.ShowDialog();
-        }
-
-        private void pointSettingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PointSettingsForm ps1 = new PointSettingsForm();
-            ps1.ShowDialog();
-        }
-
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DrawingsForm df1 = new DrawingsForm();
-            df1.ShowDialog();
-        }
-
-        private void graphicAlertsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            GraphicAlertsForm ga1 = new GraphicAlertsForm();
-            ga1.ShowDialog();
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutForm af1 = new AboutForm();
-            af1.ShowDialog();
-        }
-        #endregion
+        
 
         private void btnTestSend_Click(object sender, EventArgs e)
         {
+            //don't click this quickly.. you can get banned -dave
             irc.SendMessage(channel, "Welcome!");
+        }
+
+        //private void btnMembershipUpdate_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        this.Validate();
+        //        this.membershipLevelsBindingSource.EndEdit();
+
+        //        //this.membershipLevelsTableAdapter.Update();          
+                
+        //        MessageBox.Show("Update successful");
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        MessageBox.Show("Update failed " + ex.ToString());
+        //    }
+        //}
+
+        private void btnMembershipUpdate_Click_1(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private void commandBotDataSetBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMembershipUpdate_Click(object sender, EventArgs e)
+        {
+           
         }
 
 
