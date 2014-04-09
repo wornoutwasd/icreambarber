@@ -26,7 +26,7 @@ namespace IrcClientDemoCS
         private static string balancecmd;
         private static string tradecmd;
         private static string gamblecmd;
-        private static bool greetingposition;
+        private static string greetingposition;
         private static string pointspertick;
         private static string minutespertick;
         DataTable dt = new DataTable();
@@ -43,7 +43,7 @@ namespace IrcClientDemoCS
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            
             //***Table Adapters
             #region
             // TODO: This line of code loads data into the 'commandBotDataSet.MembershipLevels' table. You can move, or remove it, as needed.
@@ -328,6 +328,16 @@ namespace IrcClientDemoCS
             intPointTimer = 60 * Convert.ToInt16(minutespertick);
         }
         #endregion
+
+        private void btnSaveGreeting_Click(object sender, EventArgs e)
+        {
+            greeting = txtGreetingMsg.Text;
+            greetingposition = cboMessageUNPos.Text;
+            settingsTableAdapter.UpdateGreeting(txtGreetingMsg.Text, cboMessageUNPos.Text, 1);
+            settingsTableAdapter.Fill(commandBotDataSet.Settings);
+
+            MessageBox.Show(commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["Greeting"].ToString() + commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["GreetingPosition"].ToString(), "Updated Greeting", MessageBoxButtons.OK);
+        }
 
 
 
