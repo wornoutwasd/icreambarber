@@ -257,37 +257,31 @@ namespace IrcClientDemoCS
         #region
         private void btnMembershipUpdate_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.Validate();
-                this.membershipLevelsBindingSource.EndEdit();
-                //commandBotDataSet.MembershipLevels.DataSet = dt;
-                this.membershipLevelsTableAdapter.Update(commandBotDataSet.MembershipLevels);          
-
-                MessageBox.Show("Update successful");
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show("Update failed " + ex.ToString());
-            }
+            
         }
 
         //**********Doesn't work
         private void membershipLevelsBindingSource_CurrentChanged(object sender, EventArgs e)
         {
-            try
-            {
-                this.Validate();
-                this.membershipLevelsBindingSource.EndEdit();
-                //commandBotDataSet.MembershipLevels.DataSet = dt;
-                this.membershipLevelsTableAdapter.Update(commandBotDataSet.MembershipLevels);
+        
+            
+        }
 
-                MessageBox.Show("Update successful");
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show("Update failed " + ex.ToString());
-            }
+
+        private void btnPointInfoSave_Click(object sender, EventArgs e)
+        {
+            //set the static form values
+            pointspertick = txtPointsPerTick.Text;
+            minutespertick = txtPointTickPerMinute.Text;
+            int intminutepertick = Convert.ToInt16(minutespertick);
+            //update db
+            settingsTableAdapter.UpdatePointSettings(Convert.ToDouble(pointspertick), intminutepertick, 1);
+            settingsTableAdapter.Fill(commandBotDataSet.Settings);
+            //inform user
+            MessageBox.Show("The points per tick: " + commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["PointsPerTick"].ToString() + " was added to the local database" + Environment.NewLine
+            + "The Minutes per tick: " + commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["TickMinutes"].ToString() + " was added to the local database", 
+            "Updated Point Settings", MessageBoxButtons.OK);
+   
         }
 
         private void btnPointStart_Click(object sender, EventArgs e)
@@ -329,15 +323,48 @@ namespace IrcClientDemoCS
         }
         #endregion
 
+
+        //**********Bot Messages Tab Methods
+        #region
+
         private void btnSaveGreeting_Click(object sender, EventArgs e)
         {
+            //set the static form values
             greeting = txtGreetingMsg.Text;
             greetingposition = cboMessageUNPos.Text;
+            //update db
             settingsTableAdapter.UpdateGreeting(txtGreetingMsg.Text, cboMessageUNPos.Text, 1);
             settingsTableAdapter.Fill(commandBotDataSet.Settings);
-
-            MessageBox.Show(commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["Greeting"].ToString() + commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["GreetingPosition"].ToString(), "Updated Greeting", MessageBoxButtons.OK);
+            //inform user
+            MessageBox.Show("The Greeting: " + commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["Greeting"].ToString() + "was added to the local database" + Environment.NewLine +  "The position of the username in the greeting is: " + commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["GreetingPosition"].ToString(), "Updated Greeting", MessageBoxButtons.OK);
         }
+
+        private void btnSaveBotCommands_Click(object sender, EventArgs e)
+        {
+            //set the static form values
+            balancecmd = txtBalanceCommand.Text;
+            gamblecmd = txtGambleCommand.Text;
+            tradecmd = txtTradeCommand.Text;
+            //update db
+            settingsTableAdapter.UpdateDefaultBotCommands(txtBalanceCommand.Text, txtGambleCommand.Text, txtTradeCommand.Text, 1);
+            settingsTableAdapter.Fill(commandBotDataSet.Settings);
+            //inform user
+            MessageBox.Show("The Balance Command: " + commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["BalanceCommand"].ToString() + " was added to the local database" + Environment.NewLine
+            + "The Trade Command: " + commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["TradeCommand"].ToString() + " was added to the local database" + Environment.NewLine
+            + "The Gamble Command: " + commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["GambleCommand"].ToString() + " was added to the local database" + Environment.NewLine, 
+            "Updated Bot Commands", MessageBoxButtons.OK);
+
+        }
+        private void btnBotMessageClear_Click(object sender, EventArgs e)
+        {
+            lstMessageQue.Items.Clear();
+        }
+
+        #endregion
+
+
+       
+
 
 
 

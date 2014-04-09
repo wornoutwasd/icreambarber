@@ -562,6 +562,7 @@
             this.btnBotMessageClear.TabIndex = 15;
             this.btnBotMessageClear.Text = "Clear Messages";
             this.btnBotMessageClear.UseVisualStyleBackColor = true;
+            this.btnBotMessageClear.Click += new System.EventHandler(this.btnBotMessageClear_Click);
             // 
             // label19
             // 
@@ -617,6 +618,7 @@
             this.btnSaveBotCommands.TabIndex = 14;
             this.btnSaveBotCommands.Text = "Save Bot Commands";
             this.btnSaveBotCommands.UseVisualStyleBackColor = true;
+            this.btnSaveBotCommands.Click += new System.EventHandler(this.btnSaveBotCommands_Click);
             // 
             // label7
             // 
@@ -915,6 +917,7 @@
             this.btnPointInfoSave.TabIndex = 8;
             this.btnPointInfoSave.Text = "Save";
             this.btnPointInfoSave.UseVisualStyleBackColor = true;
+            this.btnPointInfoSave.Click += new System.EventHandler(this.btnPointInfoSave_Click);
             // 
             // checkBox1
             // 
