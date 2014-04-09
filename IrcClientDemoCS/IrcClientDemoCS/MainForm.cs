@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using TechLifeForum;
 using System.Threading;
+using System.Data.SqlClient;
 
 namespace IrcClientDemoCS
 {
@@ -29,6 +30,7 @@ namespace IrcClientDemoCS
         private static string pointspertick;
         private static string minutespertick;
         DataTable dt = new DataTable();
+        private static int intPointTimer;
 
         public MainForm()
         {
@@ -41,26 +43,33 @@ namespace IrcClientDemoCS
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+
+            //***Table Adapters
+            #region
             // TODO: This line of code loads data into the 'commandBotDataSet.MembershipLevels' table. You can move, or remove it, as needed.
             this.membershipLevelsTableAdapter.Fill(this.commandBotDataSet.MembershipLevels);
+            dt = this.membershipLevelsTableAdapter.GetData();
+            
             // TODO: This line of code loads data into the 'commandBotDataSet.Users' table. You can move, or remove it, as needed.
             this.usersTableAdapter.Fill(this.commandBotDataSet.Users);
-            
+
             //**Load Default Connection Information - Comment this out if your DB is not setup yet
             this.iRCConnectionsTableAdapter.Fill(this.commandBotDataSet.IRCConnections);
+
+            #endregion
+
+
+            //*********Initilization Values
+            #region
+            //**********Connections Tab / initial conneciton settings
+            #region
+            // TODO: This line of code loads data into the 'commandBotDataSet.IRCConnections' table. You can move, or remove it, as needed.
+
             serverName = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["ServerAddress"].ToString();
             channel = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["Channel"].ToString();
             ConnPort = Convert.ToInt16(commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["Port"].ToString());
             oauth = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["OAuth"].ToString();
             user = commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["User"].ToString();
-            
-
-
-            //**********Connections Tab
-            #region
-            // TODO: This line of code loads data into the 'commandBotDataSet.IRCConnections' table. You can move, or remove it, as needed.
-
             txtServer.Text = serverName;
             txtChannel.Text = channel;
             txtmPort.Text = ConnPort.ToString();
@@ -68,6 +77,9 @@ namespace IrcClientDemoCS
             txtUser.Text = user;
             cbDefault.Checked = Convert.ToBoolean(commandBotDataSet.IRCConnections.DataSet.Tables["IRCConnections"].Rows[0]["DefaultServer"]);
             #endregion
+
+
+
             //*********Chat Tab
             #region
             lblChannel.Text = channel;
@@ -75,6 +87,9 @@ namespace IrcClientDemoCS
             lblPort.Text = ConnPort.ToString();
             lblUserName.Text = user;
             #endregion
+
+
+
             //**************Bot Commands Tab
             #region
             //Current default - pull from database            
@@ -119,19 +134,16 @@ namespace IrcClientDemoCS
             
             membershipLevelsTableAdapter.Fill(this.commandBotDataSet.MembershipLevels);
             dt = commandBotDataSet.MembershipLevels;
-            dgvMembership.DataSource = dt;
+
+            //dgvMembership.DataSource = dt;
+            #endregion
             #endregion
 
-
-        }
-       
-        
-
-        public void debugupdate(string dbupdate)
-        { 
-            
         }
 
+
+        //***********Chat tab methods
+        #region
         private void txtSend_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -238,38 +250,86 @@ namespace IrcClientDemoCS
             irc.SendMessage(channel, "Welcome!");
         }
 
-        //private void btnMembershipUpdate_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        this.Validate();
-        //        this.membershipLevelsBindingSource.EndEdit();
+        #endregion
 
-        //        //this.membershipLevelsTableAdapter.Update();          
-                
-        //        MessageBox.Show("Update successful");
-        //    }
-        //    catch (System.Exception ex)
-        //    {
-        //        MessageBox.Show("Update failed " + ex.ToString());
-        //    }
-        //}
 
-        private void btnMembershipUpdate_Click_1(object sender, EventArgs e)
-        {
-            
-            
-        }
-
-        private void commandBotDataSetBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        //**********Point Settings Tab Methods
+        #region
         private void btnMembershipUpdate_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                this.Validate();
+                this.membershipLevelsBindingSource.EndEdit();
+                //commandBotDataSet.MembershipLevels.DataSet = dt;
+                this.membershipLevelsTableAdapter.Update(commandBotDataSet.MembershipLevels);          
+
+                MessageBox.Show("Update successful");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Update failed " + ex.ToString());
+            }
         }
+
+        //**********Doesn't work
+        private void membershipLevelsBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                this.membershipLevelsBindingSource.EndEdit();
+                //commandBotDataSet.MembershipLevels.DataSet = dt;
+                this.membershipLevelsTableAdapter.Update(commandBotDataSet.MembershipLevels);
+
+                MessageBox.Show("Update successful");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Update failed " + ex.ToString());
+            }
+        }
+
+        private void btnPointStart_Click(object sender, EventArgs e)
+        {
+            if (timerPoints.Enabled == true)
+            {
+                timerPoints.Enabled = false;
+                timerPoints.Stop();
+                btnPointStart.Text = "Start";
+            }
+            else
+            {
+                timerPoints.Enabled = true;
+                timerPoints.Interval = 1000;
+                timerPoints.Start();
+                intPointTimer = 60 * Convert.ToInt16(minutespertick);
+                btnPointStart.Text = "Stop";
+            }
+            
+        }
+
+        private void timerPoints_Tick(object sender, EventArgs e)
+        {
+            //countdown timer label
+            TimeSpan t = TimeSpan.FromSeconds(intPointTimer);
+            lblPointTickTimer.Text = t.ToString();
+            //reset after time is reached
+            intPointTimer--;
+            if (intPointTimer < 0)
+            {
+                intPointTimer = 60 * Convert.ToInt16(minutespertick);
+                // => method to save points
+            }
+        }
+
+        private void btnPointTimerReset_Click(object sender, EventArgs e)
+        {
+            intPointTimer = 60 * Convert.ToInt16(minutespertick);
+        }
+        #endregion
+
+
 
 
 

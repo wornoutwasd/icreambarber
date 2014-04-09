@@ -91,11 +91,12 @@
             this.txtGreetingMsg = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnMembershipUpdate = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lblPointTickTimer = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dgvMembership = new System.Windows.Forms.DataGridView();
+            this.membershipLevelsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnPointStart = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -122,10 +123,19 @@
             this.label20 = new System.Windows.Forms.Label();
             this.commandBotDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iRCConnectionsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.IRCConnectionsTableAdapter();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timerPoints = new System.Windows.Forms.Timer(this.components);
             this.usersTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.UsersTableAdapter();
             this.membershipLevelsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter();
             this.settingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.membershipLevelsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.membershipLevelDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.multiplierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.membershipLevelNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timerBotMessages = new System.Windows.Forms.Timer(this.components);
+            this.btnPointInfoSave = new System.Windows.Forms.Button();
+            this.btnPointTimerReset = new System.Windows.Forms.Button();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -139,13 +149,15 @@
             this.tabPage4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMembership)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstUsers
@@ -748,6 +760,7 @@
             // tabPage4
             // 
             this.tabPage4.AutoScroll = true;
+            this.tabPage4.Controls.Add(this.button2);
             this.tabPage4.Controls.Add(this.btnMembershipUpdate);
             this.tabPage4.Controls.Add(this.groupBox6);
             this.tabPage4.Controls.Add(this.groupBox4);
@@ -758,6 +771,15 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Point Settings";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(763, 213);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(199, 23);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Update Gridview";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // btnMembershipUpdate
             // 
@@ -771,10 +793,12 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.btnPointTimerReset);
             this.groupBox6.Controls.Add(this.lblPointTickTimer);
-            this.groupBox6.Location = new System.Drawing.Point(8, 77);
+            this.groupBox6.Controls.Add(this.btnPointStart);
+            this.groupBox6.Location = new System.Drawing.Point(8, 85);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(292, 68);
+            this.groupBox6.Size = new System.Drawing.Size(292, 98);
             this.groupBox6.TabIndex = 7;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Point Clock";
@@ -783,7 +807,7 @@
             // 
             this.lblPointTickTimer.AutoSize = true;
             this.lblPointTickTimer.Font = new System.Drawing.Font("Impact", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPointTickTimer.Location = new System.Drawing.Point(6, 16);
+            this.lblPointTickTimer.Location = new System.Drawing.Point(3, 43);
             this.lblPointTickTimer.Name = "lblPointTickTimer";
             this.lblPointTickTimer.Size = new System.Drawing.Size(283, 43);
             this.lblPointTickTimer.TabIndex = 0;
@@ -791,7 +815,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.dgvMembership);
+            this.groupBox4.Controls.Add(this.dataGridView2);
             this.groupBox4.Location = new System.Drawing.Point(306, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(734, 208);
@@ -799,18 +823,13 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Membership Levels";
             // 
-            // dgvMembership
+            // membershipLevelsBindingSource
             // 
-            this.dgvMembership.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMembership.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMembership.Location = new System.Drawing.Point(3, 16);
-            this.dgvMembership.Name = "dgvMembership";
-            this.dgvMembership.Size = new System.Drawing.Size(728, 189);
-            this.dgvMembership.TabIndex = 0;
+            this.membershipLevelsBindingSource.CurrentChanged += new System.EventHandler(this.membershipLevelsBindingSource_CurrentChanged);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.btnPointStart);
+            this.groupBox3.Controls.Add(this.btnPointInfoSave);
             this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.txtPointTickPerMinute);
@@ -820,19 +839,20 @@
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Location = new System.Drawing.Point(8, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(292, 68);
+            this.groupBox3.Size = new System.Drawing.Size(292, 76);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Point Timer";
             // 
             // btnPointStart
             // 
-            this.btnPointStart.Location = new System.Drawing.Point(7, 39);
+            this.btnPointStart.Location = new System.Drawing.Point(11, 19);
             this.btnPointStart.Name = "btnPointStart";
             this.btnPointStart.Size = new System.Drawing.Size(75, 23);
             this.btnPointStart.TabIndex = 7;
             this.btnPointStart.Text = "Start";
             this.btnPointStart.UseVisualStyleBackColor = true;
+            this.btnPointStart.Click += new System.EventHandler(this.btnPointStart_Click);
             // 
             // checkBox1
             // 
@@ -1036,6 +1056,10 @@
             // 
             this.iRCConnectionsTableAdapter.ClearBeforeFill = true;
             // 
+            // timerPoints
+            // 
+            this.timerPoints.Tick += new System.EventHandler(this.timerPoints_Tick);
+            // 
             // usersTableAdapter
             // 
             this.usersTableAdapter.ClearBeforeFill = true;
@@ -1047,6 +1071,71 @@
             // settingsTableAdapter
             // 
             this.settingsTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn1,
+            this.membershipLevelDataGridViewTextBoxColumn1,
+            this.multiplierDataGridViewTextBoxColumn,
+            this.membershipLevelNameDataGridViewTextBoxColumn});
+            this.dataGridView2.DataSource = this.membershipLevelsBindingSource1;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 16);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(728, 189);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // membershipLevelsBindingSource1
+            // 
+            this.membershipLevelsBindingSource1.DataMember = "MembershipLevels";
+            this.membershipLevelsBindingSource1.DataSource = this.commandBotDataSet;
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // membershipLevelDataGridViewTextBoxColumn1
+            // 
+            this.membershipLevelDataGridViewTextBoxColumn1.DataPropertyName = "MembershipLevel";
+            this.membershipLevelDataGridViewTextBoxColumn1.HeaderText = "MembershipLevel";
+            this.membershipLevelDataGridViewTextBoxColumn1.Name = "membershipLevelDataGridViewTextBoxColumn1";
+            // 
+            // multiplierDataGridViewTextBoxColumn
+            // 
+            this.multiplierDataGridViewTextBoxColumn.DataPropertyName = "Multiplier";
+            this.multiplierDataGridViewTextBoxColumn.HeaderText = "Multiplier";
+            this.multiplierDataGridViewTextBoxColumn.Name = "multiplierDataGridViewTextBoxColumn";
+            // 
+            // membershipLevelNameDataGridViewTextBoxColumn
+            // 
+            this.membershipLevelNameDataGridViewTextBoxColumn.DataPropertyName = "MembershipLevelName";
+            this.membershipLevelNameDataGridViewTextBoxColumn.HeaderText = "MembershipLevelName";
+            this.membershipLevelNameDataGridViewTextBoxColumn.Name = "membershipLevelNameDataGridViewTextBoxColumn";
+            // 
+            // btnPointInfoSave
+            // 
+            this.btnPointInfoSave.Location = new System.Drawing.Point(7, 43);
+            this.btnPointInfoSave.Name = "btnPointInfoSave";
+            this.btnPointInfoSave.Size = new System.Drawing.Size(75, 23);
+            this.btnPointInfoSave.TabIndex = 8;
+            this.btnPointInfoSave.Text = "Save";
+            this.btnPointInfoSave.UseVisualStyleBackColor = true;
+            // 
+            // btnPointTimerReset
+            // 
+            this.btnPointTimerReset.Location = new System.Drawing.Point(91, 19);
+            this.btnPointTimerReset.Name = "btnPointTimerReset";
+            this.btnPointTimerReset.Size = new System.Drawing.Size(75, 23);
+            this.btnPointTimerReset.TabIndex = 9;
+            this.btnPointTimerReset.Text = "Reset";
+            this.btnPointTimerReset.UseVisualStyleBackColor = true;
+            this.btnPointTimerReset.Click += new System.EventHandler(this.btnPointTimerReset_Click);
             // 
             // MainForm
             // 
@@ -1077,7 +1166,7 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMembership)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -1086,6 +1175,8 @@
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1167,7 +1258,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label lblPointTickTimer;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timerPoints;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource usersBindingSource;
         private CommandBotDataSetTableAdapters.UsersTableAdapter usersTableAdapter;
@@ -1186,9 +1277,19 @@
         private System.Windows.Forms.Button btnSaveGreeting;
         private System.Windows.Forms.BindingSource commandBotDataSetBindingSource;
         private System.Windows.Forms.Button btnMembershipUpdate;
-        private System.Windows.Forms.DataGridView dgvMembership;
         private CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter membershipLevelsTableAdapter;
         private CommandBotDataSetTableAdapters.SettingsTableAdapter settingsTableAdapter;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.BindingSource membershipLevelsBindingSource;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn membershipLevelDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn multiplierDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn membershipLevelNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource membershipLevelsBindingSource1;
+        private System.Windows.Forms.Timer timerBotMessages;
+        private System.Windows.Forms.Button btnPointInfoSave;
+        private System.Windows.Forms.Button btnPointTimerReset;
         
     }
 }
