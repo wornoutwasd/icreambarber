@@ -48,13 +48,13 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpConnInputs = new System.Windows.Forms.GroupBox();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnDeleteConnection = new System.Windows.Forms.Button();
             this.cbDefault = new System.Windows.Forms.CheckBox();
-            this.btnNew = new System.Windows.Forms.Button();
+            this.btnNewConnection = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtServer = new System.Windows.Forms.TextBox();
             this.txtChannel = new System.Windows.Forms.TextBox();
-            this.cancelButton = new System.Windows.Forms.Button();
+            this.btnCancelConnection = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtUser = new System.Windows.Forms.TextBox();
@@ -346,13 +346,13 @@
             // 
             // grpConnInputs
             // 
-            this.grpConnInputs.Controls.Add(this.btnDelete);
+            this.grpConnInputs.Controls.Add(this.btnDeleteConnection);
             this.grpConnInputs.Controls.Add(this.cbDefault);
-            this.grpConnInputs.Controls.Add(this.btnNew);
+            this.grpConnInputs.Controls.Add(this.btnNewConnection);
             this.grpConnInputs.Controls.Add(this.label1);
             this.grpConnInputs.Controls.Add(this.txtServer);
             this.grpConnInputs.Controls.Add(this.txtChannel);
-            this.grpConnInputs.Controls.Add(this.cancelButton);
+            this.grpConnInputs.Controls.Add(this.btnCancelConnection);
             this.grpConnInputs.Controls.Add(this.label2);
             this.grpConnInputs.Controls.Add(this.label5);
             this.grpConnInputs.Controls.Add(this.txtUser);
@@ -367,14 +367,14 @@
             this.grpConnInputs.TabIndex = 17;
             this.grpConnInputs.TabStop = false;
             // 
-            // btnDelete
+            // btnDeleteConnection
             // 
-            this.btnDelete.Location = new System.Drawing.Point(6, 178);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(66, 24);
-            this.btnDelete.TabIndex = 15;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDeleteConnection.Location = new System.Drawing.Point(6, 178);
+            this.btnDeleteConnection.Name = "btnDeleteConnection";
+            this.btnDeleteConnection.Size = new System.Drawing.Size(66, 24);
+            this.btnDeleteConnection.TabIndex = 15;
+            this.btnDeleteConnection.Text = "Delete";
+            this.btnDeleteConnection.UseVisualStyleBackColor = true;
             // 
             // cbDefault
             // 
@@ -386,14 +386,14 @@
             this.cbDefault.Text = "Default ?";
             this.cbDefault.UseVisualStyleBackColor = true;
             // 
-            // btnNew
+            // btnNewConnection
             // 
-            this.btnNew.Location = new System.Drawing.Point(6, 148);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(66, 24);
-            this.btnNew.TabIndex = 12;
-            this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNewConnection.Location = new System.Drawing.Point(6, 148);
+            this.btnNewConnection.Name = "btnNewConnection";
+            this.btnNewConnection.Size = new System.Drawing.Size(66, 24);
+            this.btnNewConnection.TabIndex = 12;
+            this.btnNewConnection.Text = "New";
+            this.btnNewConnection.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -418,15 +418,15 @@
             this.txtChannel.Size = new System.Drawing.Size(190, 20);
             this.txtChannel.TabIndex = 2;
             // 
-            // cancelButton
+            // btnCancelConnection
             // 
-            this.cancelButton.Location = new System.Drawing.Point(169, 167);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(80, 25);
-            this.cancelButton.TabIndex = 11;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            this.btnCancelConnection.Location = new System.Drawing.Point(169, 167);
+            this.btnCancelConnection.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelConnection.Name = "btnCancelConnection";
+            this.btnCancelConnection.Size = new System.Drawing.Size(80, 25);
+            this.btnCancelConnection.TabIndex = 11;
+            this.btnCancelConnection.Text = "Cancel";
+            this.btnCancelConnection.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -1212,11 +1212,11 @@
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.GroupBox grpConnInputs;
         private System.Windows.Forms.CheckBox cbDefault;
-        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnNewConnection;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtServer;
         private System.Windows.Forms.TextBox txtChannel;
-        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button btnCancelConnection;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtUser;
@@ -1254,7 +1254,7 @@
         private CommandBotDataSet commandBotDataSet;
         private System.Windows.Forms.BindingSource iRCConnectionsBindingSource;
         private CommandBotDataSetTableAdapters.IRCConnectionsTableAdapter iRCConnectionsTableAdapter;
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnDeleteConnection;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnBotMessageClear;
         private System.Windows.Forms.Label label19;
