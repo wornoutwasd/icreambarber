@@ -5674,20 +5674,12 @@ SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM d" +
                 "bo.Users";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"INSERT INTO Users
-                         (UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned)
-VALUES        (@UserName, DEFAULT, DEFAULT, DEFAULT, DEFAULT); 
-SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM Users WHERE (UserName = @UserName)";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5852,35 +5844,6 @@ SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM 
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(short MembershipLevel, double CurrentPoints, bool InGame, double TotalPointsEarned, string Original_UserName, short Original_MembershipLevel, double Original_CurrentPoints, bool Original_InGame, double Original_TotalPointsEarned) {
             return this.Update(Original_UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned, Original_UserName, Original_MembershipLevel, Original_CurrentPoints, Original_InGame, Original_TotalPointsEarned);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertQuery(string UserName) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
-            if ((UserName == null)) {
-                throw new global::System.ArgumentNullException("UserName");
-            }
-            else {
-                command.Parameters[0].Value = ((string)(UserName));
-            }
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
         }
     }
     
