@@ -72,13 +72,13 @@
     <Compile Include="CommandBotDataSet.cs">
       <DependentUpon>CommandBotDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="CommandBotDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CommandBotDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Classes\Delegates.cs" />
     <Compile Include="MainForm.cs">
@@ -106,17 +106,17 @@
     <None Include="app.config" />
     <None Include="CommandBotDataSet.xsc">
       <DependentUpon>CommandBotDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CommandBotDataSet.xsd">
+    <Content Include="CommandBotDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>CommandBotDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="CommandBotDataSet.xss">
       <DependentUpon>CommandBotDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

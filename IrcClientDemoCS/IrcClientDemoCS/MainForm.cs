@@ -54,7 +54,7 @@ namespace IrcClientDemoCS
             #region
             // TODO: This line of code loads data into the 'commandBotDataSet.MembershipLevels' table. You can move, or remove it, as needed.
             this.membershipLevelsTableAdapter.Fill(this.commandBotDataSet.MembershipLevels);
-            dt = this.membershipLevelsTableAdapter.GetData();
+            //dt = this.membershipLevelsTableAdapter.GetData();
             
             // TODO: This line of code loads data into the 'commandBotDataSet.Users' table. You can move, or remove it, as needed.
             this.usersTableAdapter.Fill(this.commandBotDataSet.Users);
@@ -434,7 +434,7 @@ namespace IrcClientDemoCS
         {
             //updates the row whenever a cell is changed.
             usersTableAdapter.UpdateQuery(Convert.ToInt16(gvUserAccounts.Rows[e.RowIndex].Cells[1].Value), Convert.ToDouble(gvUserAccounts.Rows[e.RowIndex].Cells[2].Value), Convert.ToBoolean(gvUserAccounts.Rows[e.RowIndex].Cells[3].Value), Convert.ToDouble(gvUserAccounts.Rows[e.RowIndex].Cells[4].Value), gvUserAccounts.Rows[e.RowIndex].Cells[0].Value.ToString(), gvUserAccounts.Rows[e.RowIndex].Cells[0].Value.ToString());
-            
+            //temp delete, trying to find out what is wiping the database
             usersTableAdapter.Fill(commandBotDataSet.Users);
             
         }
@@ -442,10 +442,9 @@ namespace IrcClientDemoCS
         private void gvUserAccounts_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             usersTableAdapter.DeleteQuery(e.Row.Cells[0].Value.ToString());
-
-            usersTableAdapter.GetData();
-            //this fubars it.. apparrently it doesn't update fast enough.
-            //usersTableAdapter.Fill(commandBotDataSet.Users);
+            //temp delete trying to figure out what is wiping the database.
+            //usersTableAdapter.GetData();
+            
             
         }
 
