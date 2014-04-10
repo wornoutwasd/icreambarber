@@ -48,6 +48,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpConnInputs = new System.Windows.Forms.GroupBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.btnDeleteConnection = new System.Windows.Forms.Button();
             this.cbDefault = new System.Windows.Forms.CheckBox();
             this.btnNewConnection = new System.Windows.Forms.Button();
@@ -72,7 +74,7 @@
             this.btnBotMessageClear = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.lstMessageQue = new System.Windows.Forms.ListBox();
-            this.label18 = new System.Windows.Forms.Label();
+            this.lblMessageTimer = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSaveBotCommands = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -116,7 +118,6 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.membershipLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currentPointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,43 +125,44 @@
             this.totalPointsEarnedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnDrawingChooseWinner = new System.Windows.Forms.Button();
+            this.btnDrawingActivate = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
+            this.lstRaffleEntries = new System.Windows.Forms.ListBox();
+            this.txtDrawingID = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.lstDrawings = new System.Windows.Forms.ListBox();
+            this.cbDrawingAutoAdvertise = new System.Windows.Forms.CheckBox();
+            this.btnDrawingDelete = new System.Windows.Forms.Button();
+            this.txtDrawingAdvertiseInterval = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtDrawingCost = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtDrawingCongrats = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtDrawingAdvertisement = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtDrawingEntryCommand = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtDrawingGiveAwayName = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.btnDrawingSave = new System.Windows.Forms.Button();
+            this.btnDrawingNew = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.membershipLevelsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.timerPoints = new System.Windows.Forms.Timer(this.components);
+            this.timerBotMessages = new System.Windows.Forms.Timer(this.components);
             this.commandBotDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iRCConnectionsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.IRCConnectionsTableAdapter();
-            this.timerPoints = new System.Windows.Forms.Timer(this.components);
             this.usersTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.UsersTableAdapter();
             this.membershipLevelsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter();
             this.settingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
-            this.timerBotMessages = new System.Windows.Forms.Timer(this.components);
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.btnDrawingNew = new System.Windows.Forms.Button();
-            this.btnDrawingSave = new System.Windows.Forms.Button();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtDrawingGiveAwayName = new System.Windows.Forms.TextBox();
-            this.txtDrawingEntryCommand = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtDrawingAdvertisement = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtDrawingCongrats = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtDrawingCost = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtDrawingAdvertiseInterval = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.btnDrawingDelete = new System.Windows.Forms.Button();
-            this.cbDrawingAutoAdvertise = new System.Windows.Forms.CheckBox();
-            this.lstDrawings = new System.Windows.Forms.ListBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.txtDrawingID = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.lstRaffleEntries = new System.Windows.Forms.ListBox();
-            this.btnDrawingActivate = new System.Windows.Forms.Button();
-            this.btnDrawingChooseWinner = new System.Windows.Forms.Button();
+            this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -181,10 +183,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.tabPage6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).BeginInit();
-            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstUsers
@@ -373,6 +376,8 @@
             // 
             // grpConnInputs
             // 
+            this.grpConnInputs.Controls.Add(this.label30);
+            this.grpConnInputs.Controls.Add(this.maskedTextBox1);
             this.grpConnInputs.Controls.Add(this.btnDeleteConnection);
             this.grpConnInputs.Controls.Add(this.cbDefault);
             this.grpConnInputs.Controls.Add(this.btnNewConnection);
@@ -390,13 +395,30 @@
             this.grpConnInputs.Controls.Add(this.label4);
             this.grpConnInputs.Location = new System.Drawing.Point(134, 10);
             this.grpConnInputs.Name = "grpConnInputs";
-            this.grpConnInputs.Size = new System.Drawing.Size(264, 208);
+            this.grpConnInputs.Size = new System.Drawing.Size(264, 228);
             this.grpConnInputs.TabIndex = 17;
             this.grpConnInputs.TabStop = false;
             // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(33, 144);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(21, 13);
+            this.label30.TabIndex = 17;
+            this.label30.Text = "ID:";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(60, 141);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.ReadOnly = true;
+            this.maskedTextBox1.Size = new System.Drawing.Size(61, 20);
+            this.maskedTextBox1.TabIndex = 16;
+            // 
             // btnDeleteConnection
             // 
-            this.btnDeleteConnection.Location = new System.Drawing.Point(6, 178);
+            this.btnDeleteConnection.Location = new System.Drawing.Point(6, 198);
             this.btnDeleteConnection.Name = "btnDeleteConnection";
             this.btnDeleteConnection.Size = new System.Drawing.Size(66, 24);
             this.btnDeleteConnection.TabIndex = 15;
@@ -406,7 +428,7 @@
             // cbDefault
             // 
             this.cbDefault.AutoSize = true;
-            this.cbDefault.Location = new System.Drawing.Point(104, 144);
+            this.cbDefault.Location = new System.Drawing.Point(169, 144);
             this.cbDefault.Name = "cbDefault";
             this.cbDefault.Size = new System.Drawing.Size(69, 17);
             this.cbDefault.TabIndex = 14;
@@ -415,7 +437,7 @@
             // 
             // btnNewConnection
             // 
-            this.btnNewConnection.Location = new System.Drawing.Point(6, 148);
+            this.btnNewConnection.Location = new System.Drawing.Point(6, 168);
             this.btnNewConnection.Name = "btnNewConnection";
             this.btnNewConnection.Size = new System.Drawing.Size(66, 24);
             this.btnNewConnection.TabIndex = 12;
@@ -447,7 +469,7 @@
             // 
             // btnCancelConnection
             // 
-            this.btnCancelConnection.Location = new System.Drawing.Point(169, 167);
+            this.btnCancelConnection.Location = new System.Drawing.Point(169, 198);
             this.btnCancelConnection.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelConnection.Name = "btnCancelConnection";
             this.btnCancelConnection.Size = new System.Drawing.Size(80, 25);
@@ -482,7 +504,7 @@
             // 
             // btnConnectionSave
             // 
-            this.btnConnectionSave.Location = new System.Drawing.Point(78, 167);
+            this.btnConnectionSave.Location = new System.Drawing.Point(78, 198);
             this.btnConnectionSave.Name = "btnConnectionSave";
             this.btnConnectionSave.Size = new System.Drawing.Size(86, 24);
             this.btnConnectionSave.TabIndex = 9;
@@ -504,7 +526,6 @@
             this.txtmPort.Name = "txtmPort";
             this.txtmPort.Size = new System.Drawing.Size(190, 20);
             this.txtmPort.TabIndex = 8;
-            this.txtmPort.Text = "6667";
             // 
             // txtOauth
             // 
@@ -513,7 +534,6 @@
             this.txtOauth.Name = "txtOauth";
             this.txtOauth.Size = new System.Drawing.Size(190, 20);
             this.txtOauth.TabIndex = 6;
-            this.txtOauth.Text = "oauth:5apvk3gardkvm4ekpp1wdf5vazso8jq";
             // 
             // label4
             // 
@@ -573,7 +593,7 @@
             this.groupBox5.Controls.Add(this.btnBotMessageClear);
             this.groupBox5.Controls.Add(this.label19);
             this.groupBox5.Controls.Add(this.lstMessageQue);
-            this.groupBox5.Controls.Add(this.label18);
+            this.groupBox5.Controls.Add(this.lblMessageTimer);
             this.groupBox5.Location = new System.Drawing.Point(588, 3);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(455, 191);
@@ -609,14 +629,15 @@
             this.lstMessageQue.Size = new System.Drawing.Size(245, 121);
             this.lstMessageQue.TabIndex = 1;
             // 
-            // label18
+            // lblMessageTimer
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(108, 16);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(90, 13);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "2 Second TIMER";
+            this.lblMessageTimer.AutoSize = true;
+            this.lblMessageTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessageTimer.Location = new System.Drawing.Point(76, 22);
+            this.lblMessageTimer.Name = "lblMessageTimer";
+            this.lblMessageTimer.Size = new System.Drawing.Size(65, 37);
+            this.lblMessageTimer.TabIndex = 0;
+            this.lblMessageTimer.Text = "0.0";
             // 
             // groupBox2
             // 
@@ -1037,25 +1058,17 @@
             this.dataGridView1.ColumnHeadersHeight = 25;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
             this.userNameDataGridViewTextBoxColumn,
             this.membershipLevelDataGridViewTextBoxColumn,
             this.currentPointsDataGridViewTextBoxColumn,
             this.inGameDataGridViewCheckBoxColumn,
             this.totalPointsEarnedDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.usersBindingSource;
+            this.dataGridView1.DataSource = this.usersBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 40;
             this.dataGridView1.Size = new System.Drawing.Size(1048, 204);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // userNameDataGridViewTextBoxColumn
             // 
@@ -1102,6 +1115,242 @@
             this.tabPage6.Text = "Drawings";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.btnDrawingChooseWinner);
+            this.groupBox7.Controls.Add(this.btnDrawingActivate);
+            this.groupBox7.Controls.Add(this.label29);
+            this.groupBox7.Controls.Add(this.lstRaffleEntries);
+            this.groupBox7.Controls.Add(this.txtDrawingID);
+            this.groupBox7.Controls.Add(this.label28);
+            this.groupBox7.Controls.Add(this.label27);
+            this.groupBox7.Controls.Add(this.lstDrawings);
+            this.groupBox7.Controls.Add(this.cbDrawingAutoAdvertise);
+            this.groupBox7.Controls.Add(this.btnDrawingDelete);
+            this.groupBox7.Controls.Add(this.txtDrawingAdvertiseInterval);
+            this.groupBox7.Controls.Add(this.label26);
+            this.groupBox7.Controls.Add(this.txtDrawingCost);
+            this.groupBox7.Controls.Add(this.label25);
+            this.groupBox7.Controls.Add(this.txtDrawingCongrats);
+            this.groupBox7.Controls.Add(this.label24);
+            this.groupBox7.Controls.Add(this.txtDrawingAdvertisement);
+            this.groupBox7.Controls.Add(this.label23);
+            this.groupBox7.Controls.Add(this.txtDrawingEntryCommand);
+            this.groupBox7.Controls.Add(this.label22);
+            this.groupBox7.Controls.Add(this.txtDrawingGiveAwayName);
+            this.groupBox7.Controls.Add(this.label21);
+            this.groupBox7.Controls.Add(this.btnDrawingSave);
+            this.groupBox7.Controls.Add(this.btnDrawingNew);
+            this.groupBox7.Location = new System.Drawing.Point(9, 4);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(1034, 237);
+            this.groupBox7.TabIndex = 0;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Drawings";
+            // 
+            // btnDrawingChooseWinner
+            // 
+            this.btnDrawingChooseWinner.Location = new System.Drawing.Point(644, 35);
+            this.btnDrawingChooseWinner.Name = "btnDrawingChooseWinner";
+            this.btnDrawingChooseWinner.Size = new System.Drawing.Size(108, 23);
+            this.btnDrawingChooseWinner.TabIndex = 23;
+            this.btnDrawingChooseWinner.Text = "Choose Winner!";
+            this.btnDrawingChooseWinner.UseVisualStyleBackColor = true;
+            // 
+            // btnDrawingActivate
+            // 
+            this.btnDrawingActivate.Location = new System.Drawing.Point(350, 209);
+            this.btnDrawingActivate.Name = "btnDrawingActivate";
+            this.btnDrawingActivate.Size = new System.Drawing.Size(108, 23);
+            this.btnDrawingActivate.TabIndex = 22;
+            this.btnDrawingActivate.Text = "Activate Drawing";
+            this.btnDrawingActivate.UseVisualStyleBackColor = true;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(499, 21);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(126, 13);
+            this.label29.TabIndex = 21;
+            this.label29.Text = "Current Giveaway Entries";
+            // 
+            // lstRaffleEntries
+            // 
+            this.lstRaffleEntries.FormattingEnabled = true;
+            this.lstRaffleEntries.Location = new System.Drawing.Point(486, 37);
+            this.lstRaffleEntries.Name = "lstRaffleEntries";
+            this.lstRaffleEntries.Size = new System.Drawing.Size(152, 160);
+            this.lstRaffleEntries.TabIndex = 20;
+            // 
+            // txtDrawingID
+            // 
+            this.txtDrawingID.Location = new System.Drawing.Point(40, 172);
+            this.txtDrawingID.Name = "txtDrawingID";
+            this.txtDrawingID.ReadOnly = true;
+            this.txtDrawingID.Size = new System.Drawing.Size(55, 20);
+            this.txtDrawingID.TabIndex = 19;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(6, 175);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(18, 13);
+            this.label28.TabIndex = 18;
+            this.label28.Text = "ID";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(359, 21);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(51, 13);
+            this.label27.TabIndex = 17;
+            this.label27.Text = "Drawings";
+            // 
+            // lstDrawings
+            // 
+            this.lstDrawings.FormattingEnabled = true;
+            this.lstDrawings.Location = new System.Drawing.Point(308, 37);
+            this.lstDrawings.Name = "lstDrawings";
+            this.lstDrawings.Size = new System.Drawing.Size(152, 160);
+            this.lstDrawings.TabIndex = 16;
+            // 
+            // cbDrawingAutoAdvertise
+            // 
+            this.cbDrawingAutoAdvertise.AutoSize = true;
+            this.cbDrawingAutoAdvertise.Location = new System.Drawing.Point(122, 174);
+            this.cbDrawingAutoAdvertise.Name = "cbDrawingAutoAdvertise";
+            this.cbDrawingAutoAdvertise.Size = new System.Drawing.Size(95, 17);
+            this.cbDrawingAutoAdvertise.TabIndex = 15;
+            this.cbDrawingAutoAdvertise.Text = "Auto Advertise";
+            this.cbDrawingAutoAdvertise.UseVisualStyleBackColor = true;
+            // 
+            // btnDrawingDelete
+            // 
+            this.btnDrawingDelete.Location = new System.Drawing.Point(236, 209);
+            this.btnDrawingDelete.Name = "btnDrawingDelete";
+            this.btnDrawingDelete.Size = new System.Drawing.Size(108, 23);
+            this.btnDrawingDelete.TabIndex = 14;
+            this.btnDrawingDelete.Text = "Delete Drawing";
+            this.btnDrawingDelete.UseVisualStyleBackColor = true;
+            // 
+            // txtDrawingAdvertiseInterval
+            // 
+            this.txtDrawingAdvertiseInterval.Location = new System.Drawing.Point(247, 146);
+            this.txtDrawingAdvertiseInterval.Name = "txtDrawingAdvertiseInterval";
+            this.txtDrawingAdvertiseInterval.Size = new System.Drawing.Size(55, 20);
+            this.txtDrawingAdvertiseInterval.TabIndex = 13;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(101, 149);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(140, 13);
+            this.label26.TabIndex = 12;
+            this.label26.Text = "Advertise Interval (Seconds)";
+            // 
+            // txtDrawingCost
+            // 
+            this.txtDrawingCost.Location = new System.Drawing.Point(40, 146);
+            this.txtDrawingCost.Name = "txtDrawingCost";
+            this.txtDrawingCost.Size = new System.Drawing.Size(55, 20);
+            this.txtDrawingCost.TabIndex = 11;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 149);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(28, 13);
+            this.label25.TabIndex = 10;
+            this.label25.Text = "Cost";
+            // 
+            // txtDrawingCongrats
+            // 
+            this.txtDrawingCongrats.Location = new System.Drawing.Point(101, 120);
+            this.txtDrawingCongrats.Name = "txtDrawingCongrats";
+            this.txtDrawingCongrats.Size = new System.Drawing.Size(201, 20);
+            this.txtDrawingCongrats.TabIndex = 9;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 123);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(80, 13);
+            this.label24.TabIndex = 8;
+            this.label24.Text = "Congratulations";
+            // 
+            // txtDrawingAdvertisement
+            // 
+            this.txtDrawingAdvertisement.Location = new System.Drawing.Point(101, 63);
+            this.txtDrawingAdvertisement.Multiline = true;
+            this.txtDrawingAdvertisement.Name = "txtDrawingAdvertisement";
+            this.txtDrawingAdvertisement.Size = new System.Drawing.Size(201, 49);
+            this.txtDrawingAdvertisement.TabIndex = 7;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 66);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(74, 13);
+            this.label23.TabIndex = 6;
+            this.label23.Text = "Advertisement";
+            // 
+            // txtDrawingEntryCommand
+            // 
+            this.txtDrawingEntryCommand.Location = new System.Drawing.Point(101, 37);
+            this.txtDrawingEntryCommand.Name = "txtDrawingEntryCommand";
+            this.txtDrawingEntryCommand.Size = new System.Drawing.Size(201, 20);
+            this.txtDrawingEntryCommand.TabIndex = 5;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 40);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(81, 13);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "Entry Command";
+            // 
+            // txtDrawingGiveAwayName
+            // 
+            this.txtDrawingGiveAwayName.Location = new System.Drawing.Point(101, 13);
+            this.txtDrawingGiveAwayName.Name = "txtDrawingGiveAwayName";
+            this.txtDrawingGiveAwayName.Size = new System.Drawing.Size(201, 20);
+            this.txtDrawingGiveAwayName.TabIndex = 3;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 16);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(89, 13);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "Give Away Name";
+            // 
+            // btnDrawingSave
+            // 
+            this.btnDrawingSave.Location = new System.Drawing.Point(122, 208);
+            this.btnDrawingSave.Name = "btnDrawingSave";
+            this.btnDrawingSave.Size = new System.Drawing.Size(108, 23);
+            this.btnDrawingSave.TabIndex = 1;
+            this.btnDrawingSave.Text = "Save Drawing";
+            this.btnDrawingSave.UseVisualStyleBackColor = true;
+            // 
+            // btnDrawingNew
+            // 
+            this.btnDrawingNew.Location = new System.Drawing.Point(6, 208);
+            this.btnDrawingNew.Name = "btnDrawingNew";
+            this.btnDrawingNew.Size = new System.Drawing.Size(108, 23);
+            this.btnDrawingNew.TabIndex = 0;
+            this.btnDrawingNew.Text = "New Drawing";
+            this.btnDrawingNew.UseVisualStyleBackColor = true;
+            // 
             // tabPage7
             // 
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
@@ -1144,6 +1393,14 @@
             // 
             this.membershipLevelsBindingSource.CurrentChanged += new System.EventHandler(this.membershipLevelsBindingSource_CurrentChanged);
             // 
+            // timerPoints
+            // 
+            this.timerPoints.Tick += new System.EventHandler(this.timerPoints_Tick);
+            // 
+            // timerBotMessages
+            // 
+            this.timerBotMessages.Tick += new System.EventHandler(this.timerBotMessages_Tick);
+            // 
             // commandBotDataSetBindingSource
             // 
             this.commandBotDataSetBindingSource.DataSource = this.commandBotDataSet;
@@ -1152,10 +1409,6 @@
             // iRCConnectionsTableAdapter
             // 
             this.iRCConnectionsTableAdapter.ClearBeforeFill = true;
-            // 
-            // timerPoints
-            // 
-            this.timerPoints.Tick += new System.EventHandler(this.timerPoints_Tick);
             // 
             // usersTableAdapter
             // 
@@ -1169,241 +1422,10 @@
             // 
             this.settingsTableAdapter.ClearBeforeFill = true;
             // 
-            // groupBox7
+            // usersBindingSource1
             // 
-            this.groupBox7.Controls.Add(this.btnDrawingChooseWinner);
-            this.groupBox7.Controls.Add(this.btnDrawingActivate);
-            this.groupBox7.Controls.Add(this.label29);
-            this.groupBox7.Controls.Add(this.lstRaffleEntries);
-            this.groupBox7.Controls.Add(this.txtDrawingID);
-            this.groupBox7.Controls.Add(this.label28);
-            this.groupBox7.Controls.Add(this.label27);
-            this.groupBox7.Controls.Add(this.lstDrawings);
-            this.groupBox7.Controls.Add(this.cbDrawingAutoAdvertise);
-            this.groupBox7.Controls.Add(this.btnDrawingDelete);
-            this.groupBox7.Controls.Add(this.txtDrawingAdvertiseInterval);
-            this.groupBox7.Controls.Add(this.label26);
-            this.groupBox7.Controls.Add(this.txtDrawingCost);
-            this.groupBox7.Controls.Add(this.label25);
-            this.groupBox7.Controls.Add(this.txtDrawingCongrats);
-            this.groupBox7.Controls.Add(this.label24);
-            this.groupBox7.Controls.Add(this.txtDrawingAdvertisement);
-            this.groupBox7.Controls.Add(this.label23);
-            this.groupBox7.Controls.Add(this.txtDrawingEntryCommand);
-            this.groupBox7.Controls.Add(this.label22);
-            this.groupBox7.Controls.Add(this.txtDrawingGiveAwayName);
-            this.groupBox7.Controls.Add(this.label21);
-            this.groupBox7.Controls.Add(this.btnDrawingSave);
-            this.groupBox7.Controls.Add(this.btnDrawingNew);
-            this.groupBox7.Location = new System.Drawing.Point(9, 4);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1034, 237);
-            this.groupBox7.TabIndex = 0;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Drawings";
-            // 
-            // btnDrawingNew
-            // 
-            this.btnDrawingNew.Location = new System.Drawing.Point(6, 208);
-            this.btnDrawingNew.Name = "btnDrawingNew";
-            this.btnDrawingNew.Size = new System.Drawing.Size(108, 23);
-            this.btnDrawingNew.TabIndex = 0;
-            this.btnDrawingNew.Text = "New Drawing";
-            this.btnDrawingNew.UseVisualStyleBackColor = true;
-            // 
-            // btnDrawingSave
-            // 
-            this.btnDrawingSave.Location = new System.Drawing.Point(122, 208);
-            this.btnDrawingSave.Name = "btnDrawingSave";
-            this.btnDrawingSave.Size = new System.Drawing.Size(108, 23);
-            this.btnDrawingSave.TabIndex = 1;
-            this.btnDrawingSave.Text = "Save Drawing";
-            this.btnDrawingSave.UseVisualStyleBackColor = true;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 16);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(89, 13);
-            this.label21.TabIndex = 2;
-            this.label21.Text = "Give Away Name";
-            // 
-            // txtDrawingGiveAwayName
-            // 
-            this.txtDrawingGiveAwayName.Location = new System.Drawing.Point(101, 13);
-            this.txtDrawingGiveAwayName.Name = "txtDrawingGiveAwayName";
-            this.txtDrawingGiveAwayName.Size = new System.Drawing.Size(201, 20);
-            this.txtDrawingGiveAwayName.TabIndex = 3;
-            // 
-            // txtDrawingEntryCommand
-            // 
-            this.txtDrawingEntryCommand.Location = new System.Drawing.Point(101, 37);
-            this.txtDrawingEntryCommand.Name = "txtDrawingEntryCommand";
-            this.txtDrawingEntryCommand.Size = new System.Drawing.Size(201, 20);
-            this.txtDrawingEntryCommand.TabIndex = 5;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 40);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(81, 13);
-            this.label22.TabIndex = 4;
-            this.label22.Text = "Entry Command";
-            // 
-            // txtDrawingAdvertisement
-            // 
-            this.txtDrawingAdvertisement.Location = new System.Drawing.Point(101, 63);
-            this.txtDrawingAdvertisement.Multiline = true;
-            this.txtDrawingAdvertisement.Name = "txtDrawingAdvertisement";
-            this.txtDrawingAdvertisement.Size = new System.Drawing.Size(201, 49);
-            this.txtDrawingAdvertisement.TabIndex = 7;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 66);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(74, 13);
-            this.label23.TabIndex = 6;
-            this.label23.Text = "Advertisement";
-            // 
-            // txtDrawingCongrats
-            // 
-            this.txtDrawingCongrats.Location = new System.Drawing.Point(101, 120);
-            this.txtDrawingCongrats.Name = "txtDrawingCongrats";
-            this.txtDrawingCongrats.Size = new System.Drawing.Size(201, 20);
-            this.txtDrawingCongrats.TabIndex = 9;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(6, 123);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(80, 13);
-            this.label24.TabIndex = 8;
-            this.label24.Text = "Congratulations";
-            // 
-            // txtDrawingCost
-            // 
-            this.txtDrawingCost.Location = new System.Drawing.Point(40, 146);
-            this.txtDrawingCost.Name = "txtDrawingCost";
-            this.txtDrawingCost.Size = new System.Drawing.Size(55, 20);
-            this.txtDrawingCost.TabIndex = 11;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 149);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(28, 13);
-            this.label25.TabIndex = 10;
-            this.label25.Text = "Cost";
-            // 
-            // txtDrawingAdvertiseInterval
-            // 
-            this.txtDrawingAdvertiseInterval.Location = new System.Drawing.Point(247, 146);
-            this.txtDrawingAdvertiseInterval.Name = "txtDrawingAdvertiseInterval";
-            this.txtDrawingAdvertiseInterval.Size = new System.Drawing.Size(55, 20);
-            this.txtDrawingAdvertiseInterval.TabIndex = 13;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(101, 149);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(140, 13);
-            this.label26.TabIndex = 12;
-            this.label26.Text = "Advertise Interval (Seconds)";
-            // 
-            // btnDrawingDelete
-            // 
-            this.btnDrawingDelete.Location = new System.Drawing.Point(236, 209);
-            this.btnDrawingDelete.Name = "btnDrawingDelete";
-            this.btnDrawingDelete.Size = new System.Drawing.Size(108, 23);
-            this.btnDrawingDelete.TabIndex = 14;
-            this.btnDrawingDelete.Text = "Delete Drawing";
-            this.btnDrawingDelete.UseVisualStyleBackColor = true;
-            // 
-            // cbDrawingAutoAdvertise
-            // 
-            this.cbDrawingAutoAdvertise.AutoSize = true;
-            this.cbDrawingAutoAdvertise.Location = new System.Drawing.Point(122, 174);
-            this.cbDrawingAutoAdvertise.Name = "cbDrawingAutoAdvertise";
-            this.cbDrawingAutoAdvertise.Size = new System.Drawing.Size(95, 17);
-            this.cbDrawingAutoAdvertise.TabIndex = 15;
-            this.cbDrawingAutoAdvertise.Text = "Auto Advertise";
-            this.cbDrawingAutoAdvertise.UseVisualStyleBackColor = true;
-            // 
-            // lstDrawings
-            // 
-            this.lstDrawings.FormattingEnabled = true;
-            this.lstDrawings.Location = new System.Drawing.Point(308, 37);
-            this.lstDrawings.Name = "lstDrawings";
-            this.lstDrawings.Size = new System.Drawing.Size(152, 160);
-            this.lstDrawings.TabIndex = 16;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(359, 21);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(51, 13);
-            this.label27.TabIndex = 17;
-            this.label27.Text = "Drawings";
-            // 
-            // txtDrawingID
-            // 
-            this.txtDrawingID.Location = new System.Drawing.Point(40, 172);
-            this.txtDrawingID.Name = "txtDrawingID";
-            this.txtDrawingID.ReadOnly = true;
-            this.txtDrawingID.Size = new System.Drawing.Size(55, 20);
-            this.txtDrawingID.TabIndex = 19;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(6, 175);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(18, 13);
-            this.label28.TabIndex = 18;
-            this.label28.Text = "ID";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(499, 21);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(126, 13);
-            this.label29.TabIndex = 21;
-            this.label29.Text = "Current Giveaway Entries";
-            // 
-            // lstRaffleEntries
-            // 
-            this.lstRaffleEntries.FormattingEnabled = true;
-            this.lstRaffleEntries.Location = new System.Drawing.Point(486, 37);
-            this.lstRaffleEntries.Name = "lstRaffleEntries";
-            this.lstRaffleEntries.Size = new System.Drawing.Size(152, 160);
-            this.lstRaffleEntries.TabIndex = 20;
-            // 
-            // btnDrawingActivate
-            // 
-            this.btnDrawingActivate.Location = new System.Drawing.Point(350, 209);
-            this.btnDrawingActivate.Name = "btnDrawingActivate";
-            this.btnDrawingActivate.Size = new System.Drawing.Size(108, 23);
-            this.btnDrawingActivate.TabIndex = 22;
-            this.btnDrawingActivate.Text = "Activate Drawing";
-            this.btnDrawingActivate.UseVisualStyleBackColor = true;
-            // 
-            // btnDrawingChooseWinner
-            // 
-            this.btnDrawingChooseWinner.Location = new System.Drawing.Point(644, 35);
-            this.btnDrawingChooseWinner.Name = "btnDrawingChooseWinner";
-            this.btnDrawingChooseWinner.Size = new System.Drawing.Size(108, 23);
-            this.btnDrawingChooseWinner.TabIndex = 23;
-            this.btnDrawingChooseWinner.Text = "Choose Winner!";
-            this.btnDrawingChooseWinner.UseVisualStyleBackColor = true;
+            this.usersBindingSource1.DataMember = "Users";
+            this.usersBindingSource1.DataSource = this.commandBotDataSet;
             // 
             // MainForm
             // 
@@ -1442,12 +1464,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.tabPage6.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).EndInit();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1526,7 +1549,7 @@
         private System.Windows.Forms.Button btnBotMessageClear;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ListBox lstMessageQue;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lblMessageTimer;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label lblPointTickTimer;
         private System.Windows.Forms.Timer timerPoints;
@@ -1586,6 +1609,9 @@
         private System.Windows.Forms.Button btnDrawingActivate;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.ListBox lstRaffleEntries;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.BindingSource usersBindingSource1;
         
     }
 }

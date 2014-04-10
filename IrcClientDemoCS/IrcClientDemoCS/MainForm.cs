@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using TechLifeForum;
 using System.Threading;
 using System.Data.SqlClient;
+using System.Collections;
+using IrcClientDemoCS.Classes;
 
 namespace IrcClientDemoCS
 {
@@ -31,6 +33,8 @@ namespace IrcClientDemoCS
         private static string minutespertick;
         DataTable dt = new DataTable();
         private static int intPointTimer;
+        private static int intMessageQueTimer = 20;
+        private static List<ChatBotMessage> listChatBotMessageQue = new List<ChatBotMessage>();
 
         public MainForm()
         {
@@ -95,6 +99,11 @@ namespace IrcClientDemoCS
             //Current default - pull from database            
             this.settingsTableAdapter.Fill(this.commandBotDataSet.Settings);
             
+            //initialize bot message timer
+            //--this is to keep the bot from getting banned for spamming.
+            timerBotMessages.Interval = 100;
+            timerBotMessages.Start();
+
             //set selected value
             if (commandBotDataSet.Settings.DataSet.Tables["Settings"].Rows[0]["GreetingPosition"].ToString() == "Before")
             {
@@ -173,10 +182,7 @@ namespace IrcClientDemoCS
         //fires when event delegates from IRC thread are accessed.
         private void AddListeners()
         {
-            // hopefully these are self explanitory (nope)
-            // you can also subscribe to events
-            // using a regular method that accepted
-            // the required parameters
+            //each of these listens for the event delegates and fires the methods below.
             irc.OnConnect += () =>
             {
                 // once we're connected show it and enable the send button
@@ -194,7 +200,16 @@ namespace IrcClientDemoCS
             {
                 rtbOutput.AppendText(u + ":\t" + m + "\n");
                 rtbOutput.ScrollToCaret();
-                
+                ChatBotMessage cbm = new ChatBotMessage();
+                cbm.User = u;
+                cbm.Channel = c;
+                cbm.Message = "";
+
+                if(m.Contains("!coins"))
+                {
+                    cbm.Message = cbm.User + " your coin amount is_Insert_Coin_Value_Here";
+                    AddQuedBotMessages(cbm);
+                }
             };
             irc.ServerMessage += (m) =>
             {
@@ -216,11 +231,31 @@ namespace IrcClientDemoCS
             //update users only works on initial load, adding userjoined / left -dave
             irc.UserJoined += (c, u) =>
             {
+                //add to active users
+
                 lstUsers.Items.Add(u);
-                irc.SendMessage(channel, "Welcome!" + u);
+                usersTableAdapter.InsertQuery(u);
+                usersTableAdapter.Fill(commandBotDataSet.Users);
+                //add a welcome message to the message que
+                ChatBotMessage cb = new ChatBotMessage();
+                cb.Channel = c;
+                cb.User = u;
+
+                if (greetingposition == "Before")
+                {
+                    cb.Message = u + greeting;
+                }
+                else 
+                {
+                    cb.Message = greeting + u;
+                }
+                
+                AddQuedBotMessages(cb);
+                //irc.SendMessage(channel, "Welcome!" + u);
             };
             irc.UserLeft += (c, u) =>
             {
+                //remove from active users
                 lstUsers.Items.Remove(u);
             };
 
@@ -283,7 +318,7 @@ namespace IrcClientDemoCS
             "Updated Point Settings", MessageBoxButtons.OK);
    
         }
-
+        //starts the timer for points
         private void btnPointStart_Click(object sender, EventArgs e)
         {
             if (timerPoints.Enabled == true)
@@ -358,9 +393,36 @@ namespace IrcClientDemoCS
         private void btnBotMessageClear_Click(object sender, EventArgs e)
         {
             lstMessageQue.Items.Clear();
+            listChatBotMessageQue.Clear();
+        }
+
+        private void AddQuedBotMessages(ChatBotMessage cbm)
+        {
+            listChatBotMessageQue.Add(cbm);
+            lstMessageQue.Items.Add(cbm.Message);            
+        }
+        private void executeQuedBotMessage()
+        {
+            if (lstMessageQue.Items.Count > 0)
+            {
+                irc.SendMessage(channel, listChatBotMessageQue[0].Message);
+                listChatBotMessageQue.RemoveAt(0);
+                lstMessageQue.Items.RemoveAt(0);
+            }
+        }
+        private void timerBotMessages_Tick(object sender, EventArgs e)
+        {
+            TimeSpan t = TimeSpan.FromMilliseconds(intMessageQueTimer * 100);
+            lblMessageTimer.Text = String.Format("{0:s\\.f}", t);
+            intMessageQueTimer--;
+                       
+            if (intMessageQueTimer < 0) intMessageQueTimer = 20;
+            if (intMessageQueTimer == 0) executeQuedBotMessage();
         }
 
         #endregion
+
+
 
 
        
