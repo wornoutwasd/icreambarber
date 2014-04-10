@@ -47,6 +47,8 @@ namespace IrcClientDemoCS
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'commandBotDataSet.Drawings' table. You can move, or remove it, as needed.
+            this.drawingsTableAdapter.Fill(this.commandBotDataSet.Drawings);
             
             //***Table Adapters
             #region
@@ -234,7 +236,9 @@ namespace IrcClientDemoCS
                 //add to active users
 
                 lstUsers.Items.Add(u);
-                usersTableAdapter.InsertQuery(u);
+                //insert try catch?
+                usersTableAdapter.InsertQuery1(u);
+                
                 usersTableAdapter.Fill(commandBotDataSet.Users);
                 //add a welcome message to the message que
                 ChatBotMessage cb = new ChatBotMessage();
@@ -422,6 +426,47 @@ namespace IrcClientDemoCS
 
         #endregion
 
+
+
+        //************User Accounts Tab Methods
+        #region
+        private void gvUserAccounts_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            //updates the row whenever a cell is changed.
+            usersTableAdapter.UpdateQuery(Convert.ToInt16(gvUserAccounts.Rows[e.RowIndex].Cells[1].Value), Convert.ToDouble(gvUserAccounts.Rows[e.RowIndex].Cells[2].Value), Convert.ToBoolean(gvUserAccounts.Rows[e.RowIndex].Cells[3].Value), Convert.ToDouble(gvUserAccounts.Rows[e.RowIndex].Cells[4].Value), gvUserAccounts.Rows[e.RowIndex].Cells[0].Value.ToString(), gvUserAccounts.Rows[e.RowIndex].Cells[0].Value.ToString());
+            
+            usersTableAdapter.Fill(commandBotDataSet.Users);
+            
+        }
+
+        private void gvUserAccounts_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            usersTableAdapter.DeleteQuery(e.Row.Cells[0].Value.ToString());
+
+            usersTableAdapter.GetData();
+            //this fubars it.. apparrently it doesn't update fast enough.
+            //usersTableAdapter.Fill(commandBotDataSet.Users);
+            
+        }
+
+
+        #endregion
+        private void lstDrawings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtDrawingGiveAwayName.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["GiveAwayName"].ToString();
+            txtDrawingEntryCommand.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["EntryCommand"].ToString();
+            txtDrawingAdvertisement.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Advertisement"].ToString();
+            txtDrawingCongrats.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Congratulations"].ToString();
+            txtDrawingCost.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Cost"].ToString();
+            txtDrawingAdvertiseInterval.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["AdvertiseInterval"].ToString();
+            cbDrawingAutoAdvertise.Checked = Convert.ToBoolean(commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["AutoAdvertise"]);
+            txtDrawingMaxTickets.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["MaxTickets"].ToString();
+            txtDrawingID.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Id"].ToString();
+        }
+
+        
+
+     
 
 
 

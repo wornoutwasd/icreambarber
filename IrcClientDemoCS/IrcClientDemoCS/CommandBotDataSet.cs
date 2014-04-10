@@ -2,6 +2,10 @@
     
     
     public partial class CommandBotDataSet {
+        partial class DrawingsDataTable
+        {
+        }
+    
         partial class UsersDataTable
         {
         }

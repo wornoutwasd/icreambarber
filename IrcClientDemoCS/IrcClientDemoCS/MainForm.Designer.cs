@@ -100,12 +100,11 @@
             this.lblPointTickTimer = new System.Windows.Forms.Label();
             this.btnPointStart = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvMembershipLevels = new System.Windows.Forms.DataGridView();
             this.membershipLevelDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.multiplierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.membershipLevelNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.membershipLevelsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.membershipLevelsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnPointInfoSave = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -117,13 +116,13 @@
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gvUserAccounts = new System.Windows.Forms.DataGridView();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.membershipLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currentPointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inGameDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.totalPointsEarnedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.btnDrawingChooseWinner = new System.Windows.Forms.Button();
@@ -154,7 +153,7 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.membershipLevelsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timerPoints = new System.Windows.Forms.Timer(this.components);
             this.timerBotMessages = new System.Windows.Forms.Timer(this.components);
             this.commandBotDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -162,7 +161,10 @@
             this.usersTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.UsersTableAdapter();
             this.membershipLevelsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter();
             this.settingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
-            this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.txtDrawingMaxTickets = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.drawingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.drawingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.DrawingsTableAdapter();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -176,18 +178,18 @@
             this.tabPage4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvMembershipLevels)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvUserAccounts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.tabPage8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drawingsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lstUsers
@@ -886,7 +888,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.dataGridView2);
+            this.groupBox4.Controls.Add(this.gvMembershipLevels);
             this.groupBox4.Location = new System.Drawing.Point(306, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(734, 208);
@@ -894,28 +896,21 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Membership Levels";
             // 
-            // dataGridView2
+            // gvMembershipLevels
             // 
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn1,
+            this.gvMembershipLevels.AllowUserToDeleteRows = false;
+            this.gvMembershipLevels.AutoGenerateColumns = false;
+            this.gvMembershipLevels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvMembershipLevels.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.membershipLevelDataGridViewTextBoxColumn1,
             this.multiplierDataGridViewTextBoxColumn,
             this.membershipLevelNameDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.membershipLevelsBindingSource1;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(728, 189);
-            this.dataGridView2.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.gvMembershipLevels.DataSource = this.membershipLevelsBindingSource;
+            this.gvMembershipLevels.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gvMembershipLevels.Location = new System.Drawing.Point(3, 16);
+            this.gvMembershipLevels.Name = "gvMembershipLevels";
+            this.gvMembershipLevels.Size = new System.Drawing.Size(728, 189);
+            this.gvMembershipLevels.TabIndex = 0;
             // 
             // membershipLevelDataGridViewTextBoxColumn1
             // 
@@ -935,10 +930,10 @@
             this.membershipLevelNameDataGridViewTextBoxColumn.HeaderText = "MembershipLevelName";
             this.membershipLevelNameDataGridViewTextBoxColumn.Name = "membershipLevelNameDataGridViewTextBoxColumn";
             // 
-            // membershipLevelsBindingSource1
+            // membershipLevelsBindingSource
             // 
-            this.membershipLevelsBindingSource1.DataMember = "MembershipLevels";
-            this.membershipLevelsBindingSource1.DataSource = this.commandBotDataSet;
+            this.membershipLevelsBindingSource.DataMember = "MembershipLevels";
+            this.membershipLevelsBindingSource.DataSource = this.commandBotDataSet;
             // 
             // groupBox3
             // 
@@ -1030,7 +1025,7 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.button1);
-            this.tabPage5.Controls.Add(this.dataGridView1);
+            this.tabPage5.Controls.Add(this.gvUserAccounts);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(1051, 244);
@@ -1048,27 +1043,30 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // gvUserAccounts
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gvUserAccounts.AllowUserToAddRows = false;
+            this.gvUserAccounts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeight = 25;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gvUserAccounts.AutoGenerateColumns = false;
+            this.gvUserAccounts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvUserAccounts.ColumnHeadersHeight = 25;
+            this.gvUserAccounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.gvUserAccounts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.userNameDataGridViewTextBoxColumn,
             this.membershipLevelDataGridViewTextBoxColumn,
             this.currentPointsDataGridViewTextBoxColumn,
             this.inGameDataGridViewCheckBoxColumn,
             this.totalPointsEarnedDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.usersBindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 40;
-            this.dataGridView1.Size = new System.Drawing.Size(1048, 204);
-            this.dataGridView1.TabIndex = 0;
+            this.gvUserAccounts.DataSource = this.usersBindingSource1;
+            this.gvUserAccounts.Location = new System.Drawing.Point(3, 3);
+            this.gvUserAccounts.Name = "gvUserAccounts";
+            this.gvUserAccounts.RowHeadersWidth = 40;
+            this.gvUserAccounts.Size = new System.Drawing.Size(1048, 204);
+            this.gvUserAccounts.TabIndex = 0;
+            this.gvUserAccounts.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvUserAccounts_CellEndEdit);
+            this.gvUserAccounts.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.gvUserAccounts_UserDeletingRow);
             // 
             // userNameDataGridViewTextBoxColumn
             // 
@@ -1100,10 +1098,10 @@
             this.totalPointsEarnedDataGridViewTextBoxColumn.HeaderText = "TotalPointsEarned";
             this.totalPointsEarnedDataGridViewTextBoxColumn.Name = "totalPointsEarnedDataGridViewTextBoxColumn";
             // 
-            // usersBindingSource
+            // usersBindingSource1
             // 
-            this.usersBindingSource.DataMember = "Users";
-            this.usersBindingSource.DataSource = this.commandBotDataSet;
+            this.usersBindingSource1.DataMember = "Users";
+            this.usersBindingSource1.DataSource = this.commandBotDataSet;
             // 
             // tabPage6
             // 
@@ -1117,6 +1115,8 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.txtDrawingMaxTickets);
+            this.groupBox7.Controls.Add(this.label18);
             this.groupBox7.Controls.Add(this.btnDrawingChooseWinner);
             this.groupBox7.Controls.Add(this.btnDrawingActivate);
             this.groupBox7.Controls.Add(this.label29);
@@ -1185,7 +1185,7 @@
             // 
             // txtDrawingID
             // 
-            this.txtDrawingID.Location = new System.Drawing.Point(40, 172);
+            this.txtDrawingID.Location = new System.Drawing.Point(246, 171);
             this.txtDrawingID.Name = "txtDrawingID";
             this.txtDrawingID.ReadOnly = true;
             this.txtDrawingID.Size = new System.Drawing.Size(55, 20);
@@ -1194,7 +1194,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(6, 175);
+            this.label28.Location = new System.Drawing.Point(222, 174);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(18, 13);
             this.label28.TabIndex = 18;
@@ -1211,16 +1211,20 @@
             // 
             // lstDrawings
             // 
+            this.lstDrawings.DataSource = this.drawingsBindingSource;
+            this.lstDrawings.DisplayMember = "GiveAwayName";
             this.lstDrawings.FormattingEnabled = true;
             this.lstDrawings.Location = new System.Drawing.Point(308, 37);
             this.lstDrawings.Name = "lstDrawings";
             this.lstDrawings.Size = new System.Drawing.Size(152, 160);
             this.lstDrawings.TabIndex = 16;
+            this.lstDrawings.ValueMember = "GiveAwayName";
+            this.lstDrawings.SelectedIndexChanged += new System.EventHandler(this.lstDrawings_SelectedIndexChanged);
             // 
             // cbDrawingAutoAdvertise
             // 
             this.cbDrawingAutoAdvertise.AutoSize = true;
-            this.cbDrawingAutoAdvertise.Location = new System.Drawing.Point(122, 174);
+            this.cbDrawingAutoAdvertise.Location = new System.Drawing.Point(135, 173);
             this.cbDrawingAutoAdvertise.Name = "cbDrawingAutoAdvertise";
             this.cbDrawingAutoAdvertise.Size = new System.Drawing.Size(95, 17);
             this.cbDrawingAutoAdvertise.TabIndex = 15;
@@ -1389,9 +1393,10 @@
             this.label20.TabIndex = 0;
             this.label20.Text = "Copyright 2014 - David Campbell";
             // 
-            // membershipLevelsBindingSource
+            // usersBindingSource
             // 
-            this.membershipLevelsBindingSource.CurrentChanged += new System.EventHandler(this.membershipLevelsBindingSource_CurrentChanged);
+            this.usersBindingSource.DataMember = "Users";
+            this.usersBindingSource.DataSource = this.commandBotDataSet;
             // 
             // timerPoints
             // 
@@ -1422,10 +1427,30 @@
             // 
             this.settingsTableAdapter.ClearBeforeFill = true;
             // 
-            // usersBindingSource1
+            // txtDrawingMaxTickets
             // 
-            this.usersBindingSource1.DataMember = "Users";
-            this.usersBindingSource1.DataSource = this.commandBotDataSet;
+            this.txtDrawingMaxTickets.Location = new System.Drawing.Point(74, 171);
+            this.txtDrawingMaxTickets.Name = "txtDrawingMaxTickets";
+            this.txtDrawingMaxTickets.Size = new System.Drawing.Size(55, 20);
+            this.txtDrawingMaxTickets.TabIndex = 25;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 174);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(65, 13);
+            this.label18.TabIndex = 24;
+            this.label18.Text = "Max Tickets";
+            // 
+            // drawingsBindingSource
+            // 
+            this.drawingsBindingSource.DataMember = "Drawings";
+            this.drawingsBindingSource.DataSource = this.commandBotDataSet;
+            // 
+            // drawingsTableAdapter
+            // 
+            this.drawingsTableAdapter.ClearBeforeFill = true;
             // 
             // MainForm
             // 
@@ -1456,21 +1481,21 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvMembershipLevels)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvUserAccounts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drawingsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1553,7 +1578,7 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label lblPointTickTimer;
         private System.Windows.Forms.Timer timerPoints;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gvUserAccounts;
         private System.Windows.Forms.BindingSource usersBindingSource;
         private CommandBotDataSetTableAdapters.UsersTableAdapter usersTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
@@ -1574,13 +1599,8 @@
         private CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter membershipLevelsTableAdapter;
         private CommandBotDataSetTableAdapters.SettingsTableAdapter settingsTableAdapter;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.BindingSource membershipLevelsBindingSource;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView gvMembershipLevels;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn membershipLevelDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn multiplierDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn membershipLevelNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource membershipLevelsBindingSource1;
         private System.Windows.Forms.Timer timerBotMessages;
         private System.Windows.Forms.Button btnPointInfoSave;
         private System.Windows.Forms.Button btnPointTimerReset;
@@ -1612,6 +1632,14 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.BindingSource usersBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn membershipLevelDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn multiplierDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn membershipLevelNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource membershipLevelsBindingSource;
+        private System.Windows.Forms.TextBox txtDrawingMaxTickets;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.BindingSource drawingsBindingSource;
+        private CommandBotDataSetTableAdapters.DrawingsTableAdapter drawingsTableAdapter;
         
     }
 }
