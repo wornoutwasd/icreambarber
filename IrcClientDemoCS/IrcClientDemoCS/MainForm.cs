@@ -31,7 +31,10 @@ namespace IrcClientDemoCS
         private static string greetingposition;
         private static string pointspertick;
         private static string minutespertick;
-        private static string currentgiveawaycmd;
+        private static string activegiveawaycmd;
+        private static string activegiveawayname;
+        private static int activegiveawaycost;
+        private static bool giveawayactive = false;
         DataTable dt = new DataTable();
         private static int intPointTimer;
         private static int intMessageQueTimer = 20;
@@ -203,16 +206,24 @@ namespace IrcClientDemoCS
             {
                 rtbOutput.AppendText(u + ":\t" + m + "\n");
                 rtbOutput.ScrollToCaret();
+
+                //respond to !coins request
                 ChatBotMessage cbm = new ChatBotMessage();
                 cbm.User = u;
                 cbm.Channel = c;
                 cbm.Message = "";
 
-                if(m.Contains("!coins"))
+                if(m.Contains(balancecmd))
                 {
-                    cbm.Message = cbm.User + " your coin amount is_Insert_Coin_Value_Here";
+                    DataTable dt = new DataTable();
+                    dt = usersTableAdapter.GetSpecificUserJoin(u);
+
+                    
+                    cbm.Message = cbm.User + " your coin amount " + dt.Rows[0]["CurrentPoints"].ToString();;
                     AddQuedBotMessages(cbm);
                 }
+
+
             };
             irc.ServerMessage += (m) =>
             {
