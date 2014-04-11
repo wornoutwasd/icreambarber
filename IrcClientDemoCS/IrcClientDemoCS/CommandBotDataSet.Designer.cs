@@ -36,8 +36,6 @@ namespace IrcClientDemoCS {
         
         private DrawingsDataTable tableDrawings;
         
-        private global::System.Data.DataRelation relationFK_MembershipLevels_Users;
-        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -316,7 +314,6 @@ namespace IrcClientDemoCS {
                     this.tableDrawings.InitVars();
                 }
             }
-            this.relationFK_MembershipLevels_Users = this.Relations["FK_MembershipLevels_Users"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -339,18 +336,6 @@ namespace IrcClientDemoCS {
             base.Tables.Add(this.tableMembershipLevels);
             this.tableDrawings = new DrawingsDataTable();
             base.Tables.Add(this.tableDrawings);
-            global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_MembershipLevels_Users", new global::System.Data.DataColumn[] {
-                        this.tableMembershipLevels.MembershipLevelColumn}, new global::System.Data.DataColumn[] {
-                        this.tableUsers.MembershipLevelColumn});
-            this.tableUsers.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_MembershipLevels_Users = new global::System.Data.DataRelation("FK_MembershipLevels_Users", new global::System.Data.DataColumn[] {
-                        this.tableMembershipLevels.MembershipLevelColumn}, new global::System.Data.DataColumn[] {
-                        this.tableUsers.MembershipLevelColumn}, false);
-            this.Relations.Add(this.relationFK_MembershipLevels_Users);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1636,17 +1621,14 @@ namespace IrcClientDemoCS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UsersRow AddUsersRow(string UserName, MembershipLevelsRow parentMembershipLevelsRowByFK_MembershipLevels_Users, double CurrentPoints, bool InGame, double TotalPointsEarned) {
+            public UsersRow AddUsersRow(string UserName, short MembershipLevel, double CurrentPoints, bool InGame, double TotalPointsEarned) {
                 UsersRow rowUsersRow = ((UsersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         UserName,
-                        null,
+                        MembershipLevel,
                         CurrentPoints,
                         InGame,
                         TotalPointsEarned};
-                if ((parentMembershipLevelsRowByFK_MembershipLevels_Users != null)) {
-                    columnValuesArray[1] = parentMembershipLevelsRowByFK_MembershipLevels_Users[0];
-                }
                 rowUsersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowUsersRow);
                 return rowUsersRow;
@@ -1951,13 +1933,6 @@ namespace IrcClientDemoCS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MembershipLevelsRow FindByMembershipLevel(short MembershipLevel) {
-                return ((MembershipLevelsRow)(this.Rows.Find(new object[] {
-                            MembershipLevel})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 MembershipLevelsDataTable cln = ((MembershipLevelsDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1987,10 +1962,7 @@ namespace IrcClientDemoCS {
                 base.Columns.Add(this.columnMultiplier);
                 this.columnMembershipLevelName = new global::System.Data.DataColumn("MembershipLevelName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMembershipLevelName);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnMembershipLevel}, true));
                 this.columnMembershipLevel.AllowDBNull = false;
-                this.columnMembershipLevel.Unique = true;
                 this.columnMultiplier.AllowDBNull = false;
                 this.columnMembershipLevelName.AllowDBNull = false;
                 this.columnMembershipLevelName.MaxLength = 50;
@@ -2833,17 +2805,6 @@ namespace IrcClientDemoCS {
                     this[this.tableUsers.TotalPointsEarnedColumn] = value;
                 }
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MembershipLevelsRow MembershipLevelsRow {
-                get {
-                    return ((MembershipLevelsRow)(this.GetParentRow(this.Table.ParentRelations["FK_MembershipLevels_Users"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_MembershipLevels_Users"]);
-                }
-            }
         }
         
         /// <summary>
@@ -2890,17 +2851,6 @@ namespace IrcClientDemoCS {
                 }
                 set {
                     this[this.tableMembershipLevels.MembershipLevelNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UsersRow[] GetUsersRows() {
-                if ((this.Table.ChildRelations["FK_MembershipLevels_Users"] == null)) {
-                    return new UsersRow[0];
-                }
-                else {
-                    return ((UsersRow[])(base.GetChildRows(this.Table.ChildRelations["FK_MembershipLevels_Users"])));
                 }
             }
         }
@@ -4874,7 +4824,7 @@ SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[8];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM d" +
@@ -4887,15 +4837,31 @@ SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM 
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"INSERT INTO Users
-                         (UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned)
-VALUES        (@UserName, DEFAULT, DEFAULT, DEFAULT, DEFAULT); 
-SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM Users WHERE (UserName = @UserName)";
+            this._commandCollection[2].CommandText = @"SELECT        Users.UserName, Users.CurrentPoints, Users.InGame, Users.TotalPointsEarned, MembershipLevels.MembershipLevel, MembershipLevels.Multiplier, 
+                         MembershipLevels.MembershipLevelName
+FROM            Users INNER JOIN
+                         MembershipLevels ON Users.MembershipLevel = MembershipLevels.MembershipLevel
+Where Users.UserName = @UserName";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"INSERT INTO Users
+            this._commandCollection[3].CommandText = @"SELECT        Users.UserName, Users.CurrentPoints, Users.InGame, Users.TotalPointsEarned, MembershipLevels.MembershipLevel, MembershipLevels.Multiplier, 
+                         MembershipLevels.MembershipLevelName
+FROM            Users INNER JOIN
+                         MembershipLevels ON Users.MembershipLevel = MembershipLevels.MembershipLevel";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = @"INSERT INTO Users
+                         (UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned)
+VALUES        (@UserName, DEFAULT, DEFAULT, DEFAULT, DEFAULT); 
+SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM Users WHERE (UserName = @UserName)";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = @"INSERT INTO Users
                          (UserName)
 SELECT        @UserName AS Expr1
 WHERE        (NOT EXISTS
@@ -4903,21 +4869,29 @@ WHERE        (NOT EXISTS
                                FROM            Users AS Users_1
                                WHERE        (UserName = @UserName))); 
 SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM Users WHERE (UserName = @UserName)";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = @"UPDATE       Users
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = @"UPDATE       Users
 SET                MembershipLevel = @MembershipLevel, CurrentPoints = @CurrentPoints, InGame = @InGame, TotalPointsEarned = @TotalPointsEarned
 WHERE        (UserName = @Original_UserName); 
 SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM Users WHERE (UserName = @UserName)";
-            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MembershipLevel", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "MembershipLevel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CurrentPoints", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "CurrentPoints", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InGame", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "InGame", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalPointsEarned", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPointsEarned", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MembershipLevel", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "MembershipLevel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CurrentPoints", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "CurrentPoints", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InGame", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "InGame", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalPointsEarned", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPointsEarned", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = "UPDATE       Users\r\nSET                CurrentPoints = @CurrentPoints, TotalPoint" +
+                "sEarned = @TotalPointsEarned\r\nWHERE        (UserName = @UserName); \r\n";
+            this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CurrentPoints", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "CurrentPoints", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalPointsEarned", global::System.Data.SqlDbType.Float, 8, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPointsEarned", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4939,6 +4913,66 @@ SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM 
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual CommandBotDataSet.UsersDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            CommandBotDataSet.UsersDataTable dataTable = new CommandBotDataSet.UsersDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBySpecificUserJoin(CommandBotDataSet.UsersDataTable dataTable, string UserName) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((UserName == null)) {
+                throw new global::System.ArgumentNullException("UserName");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(UserName));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual CommandBotDataSet.UsersDataTable GetSpecificUserJoin(string UserName) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((UserName == null)) {
+                throw new global::System.ArgumentNullException("UserName");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(UserName));
+            }
+            CommandBotDataSet.UsersDataTable dataTable = new CommandBotDataSet.UsersDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int fillUserspoints(CommandBotDataSet.UsersDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual CommandBotDataSet.UsersDataTable GetUsersPoints() {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             CommandBotDataSet.UsersDataTable dataTable = new CommandBotDataSet.UsersDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -5118,7 +5152,7 @@ SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM 
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertQuery(string UserName) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((UserName == null)) {
                 throw new global::System.ArgumentNullException("UserName");
             }
@@ -5147,7 +5181,7 @@ SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM 
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertQuery1(string UserName) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             if ((UserName == null)) {
                 throw new global::System.ArgumentNullException("UserName");
             }
@@ -5176,7 +5210,7 @@ SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM 
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateQuery(short MembershipLevel, double CurrentPoints, bool InGame, double TotalPointsEarned, string Original_UserName, string UserName) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
             command.Parameters[0].Value = ((short)(MembershipLevel));
             command.Parameters[1].Value = ((double)(CurrentPoints));
             command.Parameters[2].Value = ((bool)(InGame));
@@ -5192,6 +5226,37 @@ SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM 
             }
             else {
                 command.Parameters[5].Value = ((string)(UserName));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateUserPointandTotalQuery(double CurrentPoints, double TotalPointsEarned, string UserName) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
+            command.Parameters[0].Value = ((double)(CurrentPoints));
+            command.Parameters[1].Value = ((double)(TotalPointsEarned));
+            if ((UserName == null)) {
+                throw new global::System.ArgumentNullException("UserName");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(UserName));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5530,14 +5595,6 @@ SELECT MembershipLevel, Multiplier, MembershipLevelName FROM MembershipLevels WH
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(double Multiplier, string MembershipLevelName, short Original_MembershipLevel, double Original_Multiplier, string Original_MembershipLevelName) {
-            return this.Update(Original_MembershipLevel, Multiplier, MembershipLevelName, Original_MembershipLevel, Original_Multiplier, Original_MembershipLevelName);
         }
     }
     
@@ -6261,15 +6318,6 @@ SELECT Id, GiveAwayName, EntryCommand, Advertisement, Congratulations, Cost, Adv
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(CommandBotDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._membershipLevelsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.MembershipLevels.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._membershipLevelsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._iRCConnectionsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.IRCConnections.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -6306,6 +6354,15 @@ SELECT Id, GiveAwayName, EntryCommand, Advertisement, Congratulations, Cost, Adv
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._membershipLevelsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.MembershipLevels.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._membershipLevelsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._drawingsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Drawings.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -6325,14 +6382,6 @@ SELECT Id, GiveAwayName, EntryCommand, Advertisement, Congratulations, Cost, Adv
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(CommandBotDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._membershipLevelsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.MembershipLevels.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._membershipLevelsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._iRCConnectionsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.IRCConnections.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -6365,6 +6414,14 @@ SELECT Id, GiveAwayName, EntryCommand, Advertisement, Congratulations, Cost, Adv
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._membershipLevelsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.MembershipLevels.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._membershipLevelsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._drawingsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Drawings.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -6388,6 +6445,14 @@ SELECT Id, GiveAwayName, EntryCommand, Advertisement, Congratulations, Cost, Adv
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._drawingsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._membershipLevelsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.MembershipLevels.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._membershipLevelsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -6420,14 +6485,6 @@ SELECT Id, GiveAwayName, EntryCommand, Advertisement, Congratulations, Cost, Adv
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._iRCConnectionsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._membershipLevelsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.MembershipLevels.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._membershipLevelsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

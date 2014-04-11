@@ -236,7 +236,7 @@ namespace IrcClientDemoCS
                 //add to active users
 
                 lstUsers.Items.Add(u);
-                //insert try catch?
+                //inserts user if they are not in the database already
                 usersTableAdapter.InsertQuery1(u);
                 
                 usersTableAdapter.Fill(commandBotDataSet.Users);
@@ -270,6 +270,7 @@ namespace IrcClientDemoCS
             
         }
 
+        
         private void btnSend_Click(object sender, EventArgs e)
         {
             //does not submit to debug because it is outside of that fire event - add delegate to sendmessage maybe? -dave
@@ -294,6 +295,38 @@ namespace IrcClientDemoCS
 
         //**********Point Settings Tab Methods
         #region
+
+        private void GeneratePoints()
+        {
+            DataTable dtuserinfo = new DataTable();
+            //cycle through current users, find their membership level / multiplier, add points
+
+            dtuserinfo = usersTableAdapter.GetUsersPoints();
+            List<User> UsersList = new List<User>();
+
+           //cycle through current users list, this assumes that current users are in the DB already (they should be added on join)
+            for (int i = 0; i < lstUsers.Items.Count - 1; i++)
+            {
+                double dblNewPoints;
+                double dblNewTotalPoints;
+                double dblCalculatedPoints;
+                //get a table that cointains the user information
+                dtuserinfo = usersTableAdapter.GetSpecificUserJoin(lstUsers.Items[i].ToString());
+                //calcualte new values
+                dblCalculatedPoints = Convert.ToDouble(dtuserinfo.Rows[0]["Multiplier"]) * Convert.ToDouble(pointspertick);
+                dblNewPoints = Convert.ToDouble(dtuserinfo.Rows[0]["CurrentPoints"]) + dblCalculatedPoints;
+                dblNewTotalPoints = Convert.ToDouble(dtuserinfo.Rows[0]["TotalPointsEarned"]) + dblCalculatedPoints;
+                //Add points to that users
+                usersTableAdapter.UpdateUserPointandTotalQuery(dblNewPoints, dblNewTotalPoints, dtuserinfo.Rows[0]["UserName"].ToString());
+
+                usersTableAdapter.Fill(commandBotDataSet.Users);
+                
+
+            }
+            
+            
+        }
+
         private void btnMembershipUpdate_Click(object sender, EventArgs e)
         {
             
@@ -352,7 +385,7 @@ namespace IrcClientDemoCS
             if (intPointTimer < 0)
             {
                 intPointTimer = 60 * Convert.ToInt16(minutespertick);
-                // => method to save points
+                GeneratePoints();
             }
         }
 
@@ -450,6 +483,12 @@ namespace IrcClientDemoCS
 
 
         #endregion
+
+
+        //************Drawings Tab Methods
+        #region
+
+
         private void lstDrawings_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtDrawingGiveAwayName.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["GiveAwayName"].ToString();
@@ -463,13 +502,18 @@ namespace IrcClientDemoCS
             txtDrawingID.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Id"].ToString();
         }
 
-        
 
-     
+        #endregion
+
+        private void btnPointTest_Click(object sender, EventArgs e)
+        {
+            GeneratePoints();
+        }
 
 
 
-       
+
+
 
 
 

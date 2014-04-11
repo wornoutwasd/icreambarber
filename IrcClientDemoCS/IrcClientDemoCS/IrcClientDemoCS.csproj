@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ChatBotMessage.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="CommandBotDataSet.cs">
       <DependentUpon>CommandBotDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>

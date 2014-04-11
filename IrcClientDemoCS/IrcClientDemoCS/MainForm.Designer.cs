@@ -125,6 +125,8 @@
             this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.txtDrawingMaxTickets = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.btnDrawingChooseWinner = new System.Windows.Forms.Button();
             this.btnDrawingActivate = new System.Windows.Forms.Button();
             this.label29 = new System.Windows.Forms.Label();
@@ -133,6 +135,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.lstDrawings = new System.Windows.Forms.ListBox();
+            this.drawingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbDrawingAutoAdvertise = new System.Windows.Forms.CheckBox();
             this.btnDrawingDelete = new System.Windows.Forms.Button();
             this.txtDrawingAdvertiseInterval = new System.Windows.Forms.TextBox();
@@ -161,10 +164,8 @@
             this.usersTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.UsersTableAdapter();
             this.membershipLevelsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter();
             this.settingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
-            this.txtDrawingMaxTickets = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.drawingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.drawingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.DrawingsTableAdapter();
+            this.btnPointTest = new System.Windows.Forms.Button();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -186,10 +187,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.drawingsBindingSource)).BeginInit();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drawingsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lstUsers
@@ -813,6 +814,7 @@
             // tabPage4
             // 
             this.tabPage4.AutoScroll = true;
+            this.tabPage4.Controls.Add(this.btnPointTest);
             this.tabPage4.Controls.Add(this.button2);
             this.tabPage4.Controls.Add(this.btnMembershipUpdate);
             this.tabPage4.Controls.Add(this.groupBox6);
@@ -1148,6 +1150,22 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Drawings";
             // 
+            // txtDrawingMaxTickets
+            // 
+            this.txtDrawingMaxTickets.Location = new System.Drawing.Point(74, 171);
+            this.txtDrawingMaxTickets.Name = "txtDrawingMaxTickets";
+            this.txtDrawingMaxTickets.Size = new System.Drawing.Size(55, 20);
+            this.txtDrawingMaxTickets.TabIndex = 25;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 174);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(65, 13);
+            this.label18.TabIndex = 24;
+            this.label18.Text = "Max Tickets";
+            // 
             // btnDrawingChooseWinner
             // 
             this.btnDrawingChooseWinner.Location = new System.Drawing.Point(644, 35);
@@ -1220,6 +1238,11 @@
             this.lstDrawings.TabIndex = 16;
             this.lstDrawings.ValueMember = "GiveAwayName";
             this.lstDrawings.SelectedIndexChanged += new System.EventHandler(this.lstDrawings_SelectedIndexChanged);
+            // 
+            // drawingsBindingSource
+            // 
+            this.drawingsBindingSource.DataMember = "Drawings";
+            this.drawingsBindingSource.DataSource = this.commandBotDataSet;
             // 
             // cbDrawingAutoAdvertise
             // 
@@ -1427,30 +1450,19 @@
             // 
             this.settingsTableAdapter.ClearBeforeFill = true;
             // 
-            // txtDrawingMaxTickets
-            // 
-            this.txtDrawingMaxTickets.Location = new System.Drawing.Point(74, 171);
-            this.txtDrawingMaxTickets.Name = "txtDrawingMaxTickets";
-            this.txtDrawingMaxTickets.Size = new System.Drawing.Size(55, 20);
-            this.txtDrawingMaxTickets.TabIndex = 25;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 174);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(65, 13);
-            this.label18.TabIndex = 24;
-            this.label18.Text = "Max Tickets";
-            // 
-            // drawingsBindingSource
-            // 
-            this.drawingsBindingSource.DataMember = "Drawings";
-            this.drawingsBindingSource.DataSource = this.commandBotDataSet;
-            // 
             // drawingsTableAdapter
             // 
             this.drawingsTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnPointTest
+            // 
+            this.btnPointTest.Location = new System.Drawing.Point(48, 189);
+            this.btnPointTest.Name = "btnPointTest";
+            this.btnPointTest.Size = new System.Drawing.Size(199, 23);
+            this.btnPointTest.TabIndex = 10;
+            this.btnPointTest.Text = "txtPointTest";
+            this.btnPointTest.UseVisualStyleBackColor = true;
+            this.btnPointTest.Click += new System.EventHandler(this.btnPointTest_Click);
             // 
             // MainForm
             // 
@@ -1491,11 +1503,11 @@
             this.tabPage6.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.drawingsBindingSource)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drawingsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1640,6 +1652,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.BindingSource drawingsBindingSource;
         private CommandBotDataSetTableAdapters.DrawingsTableAdapter drawingsTableAdapter;
+        private System.Windows.Forms.Button btnPointTest;
         
     }
 }
