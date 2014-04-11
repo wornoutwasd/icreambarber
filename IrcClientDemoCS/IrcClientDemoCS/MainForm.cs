@@ -31,7 +31,7 @@ namespace IrcClientDemoCS
         private static string greetingposition;
         private static string pointspertick;
         private static string minutespertick;
-        private static string activegiveawaycmd;
+        private static string activegiveawaycmd = "(BF)#@:QAHS()DHP!@#$";//yup
         private static string activegiveawayname;
         private static int activegiveawaycost;
         private static bool giveawayactive = false;
@@ -202,6 +202,7 @@ namespace IrcClientDemoCS
             Listening = true;
             
             //fires on event delegates
+            
             irc.ChannelMessage += (c, u, m) =>
             {
                 rtbOutput.AppendText(u + ":\t" + m + "\n");
@@ -218,13 +219,15 @@ namespace IrcClientDemoCS
                     DataTable dt = new DataTable();
                     dt = usersTableAdapter.GetSpecificUserJoin(u);
 
-                    
+
                     cbm.Message = cbm.User + " your coin amount " + dt.Rows[0]["CurrentPoints"].ToString();;
                     AddQuedBotMessages(cbm);
                 }
                 //enters a giveaway
                 if(m.Contains(activegiveawaycmd))
                 {
+                    //remove decimals to create ints for parsing
+                    m.Replace('.', ' ');
                     string[] givearray = m.Split(' ');
                     int commandposition;
                     int entryamount = 0;
@@ -233,7 +236,7 @@ namespace IrcClientDemoCS
                     bool validamount = false;
                     //find the command and the amount of tickets requested
                     for (int i = 0; i < givearray.Count(); i++)
-                    { 
+                    {
                         if(givearray[i] == activegiveawaycmd)
                         {
                             commandposition = i;
@@ -242,19 +245,45 @@ namespace IrcClientDemoCS
                             if(givearray.Count() - i > 1)//check this again
                             {
                                 //check to see if that next item is a number
-                                validcmdformat = Int32.TryParse(givearray[i+1], out entryamount);
+                                validcmdformat =Int32.TryParse(givearray[i+1], out entryamount);
                                 if(validcmdformat == true)
                                 {
-                                    //if the item is a number make sure they have enough points to afford the number of tickets
-                                    if(activegiveawaycost * entryamount < usersTableAdapter.ReturnUserPointValueQuery(u))
+                                    //if the item is a number make sure theyhave enough points to afford the number of tickets
+                                    if (activegiveawaycost * entryamount < usersTableAdapter.ReturnUserPointValueQuery(u) && entryamount > 0)
                                     {
-                                        
+                                        double totalspent = entryamount * activegiveawaycost;
+                                        //Inform user via messageque
+                                        cbm.Message = u + ", You entered the contest and purchased " + entryamount.ToString() + " tickets at a cost of " + totalspent.ToString() + ". Goodluck!";
+                                        AddQuedBotMessages(cbm);
+                                        Enterdrawing(entryamount, u);
+                                        //Subtract number of tickets - might have to add total variable - write query
+                                        double result = Convert.ToDouble(usersTableAdapter.ReturnUserPointValueQuery(u)) - (Convert.ToDouble(entryamount) * activegiveawaycost);
+                                        usersTableAdapter.UpdateUserPoints(result, u);
+                                        usersTableAdapter.Fill(commandBotDataSet.Users);
+
                                     }
+                                    else if(entryamount < 0)
+                                    {
+                                        cbm.Message = u + ", you can't buy negative tickets...";
+                                        AddQuedBotMessages(cbm);
+                                    }
+                                    else
+                                    {
+                                        cbm.Message = u + ", you Can't afford that many tickets!";
+                                        AddQuedBotMessages(cbm);
+                                    }
+
                                 }
                                 else
                                 {
-                                    cbm.Message = u + " you entered an invalid giveaaway ticket amount. please use the correct command: ![giveawaycommand] [#oftickets]";
+                                    cbm.Message = u + ", you entered an invalid contest ticket amount. please use the correct command:![contestcommand] [#oftickets]";
+                                    AddQuedBotMessages(cbm);
                                 }
+                            }
+                            else
+                            {
+                                cbm.Message = u + ", you entered an invalid contest ticket amount. please use the correct command: ![contestcommand] [#oftickets]";
+                                AddQuedBotMessages(cbm);
                             }
                             break;
                         }
@@ -262,11 +291,12 @@ namespace IrcClientDemoCS
 
                     if (foundcmdposition == true)
                     {
-                        
+
                     }
                     else
                     {
                         cbm.Message = cbm.User + " your giveaway entry request is not in the valid format";
+                        AddQuedBotMessages(cbm);
                     }
 
 
@@ -582,13 +612,40 @@ namespace IrcClientDemoCS
         }
 
 
+        private void Enterdrawing(int entries, string user)
+        {
+            for (int i = 0; i < entries; i++)
+            {
+                lstRaffleEntries.Items.Add(user);
+            }
+        
+        }
+
         #endregion
 
-        
+
 
         private void btnDrawingActivate_Click(object sender, EventArgs e)
         {
-
+            if (giveawayactive == false)
+            {
+                giveawayactive = true;
+                lstDrawings.Enabled = false;
+                grpDrawingsEdit.Enabled = false;
+                btnDrawingActivate.Text = "Deactivate Drawing";
+                activegiveawaycmd = txtDrawingEntryCommand.Text;
+                activegiveawaycost = Convert.ToInt16(txtDrawingCost.Text);
+            }
+            else
+            {
+                giveawayactive = false;
+                lstDrawings.Enabled = true;
+                grpDrawingsEdit.Enabled = true;
+                btnDrawingActivate.Text = "Activate Drawing";
+                activegiveawaycmd = "ON@)(#*H:O@!NP(";//yup
+                activegiveawaycost = 0;
+            }
+            
         }
 
 
