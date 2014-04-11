@@ -201,7 +201,7 @@ namespace IrcClientDemoCS
 
             Listening = true;
             
-            //confusing as fuck
+            //fires on event delegates
             irc.ChannelMessage += (c, u, m) =>
             {
                 rtbOutput.AppendText(u + ":\t" + m + "\n");
@@ -212,7 +212,7 @@ namespace IrcClientDemoCS
                 cbm.User = u;
                 cbm.Channel = c;
                 cbm.Message = "";
-
+                //returns a point balance
                 if(m.Contains(balancecmd))
                 {
                     DataTable dt = new DataTable();
@@ -221,6 +221,66 @@ namespace IrcClientDemoCS
                     
                     cbm.Message = cbm.User + " your coin amount " + dt.Rows[0]["CurrentPoints"].ToString();;
                     AddQuedBotMessages(cbm);
+                }
+                //enters a giveaway
+                if(m.Contains(activegiveawaycmd))
+                {
+                    string[] givearray = m.Split(' ');
+                    int commandposition;
+                    int entryamount = 0;
+                    bool foundcmdposition = false;
+                    bool validcmdformat = false;
+                    bool validamount = false;
+                    //find the command and the amount of tickets requested
+                    for (int i = 0; i < givearray.Count(); i++)
+                    { 
+                        if(givearray[i] == activegiveawaycmd)
+                        {
+                            commandposition = i;
+                            foundcmdposition = true;
+                            //check next item in array to see if it is a valid number
+                            if(givearray.Count() - i > 1)//check this again
+                            {
+                                //check to see if that next item is a number
+                                validcmdformat = Int32.TryParse(givearray[i+1], out entryamount);
+                                if(validcmdformat == true)
+                                {
+                                    //if the item is a number make sure they have enough points to afford the number of tickets
+                                    if(activegiveawaycost * entryamount < usersTableAdapter.ReturnUserPointValueQuery(u))
+                                    {
+                                        
+                                    }
+                                }
+                                else
+                                {
+                                    cbm.Message = u + " you entered an invalid giveaaway ticket amount. please use the correct command: ![giveawaycommand] [#oftickets]";
+                                }
+                            }
+                            break;
+                        }
+                    }
+
+                    if (foundcmdposition == true)
+                    {
+                        
+                    }
+                    else
+                    {
+                        cbm.Message = cbm.User + " your giveaway entry request is not in the valid format";
+                    }
+
+
+
+                }
+                //trades with a player
+                if(m.Contains(tradecmd))
+                {
+                
+                }
+                //plays a gambling game
+                if (m.Contains(gamblecmd))
+                { 
+                
                 }
 
 
@@ -232,7 +292,7 @@ namespace IrcClientDemoCS
             };
             irc.DebugChannelMessage += (m) =>
             {
-                //can't get this to work because it is not in the right thread? how do you add it to thread?
+                //items are thread dependent so I added a new delegate to the IRC class for the debug output that mirriors channel output before it is parced.
                 rtbDebug.AppendText(m + "\n");
                 rtbDebug.ScrollToCaret();
 
