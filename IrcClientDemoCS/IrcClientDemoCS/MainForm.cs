@@ -31,6 +31,7 @@ namespace IrcClientDemoCS
         private static string greetingposition;
         private static string pointspertick;
         private static string minutespertick;
+        private static string currentgiveawaycmd;
         DataTable dt = new DataTable();
         private static int intPointTimer;
         private static int intMessageQueTimer = 20;
@@ -305,7 +306,7 @@ namespace IrcClientDemoCS
             List<User> UsersList = new List<User>();
 
            //cycle through current users list, this assumes that current users are in the DB already (they should be added on join)
-            for (int i = 0; i < lstUsers.Items.Count - 1; i++)
+            for (int i = 0; i < lstUsers.Items.Count; i++)
             {
                 double dblNewPoints;
                 double dblNewTotalPoints;
@@ -393,6 +394,13 @@ namespace IrcClientDemoCS
         {
             intPointTimer = 60 * Convert.ToInt16(minutespertick);
         }
+
+        private void btnPointTest_Click(object sender, EventArgs e)
+        {
+            GeneratePoints();
+        }
+
+
         #endregion
 
 
@@ -505,9 +513,11 @@ namespace IrcClientDemoCS
 
         #endregion
 
-        private void btnPointTest_Click(object sender, EventArgs e)
+        
+
+        private void btnDrawingActivate_Click(object sender, EventArgs e)
         {
-            GeneratePoints();
+
         }
 
 

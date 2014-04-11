@@ -93,6 +93,7 @@
             this.txtGreetingMsg = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnPointTest = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnMembershipUpdate = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -115,7 +116,6 @@
             this.txtPointsPerTick = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
             this.gvUserAccounts = new System.Windows.Forms.DataGridView();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.membershipLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -137,7 +137,6 @@
             this.lstDrawings = new System.Windows.Forms.ListBox();
             this.drawingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbDrawingAutoAdvertise = new System.Windows.Forms.CheckBox();
-            this.btnDrawingDelete = new System.Windows.Forms.Button();
             this.txtDrawingAdvertiseInterval = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.txtDrawingCost = new System.Windows.Forms.TextBox();
@@ -165,7 +164,6 @@
             this.membershipLevelsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter();
             this.settingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
             this.drawingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.DrawingsTableAdapter();
-            this.btnPointTest = new System.Windows.Forms.Button();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -827,6 +825,16 @@
             this.tabPage4.Text = "Point Settings";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // btnPointTest
+            // 
+            this.btnPointTest.Location = new System.Drawing.Point(48, 189);
+            this.btnPointTest.Name = "btnPointTest";
+            this.btnPointTest.Size = new System.Drawing.Size(199, 23);
+            this.btnPointTest.TabIndex = 10;
+            this.btnPointTest.Text = "txtPointTest";
+            this.btnPointTest.UseVisualStyleBackColor = true;
+            this.btnPointTest.Click += new System.EventHandler(this.btnPointTest_Click);
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(763, 213);
@@ -1026,7 +1034,6 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.button1);
             this.tabPage5.Controls.Add(this.gvUserAccounts);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
@@ -1034,16 +1041,6 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "User Accounts";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(8, 218);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // gvUserAccounts
             // 
@@ -1128,7 +1125,6 @@
             this.groupBox7.Controls.Add(this.label27);
             this.groupBox7.Controls.Add(this.lstDrawings);
             this.groupBox7.Controls.Add(this.cbDrawingAutoAdvertise);
-            this.groupBox7.Controls.Add(this.btnDrawingDelete);
             this.groupBox7.Controls.Add(this.txtDrawingAdvertiseInterval);
             this.groupBox7.Controls.Add(this.label26);
             this.groupBox7.Controls.Add(this.txtDrawingCost);
@@ -1177,12 +1173,13 @@
             // 
             // btnDrawingActivate
             // 
-            this.btnDrawingActivate.Location = new System.Drawing.Point(350, 209);
+            this.btnDrawingActivate.Location = new System.Drawing.Point(326, 203);
             this.btnDrawingActivate.Name = "btnDrawingActivate";
             this.btnDrawingActivate.Size = new System.Drawing.Size(108, 23);
             this.btnDrawingActivate.TabIndex = 22;
             this.btnDrawingActivate.Text = "Activate Drawing";
             this.btnDrawingActivate.UseVisualStyleBackColor = true;
+            this.btnDrawingActivate.Click += new System.EventHandler(this.btnDrawingActivate_Click);
             // 
             // label29
             // 
@@ -1253,15 +1250,6 @@
             this.cbDrawingAutoAdvertise.TabIndex = 15;
             this.cbDrawingAutoAdvertise.Text = "Auto Advertise";
             this.cbDrawingAutoAdvertise.UseVisualStyleBackColor = true;
-            // 
-            // btnDrawingDelete
-            // 
-            this.btnDrawingDelete.Location = new System.Drawing.Point(236, 209);
-            this.btnDrawingDelete.Name = "btnDrawingDelete";
-            this.btnDrawingDelete.Size = new System.Drawing.Size(108, 23);
-            this.btnDrawingDelete.TabIndex = 14;
-            this.btnDrawingDelete.Text = "Delete Drawing";
-            this.btnDrawingDelete.UseVisualStyleBackColor = true;
             // 
             // txtDrawingAdvertiseInterval
             // 
@@ -1454,16 +1442,6 @@
             // 
             this.drawingsTableAdapter.ClearBeforeFill = true;
             // 
-            // btnPointTest
-            // 
-            this.btnPointTest.Location = new System.Drawing.Point(48, 189);
-            this.btnPointTest.Name = "btnPointTest";
-            this.btnPointTest.Size = new System.Drawing.Size(199, 23);
-            this.btnPointTest.TabIndex = 10;
-            this.btnPointTest.Text = "txtPointTest";
-            this.btnPointTest.UseVisualStyleBackColor = true;
-            this.btnPointTest.Click += new System.EventHandler(this.btnPointTest_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1599,7 +1577,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn currentPointsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn inGameDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPointsEarnedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label20;
@@ -1620,7 +1597,6 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ListBox lstDrawings;
         private System.Windows.Forms.CheckBox cbDrawingAutoAdvertise;
-        private System.Windows.Forms.Button btnDrawingDelete;
         private System.Windows.Forms.TextBox txtDrawingAdvertiseInterval;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtDrawingCost;
