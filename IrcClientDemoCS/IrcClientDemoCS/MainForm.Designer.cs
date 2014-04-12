@@ -42,7 +42,6 @@
             this.lblDebug = new System.Windows.Forms.Label();
             this.lblPort = new System.Windows.Forms.Label();
             this.lblChannel = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnTestSend = new System.Windows.Forms.Button();
             this.tcMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -125,32 +124,33 @@
             this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.grpDrawings = new System.Windows.Forms.GroupBox();
+            this.grpDrawingsEdit = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.txtDrawingMaxTickets = new System.Windows.Forms.TextBox();
+            this.btnDrawingNew = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
+            this.btnDrawingSave = new System.Windows.Forms.Button();
+            this.txtDrawingGiveAwayName = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtDrawingEntryCommand = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtDrawingID = new System.Windows.Forms.TextBox();
+            this.txtDrawingAdvertisement = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtDrawingCongrats = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cbDrawingAutoAdvertise = new System.Windows.Forms.CheckBox();
+            this.txtDrawingCost = new System.Windows.Forms.TextBox();
+            this.txtDrawingAdvertiseInterval = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.btnDrawingChooseWinner = new System.Windows.Forms.Button();
             this.btnDrawingActivate = new System.Windows.Forms.Button();
             this.label29 = new System.Windows.Forms.Label();
             this.lstRaffleEntries = new System.Windows.Forms.ListBox();
-            this.txtDrawingID = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.lstDrawings = new System.Windows.Forms.ListBox();
             this.drawingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cbDrawingAutoAdvertise = new System.Windows.Forms.CheckBox();
-            this.txtDrawingAdvertiseInterval = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.txtDrawingCost = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtDrawingCongrats = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtDrawingAdvertisement = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtDrawingEntryCommand = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtDrawingGiveAwayName = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.btnDrawingSave = new System.Windows.Forms.Button();
-            this.btnDrawingNew = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -164,7 +164,9 @@
             this.membershipLevelsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter();
             this.settingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
             this.drawingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.DrawingsTableAdapter();
-            this.grpDrawingsEdit = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.rtbwebdata = new System.Windows.Forms.RichTextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -186,11 +188,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.grpDrawings.SuspendLayout();
+            this.grpDrawingsEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.drawingsBindingSource)).BeginInit();
+            this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).BeginInit();
-            this.grpDrawingsEdit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstUsers
@@ -305,12 +309,6 @@
             this.lblChannel.Size = new System.Drawing.Size(100, 13);
             this.lblChannel.TabIndex = 15;
             this.lblChannel.Text = "No Current Channel";
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // btnTestSend
             // 
@@ -1130,12 +1128,58 @@
             this.grpDrawings.TabStop = false;
             this.grpDrawings.Text = "Drawings";
             // 
+            // grpDrawingsEdit
+            // 
+            this.grpDrawingsEdit.Controls.Add(this.label21);
+            this.grpDrawingsEdit.Controls.Add(this.txtDrawingMaxTickets);
+            this.grpDrawingsEdit.Controls.Add(this.btnDrawingNew);
+            this.grpDrawingsEdit.Controls.Add(this.label18);
+            this.grpDrawingsEdit.Controls.Add(this.btnDrawingSave);
+            this.grpDrawingsEdit.Controls.Add(this.txtDrawingGiveAwayName);
+            this.grpDrawingsEdit.Controls.Add(this.label22);
+            this.grpDrawingsEdit.Controls.Add(this.txtDrawingEntryCommand);
+            this.grpDrawingsEdit.Controls.Add(this.label23);
+            this.grpDrawingsEdit.Controls.Add(this.txtDrawingID);
+            this.grpDrawingsEdit.Controls.Add(this.txtDrawingAdvertisement);
+            this.grpDrawingsEdit.Controls.Add(this.label28);
+            this.grpDrawingsEdit.Controls.Add(this.label24);
+            this.grpDrawingsEdit.Controls.Add(this.txtDrawingCongrats);
+            this.grpDrawingsEdit.Controls.Add(this.label25);
+            this.grpDrawingsEdit.Controls.Add(this.cbDrawingAutoAdvertise);
+            this.grpDrawingsEdit.Controls.Add(this.txtDrawingCost);
+            this.grpDrawingsEdit.Controls.Add(this.txtDrawingAdvertiseInterval);
+            this.grpDrawingsEdit.Controls.Add(this.label26);
+            this.grpDrawingsEdit.Location = new System.Drawing.Point(6, 13);
+            this.grpDrawingsEdit.Name = "grpDrawingsEdit";
+            this.grpDrawingsEdit.Size = new System.Drawing.Size(428, 219);
+            this.grpDrawingsEdit.TabIndex = 26;
+            this.grpDrawingsEdit.TabStop = false;
+            this.grpDrawingsEdit.Text = "Edit Drawings";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(15, 16);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(89, 13);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "Give Away Name";
+            // 
             // txtDrawingMaxTickets
             // 
             this.txtDrawingMaxTickets.Location = new System.Drawing.Point(83, 171);
             this.txtDrawingMaxTickets.Name = "txtDrawingMaxTickets";
             this.txtDrawingMaxTickets.Size = new System.Drawing.Size(55, 20);
             this.txtDrawingMaxTickets.TabIndex = 25;
+            // 
+            // btnDrawingNew
+            // 
+            this.btnDrawingNew.Location = new System.Drawing.Point(314, 169);
+            this.btnDrawingNew.Name = "btnDrawingNew";
+            this.btnDrawingNew.Size = new System.Drawing.Size(108, 23);
+            this.btnDrawingNew.TabIndex = 0;
+            this.btnDrawingNew.Text = "New Drawing";
+            this.btnDrawingNew.UseVisualStyleBackColor = true;
             // 
             // label18
             // 
@@ -1146,6 +1190,130 @@
             this.label18.TabIndex = 24;
             this.label18.Text = "Max Tickets";
             // 
+            // btnDrawingSave
+            // 
+            this.btnDrawingSave.Location = new System.Drawing.Point(314, 139);
+            this.btnDrawingSave.Name = "btnDrawingSave";
+            this.btnDrawingSave.Size = new System.Drawing.Size(108, 23);
+            this.btnDrawingSave.TabIndex = 1;
+            this.btnDrawingSave.Text = "Save Drawing";
+            this.btnDrawingSave.UseVisualStyleBackColor = true;
+            // 
+            // txtDrawingGiveAwayName
+            // 
+            this.txtDrawingGiveAwayName.Location = new System.Drawing.Point(110, 13);
+            this.txtDrawingGiveAwayName.Name = "txtDrawingGiveAwayName";
+            this.txtDrawingGiveAwayName.Size = new System.Drawing.Size(201, 20);
+            this.txtDrawingGiveAwayName.TabIndex = 3;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(15, 40);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(81, 13);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "Entry Command";
+            // 
+            // txtDrawingEntryCommand
+            // 
+            this.txtDrawingEntryCommand.Location = new System.Drawing.Point(110, 37);
+            this.txtDrawingEntryCommand.Name = "txtDrawingEntryCommand";
+            this.txtDrawingEntryCommand.Size = new System.Drawing.Size(201, 20);
+            this.txtDrawingEntryCommand.TabIndex = 5;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(15, 66);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(74, 13);
+            this.label23.TabIndex = 6;
+            this.label23.Text = "Advertisement";
+            // 
+            // txtDrawingID
+            // 
+            this.txtDrawingID.Location = new System.Drawing.Point(255, 171);
+            this.txtDrawingID.Name = "txtDrawingID";
+            this.txtDrawingID.ReadOnly = true;
+            this.txtDrawingID.Size = new System.Drawing.Size(55, 20);
+            this.txtDrawingID.TabIndex = 19;
+            // 
+            // txtDrawingAdvertisement
+            // 
+            this.txtDrawingAdvertisement.Location = new System.Drawing.Point(110, 63);
+            this.txtDrawingAdvertisement.Multiline = true;
+            this.txtDrawingAdvertisement.Name = "txtDrawingAdvertisement";
+            this.txtDrawingAdvertisement.Size = new System.Drawing.Size(201, 49);
+            this.txtDrawingAdvertisement.TabIndex = 7;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(231, 174);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(18, 13);
+            this.label28.TabIndex = 18;
+            this.label28.Text = "ID";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(15, 123);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(80, 13);
+            this.label24.TabIndex = 8;
+            this.label24.Text = "Congratulations";
+            // 
+            // txtDrawingCongrats
+            // 
+            this.txtDrawingCongrats.Location = new System.Drawing.Point(110, 120);
+            this.txtDrawingCongrats.Name = "txtDrawingCongrats";
+            this.txtDrawingCongrats.Size = new System.Drawing.Size(201, 20);
+            this.txtDrawingCongrats.TabIndex = 9;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(15, 149);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(28, 13);
+            this.label25.TabIndex = 10;
+            this.label25.Text = "Cost";
+            // 
+            // cbDrawingAutoAdvertise
+            // 
+            this.cbDrawingAutoAdvertise.AutoSize = true;
+            this.cbDrawingAutoAdvertise.Location = new System.Drawing.Point(144, 173);
+            this.cbDrawingAutoAdvertise.Name = "cbDrawingAutoAdvertise";
+            this.cbDrawingAutoAdvertise.Size = new System.Drawing.Size(95, 17);
+            this.cbDrawingAutoAdvertise.TabIndex = 15;
+            this.cbDrawingAutoAdvertise.Text = "Auto Advertise";
+            this.cbDrawingAutoAdvertise.UseVisualStyleBackColor = true;
+            // 
+            // txtDrawingCost
+            // 
+            this.txtDrawingCost.Location = new System.Drawing.Point(49, 146);
+            this.txtDrawingCost.Name = "txtDrawingCost";
+            this.txtDrawingCost.Size = new System.Drawing.Size(55, 20);
+            this.txtDrawingCost.TabIndex = 11;
+            // 
+            // txtDrawingAdvertiseInterval
+            // 
+            this.txtDrawingAdvertiseInterval.Location = new System.Drawing.Point(256, 146);
+            this.txtDrawingAdvertiseInterval.Name = "txtDrawingAdvertiseInterval";
+            this.txtDrawingAdvertiseInterval.Size = new System.Drawing.Size(55, 20);
+            this.txtDrawingAdvertiseInterval.TabIndex = 13;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(110, 149);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(140, 13);
+            this.label26.TabIndex = 12;
+            this.label26.Text = "Advertise Interval (Seconds)";
+            // 
             // btnDrawingChooseWinner
             // 
             this.btnDrawingChooseWinner.Location = new System.Drawing.Point(798, 35);
@@ -1154,6 +1322,7 @@
             this.btnDrawingChooseWinner.TabIndex = 23;
             this.btnDrawingChooseWinner.Text = "Choose Winner!";
             this.btnDrawingChooseWinner.UseVisualStyleBackColor = true;
+            this.btnDrawingChooseWinner.Click += new System.EventHandler(this.btnDrawingChooseWinner_Click);
             // 
             // btnDrawingActivate
             // 
@@ -1182,23 +1351,6 @@
             this.lstRaffleEntries.Size = new System.Drawing.Size(152, 160);
             this.lstRaffleEntries.TabIndex = 20;
             // 
-            // txtDrawingID
-            // 
-            this.txtDrawingID.Location = new System.Drawing.Point(255, 171);
-            this.txtDrawingID.Name = "txtDrawingID";
-            this.txtDrawingID.ReadOnly = true;
-            this.txtDrawingID.Size = new System.Drawing.Size(55, 20);
-            this.txtDrawingID.TabIndex = 19;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(231, 174);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(18, 13);
-            this.label28.TabIndex = 18;
-            this.label28.Text = "ID";
-            // 
             // label27
             // 
             this.label27.AutoSize = true;
@@ -1225,133 +1377,11 @@
             this.drawingsBindingSource.DataMember = "Drawings";
             this.drawingsBindingSource.DataSource = this.commandBotDataSet;
             // 
-            // cbDrawingAutoAdvertise
-            // 
-            this.cbDrawingAutoAdvertise.AutoSize = true;
-            this.cbDrawingAutoAdvertise.Location = new System.Drawing.Point(144, 173);
-            this.cbDrawingAutoAdvertise.Name = "cbDrawingAutoAdvertise";
-            this.cbDrawingAutoAdvertise.Size = new System.Drawing.Size(95, 17);
-            this.cbDrawingAutoAdvertise.TabIndex = 15;
-            this.cbDrawingAutoAdvertise.Text = "Auto Advertise";
-            this.cbDrawingAutoAdvertise.UseVisualStyleBackColor = true;
-            // 
-            // txtDrawingAdvertiseInterval
-            // 
-            this.txtDrawingAdvertiseInterval.Location = new System.Drawing.Point(256, 146);
-            this.txtDrawingAdvertiseInterval.Name = "txtDrawingAdvertiseInterval";
-            this.txtDrawingAdvertiseInterval.Size = new System.Drawing.Size(55, 20);
-            this.txtDrawingAdvertiseInterval.TabIndex = 13;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(110, 149);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(140, 13);
-            this.label26.TabIndex = 12;
-            this.label26.Text = "Advertise Interval (Seconds)";
-            // 
-            // txtDrawingCost
-            // 
-            this.txtDrawingCost.Location = new System.Drawing.Point(49, 146);
-            this.txtDrawingCost.Name = "txtDrawingCost";
-            this.txtDrawingCost.Size = new System.Drawing.Size(55, 20);
-            this.txtDrawingCost.TabIndex = 11;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(15, 149);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(28, 13);
-            this.label25.TabIndex = 10;
-            this.label25.Text = "Cost";
-            // 
-            // txtDrawingCongrats
-            // 
-            this.txtDrawingCongrats.Location = new System.Drawing.Point(110, 120);
-            this.txtDrawingCongrats.Name = "txtDrawingCongrats";
-            this.txtDrawingCongrats.Size = new System.Drawing.Size(201, 20);
-            this.txtDrawingCongrats.TabIndex = 9;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(15, 123);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(80, 13);
-            this.label24.TabIndex = 8;
-            this.label24.Text = "Congratulations";
-            // 
-            // txtDrawingAdvertisement
-            // 
-            this.txtDrawingAdvertisement.Location = new System.Drawing.Point(110, 63);
-            this.txtDrawingAdvertisement.Multiline = true;
-            this.txtDrawingAdvertisement.Name = "txtDrawingAdvertisement";
-            this.txtDrawingAdvertisement.Size = new System.Drawing.Size(201, 49);
-            this.txtDrawingAdvertisement.TabIndex = 7;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(15, 66);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(74, 13);
-            this.label23.TabIndex = 6;
-            this.label23.Text = "Advertisement";
-            // 
-            // txtDrawingEntryCommand
-            // 
-            this.txtDrawingEntryCommand.Location = new System.Drawing.Point(110, 37);
-            this.txtDrawingEntryCommand.Name = "txtDrawingEntryCommand";
-            this.txtDrawingEntryCommand.Size = new System.Drawing.Size(201, 20);
-            this.txtDrawingEntryCommand.TabIndex = 5;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(15, 40);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(81, 13);
-            this.label22.TabIndex = 4;
-            this.label22.Text = "Entry Command";
-            // 
-            // txtDrawingGiveAwayName
-            // 
-            this.txtDrawingGiveAwayName.Location = new System.Drawing.Point(110, 13);
-            this.txtDrawingGiveAwayName.Name = "txtDrawingGiveAwayName";
-            this.txtDrawingGiveAwayName.Size = new System.Drawing.Size(201, 20);
-            this.txtDrawingGiveAwayName.TabIndex = 3;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(15, 16);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(89, 13);
-            this.label21.TabIndex = 2;
-            this.label21.Text = "Give Away Name";
-            // 
-            // btnDrawingSave
-            // 
-            this.btnDrawingSave.Location = new System.Drawing.Point(314, 139);
-            this.btnDrawingSave.Name = "btnDrawingSave";
-            this.btnDrawingSave.Size = new System.Drawing.Size(108, 23);
-            this.btnDrawingSave.TabIndex = 1;
-            this.btnDrawingSave.Text = "Save Drawing";
-            this.btnDrawingSave.UseVisualStyleBackColor = true;
-            // 
-            // btnDrawingNew
-            // 
-            this.btnDrawingNew.Location = new System.Drawing.Point(314, 169);
-            this.btnDrawingNew.Name = "btnDrawingNew";
-            this.btnDrawingNew.Size = new System.Drawing.Size(108, 23);
-            this.btnDrawingNew.TabIndex = 0;
-            this.btnDrawingNew.Text = "New Drawing";
-            this.btnDrawingNew.UseVisualStyleBackColor = true;
-            // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.pictureBox1);
+            this.tabPage7.Controls.Add(this.rtbwebdata);
+            this.tabPage7.Controls.Add(this.button1);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Size = new System.Drawing.Size(1051, 244);
@@ -1426,33 +1456,33 @@
             // 
             this.drawingsTableAdapter.ClearBeforeFill = true;
             // 
-            // grpDrawingsEdit
+            // button1
             // 
-            this.grpDrawingsEdit.Controls.Add(this.label21);
-            this.grpDrawingsEdit.Controls.Add(this.txtDrawingMaxTickets);
-            this.grpDrawingsEdit.Controls.Add(this.btnDrawingNew);
-            this.grpDrawingsEdit.Controls.Add(this.label18);
-            this.grpDrawingsEdit.Controls.Add(this.btnDrawingSave);
-            this.grpDrawingsEdit.Controls.Add(this.txtDrawingGiveAwayName);
-            this.grpDrawingsEdit.Controls.Add(this.label22);
-            this.grpDrawingsEdit.Controls.Add(this.txtDrawingEntryCommand);
-            this.grpDrawingsEdit.Controls.Add(this.label23);
-            this.grpDrawingsEdit.Controls.Add(this.txtDrawingID);
-            this.grpDrawingsEdit.Controls.Add(this.txtDrawingAdvertisement);
-            this.grpDrawingsEdit.Controls.Add(this.label28);
-            this.grpDrawingsEdit.Controls.Add(this.label24);
-            this.grpDrawingsEdit.Controls.Add(this.txtDrawingCongrats);
-            this.grpDrawingsEdit.Controls.Add(this.label25);
-            this.grpDrawingsEdit.Controls.Add(this.cbDrawingAutoAdvertise);
-            this.grpDrawingsEdit.Controls.Add(this.txtDrawingCost);
-            this.grpDrawingsEdit.Controls.Add(this.txtDrawingAdvertiseInterval);
-            this.grpDrawingsEdit.Controls.Add(this.label26);
-            this.grpDrawingsEdit.Location = new System.Drawing.Point(6, 13);
-            this.grpDrawingsEdit.Name = "grpDrawingsEdit";
-            this.grpDrawingsEdit.Size = new System.Drawing.Size(428, 219);
-            this.grpDrawingsEdit.TabIndex = 26;
-            this.grpDrawingsEdit.TabStop = false;
-            this.grpDrawingsEdit.Text = "Edit Drawings";
+            this.button1.Location = new System.Drawing.Point(179, 156);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // rtbwebdata
+            // 
+            this.rtbwebdata.Location = new System.Drawing.Point(310, 41);
+            this.rtbwebdata.Name = "rtbwebdata";
+            this.rtbwebdata.Size = new System.Drawing.Size(462, 158);
+            this.rtbwebdata.TabIndex = 1;
+            this.rtbwebdata.Text = "";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::IrcClientDemoCS.Properties.Resources.ViewerIcon;
+            this.pictureBox1.Location = new System.Drawing.Point(833, 54);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(151, 125);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
@@ -1493,13 +1523,15 @@
             this.tabPage6.ResumeLayout(false);
             this.grpDrawings.ResumeLayout(false);
             this.grpDrawings.PerformLayout();
+            this.grpDrawingsEdit.ResumeLayout(false);
+            this.grpDrawingsEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.drawingsBindingSource)).EndInit();
+            this.tabPage7.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).EndInit();
-            this.grpDrawingsEdit.ResumeLayout(false);
-            this.grpDrawingsEdit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1519,7 +1551,6 @@
         private System.Windows.Forms.Label lblDebug;
         private System.Windows.Forms.Label lblPort;
         private System.Windows.Forms.Label lblChannel;
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button btnTestSend;
         private System.Windows.Forms.TabControl tcMain;
         private System.Windows.Forms.TabPage tabPage1;
@@ -1644,6 +1675,9 @@
         private CommandBotDataSetTableAdapters.DrawingsTableAdapter drawingsTableAdapter;
         private System.Windows.Forms.Button btnPointTest;
         private System.Windows.Forms.GroupBox grpDrawingsEdit;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RichTextBox rtbwebdata;
+        private System.Windows.Forms.PictureBox pictureBox1;
         
     }
 }

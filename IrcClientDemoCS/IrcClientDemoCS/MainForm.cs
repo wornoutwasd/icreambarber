@@ -11,12 +11,22 @@ using System.Threading;
 using System.Data.SqlClient;
 using System.Collections;
 using IrcClientDemoCS.Classes;
+using HtmlAgilityPack;
+using System.Net;
+using System.Drawing;
+using System.Media;
+
 
 namespace IrcClientDemoCS
 {
     public partial class MainForm : Form
     {
+        //que https://api.twitch.tv/kraken/channels/wornoutwasd to get views/followers
+        //que https://api.twitch.tv/kraken/channels/wornoutwasd/follows to get list of followers
+        //que http://api.justin.tv/api/stream/summary.json?channel=wornoutwasd
+
         //Varibles
+
         IrcClient irc;
         Boolean Listening = false;
         private static int ConnPort;
@@ -51,6 +61,8 @@ namespace IrcClientDemoCS
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            
+            
             // TODO: This line of code loads data into the 'commandBotDataSet.Drawings' table. You can move, or remove it, as needed.
             this.drawingsTableAdapter.Fill(this.commandBotDataSet.Drawings);
             
@@ -648,10 +660,53 @@ namespace IrcClientDemoCS
             
         }
 
+        private void btnDrawingChooseWinner_Click(object sender, EventArgs e)
+        {
+            Random r = new Random();
+            int max = lstRaffleEntries.Items.Count;
+            if (max != 0)
+            {
+                int winner = r.Next(0, max);
+                lstRaffleEntries.SelectedIndex = winner;
+
+                
+            }
+            Raffle d = new Raffle();
+            ListBox l = new ListBox();
+            foreach (string item in lstRaffleEntries.Items)
+            {
+                l.Items.Add(item);
+            }
+            l.Location = new Point(0, 0);
+
+            d.Controls.Add(l);
+            d.Show();
+
+            
+            
+        }
+        //***************Graphic Alerts
+
+        #region
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WebClient client = new WebClient();
+            string downloadstring = client.DownloadString("http://api.justin.tv/api/stream/summary.json?channel=wornoutwasd");
+            string downloadstring2 = client.DownloadString("https://api.twitch.tv/kraken/channels/wornoutwasd/follows");
+            string downloadstring3 = client.DownloadString("https://api.twitch.tv/kraken/channels/wornoutwasd");
+            client.DownloadFile("http://static-cdn.jtvnw.net/jtv_user_pictures/ascendingsoup-profile_image-263adb6fca363abe-300x300.jpeg", "test.png");
+            pictureBox1.ImageLocation = "test.png";
+
+            
+            //lblDownloadString.Text = downloadstring;
+            rtbwebdata.Text = downloadstring2;
+            //lblDownloadString3.Text = downloadstring3;
+        }
 
 
 
 
+        #endregion
 
 
 
