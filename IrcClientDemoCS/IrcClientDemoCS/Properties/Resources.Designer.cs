@@ -63,9 +63,49 @@ namespace IrcClientDemoCS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backgroundcolor {
+            get {
+                object obj = ResourceManager.GetObject("backgroundcolor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backgroundcolor1 {
+            get {
+                object obj = ResourceManager.GetObject("backgroundcolor1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FollowersIcon {
+            get {
+                object obj = ResourceManager.GetObject("FollowersIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ViewerIcon {
             get {
                 object obj = ResourceManager.GetObject("ViewerIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ViewsIcon {
+            get {
+                object obj = ResourceManager.GetObject("ViewsIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -15,7 +15,7 @@ using HtmlAgilityPack;
 using System.Net;
 using System.Drawing;
 using System.Media;
-
+using Newtonsoft.Json;
 
 namespace IrcClientDemoCS
 {
@@ -696,8 +696,8 @@ namespace IrcClientDemoCS
             string downloadstring3 = client.DownloadString("https://api.twitch.tv/kraken/channels/wornoutwasd");
             client.DownloadFile("http://static-cdn.jtvnw.net/jtv_user_pictures/ascendingsoup-profile_image-263adb6fca363abe-300x300.jpeg", "test.png");
             pictureBox1.ImageLocation = "test.png";
-
             
+           
             //lblDownloadString.Text = downloadstring;
             rtbwebdata.Text = downloadstring2;
             //lblDownloadString3.Text = downloadstring3;
@@ -707,6 +707,13 @@ namespace IrcClientDemoCS
 
 
         #endregion
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            StreamInfo c = new StreamInfo();
+            c.Size = new System.Drawing.Size(250, 25);
+            c.Show();
+        }
 
 
 

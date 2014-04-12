@@ -33,5 +33,17 @@ namespace IrcClientDemoCS.Properties {
                 return ((string)(this["CommandBotConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point position {
+            get {
+                return ((global::System.Drawing.Point)(this["position"]));
+            }
+            set {
+                this["position"] = value;
+            }
+        }
     }
 }

@@ -55,6 +55,9 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.3\lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Json60r2\Bin\Net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -100,6 +103,19 @@
     <Compile Include="Raffle.Designer.cs">
       <DependentUpon>Raffle.cs</DependentUpon>
     </Compile>
+    <Compile Include="StreamInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StreamInfo.Designer.cs">
+      <DependentUpon>StreamInfo.cs</DependentUpon>
+    </Compile>
+    <None Include="Resources\backgroundcolor1.png" />
+    <None Include="Resources\backgroundcolor.png" />
+    <None Include="Resources\FollowersIcon.png" />
+    <None Include="Resources\ViewsIcon.png" />
+    <EmbeddedResource Include="StreamInfo.resx">
+      <DependentUpon>StreamInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Resources\ViewerIcon.png" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
