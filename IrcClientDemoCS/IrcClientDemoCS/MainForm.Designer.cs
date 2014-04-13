@@ -28,7 +28,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lstUsers = new System.Windows.Forms.ListBox();
             this.txtSend = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
@@ -157,6 +156,7 @@
             this.rtbwebdata = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -244,12 +244,13 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(687, 215);
+            this.btnTest.Location = new System.Drawing.Point(604, 217);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(77, 23);
+            this.btnTest.Size = new System.Drawing.Size(92, 23);
             this.btnTest.TabIndex = 6;
-            this.btnTest.Text = "Test 1";
+            this.btnTest.Text = "Chat Pop Out";
             this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // contextMenuStrip1
             // 
@@ -313,7 +314,7 @@
             // 
             // btnTestSend
             // 
-            this.btnTestSend.Location = new System.Drawing.Point(604, 215);
+            this.btnTestSend.Location = new System.Drawing.Point(966, 213);
             this.btnTestSend.Name = "btnTestSend";
             this.btnTestSend.Size = new System.Drawing.Size(77, 23);
             this.btnTestSend.TabIndex = 16;
@@ -1431,6 +1432,7 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.button4);
             this.tabPage8.Controls.Add(this.textBox7);
             this.tabPage8.Controls.Add(this.label20);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
@@ -1440,19 +1442,29 @@
             this.tabPage8.Text = "About";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(272, 213);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(374, 41);
+            this.textBox7.Location = new System.Drawing.Point(21, 25);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(326, 183);
             this.textBox7.TabIndex = 1;
-            this.textBox7.Text = resources.GetString("textBox7.Text");
+            this.textBox7.Text = "To Do:\r\n- Graphic Alerts\r\n- Graphic Drawing\r\n- Custom Chat?\r\n- Modify Membership\r" +
+    "\n- Make Connections Window Functional\r\n";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(405, 16);
+            this.label20.Location = new System.Drawing.Point(52, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(161, 13);
             this.label20.TabIndex = 0;
@@ -1503,7 +1515,9 @@
             this.ClientSize = new System.Drawing.Size(1059, 271);
             this.Controls.Add(this.tcMain);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Twitch Commander";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tcMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -1691,6 +1705,7 @@
         private System.Windows.Forms.RichTextBox rtbwebdata;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
         
     }
 }

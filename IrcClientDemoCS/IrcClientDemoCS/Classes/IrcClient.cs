@@ -309,6 +309,8 @@ namespace TechLifeForum
             if (irc != null && irc.Connected)
             {
                 Send("JOIN " + Channel);
+                //added by dave
+                //Send("TWITCHCLIENT 1");
             }
         }
         /// <summary>
@@ -449,6 +451,7 @@ namespace TechLifeForum
                     break;
                 case "PRIVMSG": // message was sent to the channel or as private
                     // if it's a private message
+                    //i think this blocks the chat for the bot out.
                     if (ircData[2].ToLower() == _nick.ToLower())
                     {
                         op.Post(x => Fire_PrivateMessage((oPrivateMessage)x), new oPrivateMessage(ircData[0].Substring(1, ircData[0].IndexOf('!') - 1), JoinArray(ircData, 3)));

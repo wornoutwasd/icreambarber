@@ -13,9 +13,11 @@ using System.Collections;
 using IrcClientDemoCS.Classes;
 using HtmlAgilityPack;
 using System.Net;
-using System.Drawing;
 using System.Media;
 using Newtonsoft.Json;
+using System.Threading;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace IrcClientDemoCS
 {
@@ -24,8 +26,12 @@ namespace IrcClientDemoCS
         //que https://api.twitch.tv/kraken/channels/wornoutwasd to get views/followers
         //que https://api.twitch.tv/kraken/channels/wornoutwasd/follows to get list of followers
         //que http://api.justin.tv/api/stream/summary.json?channel=wornoutwasd
+        //que https://api.twitch.tv/kraken/chat/wornoutwasd/badges to get images associated with badges
+
 
         //Varibles
+
+        public delegate void delPassData(RichTextBox text);
 
         IrcClient irc;
         Boolean Listening = false;
@@ -50,6 +56,8 @@ namespace IrcClientDemoCS
         private static int intMessageQueTimer = 20;
         private static List<ChatBotMessage> listChatBotMessageQue = new List<ChatBotMessage>();
 
+        
+
         public MainForm()
         {
 
@@ -59,6 +67,7 @@ namespace IrcClientDemoCS
 
         }
 
+        
         private void MainForm_Load(object sender, EventArgs e)
         {
             
@@ -401,7 +410,8 @@ namespace IrcClientDemoCS
         private void btnTestSend_Click(object sender, EventArgs e)
         {
             //don't click this quickly.. you can get banned -dave
-            irc.SendMessage(channel, "Welcome!");
+            //irc.SendMessage(channel, "TWITCHCLIENT 1");
+            //irc.SendRAW("TWITCHCLIENT 1");
         }
 
         #endregion
@@ -679,7 +689,7 @@ namespace IrcClientDemoCS
             }
             l.Location = new Point(0, 0);
 
-            d.Controls.Add(l);
+            //d.Controls.Add(l);
             d.Show();
 
             
@@ -714,6 +724,17 @@ namespace IrcClientDemoCS
             c.Size = new System.Drawing.Size(250, 25);
             c.Show();
         }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            PopOutChat p = new PopOutChat();
+            RichTextBox r = new RichTextBox();
+            r.Text = rtbOutput.Text;
+            //p.Controls.Add(r);
+            p.Show();
+        }
+
+        
 
 
 
