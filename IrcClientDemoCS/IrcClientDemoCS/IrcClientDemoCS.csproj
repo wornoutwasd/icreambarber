@@ -74,6 +74,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\follow.cs" />
+    <Compile Include="Classes\ChannelFollowers.cs" />
+    <Compile Include="Classes\ChannelInfo.cs" />
+    <Compile Include="Classes\ChannelSummary.cs" />
     <Compile Include="Classes\ChatBotMessage.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="CommandBotDataSet.cs">

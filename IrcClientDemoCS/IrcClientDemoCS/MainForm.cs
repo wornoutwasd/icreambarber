@@ -681,16 +681,19 @@ namespace IrcClientDemoCS
 
                 
             }
-            Raffle d = new Raffle();
-            ListBox l = new ListBox();
-            foreach (string item in lstRaffleEntries.Items)
-            {
-                l.Items.Add(item);
-            }
-            l.Location = new Point(0, 0);
 
-            //d.Controls.Add(l);
-            d.Show();
+            //popup to complete later
+
+            //Raffle d = new Raffle();
+            //ListBox l = new ListBox();
+            //foreach (string item in lstRaffleEntries.Items)
+            //{
+            //    l.Items.Add(item);
+            //}
+            //l.Location = new Point(0, 0);
+
+            ////d.Controls.Add(l);
+            //d.Show();
 
             
             
@@ -701,12 +704,15 @@ namespace IrcClientDemoCS
         private void button1_Click(object sender, EventArgs e)
         {
             WebClient client = new WebClient();
+            
             string downloadstring = client.DownloadString("http://api.justin.tv/api/stream/summary.json?channel=wornoutwasd");
+            //add ?direction=DESC&limit=250&offset=0 on the follows to query more per update
             string downloadstring2 = client.DownloadString("https://api.twitch.tv/kraken/channels/wornoutwasd/follows");
             string downloadstring3 = client.DownloadString("https://api.twitch.tv/kraken/channels/wornoutwasd");
             client.DownloadFile("http://static-cdn.jtvnw.net/jtv_user_pictures/ascendingsoup-profile_image-263adb6fca363abe-300x300.jpeg", "test.png");
             pictureBox1.ImageLocation = "test.png";
-            
+
+            ChannelSummary cs = JsonConvert.DeserializeObject<ChannelSummary>(downloadstring);
            
             //lblDownloadString.Text = downloadstring;
             rtbwebdata.Text = downloadstring2;

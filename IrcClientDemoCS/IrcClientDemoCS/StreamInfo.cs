@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Net;
+using Newtonsoft.Json;
+using IrcClientDemoCS.Classes;
 
 namespace IrcClientDemoCS
 {
@@ -19,6 +21,8 @@ namespace IrcClientDemoCS
             
             
         }
+        //***** These methods are to enable dragging of the window from form click
+        #region
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
@@ -43,6 +47,8 @@ namespace IrcClientDemoCS
         {
             dragging = false;
         }
+        #endregion
+
 
         private void timerNetLoad_Tick(object sender, EventArgs e)
         {
@@ -57,9 +63,9 @@ namespace IrcClientDemoCS
             string channelname = "wornoutwasd";
             //these need grab current channel from connection settings -
             string ChannelSummaryString = client.DownloadString("http://api.justin.tv/api/stream/summary.json?channel=" + channelname);
-            string[] parsearr = ChannelSummaryString.Split(',');
-            string[] viewerscount = parsearr[1].Split(':');
-            lblViewers.Text = viewerscount[1].ToString();
+            ChannelSummary cs = JsonConvert.DeserializeObject<ChannelSummary>(ChannelSummaryString);
+
+            lblViewers.Text = cs.viewers_count.ToString();
             //get total follows
             string followsSummaryString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname + "/follows");
             string[] followsparsearr = followsSummaryString.Split(',');
@@ -69,18 +75,21 @@ namespace IrcClientDemoCS
             //get total views
             string totalviewsSummaryString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname);
             string[] totalviewsparsearr = totalviewsSummaryString.Split(',');
-            string[] totalviewscount = totalviewsparsearr[20].Split(':');
+            string[] totalviewscount = totalviewsparsearr[19].Split(':');
             lblTotalViews.Text = totalviewscount[1].ToString();
 
             ////*****VIEW TESTING********
+            #region
             ////(set for 9,999 of each)
             //Random r = new Random();
             //r.Next(0, 9999);
             //lblViewers.Text = r.Next(0, 9999).ToString();
             //lblFollowers.Text = r.Next(0, 9999).ToString();
             //lblTotalViews.Text = r.Next(0, 9999).ToString();
+            #endregion
 
-            
+            //This centers and repositions images and lables to expand/contract depending on the width of the numbers
+            #region
             //default positions for images are 0,0; 66,0;130,-2;
             //default positions for labes are 21,2; 86,2; 151,2
             int viewerwidth = lblViewers.Width;
@@ -97,9 +106,10 @@ namespace IrcClientDemoCS
             lblTotalViews.Location = new System.Drawing.Point(offset + 21 + viewerwidth + 21, 2);
             pbFollowers.Location = new System.Drawing.Point(offset + 21 + viewerwidth + 21 + viewswidth, -2);
             lblFollowers.Location = new System.Drawing.Point(offset + 21 + viewerwidth + 21 + viewswidth + 21, 2);
-            
-                
-            
+            #endregion
+
+
+
 
 
 
