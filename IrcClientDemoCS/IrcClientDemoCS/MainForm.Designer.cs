@@ -151,9 +151,9 @@
             this.lstDrawings = new System.Windows.Forms.ListBox();
             this.drawingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.panelBackground = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.rtbwebdata = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.button4 = new System.Windows.Forms.Button();
@@ -168,6 +168,8 @@
             this.membershipLevelsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter();
             this.settingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
             this.drawingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.DrawingsTableAdapter();
+            this.timerTest = new System.Windows.Forms.Timer(this.components);
+            this.button5 = new System.Windows.Forms.Button();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -192,7 +194,7 @@
             this.grpDrawingsEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.drawingsBindingSource)).BeginInit();
             this.tabPage7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelBackground.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).BeginInit();
@@ -1381,9 +1383,9 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.button5);
+            this.tabPage7.Controls.Add(this.panelBackground);
             this.tabPage7.Controls.Add(this.button3);
-            this.tabPage7.Controls.Add(this.pictureBox1);
-            this.tabPage7.Controls.Add(this.rtbwebdata);
             this.tabPage7.Controls.Add(this.button1);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
@@ -1391,6 +1393,23 @@
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Graphic Alerts";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // panelBackground
+            // 
+            this.panelBackground.BackColor = System.Drawing.Color.Chartreuse;
+            this.panelBackground.Controls.Add(this.panel1);
+            this.panelBackground.Location = new System.Drawing.Point(220, 17);
+            this.panelBackground.Name = "panelBackground";
+            this.panelBackground.Size = new System.Drawing.Size(804, 204);
+            this.panelBackground.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::IrcClientDemoCS.Properties.Resources.FollowersIcon;
+            this.panel1.Location = new System.Drawing.Point(69, 32);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 0;
             // 
             // button3
             // 
@@ -1402,27 +1421,9 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::IrcClientDemoCS.Properties.Resources.ViewerIcon;
-            this.pictureBox1.Location = new System.Drawing.Point(833, 54);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(151, 125);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // rtbwebdata
-            // 
-            this.rtbwebdata.Location = new System.Drawing.Point(310, 41);
-            this.rtbwebdata.Name = "rtbwebdata";
-            this.rtbwebdata.Size = new System.Drawing.Size(462, 158);
-            this.rtbwebdata.TabIndex = 1;
-            this.rtbwebdata.Text = "";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(179, 156);
+            this.button1.Location = new System.Drawing.Point(8, 213);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -1508,6 +1509,20 @@
             // 
             this.drawingsTableAdapter.ClearBeforeFill = true;
             // 
+            // timerTest
+            // 
+            this.timerTest.Tick += new System.EventHandler(this.timerTest_Tick);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(8, 184);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1553,7 +1568,7 @@
             this.grpDrawingsEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.drawingsBindingSource)).EndInit();
             this.tabPage7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelBackground.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
@@ -1702,10 +1717,12 @@
         private System.Windows.Forms.Button btnPointTest;
         private System.Windows.Forms.GroupBox grpDrawingsEdit;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox rtbwebdata;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Panel panelBackground;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Timer timerTest;
+        private System.Windows.Forms.Button button5;
         
     }
 }
