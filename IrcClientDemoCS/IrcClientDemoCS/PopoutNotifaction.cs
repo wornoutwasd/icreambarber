@@ -86,19 +86,18 @@ namespace IrcClientDemoCS
         private void timerPolling_Tick(object sender, EventArgs e)
         {
             //check every 30 seconds
-            timerPolling.Interval = 10000;
+            timerPolling.Interval = 30000;
             WebClient client = new WebClient();
-            //resize form and move objects depending on width of text
-
-            //dirty parse for viewers count.
-
-
+            
             string channelname = "wornoutwasd";
+
+            //new followers graphic
+            #region
             //poll twitch api for follwers
             string followsSummaryString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname + "/follows");
             //parce follwers from serialized data
             var follows = JsonConvert.DeserializeObject<Twitch_Objects.RootObject>(followsSummaryString);
-
+            listBox1.Items.Clear();
             List<Twitch_Objects.Follow> lstfollows = new List<Twitch_Objects.Follow>();
             //save the follows that are newer than the last follow time
             for (int i = 0; i < follows.follows.Count; i++)
@@ -109,7 +108,7 @@ namespace IrcClientDemoCS
                     lstfollows.Add(follows.follows[i]);
                 }
             }
-            //update the last follow time.
+            //store the newest follow time to compare against for next round
             lastfollowtime = Convert.ToDateTime(follows.follows[0].created_at);
             //make a que for the names
             foreach (Twitch_Objects.Follow f in lstfollows)
@@ -117,7 +116,13 @@ namespace IrcClientDemoCS
                 listBox1.Items.Add(f.user.display_name);
             }
 
-            //store the newest follow time to compare against for next round
+
+            // do things with the names
+
+            #endregion
+
+
+
 
         }
 

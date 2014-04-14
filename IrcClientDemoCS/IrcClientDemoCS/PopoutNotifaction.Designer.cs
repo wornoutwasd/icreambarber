@@ -91,7 +91,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NotificationGraphicPopout";
             this.TopMost = true;
-            this.TransparencyKey = System.Drawing.Color.White;
+            this.TransparencyKey = System.Drawing.Color.Crimson;
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PopoutNotification_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PopoutNotification_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PopoutNotification_MouseUp);

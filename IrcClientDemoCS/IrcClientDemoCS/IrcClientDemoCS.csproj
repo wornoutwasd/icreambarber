@@ -127,7 +127,6 @@
       <DependentUpon>StreamInfo.cs</DependentUpon>
     </Compile>
     <Content Include="Resources\FallingMoney3.gif" />
-    <None Include="Resources\FallingMoney31.gif" />
     <Content Include="Resources\Follwer.wav" />
     <None Include="Resources\backgroundcolor1.png" />
     <None Include="Resources\backgroundcolor.png" />
