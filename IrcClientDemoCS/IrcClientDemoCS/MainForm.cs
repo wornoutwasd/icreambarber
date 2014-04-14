@@ -11,12 +11,10 @@ using System.Threading;
 using System.Data.SqlClient;
 using System.Collections;
 using IrcClientDemoCS.Classes;
-using HtmlAgilityPack;
 using System.Net;
 using System.Media;
 using Newtonsoft.Json;
 using IrcClientDemoCS.Classes.Twitch_Objects;
-using System.Threading;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
@@ -750,7 +748,7 @@ namespace IrcClientDemoCS
 
         private void button5_Click(object sender, EventArgs e)
         {
-            NotificationGraphicPopout p = new NotificationGraphicPopout();
+            PopoutNotifaction p = new PopoutNotifaction();
             p.Show();
         }
 

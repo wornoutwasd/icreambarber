@@ -101,11 +101,11 @@
     </Compile>
     <Compile Include="Classes\IRC\IrcClient.cs" />
     <Compile Include="Classes\Program.cs" />
-    <Compile Include="NotificationGraphicPopout.cs">
+    <Compile Include="PopoutNotifaction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NotificationGraphicPopout.Designer.cs">
-      <DependentUpon>NotificationGraphicPopout.cs</DependentUpon>
+    <Compile Include="PopoutNotifaction.Designer.cs">
+      <DependentUpon>PopoutNotifaction.cs</DependentUpon>
     </Compile>
     <Compile Include="PopOutChat.cs">
       <SubType>Form</SubType>
@@ -126,13 +126,15 @@
     <Compile Include="StreamInfo.Designer.cs">
       <DependentUpon>StreamInfo.cs</DependentUpon>
     </Compile>
+    <Content Include="Resources\FallingMoney3.gif" />
+    <None Include="Resources\FallingMoney31.gif" />
     <Content Include="Resources\Follwer.wav" />
     <None Include="Resources\backgroundcolor1.png" />
     <None Include="Resources\backgroundcolor.png" />
     <None Include="Resources\FollowersIcon.png" />
     <None Include="Resources\ViewsIcon.png" />
-    <EmbeddedResource Include="NotificationGraphicPopout.resx">
-      <DependentUpon>NotificationGraphicPopout.cs</DependentUpon>
+    <EmbeddedResource Include="PopoutNotifaction.resx">
+      <DependentUpon>PopoutNotifaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopOutChat.resx">
       <DependentUpon>PopOutChat.cs</DependentUpon>
