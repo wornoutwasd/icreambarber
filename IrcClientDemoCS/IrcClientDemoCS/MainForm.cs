@@ -15,6 +15,7 @@ using HtmlAgilityPack;
 using System.Net;
 using System.Media;
 using Newtonsoft.Json;
+using IrcClientDemoCS.Classes.Twitch_Objects;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
@@ -703,20 +704,18 @@ namespace IrcClientDemoCS
         #region
         private void button1_Click(object sender, EventArgs e)
         {
-            WebClient client = new WebClient();
-            
-            string downloadstring = client.DownloadString("http://api.justin.tv/api/stream/summary.json?channel=wornoutwasd");
-            //add ?direction=DESC&limit=250&offset=0 on the follows to query more per update
-            string downloadstring2 = client.DownloadString("https://api.twitch.tv/kraken/channels/wornoutwasd/follows");
-            string downloadstring3 = client.DownloadString("https://api.twitch.tv/kraken/channels/wornoutwasd");
-            client.DownloadFile("http://static-cdn.jtvnw.net/jtv_user_pictures/ascendingsoup-profile_image-263adb6fca363abe-300x300.jpeg", "test.png");
-            pictureBox1.ImageLocation = "test.png";
+            timerTest.Interval = 10;
+            if (timerTest.Enabled == false)
+            {
+                timerTest.Start();
+            }
+            else
+            {
+                timerTest.Stop();
+                panel1.Location = new Point(50, -150);
+                panely = -150;
+            }
 
-            ChannelSummary cs = JsonConvert.DeserializeObject<ChannelSummary>(downloadstring);
-           
-            //lblDownloadString.Text = downloadstring;
-            rtbwebdata.Text = downloadstring2;
-            //lblDownloadString3.Text = downloadstring3;
         }
 
 
@@ -737,6 +736,21 @@ namespace IrcClientDemoCS
             RichTextBox r = new RichTextBox();
             r.Text = rtbOutput.Text;
             //p.Controls.Add(r);
+            p.Show();
+        }
+
+        int panelx = 50;
+        int panely = -150;
+        private void timerTest_Tick(object sender, EventArgs e)
+        {
+            panely++;
+            
+            panel1.Location = new Point(50, panely);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            NotificationGraphicPopout p = new NotificationGraphicPopout();
             p.Show();
         }
 

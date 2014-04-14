@@ -74,12 +74,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\follow.cs" />
-    <Compile Include="Classes\ChannelFollowers.cs" />
-    <Compile Include="Classes\ChannelInfo.cs" />
-    <Compile Include="Classes\ChannelSummary.cs" />
-    <Compile Include="Classes\ChatBotMessage.cs" />
-    <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\Twitch_Objects\Twitchfollow.cs" />
+    <Compile Include="Classes\Twitch_Objects\TwitchChannelFollowers.cs" />
+    <Compile Include="Classes\Twitch_Objects\TwitchChannelInfo.cs" />
+    <Compile Include="Classes\Twitch_Objects\TwitchChannelSummary.cs" />
+    <Compile Include="Classes\Commander_Classes\ChatBotMessage.cs" />
+    <Compile Include="Classes\Commander_Classes\User.cs" />
+    <Compile Include="Classes\Twitch_Objects\Twitch_Objects.cs" />
     <Compile Include="CommandBotDataSet.cs">
       <DependentUpon>CommandBotDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -91,15 +92,21 @@
       <DependentUpon>CommandBotDataSet.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Classes\Delegates.cs" />
+    <Compile Include="Classes\IRC\Delegates.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\IrcClient.cs" />
+    <Compile Include="Classes\IRC\IrcClient.cs" />
     <Compile Include="Classes\Program.cs" />
+    <Compile Include="NotificationGraphicPopout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotificationGraphicPopout.Designer.cs">
+      <DependentUpon>NotificationGraphicPopout.cs</DependentUpon>
+    </Compile>
     <Compile Include="PopOutChat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +130,9 @@
     <None Include="Resources\backgroundcolor.png" />
     <None Include="Resources\FollowersIcon.png" />
     <None Include="Resources\ViewsIcon.png" />
+    <EmbeddedResource Include="NotificationGraphicPopout.resx">
+      <DependentUpon>NotificationGraphicPopout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PopOutChat.resx">
       <DependentUpon>PopOutChat.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +216,25 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxAXVLC">
+      <Guid>{DF2BBE39-40A8-433B-A279-073F48DA94B6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AXVLC">
+      <Guid>{DF2BBE39-40A8-433B-A279-073F48DA94B6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

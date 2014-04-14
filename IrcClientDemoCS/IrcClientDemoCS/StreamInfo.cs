@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Net;
 using Newtonsoft.Json;
 using IrcClientDemoCS.Classes;
+using IrcClientDemoCS.Classes.Twitch_Objects;
 
 namespace IrcClientDemoCS
 {
@@ -63,20 +64,21 @@ namespace IrcClientDemoCS
             string channelname = "wornoutwasd";
             //these need grab current channel from connection settings -
             string ChannelSummaryString = client.DownloadString("http://api.justin.tv/api/stream/summary.json?channel=" + channelname);
-            ChannelSummary cs = JsonConvert.DeserializeObject<ChannelSummary>(ChannelSummaryString);
+            var streamsummary = JsonConvert.DeserializeObject<Twitch_Objects.Stream_Summary>(ChannelSummaryString);
 
-            lblViewers.Text = cs.viewers_count.ToString();
+            lblViewers.Text = streamsummary.viewers_count.ToString();
             //get total follows
             string followsSummaryString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname + "/follows");
-            string[] followsparsearr = followsSummaryString.Split(',');
-            string[] followscount = followsparsearr[0].Split(':');
-            lblFollowers.Text = followscount[1].ToString();
+            var follows = JsonConvert.DeserializeObject<Twitch_Objects.RootObject>(followsSummaryString);
+            lblFollowers.Text = follows._total.ToString();
 
             //get total views
-            string totalviewsSummaryString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname);
-            string[] totalviewsparsearr = totalviewsSummaryString.Split(',');
-            string[] totalviewscount = totalviewsparsearr[19].Split(':');
-            lblTotalViews.Text = totalviewscount[1].ToString();
+            string ChannelString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname);
+            var channel = JsonConvert.DeserializeObject<Twitch_Objects.Channel>(ChannelString);
+            lblTotalViews.Text = channel.views;
+
+            //var follows = JsonConvert.DeserializeObject<Twitch_Objects.RootObject>(followsSummaryString);
+            //lblFollowers.Text = follows.follows.ToString();
 
             ////*****VIEW TESTING********
             #region

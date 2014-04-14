@@ -5,7 +5,7 @@ using System.Text;
 
 namespace IrcClientDemoCS.Classes
 {
-    class ChannelInfo
+    class TwitchChannelInfo
     {
         //example https://api.twitch.tv/kraken/channels/wornoutwasd
         //{"mature":true,

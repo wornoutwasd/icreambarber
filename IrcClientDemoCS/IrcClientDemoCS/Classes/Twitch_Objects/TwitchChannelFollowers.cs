@@ -5,11 +5,11 @@ using System.Text;
 
 namespace IrcClientDemoCS.Classes
 {
-    class ChannelFollowers
+    class TwitchChannelFollowers
     {
         public int _total { get; set; }
         public string[] _links { get; set; }
-        public follow[] follows { get; set; }
+        public Twitchfollow[] follows { get; set; }
         //Example from https://api.twitch.tv/kraken/channels/wornoutwasd/follows
         //{"_total":62,"_links":{"self":"https://api.twitch.tv/kraken/channels/wornoutwasd/follows?direction=DESC&limit=25&offset=0"
         //,"next":"https://api.twitch.tv/kraken/channels/wornoutwasd/follows?direction=DESC&limit=25&offset=25"}
