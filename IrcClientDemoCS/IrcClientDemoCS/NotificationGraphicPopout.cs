@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AXVLC;
+using System.Media;
 
 namespace IrcClientDemoCS
 {
@@ -20,6 +21,14 @@ namespace IrcClientDemoCS
         private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //plays a sound
+            SoundPlayer s = new SoundPlayer(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\Follwer.wav");
+            
+            s.Play();
         }
 
        

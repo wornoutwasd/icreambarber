@@ -126,6 +126,7 @@
     <Compile Include="StreamInfo.Designer.cs">
       <DependentUpon>StreamInfo.cs</DependentUpon>
     </Compile>
+    <Content Include="Resources\Follwer.wav" />
     <None Include="Resources\backgroundcolor1.png" />
     <None Include="Resources\backgroundcolor.png" />
     <None Include="Resources\FollowersIcon.png" />
