@@ -52,9 +52,6 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.3\lib\HtmlAgilityPack.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Json60r2\Bin\Net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -74,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Twitch_Objects\Stream_Donations_net_Objects.cs" />
     <Compile Include="Classes\Twitch_Objects\Twitchfollow.cs" />
     <Compile Include="Classes\Twitch_Objects\TwitchChannelFollowers.cs" />
     <Compile Include="Classes\Twitch_Objects\TwitchChannelInfo.cs" />
@@ -218,25 +216,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="AxAXVLC">
-      <Guid>{DF2BBE39-40A8-433B-A279-073F48DA94B6}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>aximp</WrapperTool>
-      <Isolated>False</Isolated>
-    </COMReference>
-    <COMReference Include="AXVLC">
-      <Guid>{DF2BBE39-40A8-433B-A279-073F48DA94B6}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

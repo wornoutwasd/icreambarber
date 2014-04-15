@@ -109,5 +109,15 @@ namespace IrcClientDemoCS.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap worn_WASD {
+            get {
+                object obj = ResourceManager.GetObject("worn WASD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
