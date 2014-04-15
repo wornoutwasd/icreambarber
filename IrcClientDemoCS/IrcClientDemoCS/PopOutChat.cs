@@ -11,7 +11,7 @@ using System.Threading;
 using System.Data.SqlClient;
 using System.Collections;
 using IrcClientDemoCS.Classes;
-using HtmlAgilityPack;
+
 using System.Net;
 using System.Media;
 using Newtonsoft.Json;

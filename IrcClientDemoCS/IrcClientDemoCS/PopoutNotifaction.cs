@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Media;
 using System.Net;
 using Newtonsoft.Json;
+using System.Web;
+
 using IrcClientDemoCS.Classes.Twitch_Objects;
 
 
@@ -169,7 +171,9 @@ namespace IrcClientDemoCS
         }
 
         public DateTime lastfollowtime = Convert.ToDateTime("2014-04-13T02:22:08Z");
-
+        public DateTime lastdonationtime = Convert.ToDateTime("2014-04-13T02:22:08Z");
+        string streamdonationsdotnetAPIKey = "ZDI1YjljNjkxYmM4MDgwNTE1ZWU3Yzdh";
+        string streamdonationchannel = "wornoutwasd";
         private void timerPolling_Tick(object sender, EventArgs e)
         {
             //check every 30 seconds
@@ -211,10 +215,16 @@ namespace IrcClientDemoCS
 
             //https://www.streamdonations.net/api/poll?channel=wornoutwasd&key=ZDI1YjljNjkxYmM4MDgwNTE1ZWU3Yzdh
             //{"status":"success","top":[{"channel":"wornoutwasd","date":"2014-04-12T15:28:26.584Z","processor":"Manual","transactionID":"MANUAL15719004573","firstName":"Justin","lastName":"Goetz","twitchUsername":"Justin_417","email":null,"currencyCode":"USD","currencySymbol":"$","amount":"5.00","dollars":5,"cents":0,"note":"updated","_id":"53495b9a468d790000000dbb"}],"mostRecent":[{"channel":"wornoutwasd","date":"2014-04-12T15:28:26.584Z","processor":"Manual","transactionID":"MANUAL15719004573","firstName":"Justin","lastName":"Goetz","twitchUsername":"Justin_417","email":null,"currencyCode":"USD","currencySymbol":"$","amount":"5.00","dollars":5,"cents":0,"note":"updated","_id":"53495b9a468d790000000dbb"}]}
+            string donationsSummaryString = client.DownloadString("https://www.streamdonations.net/api/poll?channel=" + streamdonationchannel + "&key=" + streamdonationsdotnetAPIKey);
+            //parce follwers from serialized data
+            //var items = JsonConvert.DeserializeObject<Dictionary<string, object>>(donationsSummaryString);
+            var streamdonations = JsonConvert.DeserializeObject<Stream_Donations_net_Objects.rootObject>(donationsSummaryString);
 
+            
 
+            
         }
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
             playfollowersound();
