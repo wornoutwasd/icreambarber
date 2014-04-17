@@ -28,6 +28,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lstUsers = new System.Windows.Forms.ListBox();
             this.txtSend = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
@@ -151,6 +152,7 @@
             this.lstDrawings = new System.Windows.Forms.ListBox();
             this.drawingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
             this.panelBackground = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
@@ -169,7 +171,7 @@
             this.settingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
             this.drawingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.DrawingsTableAdapter();
             this.timerTest = new System.Windows.Forms.Timer(this.components);
-            this.button5 = new System.Windows.Forms.Button();
+            this.label31 = new System.Windows.Forms.Label();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -283,7 +285,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbDebug.Location = new System.Drawing.Point(660, 35);
             this.rtbDebug.Name = "rtbDebug";
-            this.rtbDebug.Size = new System.Drawing.Size(383, 173);
+            this.rtbDebug.Size = new System.Drawing.Size(351, 173);
             this.rtbDebug.TabIndex = 11;
             this.rtbDebug.Text = "";
             // 
@@ -316,7 +318,7 @@
             // 
             // btnTestSend
             // 
-            this.btnTestSend.Location = new System.Drawing.Point(966, 213);
+            this.btnTestSend.Location = new System.Drawing.Point(936, 213);
             this.btnTestSend.Name = "btnTestSend";
             this.btnTestSend.Size = new System.Drawing.Size(77, 23);
             this.btnTestSend.TabIndex = 16;
@@ -340,7 +342,7 @@
             this.tcMain.Location = new System.Drawing.Point(0, 1);
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
-            this.tcMain.Size = new System.Drawing.Size(1059, 270);
+            this.tcMain.Size = new System.Drawing.Size(1027, 270);
             this.tcMain.TabIndex = 17;
             // 
             // tabPage1
@@ -361,7 +363,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage1.Size = new System.Drawing.Size(1019, 244);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Chat";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -374,7 +376,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage2.Size = new System.Drawing.Size(1019, 244);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Connections";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -586,7 +588,7 @@
             this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage3.Size = new System.Drawing.Size(1019, 244);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Bot Messages";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -601,7 +603,7 @@
             this.groupBox5.Controls.Add(this.lblMessageTimer);
             this.groupBox5.Location = new System.Drawing.Point(588, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(455, 191);
+            this.groupBox5.Size = new System.Drawing.Size(423, 191);
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Message Que";
@@ -610,7 +612,7 @@
             // 
             this.btnBotMessageClear.Location = new System.Drawing.Point(204, 141);
             this.btnBotMessageClear.Name = "btnBotMessageClear";
-            this.btnBotMessageClear.Size = new System.Drawing.Size(245, 23);
+            this.btnBotMessageClear.Size = new System.Drawing.Size(213, 23);
             this.btnBotMessageClear.TabIndex = 15;
             this.btnBotMessageClear.Text = "Clear Messages";
             this.btnBotMessageClear.UseVisualStyleBackColor = true;
@@ -631,7 +633,7 @@
             this.lstMessageQue.FormattingEnabled = true;
             this.lstMessageQue.Location = new System.Drawing.Point(204, 14);
             this.lstMessageQue.Name = "lstMessageQue";
-            this.lstMessageQue.Size = new System.Drawing.Size(245, 121);
+            this.lstMessageQue.Size = new System.Drawing.Size(213, 121);
             this.lstMessageQue.TabIndex = 1;
             // 
             // lblMessageTimer
@@ -824,7 +826,7 @@
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage4.Size = new System.Drawing.Size(1019, 244);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Point Settings";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -905,7 +907,7 @@
             this.groupBox4.Controls.Add(this.gvMembershipLevels);
             this.groupBox4.Location = new System.Drawing.Point(306, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(734, 208);
+            this.groupBox4.Size = new System.Drawing.Size(710, 208);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Membership Levels";
@@ -923,7 +925,7 @@
             this.gvMembershipLevels.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvMembershipLevels.Location = new System.Drawing.Point(3, 16);
             this.gvMembershipLevels.Name = "gvMembershipLevels";
-            this.gvMembershipLevels.Size = new System.Drawing.Size(728, 189);
+            this.gvMembershipLevels.Size = new System.Drawing.Size(704, 189);
             this.gvMembershipLevels.TabIndex = 0;
             // 
             // membershipLevelDataGridViewTextBoxColumn1
@@ -1041,7 +1043,7 @@
             this.tabPage5.Controls.Add(this.gvUserAccounts);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage5.Size = new System.Drawing.Size(1019, 244);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "User Accounts";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1066,7 +1068,7 @@
             this.gvUserAccounts.Location = new System.Drawing.Point(3, 3);
             this.gvUserAccounts.Name = "gvUserAccounts";
             this.gvUserAccounts.RowHeadersWidth = 40;
-            this.gvUserAccounts.Size = new System.Drawing.Size(1048, 204);
+            this.gvUserAccounts.Size = new System.Drawing.Size(1013, 204);
             this.gvUserAccounts.TabIndex = 0;
             this.gvUserAccounts.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvUserAccounts_CellEndEdit);
             this.gvUserAccounts.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.gvUserAccounts_UserDeletingRow);
@@ -1111,7 +1113,7 @@
             this.tabPage6.Controls.Add(this.grpDrawings);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage6.Size = new System.Drawing.Size(1019, 244);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Drawings";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1127,7 +1129,7 @@
             this.grpDrawings.Controls.Add(this.lstDrawings);
             this.grpDrawings.Location = new System.Drawing.Point(9, 4);
             this.grpDrawings.Name = "grpDrawings";
-            this.grpDrawings.Size = new System.Drawing.Size(1034, 237);
+            this.grpDrawings.Size = new System.Drawing.Size(1007, 237);
             this.grpDrawings.TabIndex = 0;
             this.grpDrawings.TabStop = false;
             this.grpDrawings.Text = "Drawings";
@@ -1389,10 +1391,20 @@
             this.tabPage7.Controls.Add(this.button1);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage7.Size = new System.Drawing.Size(1019, 244);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Graphic Alerts";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(8, 184);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // panelBackground
             // 
@@ -1400,7 +1412,7 @@
             this.panelBackground.Controls.Add(this.panel1);
             this.panelBackground.Location = new System.Drawing.Point(220, 17);
             this.panelBackground.Name = "panelBackground";
-            this.panelBackground.Size = new System.Drawing.Size(804, 204);
+            this.panelBackground.Size = new System.Drawing.Size(796, 204);
             this.panelBackground.TabIndex = 4;
             // 
             // panel1
@@ -1438,7 +1450,7 @@
             this.tabPage8.Controls.Add(this.label20);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1051, 244);
+            this.tabPage8.Size = new System.Drawing.Size(1019, 244);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "About";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1459,8 +1471,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(326, 183);
             this.textBox7.TabIndex = 1;
-            this.textBox7.Text = "To Do:\r\n- Graphic Alerts\r\n- Graphic Drawing\r\n- Custom Chat?\r\n- Modify Membership\r" +
-    "\n- Make Connections Window Functional\r\n";
+            this.textBox7.Text = resources.GetString("textBox7.Text");
             // 
             // label20
             // 
@@ -1513,21 +1524,22 @@
             // 
             this.timerTest.Tick += new System.EventHandler(this.timerTest_Tick);
             // 
-            // button5
+            // label31
             // 
-            this.button5.Location = new System.Drawing.Point(8, 184);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(1029, 23);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(41, 13);
+            this.label31.TabIndex = 18;
+            this.label31.Text = "label31";
+            this.label31.Click += new System.EventHandler(this.label31_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1059, 271);
+            this.Controls.Add(this.label31);
             this.Controls.Add(this.tcMain);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1574,6 +1586,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1723,6 +1736,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer timerTest;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label31;
         
     }
 }

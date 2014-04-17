@@ -486,6 +486,7 @@ namespace IrcClientDemoCS
                 timerPoints.Enabled = false;
                 timerPoints.Stop();
                 btnPointStart.Text = "Start";
+                
             }
             else
             {
@@ -494,6 +495,7 @@ namespace IrcClientDemoCS
                 timerPoints.Start();
                 intPointTimer = 60 * Convert.ToInt16(minutespertick);
                 btnPointStart.Text = "Stop";
+                
             }
             
         }
@@ -750,6 +752,11 @@ namespace IrcClientDemoCS
         {
             PopoutNotifaction p = new PopoutNotifaction();
             p.Show();
+        }
+
+        private void label31_Click(object sender, EventArgs e)
+        {
+
         }
 
         
