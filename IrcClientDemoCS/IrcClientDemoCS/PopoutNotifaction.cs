@@ -28,10 +28,16 @@ namespace IrcClientDemoCS
         int donationAnimationSeconds = 1;
         int donationAnimantionDwell = 3;
         string newFollowerText = "[Name] Just Followed!";
+        string newDonatorText = "[Name] Just Donated!";
         int panelystart = 0;
         int panelxstart = 0;
-
-
+        public DateTime lastfollowtime = Convert.ToDateTime("2014-04-13T02:22:08Z");
+        public DateTime lastdonationtime = Convert.ToDateTime("2014-04-13T02:22:08Z");
+        string streamdonationsdotnetAPIKey = "ZDI1YjljNjkxYmM4MDgwNTE1ZWU3Yzdh";
+        string streamdonationchannel = "wornoutwasd";
+        List<GraphicPopup> popupQue = new List<GraphicPopup>();
+        public Image panelBackgroundFollower = Image.FromFile(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\wornWASD.png");
+        public Image panelBackgroundDonation = Image.FromFile(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\Dollars2.png");
         public PopoutNotifaction()
         {
             InitializeComponent();
@@ -39,7 +45,9 @@ namespace IrcClientDemoCS
             timerPolling.Start();
             //sets the panel out of the visible form and centers it
             followerpanelreset();
-
+            //timerPopupQue.Interval = (((followerAnimationSeconds*2) + followerAnimantionDwell) * 1000) + 1000;
+            timerPopupQue.Interval = ((followerAnimationSeconds + followerAnimantionDwell) * 2) * 1000;
+            timerPopupQue.Start();
         }
 
 
@@ -73,18 +81,7 @@ namespace IrcClientDemoCS
         #endregion
 
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ////plays a sound
-            //SoundPlayer s = new SoundPlayer(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\Follwer.wav");
-            playfollowersound();
-            //s.Play();
-            ////shows falling money!
-            //pictureBox1.Visible = true;
-            //pictureBox1.Dock = DockStyle.Fill;
-            //timerGraphic.Start();
-            followerGraphic(textBox1.Text, 1, 3);
-        }
+
         //start animation for panel
         private void followerGraphic(string name, int animationseconds, int animationdwell)
         {
@@ -92,8 +89,7 @@ namespace IrcClientDemoCS
             //set initial interval for animation timer
             int interval = animationseconds * 1000 / followerPanelHeight;
             timerFollowerGraphic.Interval = interval;
-            //sets lable name
-            label1.Text = newFollowerText.Replace("[Name]", name);
+            
             //center label
             label1.Location = new Point((panel1.Width - label1.Width) / 2, 20);
             //begins graphic
@@ -106,7 +102,12 @@ namespace IrcClientDemoCS
             SoundPlayer s = new SoundPlayer(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\Follwer.wav");
             s.Play();
         }
-
+        private void playDonatorsound()
+        {
+            //plays a sound
+            SoundPlayer s = new SoundPlayer(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\Cha_Ching_Register.wav");
+            s.Play();
+        }
         int followerGraphicTickCount = 0;
         //animation
         private void timerFollowerGraphic_Tick(object sender, EventArgs e)
@@ -134,6 +135,7 @@ namespace IrcClientDemoCS
                 timerFollowerGraphic.Stop();
                 followerGraphicTickCount = 0;
                 followerpanelreset();
+
             }
         }
         //move down
@@ -170,10 +172,7 @@ namespace IrcClientDemoCS
 
         }
 
-        public DateTime lastfollowtime = Convert.ToDateTime("2014-04-13T02:22:08Z");
-        public DateTime lastdonationtime = Convert.ToDateTime("2014-04-13T02:22:08Z");
-        string streamdonationsdotnetAPIKey = "ZDI1YjljNjkxYmM4MDgwNTE1ZWU3Yzdh";
-        string streamdonationchannel = "wornoutwasd";
+        
         private void timerPolling_Tick(object sender, EventArgs e)
         {
             //check every 30 seconds
@@ -188,7 +187,7 @@ namespace IrcClientDemoCS
             string followsSummaryString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname + "/follows");
             //parce follwers from serialized data
             var follows = JsonConvert.DeserializeObject<Twitch_Objects.RootObject>(followsSummaryString);
-            listBox1.Items.Clear();
+            
             List<Twitch_Objects.Follow> lstfollows = new List<Twitch_Objects.Follow>();
             //save the follows that are newer than the last follow time
             for (int i = 0; i < follows.follows.Count; i++)
@@ -197,6 +196,7 @@ namespace IrcClientDemoCS
                 if (Convert.ToDateTime(follows.follows[i].created_at) > lastfollowtime)
                 {
                     lstfollows.Add(follows.follows[i]);
+                    
                 }
             }
             //store the newest follow time to compare against for next round
@@ -204,7 +204,11 @@ namespace IrcClientDemoCS
             //make a que for the names
             foreach (Twitch_Objects.Follow f in lstfollows)
             {
-                listBox1.Items.Add(f.user.display_name);
+                GraphicPopup g = new GraphicPopup();
+                g.name = f.user.display_name;
+                g.time = f.created_at;
+                g.type = "Follow";
+                popupQue.Add(g);
             }
 
 
@@ -218,16 +222,53 @@ namespace IrcClientDemoCS
             string donationsSummaryString = client.DownloadString("https://www.streamdonations.net/api/poll?channel=" + streamdonationchannel + "&key=" + streamdonationsdotnetAPIKey);
             //parce follwers from serialized data
             //var items = JsonConvert.DeserializeObject<Dictionary<string, object>>(donationsSummaryString);
+            List<Stream_Donations_net_Objects.donation> lstDonations = new List<Stream_Donations_net_Objects.donation>();
             var streamdonations = JsonConvert.DeserializeObject<Stream_Donations_net_Objects.rootObject>(donationsSummaryString);
+            for (int j = 0; j < streamdonations.mostRecent.Count; j++)
+            { 
+                if(Convert.ToDateTime(streamdonations.mostRecent[j].date) > lastdonationtime)
+                {
+                    lstDonations.Add(streamdonations.mostRecent[j]);
+                    
+                }
+            }
+            lastdonationtime = Convert.ToDateTime(streamdonations.mostRecent[0].date);
+            foreach (Stream_Donations_net_Objects.donation don in lstDonations)
+            {
+                GraphicPopup g = new GraphicPopup();
+                g.name = don.twitchUsername;
+                g.time = don.date;
+                g.type = "Donation";
+                popupQue.Add(g);
+            }
 
-            
+
 
             
         }
-        
-        private void button2_Click(object sender, EventArgs e)
+
+        private void timerPopupQue_Tick(object sender, EventArgs e)
         {
-            playfollowersound();
+            if (popupQue.Count > 0)
+            {
+                if (popupQue[0].type == "Follow")
+                {
+                    //sets lable name
+                    label1.Text = newFollowerText.Replace("[Name]", popupQue[0].name);
+                    panel1.BackgroundImage = panelBackgroundFollower;
+                    followerGraphic(popupQue[0].name, 1, 3);
+                    playfollowersound();
+                }
+                else
+                {
+                    label1.Text = newDonatorText.Replace("[Name]", popupQue[0].name);
+                    panel1.BackgroundImage = panelBackgroundDonation;
+                    followerGraphic(popupQue[0].name, 1, 3);
+                    playDonatorsound();
+                }
+                //listBox1.Items.RemoveAt(0);
+                popupQue.RemoveAt(0);
+            }
         }
 
         

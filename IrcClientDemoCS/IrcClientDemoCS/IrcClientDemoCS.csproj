@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Twitch_Objects\GraphicPopup.cs" />
     <Compile Include="Classes\Twitch_Objects\Stream_Donations_net_Objects.cs" />
     <Compile Include="Classes\Twitch_Objects\Twitchfollow.cs" />
     <Compile Include="Classes\Twitch_Objects\TwitchChannelFollowers.cs" />
@@ -124,8 +125,11 @@
     <Compile Include="StreamInfo.Designer.cs">
       <DependentUpon>StreamInfo.cs</DependentUpon>
     </Compile>
+    <Content Include="Resources\Cha_Ching_Register.wav" />
+    <Content Include="Resources\Dollars2.png" />
     <Content Include="Resources\FallingMoney3.gif" />
     <Content Include="Resources\Follwer.wav" />
+    <Content Include="Resources\wornWASD.png" />
     <None Include="Resources\backgroundcolor1.png" />
     <None Include="Resources\backgroundcolor.png" />
     <None Include="Resources\FollowersIcon.png" />
