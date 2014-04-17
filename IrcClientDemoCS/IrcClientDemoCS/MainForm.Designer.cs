@@ -172,6 +172,12 @@
             this.drawingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.DrawingsTableAdapter();
             this.timerTest = new System.Windows.Forms.Timer(this.components);
             this.label31 = new System.Windows.Forms.Label();
+            this.btnChatIndicator = new System.Windows.Forms.Button();
+            this.btnPointsIndicator = new System.Windows.Forms.Button();
+            this.label32 = new System.Windows.Forms.Label();
+            this.btnRaffleIndicator = new System.Windows.Forms.Button();
+            this.label33 = new System.Windows.Forms.Label();
+            this.btnAnnounceWinner = new System.Windows.Forms.Button();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1120,6 +1126,7 @@
             // 
             // grpDrawings
             // 
+            this.grpDrawings.Controls.Add(this.btnAnnounceWinner);
             this.grpDrawings.Controls.Add(this.grpDrawingsEdit);
             this.grpDrawings.Controls.Add(this.btnDrawingChooseWinner);
             this.grpDrawings.Controls.Add(this.btnDrawingActivate);
@@ -1527,18 +1534,77 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(1029, 23);
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(1030, 23);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(41, 13);
+            this.label31.Size = new System.Drawing.Size(25, 12);
             this.label31.TabIndex = 18;
-            this.label31.Text = "label31";
+            this.label31.Text = "Chat\r\n";
             this.label31.Click += new System.EventHandler(this.label31_Click);
+            // 
+            // btnChatIndicator
+            // 
+            this.btnChatIndicator.Location = new System.Drawing.Point(1031, 38);
+            this.btnChatIndicator.Name = "btnChatIndicator";
+            this.btnChatIndicator.Size = new System.Drawing.Size(26, 23);
+            this.btnChatIndicator.TabIndex = 19;
+            this.btnChatIndicator.UseVisualStyleBackColor = true;
+            // 
+            // btnPointsIndicator
+            // 
+            this.btnPointsIndicator.Location = new System.Drawing.Point(1031, 79);
+            this.btnPointsIndicator.Name = "btnPointsIndicator";
+            this.btnPointsIndicator.Size = new System.Drawing.Size(26, 23);
+            this.btnPointsIndicator.TabIndex = 21;
+            this.btnPointsIndicator.UseVisualStyleBackColor = true;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(1028, 63);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(31, 12);
+            this.label32.TabIndex = 20;
+            this.label32.Text = "Points\r\n";
+            // 
+            // btnRaffleIndicator
+            // 
+            this.btnRaffleIndicator.Location = new System.Drawing.Point(1031, 120);
+            this.btnRaffleIndicator.Name = "btnRaffleIndicator";
+            this.btnRaffleIndicator.Size = new System.Drawing.Size(26, 23);
+            this.btnRaffleIndicator.TabIndex = 23;
+            this.btnRaffleIndicator.UseVisualStyleBackColor = true;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(1028, 105);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(30, 12);
+            this.label33.TabIndex = 22;
+            this.label33.Text = "Raffle\r\n";
+            // 
+            // btnAnnounceWinner
+            // 
+            this.btnAnnounceWinner.Location = new System.Drawing.Point(798, 64);
+            this.btnAnnounceWinner.Name = "btnAnnounceWinner";
+            this.btnAnnounceWinner.Size = new System.Drawing.Size(108, 23);
+            this.btnAnnounceWinner.TabIndex = 27;
+            this.btnAnnounceWinner.Text = "Announce Winner";
+            this.btnAnnounceWinner.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1059, 271);
+            this.Controls.Add(this.btnRaffleIndicator);
+            this.Controls.Add(this.label33);
+            this.Controls.Add(this.btnPointsIndicator);
+            this.Controls.Add(this.label32);
+            this.Controls.Add(this.btnChatIndicator);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.tcMain);
             this.Name = "MainForm";
@@ -1737,6 +1803,12 @@
         private System.Windows.Forms.Timer timerTest;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Button btnChatIndicator;
+        private System.Windows.Forms.Button btnPointsIndicator;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Button btnRaffleIndicator;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Button btnAnnounceWinner;
         
     }
 }
