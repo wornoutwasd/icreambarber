@@ -57,29 +57,33 @@ namespace IrcClientDemoCS
             timerNetLoad.Interval = 10000;
             WebClient client = new WebClient();
             //resize form and move objects depending on width of text
-            
-            //dirty parse for viewers count.
 
 
-            string channelname = "wornoutwasd";
-            //these need grab current channel from connection settings -
-            string ChannelSummaryString = client.DownloadString("http://api.justin.tv/api/stream/summary.json?channel=" + channelname);
-            var streamsummary = JsonConvert.DeserializeObject<Twitch_Objects.Stream_Summary>(ChannelSummaryString);
+            try
+            {
+                string channelname = "wornoutwasd";
+                //these need grab current channel from connection settings -
+                string ChannelSummaryString = client.DownloadString("http://api.justin.tv/api/stream/summary.json?channel=" + channelname);
+                var streamsummary = JsonConvert.DeserializeObject<Twitch_Objects.Stream_Summary>(ChannelSummaryString);
 
-            lblViewers.Text = streamsummary.viewers_count.ToString();
-            //get total follows
-            string followsSummaryString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname + "/follows");
-            var follows = JsonConvert.DeserializeObject<Twitch_Objects.RootObject>(followsSummaryString);
-            lblFollowers.Text = follows._total.ToString();
+                lblViewers.Text = streamsummary.viewers_count.ToString();
+                //get total follows
+                string followsSummaryString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname + "/follows");
+                var follows = JsonConvert.DeserializeObject<Twitch_Objects.RootObject>(followsSummaryString);
+                lblFollowers.Text = follows._total.ToString();
 
-            //get total views
-            string ChannelString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname);
-            var channel = JsonConvert.DeserializeObject<Twitch_Objects.Channel>(ChannelString);
-            lblTotalViews.Text = channel.views;
+                //get total views
+                string ChannelString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname);
+                var channel = JsonConvert.DeserializeObject<Twitch_Objects.Channel>(ChannelString);
+                lblTotalViews.Text = channel.views;
 
-            //var follows = JsonConvert.DeserializeObject<Twitch_Objects.RootObject>(followsSummaryString);
-            //lblFollowers.Text = follows.follows.ToString();
-
+                //var follows = JsonConvert.DeserializeObject<Twitch_Objects.RootObject>(followsSummaryString);
+                //lblFollowers.Text = follows.follows.ToString();
+            }
+            catch
+            { 
+                //note in database
+            }
             ////*****VIEW TESTING********
             #region
             ////(set for 9,999 of each)

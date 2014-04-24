@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 using IrcClientDemoCS.Classes.Twitch_Objects;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace IrcClientDemoCS
 {
@@ -54,7 +55,7 @@ namespace IrcClientDemoCS
         private static int intPointTimer;
         private static int intMessageQueTimer = 20;
         private static List<ChatBotMessage> listChatBotMessageQue = new List<ChatBotMessage>();
-
+        
         
 
         public MainForm()
@@ -69,8 +70,8 @@ namespace IrcClientDemoCS
         
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
-            
+
+            btnSend.Enabled = false;
             // TODO: This line of code loads data into the 'commandBotDataSet.Drawings' table. You can move, or remove it, as needed.
             this.drawingsTableAdapter.Fill(this.commandBotDataSet.Drawings);
             
@@ -208,6 +209,7 @@ namespace IrcClientDemoCS
         //fires when event delegates from IRC thread are accessed.
         private void AddListeners()
         {
+            
             //each of these listens for the event delegates and fires the methods below.
             irc.OnConnect += () =>
             {
@@ -398,7 +400,8 @@ namespace IrcClientDemoCS
             //does not submit to debug because it is outside of that fire event - add delegate to sendmessage maybe? -dave
 
             irc.SendMessage(channel, txtSend.Text);
-            rtbOutput.AppendText("You:\t" + txtSend.Text + "\r\n");
+            string currenttime = DateTime.Now.ToString("H:mm");
+            rtbOutput.AppendText(currenttime + " You:\t" + txtSend.Text + "\r\n");
             txtSend.Clear();
             txtSend.Focus();
         }
@@ -408,6 +411,7 @@ namespace IrcClientDemoCS
 
         private void btnTestSend_Click(object sender, EventArgs e)
         {
+            
             //don't click this quickly.. you can get banned -dave
             //irc.SendMessage(channel, "TWITCHCLIENT 1");
             //irc.SendRAW("TWITCHCLIENT 1");
@@ -623,15 +627,18 @@ namespace IrcClientDemoCS
 
         private void lstDrawings_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtDrawingGiveAwayName.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["GiveAwayName"].ToString();
-            txtDrawingEntryCommand.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["EntryCommand"].ToString();
-            txtDrawingAdvertisement.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Advertisement"].ToString();
-            txtDrawingCongrats.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Congratulations"].ToString();
-            txtDrawingCost.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Cost"].ToString();
-            txtDrawingAdvertiseInterval.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["AdvertiseInterval"].ToString();
-            cbDrawingAutoAdvertise.Checked = Convert.ToBoolean(commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["AutoAdvertise"]);
-            txtDrawingMaxTickets.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["MaxTickets"].ToString();
-            txtDrawingID.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Id"].ToString();
+            if (lstDrawings.SelectedIndex != -1)
+            {
+                txtDrawingGiveAwayName.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["GiveAwayName"].ToString();
+                txtDrawingEntryCommand.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["EntryCommand"].ToString();
+                txtDrawingAdvertisement.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Advertisement"].ToString();
+                txtDrawingCongrats.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Congratulations"].ToString();
+                txtDrawingCost.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Cost"].ToString();
+                txtDrawingAdvertiseInterval.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["AdvertiseInterval"].ToString();
+                cbDrawingAutoAdvertise.Checked = Convert.ToBoolean(commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["AutoAdvertise"]);
+                txtDrawingMaxTickets.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["MaxTickets"].ToString();
+                txtDrawingID.Text = commandBotDataSet.Drawings.DataSet.Tables["Drawings"].Rows[lstDrawings.SelectedIndex]["Id"].ToString();
+            }
         }
 
 
@@ -704,23 +711,28 @@ namespace IrcClientDemoCS
         #region
         private void button1_Click(object sender, EventArgs e)
         {
-            timerTest.Interval = 10;
-            if (timerTest.Enabled == false)
-            {
-                timerTest.Start();
-            }
-            else
-            {
-                timerTest.Stop();
-                panel1.Location = new Point(50, -150);
-                panely = -150;
-            }
+            string currtime = DateTime.Now.ToString("H:mm");
+            string strHTML = webBrowser1.DocumentText;
+            Image img = Image.FromFile(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\ViewerIcon.png");
 
+            strHTML += currtime + " " + "<img src=\"C:\\Users\\DavidServer\\Documents\\GitHub\\icreambarber\\IrcClientDemoCS\\IrcClientDemoCS\\Resources\\ViewsIcon.png\">" + " Message Goes HereMessage Goes HereMessage Goes HereMessage Goes Here " + "<button type=\"button\" submit=\"button1_Click()\">Click Me!</button>" + "<br>";
+            webBrowser1.DocumentText = strHTML;
+            
+            ScrollToBottom();
         }
 
+        private void ScrollToBottom()
+        {
+            // MOST IMP : processes all windows messages queue
+            Application.DoEvents();
 
+            if (webBrowser1.Document != null)
+            {
+                webBrowser1.Document.Window.ScrollTo(0, webBrowser1.Document.Body.ScrollRectangle.Height);
+            }
+        }
 
-
+    
         #endregion
 
         private void button3_Click(object sender, EventArgs e)
@@ -745,7 +757,6 @@ namespace IrcClientDemoCS
         {
             panely++;
             
-            panel1.Location = new Point(50, panely);
         }
 
         private void button5_Click(object sender, EventArgs e)

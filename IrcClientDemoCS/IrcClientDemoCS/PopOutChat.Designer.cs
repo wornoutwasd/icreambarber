@@ -62,6 +62,7 @@
             this.rtbOutput.ForeColor = System.Drawing.Color.Pink;
             this.rtbOutput.Location = new System.Drawing.Point(12, 12);
             this.rtbOutput.Name = "rtbOutput";
+            this.rtbOutput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.rtbOutput.Size = new System.Drawing.Size(375, 454);
             this.rtbOutput.TabIndex = 0;
             this.rtbOutput.Text = "";

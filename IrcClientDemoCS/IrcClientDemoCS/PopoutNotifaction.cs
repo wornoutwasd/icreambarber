@@ -31,8 +31,8 @@ namespace IrcClientDemoCS
         string newDonatorText = "[Name] Just Donated!";
         int panelystart = 0;
         int panelxstart = 0;
-        public DateTime lastfollowtime = Convert.ToDateTime("2014-04-13T02:22:08Z");
-        public DateTime lastdonationtime = Convert.ToDateTime("2014-04-13T02:22:08Z");
+        public DateTime lastfollowtime = Convert.ToDateTime("2014-04-22T03:48:52Z");
+        public DateTime lastdonationtime = Convert.ToDateTime("2014-04-22T03:48:52Z");
         string streamdonationsdotnetAPIKey = "ZDI1YjljNjkxYmM4MDgwNTE1ZWU3Yzdh";
         string streamdonationchannel = "wornoutwasd";
         List<GraphicPopup> popupQue = new List<GraphicPopup>();
@@ -184,67 +184,83 @@ namespace IrcClientDemoCS
             //new followers graphic
             #region
             //poll twitch api for follwers
-            string followsSummaryString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname + "/follows");
-            //parce follwers from serialized data
-            var follows = JsonConvert.DeserializeObject<Twitch_Objects.RootObject>(followsSummaryString);
+            //try catch is for 503 errors etc.
+            try 
+            { 
+                string followsSummaryString = client.DownloadString("https://api.twitch.tv/kraken/channels/" + channelname + "/follows");
+                //parce follwers from serialized data
+                var follows = JsonConvert.DeserializeObject<Twitch_Objects.RootObject>(followsSummaryString);
             
-            List<Twitch_Objects.Follow> lstfollows = new List<Twitch_Objects.Follow>();
-            //save the follows that are newer than the last follow time
-            for (int i = 0; i < follows.follows.Count; i++)
-            {
-
-                if (Convert.ToDateTime(follows.follows[i].created_at) > lastfollowtime)
+                List<Twitch_Objects.Follow> lstfollows = new List<Twitch_Objects.Follow>();
+                //save the follows that are newer than the last follow time
+                for (int i = 0; i < follows.follows.Count; i++)
                 {
-                    lstfollows.Add(follows.follows[i]);
+
+                    if (Convert.ToDateTime(follows.follows[i].created_at) > lastfollowtime)
+                    {
+                        lstfollows.Add(follows.follows[i]);
                     
+                    }
                 }
+                //store the newest follow time to compare against for next round
+                lastfollowtime = Convert.ToDateTime(follows.follows[0].created_at);
+                //make a que for the names
+                foreach (Twitch_Objects.Follow f in lstfollows)
+                {
+                    GraphicPopup g = new GraphicPopup();
+                    g.name = f.user.display_name;
+                    g.time = f.created_at;
+                    g.type = "Follow";
+                    popupQue.Add(g);
+                }
+
             }
-            //store the newest follow time to compare against for next round
-            lastfollowtime = Convert.ToDateTime(follows.follows[0].created_at);
-            //make a que for the names
-            foreach (Twitch_Objects.Follow f in lstfollows)
+
+            catch
             {
-                GraphicPopup g = new GraphicPopup();
-                g.name = f.user.display_name;
-                g.time = f.created_at;
-                g.type = "Follow";
-                popupQue.Add(g);
+                //note in DB
             }
-
-
             // do things with the names
 
             #endregion
             //donation tracker
-
+            #region
             //https://www.streamdonations.net/api/poll?channel=wornoutwasd&key=ZDI1YjljNjkxYmM4MDgwNTE1ZWU3Yzdh
             //{"status":"success","top":[{"channel":"wornoutwasd","date":"2014-04-12T15:28:26.584Z","processor":"Manual","transactionID":"MANUAL15719004573","firstName":"Justin","lastName":"Goetz","twitchUsername":"Justin_417","email":null,"currencyCode":"USD","currencySymbol":"$","amount":"5.00","dollars":5,"cents":0,"note":"updated","_id":"53495b9a468d790000000dbb"}],"mostRecent":[{"channel":"wornoutwasd","date":"2014-04-12T15:28:26.584Z","processor":"Manual","transactionID":"MANUAL15719004573","firstName":"Justin","lastName":"Goetz","twitchUsername":"Justin_417","email":null,"currencyCode":"USD","currencySymbol":"$","amount":"5.00","dollars":5,"cents":0,"note":"updated","_id":"53495b9a468d790000000dbb"}]}
-            string donationsSummaryString = client.DownloadString("https://www.streamdonations.net/api/poll?channel=" + streamdonationchannel + "&key=" + streamdonationsdotnetAPIKey);
-            //parce follwers from serialized data
-            //var items = JsonConvert.DeserializeObject<Dictionary<string, object>>(donationsSummaryString);
-            List<Stream_Donations_net_Objects.donation> lstDonations = new List<Stream_Donations_net_Objects.donation>();
-            var streamdonations = JsonConvert.DeserializeObject<Stream_Donations_net_Objects.rootObject>(donationsSummaryString);
-            for (int j = 0; j < streamdonations.mostRecent.Count; j++)
-            { 
-                if(Convert.ToDateTime(streamdonations.mostRecent[j].date) > lastdonationtime)
-                {
-                    lstDonations.Add(streamdonations.mostRecent[j]);
-                    
-                }
-            }
-            lastdonationtime = Convert.ToDateTime(streamdonations.mostRecent[0].date);
-            foreach (Stream_Donations_net_Objects.donation don in lstDonations)
+            //try catch is for 503 errors etc.
+            try
             {
-                GraphicPopup g = new GraphicPopup();
-                g.name = don.twitchUsername;
-                g.time = don.date;
-                g.type = "Donation";
-                popupQue.Add(g);
+                string donationsSummaryString = client.DownloadString("https://www.streamdonations.net/api/poll?channel=" + streamdonationchannel + "&key=" + streamdonationsdotnetAPIKey);
+                //parce follwers from serialized data
+                //var items = JsonConvert.DeserializeObject<Dictionary<string, object>>(donationsSummaryString);
+                List<Stream_Donations_net_Objects.donation> lstDonations = new List<Stream_Donations_net_Objects.donation>();
+                var streamdonations = JsonConvert.DeserializeObject<Stream_Donations_net_Objects.rootObject>(donationsSummaryString);
+                for (int j = 0; j < streamdonations.mostRecent.Count; j++)
+                { 
+                    if(Convert.ToDateTime(streamdonations.mostRecent[j].date) > lastdonationtime)
+                    {
+                        lstDonations.Add(streamdonations.mostRecent[j]);
+                    
+                    }
+                }
+                lastdonationtime = Convert.ToDateTime(streamdonations.mostRecent[0].date);
+                foreach (Stream_Donations_net_Objects.donation don in lstDonations)
+                {
+                    GraphicPopup g = new GraphicPopup();
+                    g.name = don.twitchUsername;
+                    g.time = don.date;
+                    g.type = "Donation";
+                    popupQue.Add(g);
+                }
+
             }
 
+            catch
+            {
+                //note in db
+            }
 
-
-            
+            #endregion
         }
 
         private void timerPopupQue_Tick(object sender, EventArgs e)
