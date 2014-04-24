@@ -715,7 +715,7 @@ namespace IrcClientDemoCS
             string strHTML = webBrowser1.DocumentText;
             Image img = Image.FromFile(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\ViewerIcon.png");
 
-            strHTML += currtime + " " + "<img src=\"C:\\Users\\DavidServer\\Documents\\GitHub\\icreambarber\\IrcClientDemoCS\\IrcClientDemoCS\\Resources\\ViewsIcon.png\">" + " Message Goes HereMessage Goes HereMessage Goes HereMessage Goes Here " + "<button type=\"button\" submit=\"button1_Click()\">Click Me!</button>" + "<br>";
+            strHTML += currtime + " " + "<img src=\"C:\\Users\\DavidServer\\Documents\\GitHub\\icreambarber\\IrcClientDemoCS\\IrcClientDemoCS\\Resources\\ViewsIcon.png\">" + " Message Goes HereMessage Goes HereMessage Goes HereMessage Goes Here "  + "<br>";
             webBrowser1.DocumentText = strHTML;
             
             ScrollToBottom();
