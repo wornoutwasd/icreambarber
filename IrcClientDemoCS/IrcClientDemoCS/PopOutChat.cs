@@ -22,10 +22,14 @@ namespace IrcClientDemoCS
     public partial class PopOutChat : Form
     {
 
+
         public PopOutChat()
         {
+            
             InitializeComponent();
             timer1.Start();
+            
+            
         }
 
         //Movement
@@ -33,6 +37,8 @@ namespace IrcClientDemoCS
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
+        
+
 
         private void PopOutChat_MouseDown(object sender, MouseEventArgs e)
         {
@@ -226,7 +232,7 @@ namespace IrcClientDemoCS
             if (Listening == false) AddListeners();
             button1.Visible = false;
             
-            
+
         }
         //fires when event delegates from IRC thread are accessed.
         private void AddListeners()
@@ -334,6 +340,11 @@ namespace IrcClientDemoCS
         private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void PopOutChat_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            settingsTableAdapter.UpdateChatIndicatorQuery(false, 1);
         }
 
 

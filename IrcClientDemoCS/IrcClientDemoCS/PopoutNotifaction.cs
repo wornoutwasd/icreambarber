@@ -335,6 +335,11 @@ namespace IrcClientDemoCS
             this.Close();
         }
 
+        private void PopoutNotifaction_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            settingsTableAdapter1.UpdateGraphicIndicatorQuery(false, 1);
+        }
+
         
 
 

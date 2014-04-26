@@ -20,7 +20,6 @@ namespace IrcClientDemoCS
             InitializeComponent();
             timerNetLoad.Start();
             
-            
         }
         //***** These methods are to enable dragging of the window from form click
         #region
@@ -138,6 +137,11 @@ namespace IrcClientDemoCS
         private void savePositionToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void StreamInfo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            settingsTableAdapter1.UpdateInfoIndicatorQuery(false, 1);
         }
     }
 }

@@ -177,9 +177,9 @@
             this.label32 = new System.Windows.Forms.Label();
             this.btnRaffleIndicator = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnInfoIndicator = new System.Windows.Forms.Button();
             this.label34 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnGraphicIndicator = new System.Windows.Forms.Button();
             this.label35 = new System.Windows.Forms.Label();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -293,7 +293,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbDebug.Location = new System.Drawing.Point(660, 35);
             this.rtbDebug.Name = "rtbDebug";
-            this.rtbDebug.Size = new System.Drawing.Size(353, 173);
+            this.rtbDebug.Size = new System.Drawing.Size(351, 173);
             this.rtbDebug.TabIndex = 11;
             this.rtbDebug.Text = "";
             // 
@@ -350,7 +350,7 @@
             this.tcMain.Location = new System.Drawing.Point(0, 1);
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
-            this.tcMain.Size = new System.Drawing.Size(1029, 270);
+            this.tcMain.Size = new System.Drawing.Size(1027, 270);
             this.tcMain.TabIndex = 17;
             // 
             // tabPage1
@@ -371,7 +371,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1021, 244);
+            this.tabPage1.Size = new System.Drawing.Size(1019, 244);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Chat";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -384,7 +384,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1021, 244);
+            this.tabPage2.Size = new System.Drawing.Size(1019, 244);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Connections";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -596,7 +596,7 @@
             this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1021, 244);
+            this.tabPage3.Size = new System.Drawing.Size(1019, 244);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Bot Messages";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -834,7 +834,7 @@
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1021, 244);
+            this.tabPage4.Size = new System.Drawing.Size(1019, 244);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Point Settings";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1051,7 +1051,7 @@
             this.tabPage5.Controls.Add(this.gvUserAccounts);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1021, 244);
+            this.tabPage5.Size = new System.Drawing.Size(1019, 244);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "User Accounts";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1121,7 +1121,7 @@
             this.tabPage6.Controls.Add(this.grpDrawings);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1021, 244);
+            this.tabPage6.Size = new System.Drawing.Size(1019, 244);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Drawings";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1409,7 +1409,7 @@
             this.tabPage7.Controls.Add(this.button1);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(1021, 244);
+            this.tabPage7.Size = new System.Drawing.Size(1019, 244);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Graphic Alerts";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1460,7 +1460,7 @@
             this.tabPage8.Controls.Add(this.label20);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1021, 244);
+            this.tabPage8.Size = new System.Drawing.Size(1019, 244);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "About";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1547,19 +1547,21 @@
             // 
             // btnChatIndicator
             // 
+            this.btnChatIndicator.BackColor = System.Drawing.Color.Red;
             this.btnChatIndicator.Location = new System.Drawing.Point(1031, 38);
             this.btnChatIndicator.Name = "btnChatIndicator";
             this.btnChatIndicator.Size = new System.Drawing.Size(26, 23);
             this.btnChatIndicator.TabIndex = 19;
-            this.btnChatIndicator.UseVisualStyleBackColor = true;
+            this.btnChatIndicator.UseVisualStyleBackColor = false;
             // 
             // btnPointsIndicator
             // 
+            this.btnPointsIndicator.BackColor = System.Drawing.Color.Red;
             this.btnPointsIndicator.Location = new System.Drawing.Point(1031, 79);
             this.btnPointsIndicator.Name = "btnPointsIndicator";
             this.btnPointsIndicator.Size = new System.Drawing.Size(26, 23);
             this.btnPointsIndicator.TabIndex = 21;
-            this.btnPointsIndicator.UseVisualStyleBackColor = true;
+            this.btnPointsIndicator.UseVisualStyleBackColor = false;
             // 
             // label32
             // 
@@ -1573,11 +1575,12 @@
             // 
             // btnRaffleIndicator
             // 
+            this.btnRaffleIndicator.BackColor = System.Drawing.Color.Red;
             this.btnRaffleIndicator.Location = new System.Drawing.Point(1031, 120);
             this.btnRaffleIndicator.Name = "btnRaffleIndicator";
             this.btnRaffleIndicator.Size = new System.Drawing.Size(26, 23);
             this.btnRaffleIndicator.TabIndex = 23;
-            this.btnRaffleIndicator.UseVisualStyleBackColor = true;
+            this.btnRaffleIndicator.UseVisualStyleBackColor = false;
             // 
             // label33
             // 
@@ -1589,13 +1592,14 @@
             this.label33.TabIndex = 22;
             this.label33.Text = "Raffle\r\n";
             // 
-            // button6
+            // btnInfoIndicator
             // 
-            this.button6.Location = new System.Drawing.Point(1031, 161);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(26, 23);
-            this.button6.TabIndex = 25;
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnInfoIndicator.BackColor = System.Drawing.Color.Red;
+            this.btnInfoIndicator.Location = new System.Drawing.Point(1031, 161);
+            this.btnInfoIndicator.Name = "btnInfoIndicator";
+            this.btnInfoIndicator.Size = new System.Drawing.Size(26, 23);
+            this.btnInfoIndicator.TabIndex = 25;
+            this.btnInfoIndicator.UseVisualStyleBackColor = false;
             // 
             // label34
             // 
@@ -1607,13 +1611,14 @@
             this.label34.TabIndex = 24;
             this.label34.Text = "Info";
             // 
-            // button7
+            // btnGraphicIndicator
             // 
-            this.button7.Location = new System.Drawing.Point(1032, 202);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(26, 23);
-            this.button7.TabIndex = 27;
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnGraphicIndicator.BackColor = System.Drawing.Color.Red;
+            this.btnGraphicIndicator.Location = new System.Drawing.Point(1032, 202);
+            this.btnGraphicIndicator.Name = "btnGraphicIndicator";
+            this.btnGraphicIndicator.Size = new System.Drawing.Size(26, 23);
+            this.btnGraphicIndicator.TabIndex = 27;
+            this.btnGraphicIndicator.UseVisualStyleBackColor = false;
             // 
             // label35
             // 
@@ -1630,9 +1635,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 271);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.btnGraphicIndicator);
             this.Controls.Add(this.label35);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.btnInfoIndicator);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.btnRaffleIndicator);
             this.Controls.Add(this.label33);
@@ -1840,9 +1845,9 @@
         private System.Windows.Forms.Button btnRaffleIndicator;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Button btnAnnounceWinner;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnInfoIndicator;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnGraphicIndicator;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.WebBrowser webBrowser1;
         

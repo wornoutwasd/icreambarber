@@ -31,7 +31,7 @@ namespace IrcClientDemoCS
 
         //Varibles
 
-        public delegate void delPassData(RichTextBox text);
+        
 
         IrcClient irc;
         Boolean Listening = false;
@@ -55,26 +55,43 @@ namespace IrcClientDemoCS
         private static int intPointTimer;
         private static int intMessageQueTimer = 20;
         private static List<ChatBotMessage> listChatBotMessageQue = new List<ChatBotMessage>();
+
         
-        
+        public static bool chatIndicator = false;
+        public static bool pointsIndicator = false;
+        public static bool raffleIndicator = false;
+        public static bool infoIndicator = false;
+        public static bool graphicIndicator = false;
+
+
+        public Color TextBoxValue
+        {
+            get { return btnChatIndicator.BackColor; }
+        }
 
         public MainForm()
         {
 
             InitializeComponent();
-
-
+            //1 is the default ID in database for settings
+            //this resets the indicator "lights"
+            settingsTableAdapter.ResetIndicators(1);
+            
 
         }
 
         
+        
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            
             btnSend.Enabled = false;
             // TODO: This line of code loads data into the 'commandBotDataSet.Drawings' table. You can move, or remove it, as needed.
             this.drawingsTableAdapter.Fill(this.commandBotDataSet.Drawings);
             
+            //***Indicators
+            this.settingsTableAdapter.FillSettings(this.commandBotDataSet.Settings);
+
             //***Table Adapters
             #region
             // TODO: This line of code loads data into the 'commandBotDataSet.MembershipLevels' table. You can move, or remove it, as needed.
@@ -175,6 +192,8 @@ namespace IrcClientDemoCS
             #endregion
             #endregion
 
+            //indicator timer
+            timerTest.Start();
         }
 
 
@@ -490,7 +509,7 @@ namespace IrcClientDemoCS
                 timerPoints.Enabled = false;
                 timerPoints.Stop();
                 btnPointStart.Text = "Start";
-                
+                settingsTableAdapter.UpdatePointsIndicatorQuery(false, 1);
             }
             else
             {
@@ -499,7 +518,7 @@ namespace IrcClientDemoCS
                 timerPoints.Start();
                 intPointTimer = 60 * Convert.ToInt16(minutespertick);
                 btnPointStart.Text = "Stop";
-                
+                settingsTableAdapter.UpdatePointsIndicatorQuery(true, 1);
             }
             
         }
@@ -521,6 +540,8 @@ namespace IrcClientDemoCS
         private void btnPointTimerReset_Click(object sender, EventArgs e)
         {
             intPointTimer = 60 * Convert.ToInt16(minutespertick);
+            TimeSpan t = TimeSpan.FromSeconds(intPointTimer);
+            lblPointTickTimer.Text = t.ToString();
         }
 
         private void btnPointTest_Click(object sender, EventArgs e)
@@ -665,6 +686,7 @@ namespace IrcClientDemoCS
                 btnDrawingActivate.Text = "Deactivate Drawing";
                 activegiveawaycmd = txtDrawingEntryCommand.Text;
                 activegiveawaycost = Convert.ToInt16(txtDrawingCost.Text);
+                settingsTableAdapter.UpdateRaffleIndicatorQuery(true, 1);
             }
             else
             {
@@ -674,6 +696,7 @@ namespace IrcClientDemoCS
                 btnDrawingActivate.Text = "Activate Drawing";
                 activegiveawaycmd = "ON@)(#*H:O@!NP(";//yup
                 activegiveawaycost = 0;
+                settingsTableAdapter.UpdateRaffleIndicatorQuery(false, 1);
             }
             
         }
@@ -760,40 +783,101 @@ namespace IrcClientDemoCS
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (Application.OpenForms["StreamInfo"] != null)
+            {
+                Application.OpenForms["StreamInfo"].Close();
+            }
             StreamInfo c = new StreamInfo();
             c.Size = new System.Drawing.Size(250, 25);
             c.Show();
+            settingsTableAdapter.UpdateInfoIndicatorQuery(true, 1);
         }
-
+        
         private void btnTest_Click(object sender, EventArgs e)
         {
-            PopOutChat p = new PopOutChat();
+
+            
             RichTextBox r = new RichTextBox();
             r.Text = rtbOutput.Text;
             //p.Controls.Add(r);
-            p.Show();
-        }
 
-        int panelx = 50;
-        int panely = -150;
-        private void timerTest_Tick(object sender, EventArgs e)
-        {
-            panely++;
+            if (Application.OpenForms["PopOutChat"] != null)
+            {
+                Application.OpenForms["PopOutChat"].Close();
+            }
+            PopOutChat p = new PopOutChat();
+            p.Show();
+            //turns on indicator light (sets value in db)
+            settingsTableAdapter.UpdateChatIndicatorQuery(true, 1);
+            
+                
             
         }
-
+        
+        
+        private void timerTest_Tick(object sender, EventArgs e)
+        {
+            timerTest.Interval = 1000;
+            //settingsTableAdapter.ResetIndicators(1);
+            settingsTableAdapter.FillSettings(commandBotDataSet.Settings);
+            if (Convert.ToBoolean(commandBotDataSet.Settings[0]["ChatIndicator"]) == true)
+            {
+                btnChatIndicator.BackColor = Color.Green;
+            }
+            else
+            {
+                btnChatIndicator.BackColor = Color.Red;
+            }
+            if (Convert.ToBoolean(commandBotDataSet.Settings[0]["PointsIndicator"]) == true)
+            {
+                btnPointsIndicator.BackColor = Color.Green;
+            }
+            else
+            {
+                btnPointsIndicator.BackColor = Color.Red;
+            }
+            if (Convert.ToBoolean(commandBotDataSet.Settings[0]["RaffleIndicator"]) == true)
+            {
+                btnRaffleIndicator.BackColor = Color.Green;
+            }
+            else
+            {
+                btnRaffleIndicator.BackColor = Color.Red;
+            }
+            if (Convert.ToBoolean(commandBotDataSet.Settings[0]["InfoIndicator"]) == true)
+            {
+                btnInfoIndicator.BackColor = Color.Green;
+            }
+            else
+            {
+                btnInfoIndicator.BackColor = Color.Red;
+            }
+            if (Convert.ToBoolean(commandBotDataSet.Settings[0]["GraphicIndicator"]) == true)
+            {
+                btnGraphicIndicator.BackColor = Color.Green;
+            }
+            else
+            {
+                btnGraphicIndicator.BackColor = Color.Red;
+            }
+        }
+        
         private void button5_Click(object sender, EventArgs e)
         {
+            if (Application.OpenForms["PopoutNotifaction"] != null)
+            {
+                Application.OpenForms["PopoutNotifaction"].Close();
+            }
             PopoutNotifaction p = new PopoutNotifaction();
             //put this into a try for the default position
 
             p.StartPosition = FormStartPosition.Manual;
             p.Left = 50;
             p.Top = 50;
-
-            //end position
             
+            //end position
             p.Show();
+            settingsTableAdapter.UpdateGraphicIndicatorQuery(true, 1);
         }
 
         private void label31_Click(object sender, EventArgs e)

@@ -121,7 +121,7 @@
   <data name="lblViewers.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAALcAAAAsCAYAAAAnzykfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAACdSURBVHhe7dQhDoBAEARB/v/YU6w+EvQpFOmUKDW2M9fM
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAACdSURBVHhe7dQhDoBAEARB/v/YU6w+EvQpFOmUKDW2M9fM
         bCgSN1niJkvcZImbLHGTJW6yxE2WuMkSN1niJkvcZImbLHGTJW6yPsd9r/U6bfAHnpsscZMlbrLETZa4
         yRI3WeImS9xkiZsscZMlbrLETZa4yRI3WeImS9xkiZsscZMlbrLETZa4yRI3WeImS9xkiZsscZMlbrLE
         TdTsByGgqZIw4KumAAAAAElFTkSuQmCC
@@ -130,7 +130,7 @@
   <data name="lblTotalViews.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAALcAAAAsCAYAAAAnzykfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAACdSURBVHhe7dQhDoBAEARB/v/YU6w+EvQpFOmUKDW2M9fM
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAACdSURBVHhe7dQhDoBAEARB/v/YU6w+EvQpFOmUKDW2M9fM
         bCgSN1niJkvcZImbLHGTJW6yxE2WuMkSN1niJkvcZImbLHGTJW6yPsd9r/U6bfAHnpsscZMlbrLETZa4
         yRI3WeImS9xkiZsscZMlbrLETZa4yRI3WeImS9xkiZsscZMlbrLETZa4yRI3WeImS9xkiZsscZMlbrLE
         TdTsByGgqZIw4KumAAAAAElFTkSuQmCC
@@ -139,7 +139,7 @@
   <data name="lblFollowers.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAALcAAAAsCAYAAAAnzykfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAACdSURBVHhe7dQhDoBAEARB/v/YU6w+EvQpFOmUKDW2M9fM
+        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAACdSURBVHhe7dQhDoBAEARB/v/YU6w+EvQpFOmUKDW2M9fM
         bCgSN1niJkvcZImbLHGTJW6yxE2WuMkSN1niJkvcZImbLHGTJW6yPsd9r/U6bfAHnpsscZMlbrLETZa4
         yRI3WeImS9xkiZsscZMlbrLETZa4yRI3WeImS9xkiZsscZMlbrLETZa4yRI3WeImS9xkiZsscZMlbrLE
         TdTsByGgqZIw4KumAAAAAElFTkSuQmCC
@@ -150,5 +150,8 @@
   </metadata>
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>144, 17</value>
+  </metadata>
+  <metadata name="settingsTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>299, 17</value>
   </metadata>
 </root>

@@ -45,6 +45,7 @@
             this.resetPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetPositionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsTableAdapter1 = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -106,7 +107,7 @@
             this.resetPositionToolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 92);
             // 
             // testToolStripMenuItem
             // 
@@ -114,43 +115,47 @@
             this.followerToolStripMenuItem,
             this.donationToolStripMenuItem});
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.testToolStripMenuItem.Text = "Test";
             // 
             // followerToolStripMenuItem
             // 
             this.followerToolStripMenuItem.Name = "followerToolStripMenuItem";
-            this.followerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.followerToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.followerToolStripMenuItem.Text = "Follower";
             this.followerToolStripMenuItem.Click += new System.EventHandler(this.followerToolStripMenuItem_Click);
             // 
             // donationToolStripMenuItem
             // 
             this.donationToolStripMenuItem.Name = "donationToolStripMenuItem";
-            this.donationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.donationToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.donationToolStripMenuItem.Text = "Donation";
             this.donationToolStripMenuItem.Click += new System.EventHandler(this.donationToolStripMenuItem_Click);
             // 
             // resetPositionToolStripMenuItem
             // 
             this.resetPositionToolStripMenuItem.Name = "resetPositionToolStripMenuItem";
-            this.resetPositionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.resetPositionToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.resetPositionToolStripMenuItem.Text = "Save Position";
             this.resetPositionToolStripMenuItem.Click += new System.EventHandler(this.savePositionToolStripMenuItem_Click);
             // 
             // resetPositionToolStripMenuItem1
             // 
             this.resetPositionToolStripMenuItem1.Name = "resetPositionToolStripMenuItem1";
-            this.resetPositionToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.resetPositionToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.resetPositionToolStripMenuItem1.Text = "Reset Position";
             this.resetPositionToolStripMenuItem1.Click += new System.EventHandler(this.resetPositionToolStripMenuItem1_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // settingsTableAdapter1
+            // 
+            this.settingsTableAdapter1.ClearBeforeFill = true;
             // 
             // PopoutNotifaction
             // 
@@ -169,6 +174,7 @@
             this.Text = "NotificationGraphicPopout";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Crimson;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PopoutNotifaction_FormClosing);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PopoutNotification_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PopoutNotification_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PopoutNotification_MouseUp);
@@ -197,6 +203,7 @@
         private System.Windows.Forms.ToolStripMenuItem resetPositionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetPositionToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private CommandBotDataSetTableAdapters.SettingsTableAdapter settingsTableAdapter1;
 
 
     }
