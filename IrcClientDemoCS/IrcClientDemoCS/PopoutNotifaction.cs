@@ -177,13 +177,23 @@ namespace IrcClientDemoCS
             pictureBox1.Visible = true;
             pictureBox1.Dock = DockStyle.Fill;
             timerGraphic.Start();
+            Invalidate();
         }
-
+        int intgraphiccount = 0;
         private void timerGraphic_Tick(object sender, EventArgs e)
         {
-            timerGraphic.Interval = 11800;
-            timerGraphic.Stop();
-            pictureBox1.Visible = false;
+            if (intgraphiccount > 118)
+            {
+                intgraphiccount = 0;
+                timerGraphic.Stop();
+                pictureBox1.Visible = false;
+                Invalidate();
+            }
+            else
+            {
+                intgraphiccount++;
+                Invalidate();
+            }            
 
         }
 
@@ -338,6 +348,11 @@ namespace IrcClientDemoCS
         private void PopoutNotifaction_FormClosing(object sender, FormClosingEventArgs e)
         {
             settingsTableAdapter1.UpdateGraphicIndicatorQuery(false, 1);
+        }
+
+        private void mAKEITRAINToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MakeItRain();
         }
 
         

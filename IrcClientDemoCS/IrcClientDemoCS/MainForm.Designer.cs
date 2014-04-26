@@ -1479,6 +1479,7 @@
             this.textBox7.Location = new System.Drawing.Point(482, 3);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
+            this.textBox7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox7.Size = new System.Drawing.Size(326, 233);
             this.textBox7.TabIndex = 1;
             this.textBox7.Text = resources.GetString("textBox7.Text");

@@ -11,7 +11,7 @@ using System.Threading;
 using System.Data.SqlClient;
 using System.Collections;
 using IrcClientDemoCS.Classes;
-
+using System.Runtime.InteropServices;
 using System.Net;
 using System.Media;
 using Newtonsoft.Json;
@@ -28,8 +28,8 @@ namespace IrcClientDemoCS
             
             InitializeComponent();
             timer1.Start();
-            
-            
+            webBrowser1.DocumentText = "<body bgcolor=\"#000000\" text=\"#ffffff\"><font size=\"4\"><b>";
+            //webBrowser1.DocumentText = "<body bgcolor=\"#00ff00\" text=\"#ffffff\">";
         }
 
         //Movement
@@ -70,7 +70,7 @@ namespace IrcClientDemoCS
         {
             
             timer1.Interval = 10000;
-            
+            //webBrowser1.DocumentText = "<body bgcolor=\"#E6E6FA\">";
                 
         }
 
@@ -205,7 +205,56 @@ namespace IrcClientDemoCS
 
         }
 
+        //***Web Browser
+        #region
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string currtime = DateTime.Now.ToString("H:mm");
+            string strHTML = webBrowser1.DocumentText;
+            Image img = Image.FromFile(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\ViewerIcon.png");
 
+            strHTML += currtime + " " + "<img src=\"C:\\Users\\DavidServer\\Documents\\GitHub\\icreambarber\\IrcClientDemoCS\\IrcClientDemoCS\\Resources\\ViewsIcon.png\" width=\"50%\" height=\"50%\">" + " Message Goes HereMessage Goes HereMessage Goes HereMessage Goes Here " + "<br>";
+            //this makes annoying click noise
+            DisableClickSounds();
+            webBrowser1.DocumentText = strHTML;
+
+            //webBrowser1.Document.OpenNew(true);
+            //webBrowser1.Document.Write(strHTML);
+            ScrollToBottom();
+        }
+        const int FEATURE_DISABLE_NAVIGATION_SOUNDS = 21;
+        const int SET_FEATURE_ON_PROCESS = 0x00000002;
+
+        [DllImport("urlmon.dll")]
+        [PreserveSig]
+        [return: MarshalAs(UnmanagedType.Error)]
+        static extern int CoInternetSetFeatureEnabled(
+            int FeatureEntry,
+            [MarshalAs(UnmanagedType.U4)] int dwFlags,
+            bool fEnable);
+
+        static void DisableClickSounds()
+        {
+            CoInternetSetFeatureEnabled(
+                FEATURE_DISABLE_NAVIGATION_SOUNDS,
+                SET_FEATURE_ON_PROCESS,
+                true);
+        }
+
+
+        private void ScrollToBottom()
+        {
+            // MOST IMP : processes all windows messages queue
+            Application.DoEvents();
+
+            if (webBrowser1.Document != null)
+            {
+                webBrowser1.Document.Window.ScrollTo(0, webBrowser1.Document.Body.ScrollRectangle.Height);
+            }
+        }
+
+
+        #endregion
         //***********Chat tab methods
         #region
         private void txtSend_KeyDown(object sender, KeyEventArgs e)
@@ -241,8 +290,19 @@ namespace IrcClientDemoCS
             irc.OnConnect += () =>
             {
                 // once we're connected show it and enable the send button
-                rtbOutput.AppendText("Connected!\n");
-                
+                //rtbOutput.AppendText("Connected!\n");
+                string currtime = DateTime.Now.ToString("H:mm");
+                string strHTML = webBrowser1.DocumentText;
+                Image img = Image.FromFile(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\ViewerIcon.png");
+
+                strHTML += currtime + " " + "<img src=\"C:\\Users\\DavidServer\\Documents\\GitHub\\icreambarber\\IrcClientDemoCS\\IrcClientDemoCS\\Resources\\ViewsIcon.png\" style=\" width: 15px; height: 15px\">" + " " + "Connected" + "<br>";
+                //this makes annoying click noise
+                DisableClickSounds();
+                webBrowser1.DocumentText = strHTML;
+
+                //webBrowser1.Document.OpenNew(true);
+                //webBrowser1.Document.Write(strHTML);
+                ScrollToBottom();
                 irc.JoinChannel(channel);
                 //irc.JoinChannel("#wornoutwasd");
                 
@@ -254,14 +314,27 @@ namespace IrcClientDemoCS
             
             irc.ChannelMessage += (c, u, m) =>
             {
-                rtbOutput.AppendText(u + ":\t" + m + "\n");
-                rtbOutput.ScrollToCaret();
+                //rtbOutput.AppendText(u + ":\t" + m + "\n");
+                //rtbOutput.ScrollToCaret();
+
+                string currtime = DateTime.Now.ToString("H:mm");
+                string strHTML = webBrowser1.DocumentText;
+                Image img = Image.FromFile(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\ViewerIcon.png");
+
+                strHTML += currtime + " " + "<img src=\"C:\\Users\\DavidServer\\Documents\\GitHub\\icreambarber\\IrcClientDemoCS\\IrcClientDemoCS\\Resources\\ViewsIcon.png\" style=\" width: 15px; height: 15px\">" + " " + u + ": " + m + "<br>";
+                //this makes annoying click noise
+                DisableClickSounds();
+                webBrowser1.DocumentText = strHTML;
+
+                //webBrowser1.Document.OpenNew(true);
+                //webBrowser1.Document.Write(strHTML);
+                ScrollToBottom();
 
             };
             irc.ServerMessage += (m) =>
             {
-                rtbOutput.AppendText(m + "\n");
-                rtbOutput.ScrollToCaret();
+                //rtbOutput.AppendText(m + "\n");
+                //rtbOutput.ScrollToCaret();
             };
             irc.DebugChannelMessage += (m) =>
             {

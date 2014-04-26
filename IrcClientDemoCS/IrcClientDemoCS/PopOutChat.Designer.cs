@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.rtbOutput = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +51,7 @@
             this.settingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
             this.drawingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.DrawingsTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iRCConnectionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSet)).BeginInit();
@@ -61,18 +61,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // rtbOutput
-            // 
-            this.rtbOutput.BackColor = System.Drawing.Color.DeepPink;
-            this.rtbOutput.ForeColor = System.Drawing.Color.Pink;
-            this.rtbOutput.Location = new System.Drawing.Point(12, 12);
-            this.rtbOutput.Name = "rtbOutput";
-            this.rtbOutput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.rtbOutput.Size = new System.Drawing.Size(375, 454);
-            this.rtbOutput.TabIndex = 0;
-            this.rtbOutput.Text = "";
-            this.rtbOutput.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // timer1
             // 
@@ -181,7 +169,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(118, 364);
+            this.button1.Location = new System.Drawing.Point(96, 405);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(158, 61);
             this.button1.TabIndex = 2;
@@ -189,15 +177,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnConnect_Click);
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.AllowWebBrowserDrop = false;
+            this.webBrowser1.Location = new System.Drawing.Point(12, 12);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScrollBarsEnabled = false;
+            this.webBrowser1.Size = new System.Drawing.Size(375, 387);
+            this.webBrowser1.TabIndex = 3;
+            // 
             // PopOutChat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.DeepPink;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(399, 478);
+            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.rtbOutput);
             this.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -208,7 +206,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Twitch Commander - PopOutChat";
             this.TopMost = true;
-            this.TransparencyKey = System.Drawing.Color.White;
+            this.TransparencyKey = System.Drawing.Color.LightPink;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PopOutChat_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PopOutChat_MouseDown);
@@ -228,7 +226,6 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox rtbOutput;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.BindingSource iRCConnectionsBindingSource;
@@ -251,5 +248,6 @@
         private System.Windows.Forms.ToolStripMenuItem savePositionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetPositionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
