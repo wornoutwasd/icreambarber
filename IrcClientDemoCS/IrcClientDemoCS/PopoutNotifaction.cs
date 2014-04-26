@@ -142,11 +142,15 @@ namespace IrcClientDemoCS
         private void followerGraphicMoveDown()
         {
             panel1.Location = new Point(panelxstart, panel1.Location.Y + 1);
+            panel1.Invalidate();
+            Invalidate();
         }
         //move up
         private void followerGraphicMoveUp()
         {
             panel1.Location = new Point(panelxstart, panel1.Location.Y - 2);
+            panel1.Invalidate();
+            Invalidate();
         }
         //reset position of panel
         private void followerpanelreset()
