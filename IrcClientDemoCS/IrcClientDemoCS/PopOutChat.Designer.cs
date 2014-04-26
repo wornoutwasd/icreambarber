@@ -47,6 +47,12 @@
             this.settingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
             this.drawingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.DrawingsTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
+            this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.savePositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iRCConnectionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource)).BeginInit();
@@ -74,8 +80,14 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.connectToolStripMenuItem,
+            this.disconnectToolStripMenuItem,
+            this.savePositionToolStripMenuItem,
+            this.resetPositionToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 136);
             // 
             // iRCConnectionsBindingSource
             // 
@@ -142,6 +154,41 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnConnect_Click);
             // 
+            // connectToolStripMenuItem
+            // 
+            this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.connectToolStripMenuItem.Text = "Connect";
+            this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
+            // 
+            // disconnectToolStripMenuItem
+            // 
+            this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.disconnectToolStripMenuItem.Text = "Disconnect";
+            this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
+            // 
+            // savePositionToolStripMenuItem
+            // 
+            this.savePositionToolStripMenuItem.Name = "savePositionToolStripMenuItem";
+            this.savePositionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.savePositionToolStripMenuItem.Text = "Save Position";
+            this.savePositionToolStripMenuItem.Click += new System.EventHandler(this.savePositionToolStripMenuItem_Click);
+            // 
+            // resetPositionToolStripMenuItem
+            // 
+            this.resetPositionToolStripMenuItem.Name = "resetPositionToolStripMenuItem";
+            this.resetPositionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.resetPositionToolStripMenuItem.Text = "Reset Position";
+            this.resetPositionToolStripMenuItem.Click += new System.EventHandler(this.resetPositionToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // PopOutChat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -166,6 +213,7 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PopOutChat_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PopOutChat_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PopOutChat_MouseUp);
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iRCConnectionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBotDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.membershipLevelsBindingSource)).EndInit();
@@ -197,5 +245,10 @@
         private CommandBotDataSetTableAdapters.SettingsTableAdapter settingsTableAdapter;
         private CommandBotDataSetTableAdapters.DrawingsTableAdapter drawingsTableAdapter;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem savePositionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetPositionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

@@ -37,9 +37,14 @@
             this.lblTotalViews = new System.Windows.Forms.Label();
             this.lblFollowers = new System.Windows.Forms.Label();
             this.timerNetLoad = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.savePositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbFollowers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTotalViews)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbViewers)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbFollowers
@@ -112,6 +117,36 @@
             // 
             this.timerNetLoad.Tick += new System.EventHandler(this.timerNetLoad_Tick);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.savePositionToolStripMenuItem,
+            this.resetPositionToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
+            // 
+            // savePositionToolStripMenuItem
+            // 
+            this.savePositionToolStripMenuItem.Name = "savePositionToolStripMenuItem";
+            this.savePositionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.savePositionToolStripMenuItem.Text = "Save Position";
+            this.savePositionToolStripMenuItem.Click += new System.EventHandler(this.savePositionToolStripMenuItem_Click);
+            // 
+            // resetPositionToolStripMenuItem
+            // 
+            this.resetPositionToolStripMenuItem.Name = "resetPositionToolStripMenuItem";
+            this.resetPositionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.resetPositionToolStripMenuItem.Text = "Reset Position";
+            this.resetPositionToolStripMenuItem.Click += new System.EventHandler(this.resetPositionToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // StreamInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,6 +175,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbFollowers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTotalViews)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbViewers)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,5 +190,9 @@
         private System.Windows.Forms.Label lblTotalViews;
         private System.Windows.Forms.Label lblFollowers;
         private System.Windows.Forms.Timer timerNetLoad;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem savePositionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetPositionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

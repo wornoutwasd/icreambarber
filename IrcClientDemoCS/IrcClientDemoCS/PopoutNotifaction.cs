@@ -40,7 +40,11 @@ namespace IrcClientDemoCS
         public Image panelBackgroundDonation = Image.FromFile(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\Dollars2.png");
         public PopoutNotifaction()
         {
+
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(50, 50);
             InitializeComponent();
+            
             pictureBox1.Visible = false;
             timerPolling.Start();
             //sets the panel out of the visible form and centers it
@@ -59,10 +63,16 @@ namespace IrcClientDemoCS
         private Point dragFormPoint;
         private void PopoutNotification_MouseDown(object sender, MouseEventArgs e)
         {
-            dragging = true;
-            dragCursorPoint = Cursor.Position;
-            dragFormPoint = this.Location;
-
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                dragging = true;
+                dragCursorPoint = Cursor.Position;
+                dragFormPoint = this.Location;
+            }
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(Cursor.Position);
+            }
         }
 
         private void PopoutNotification_MouseMove(object sender, MouseEventArgs e)
@@ -77,6 +87,7 @@ namespace IrcClientDemoCS
         private void PopoutNotification_MouseUp(object sender, MouseEventArgs e)
         {
             dragging = false;
+            
         }
         #endregion
 
@@ -289,6 +300,39 @@ namespace IrcClientDemoCS
                 //listBox1.Items.RemoveAt(0);
                 popupQue.RemoveAt(0);
             }
+        }
+
+        private void followerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GraphicPopup g = new GraphicPopup();
+            g.name = "Test";
+            g.time = "2014-04-22T03:48:52Z";
+            g.type = "Follow";
+            popupQue.Add(g);
+        }
+
+        private void donationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GraphicPopup g = new GraphicPopup();
+            g.name = "Test";
+            g.time = "2014-04-22T03:48:52Z";
+            g.type = "Donation";
+            popupQue.Add(g);
+        }
+
+        private void resetPositionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void savePositionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         

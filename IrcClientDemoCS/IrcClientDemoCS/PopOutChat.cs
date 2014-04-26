@@ -39,6 +39,10 @@ namespace IrcClientDemoCS
             dragging = true;
             dragCursorPoint = Cursor.Position;
             dragFormPoint = this.Location;
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(Cursor.Position);
+            }
         }
 
         private void PopOutChat_MouseMove(object sender, MouseEventArgs e)
@@ -306,6 +310,31 @@ namespace IrcClientDemoCS
         
         
         #endregion
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void resetPositionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void savePositionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void connectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
 

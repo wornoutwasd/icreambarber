@@ -33,6 +33,10 @@ namespace IrcClientDemoCS
             dragCursorPoint = Cursor.Position;
             dragFormPoint = this.Location;
             StreamInfo.ActiveForm.Size = new System.Drawing.Size(220, 25);
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(Cursor.Position);
+            }
         }
 
         private void StreamInfo_MouseMove(object sender, MouseEventArgs e)
@@ -118,6 +122,21 @@ namespace IrcClientDemoCS
 
 
 
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void resetPositionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void savePositionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
     }

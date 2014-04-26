@@ -716,10 +716,33 @@ namespace IrcClientDemoCS
             Image img = Image.FromFile(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\ViewerIcon.png");
 
             strHTML += currtime + " " + "<img src=\"C:\\Users\\DavidServer\\Documents\\GitHub\\icreambarber\\IrcClientDemoCS\\IrcClientDemoCS\\Resources\\ViewsIcon.png\">" + " Message Goes HereMessage Goes HereMessage Goes HereMessage Goes Here "  + "<br>";
+            //this makes annoying click noise
+            DisableClickSounds();
             webBrowser1.DocumentText = strHTML;
             
+            //webBrowser1.Document.OpenNew(true);
+            //webBrowser1.Document.Write(strHTML);
             ScrollToBottom();
         }
+        const int FEATURE_DISABLE_NAVIGATION_SOUNDS = 21;
+        const int SET_FEATURE_ON_PROCESS = 0x00000002;
+
+        [DllImport("urlmon.dll")]
+        [PreserveSig]
+        [return: MarshalAs(UnmanagedType.Error)]
+        static extern int CoInternetSetFeatureEnabled(
+            int FeatureEntry,
+            [MarshalAs(UnmanagedType.U4)] int dwFlags,
+            bool fEnable);
+
+        static void DisableClickSounds()
+        {
+            CoInternetSetFeatureEnabled(
+                FEATURE_DISABLE_NAVIGATION_SOUNDS,
+                SET_FEATURE_ON_PROCESS,
+                true);
+        }
+
 
         private void ScrollToBottom()
         {
@@ -762,6 +785,14 @@ namespace IrcClientDemoCS
         private void button5_Click(object sender, EventArgs e)
         {
             PopoutNotifaction p = new PopoutNotifaction();
+            //put this into a try for the default position
+
+            p.StartPosition = FormStartPosition.Manual;
+            p.Left = 50;
+            p.Top = 50;
+
+            //end position
+            
             p.Show();
         }
 

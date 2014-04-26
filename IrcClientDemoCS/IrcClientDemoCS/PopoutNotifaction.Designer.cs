@@ -38,8 +38,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.followerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.donationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetPositionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // timerGraphic
@@ -90,6 +98,60 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testToolStripMenuItem,
+            this.resetPositionToolStripMenuItem,
+            this.resetPositionToolStripMenuItem1,
+            this.exitToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.followerToolStripMenuItem,
+            this.donationToolStripMenuItem});
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.testToolStripMenuItem.Text = "Test";
+            // 
+            // followerToolStripMenuItem
+            // 
+            this.followerToolStripMenuItem.Name = "followerToolStripMenuItem";
+            this.followerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.followerToolStripMenuItem.Text = "Follower";
+            this.followerToolStripMenuItem.Click += new System.EventHandler(this.followerToolStripMenuItem_Click);
+            // 
+            // donationToolStripMenuItem
+            // 
+            this.donationToolStripMenuItem.Name = "donationToolStripMenuItem";
+            this.donationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.donationToolStripMenuItem.Text = "Donation";
+            this.donationToolStripMenuItem.Click += new System.EventHandler(this.donationToolStripMenuItem_Click);
+            // 
+            // resetPositionToolStripMenuItem
+            // 
+            this.resetPositionToolStripMenuItem.Name = "resetPositionToolStripMenuItem";
+            this.resetPositionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.resetPositionToolStripMenuItem.Text = "Save Position";
+            this.resetPositionToolStripMenuItem.Click += new System.EventHandler(this.savePositionToolStripMenuItem_Click);
+            // 
+            // resetPositionToolStripMenuItem1
+            // 
+            this.resetPositionToolStripMenuItem1.Name = "resetPositionToolStripMenuItem1";
+            this.resetPositionToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.resetPositionToolStripMenuItem1.Text = "Reset Position";
+            this.resetPositionToolStripMenuItem1.Click += new System.EventHandler(this.resetPositionToolStripMenuItem1_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // PopoutNotifaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -113,6 +175,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -127,6 +190,13 @@
         private System.Windows.Forms.Timer timerFollowerGraphic;
         private System.Windows.Forms.Timer timerDonationGraphic;
         private System.Windows.Forms.Timer timerPopupQue;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem followerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem donationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetPositionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetPositionToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 
 
     }

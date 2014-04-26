@@ -153,6 +153,7 @@
             this.lstDrawings = new System.Windows.Forms.ListBox();
             this.drawingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -180,7 +181,6 @@
             this.label34 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.label35 = new System.Windows.Forms.Label();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1414,13 +1414,22 @@
             this.tabPage7.Text = "Graphic Alerts";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Location = new System.Drawing.Point(275, 31);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScrollBarsEnabled = false;
+            this.webBrowser1.Size = new System.Drawing.Size(413, 187);
+            this.webBrowser1.TabIndex = 6;
+            // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(8, 184);
+            this.button5.Location = new System.Drawing.Point(139, 3);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(125, 23);
             this.button5.TabIndex = 5;
-            this.button5.Text = "button5";
+            this.button5.Text = "Graphic Notification";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -1615,15 +1624,6 @@
             this.label35.Size = new System.Drawing.Size(37, 12);
             this.label35.TabIndex = 26;
             this.label35.Text = "Graphic";
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Location = new System.Drawing.Point(172, 15);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(413, 187);
-            this.webBrowser1.TabIndex = 6;
             // 
             // MainForm
             // 
