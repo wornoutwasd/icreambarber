@@ -5,6 +5,7 @@ using System.Text;
 using System.Collections;
 using System.Data;
 using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace IrcClientDemoCS.Classes.Commander_Classes
 {
@@ -16,12 +17,16 @@ namespace IrcClientDemoCS.Classes.Commander_Classes
             string htmlOut= "";
             string currtime = DateTime.Now.ToString("H:mm");
 
+            string noHTML = chatMessage.Replace("<", "&lt;");
+            noHTML = noHTML.Replace(">", "&gt;");
+            //string sanatizedchatMessage = Regex.Replace(noHTML, @"\s{2,}", " ");//this is outputting a blank string for some reason sometimes
+            string sanatizedchatMessage = noHTML;
             //format is TIME, Profile Logo, Membership Logo, Display Name, : Message
             // currtime + " " + "<img src=\"http://static-cdn.jtvnw.net/jtv_user_pictures/wornoutwasd-profile_image-2a4f4766cd1e59bf-300x300.jpeg\" style=\" width: 15px; height: 15px\">" + "<img src=\"http://png.findicons.com/files/icons/2198/dark_glass/128/bookmark_add.png\" style=\" width: 15px; height: 15px\">" + " " + "<span style=\"color:red\">" + u + "</span>" + ": " + m + "<br>";
 
             htmlOut = currtime + " " + imgHTML(userTable.Rows[0]["logo"].ToString(), styleHTML("15", "15", ""))
             + imgHTML(userTable.Rows[0]["membership_icon"].ToString(), styleHTML("15", "15", "")) + " "
-            + userHTML(userTable.Rows[0]["display_name"].ToString() == "" ? chatUser : userTable.Rows[0]["display_name"].ToString(), userTable.Rows[0]["ChatColor"].ToString()) + ": " + "" + chatMessage + "" + "<br>";
+            + userHTML(userTable.Rows[0]["display_name"].ToString() == "" ? chatUser : userTable.Rows[0]["display_name"].ToString(), userTable.Rows[0]["ChatColor"].ToString()) + ": " + "" + sanatizedchatMessage + "" + "<br>";
             return htmlOut;
         }
         ////reformats filepath for HTML -- actually might not need, we'll see
