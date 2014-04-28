@@ -71,12 +71,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Commander_Classes\Commander_HTMLWriter.cs" />
     <Compile Include="Classes\Twitch_Objects\GraphicPopup.cs" />
     <Compile Include="Classes\Twitch_Objects\Stream_Donations_net_Objects.cs" />
-    <Compile Include="Classes\Twitch_Objects\Twitchfollow.cs" />
-    <Compile Include="Classes\Twitch_Objects\TwitchChannelFollowers.cs" />
-    <Compile Include="Classes\Twitch_Objects\TwitchChannelInfo.cs" />
-    <Compile Include="Classes\Twitch_Objects\TwitchChannelSummary.cs" />
     <Compile Include="Classes\Commander_Classes\ChatBotMessage.cs" />
     <Compile Include="Classes\Commander_Classes\User.cs" />
     <Compile Include="Classes\Twitch_Objects\Twitch_Objects.cs" />
@@ -220,6 +217,25 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

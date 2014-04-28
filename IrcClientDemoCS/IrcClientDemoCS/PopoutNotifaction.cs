@@ -52,6 +52,9 @@ namespace IrcClientDemoCS
             //timerPopupQue.Interval = (((followerAnimationSeconds*2) + followerAnimantionDwell) * 1000) + 1000;
             timerPopupQue.Interval = ((followerAnimationSeconds + followerAnimantionDwell) * 2) * 1000;
             timerPopupQue.Start();
+            //webBrowser1.DocumentText = "<img src =\"C:\\Users\\DavidServer\\Documents\\GitHub\\icreambarber\\IrcClientDemoCS\\IrcClientDemoCS\\Resources\\FallingMoney3.gif\">";
+            //webBrowser1.Navigate("https://www.youtube.com/watch?v=-Z34oieoQNo");
+            //webBrowser1.DocumentText = "<embed src=\"C:\\Users\\DavidServer\\Videos\\fallingmoney.avi\" height=\"720\" width=\"1280\" showcontrols=\"false\">";
         }
 
 
@@ -174,19 +177,44 @@ namespace IrcClientDemoCS
 
         private void MakeItRain()
         {
-            pictureBox1.Visible = true;
-            pictureBox1.Dock = DockStyle.Fill;
+            //pictureBox1.Visible = true;
+            //pictureBox1.Dock = DockStyle.Fill;
             timerGraphic.Start();
             Invalidate();
+            axWindowsMediaPlayer1.Ctlcontrols.stop();
+            Invalidate();
+            
+            Invalidate();
+            
+            Invalidate();
+            //axWindowsMediaPlayer1.launchURL(axWindowsMediaPlayer1.URL);
         }
         int intgraphiccount = 0;
         private void timerGraphic_Tick(object sender, EventArgs e)
         {
-            if (intgraphiccount > 118)
+            if (intgraphiccount == 1)
+            {
+                axWindowsMediaPlayer1.Ctlcontrols.play();
+            }
+            if (intgraphiccount == 5)
+            {
+                axWindowsMediaPlayer1.Visible = true;
+            }
+            if (intgraphiccount > 105)
+            {
+                Invalidate();
+                axWindowsMediaPlayer1.Visible = false;
+                Invalidate();                
+            }
+            if (intgraphiccount > 110)
             {
                 intgraphiccount = 0;
+                Invalidate();
+                
+                Invalidate();
+                //axWindowsMediaPlayer1.Ctlcontrols.stop();
                 timerGraphic.Stop();
-                pictureBox1.Visible = false;
+
                 Invalidate();
             }
             else

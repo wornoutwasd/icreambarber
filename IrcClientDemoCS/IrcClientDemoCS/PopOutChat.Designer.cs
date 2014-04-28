@@ -50,7 +50,6 @@
             this.membershipLevelsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter();
             this.settingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
             this.drawingsTableAdapter = new IrcClientDemoCS.CommandBotDataSetTableAdapters.DrawingsTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iRCConnectionsBindingSource)).BeginInit();
@@ -167,16 +166,6 @@
             // 
             this.drawingsTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(96, 405);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(158, 61);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
             // webBrowser1
             // 
             this.webBrowser1.AllowWebBrowserDrop = false;
@@ -184,7 +173,7 @@
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(375, 387);
+            this.webBrowser1.Size = new System.Drawing.Size(390, 343);
             this.webBrowser1.TabIndex = 3;
             // 
             // PopOutChat
@@ -193,9 +182,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(399, 478);
+            this.ClientSize = new System.Drawing.Size(414, 367);
             this.Controls.Add(this.webBrowser1);
-            this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -242,7 +230,6 @@
         private CommandBotDataSetTableAdapters.MembershipLevelsTableAdapter membershipLevelsTableAdapter;
         private CommandBotDataSetTableAdapters.SettingsTableAdapter settingsTableAdapter;
         private CommandBotDataSetTableAdapters.DrawingsTableAdapter drawingsTableAdapter;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem savePositionToolStripMenuItem;

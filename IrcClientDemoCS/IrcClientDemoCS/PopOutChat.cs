@@ -30,6 +30,7 @@ namespace IrcClientDemoCS
             timer1.Start();
             webBrowser1.DocumentText = "<body bgcolor=\"#000000\" text=\"#ffffff\"><font size=\"4\"><b>";
             //webBrowser1.DocumentText = "<body bgcolor=\"#00ff00\" text=\"#ffffff\">";
+            //ConnectChat();
         }
 
         //Movement
@@ -202,7 +203,7 @@ namespace IrcClientDemoCS
             //dgvMembership.DataSource = dt;
             #endregion
             #endregion
-
+            ConnectChat();
         }
 
         //***Web Browser
@@ -269,6 +270,19 @@ namespace IrcClientDemoCS
             }
         }
 
+        private void ConnectChat()
+        {
+            irc = new IrcClient(serverName, ConnPort);
+            irc.Nick = user;
+            irc.ServerPass = oauth;
+            irc.Disconnect();
+            irc.Connect();
+
+
+            if (Listening == false) AddListeners();
+            //button1.Visible = false;
+        }
+
         private void btnConnect_Click(object sender, EventArgs e)
         {
             irc = new IrcClient(serverName, ConnPort);
@@ -279,7 +293,7 @@ namespace IrcClientDemoCS
             
 
             if (Listening == false) AddListeners();
-            button1.Visible = false;
+            //button1.Visible = false;
             
 
         }
@@ -321,7 +335,7 @@ namespace IrcClientDemoCS
                 string strHTML = webBrowser1.DocumentText;
                 Image img = Image.FromFile(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\ViewerIcon.png");
 
-                strHTML += currtime + " " + "<img src=\"C:\\Users\\DavidServer\\Documents\\GitHub\\icreambarber\\IrcClientDemoCS\\IrcClientDemoCS\\Resources\\ViewsIcon.png\" style=\" width: 15px; height: 15px\">" + " " + u + ": " + m + "<br>";
+                strHTML += currtime + " " + "<img src=\"http://static-cdn.jtvnw.net/jtv_user_pictures/wornoutwasd-profile_image-2a4f4766cd1e59bf-300x300.jpeg\" style=\" width: 15px; height: 15px\">" + "<img src=\"http://png.findicons.com/files/icons/2198/dark_glass/128/bookmark_add.png\" style=\" width: 15px; height: 15px\">" + " " + "<span style=\"color:red\">" + u + "</span>" + ": " + m + "<br>";
                 //this makes annoying click noise
                 DisableClickSounds();
                 webBrowser1.DocumentText = strHTML;

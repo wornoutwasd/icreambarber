@@ -45,11 +45,13 @@
             this.resetPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetPositionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsTableAdapter1 = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
             this.mAKEITRAINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsTableAdapter1 = new IrcClientDemoCS.CommandBotDataSetTableAdapters.SettingsTableAdapter();
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
             // timerGraphic
@@ -109,7 +111,7 @@
             this.exitToolStripMenuItem,
             this.mAKEITRAINToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(150, 114);
             // 
             // testToolStripMenuItem
             // 
@@ -117,7 +119,7 @@
             this.followerToolStripMenuItem,
             this.donationToolStripMenuItem});
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.testToolStripMenuItem.Text = "Test";
             // 
             // followerToolStripMenuItem
@@ -137,34 +139,45 @@
             // resetPositionToolStripMenuItem
             // 
             this.resetPositionToolStripMenuItem.Name = "resetPositionToolStripMenuItem";
-            this.resetPositionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.resetPositionToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.resetPositionToolStripMenuItem.Text = "Save Position";
             this.resetPositionToolStripMenuItem.Click += new System.EventHandler(this.savePositionToolStripMenuItem_Click);
             // 
             // resetPositionToolStripMenuItem1
             // 
             this.resetPositionToolStripMenuItem1.Name = "resetPositionToolStripMenuItem1";
-            this.resetPositionToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.resetPositionToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
             this.resetPositionToolStripMenuItem1.Text = "Reset Position";
             this.resetPositionToolStripMenuItem1.Click += new System.EventHandler(this.resetPositionToolStripMenuItem1_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // mAKEITRAINToolStripMenuItem
+            // 
+            this.mAKEITRAINToolStripMenuItem.Name = "mAKEITRAINToolStripMenuItem";
+            this.mAKEITRAINToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.mAKEITRAINToolStripMenuItem.Text = "MAKE IT RAIN";
+            this.mAKEITRAINToolStripMenuItem.Click += new System.EventHandler(this.mAKEITRAINToolStripMenuItem_Click);
             // 
             // settingsTableAdapter1
             // 
             this.settingsTableAdapter1.ClearBeforeFill = true;
             // 
-            // mAKEITRAINToolStripMenuItem
+            // axWindowsMediaPlayer1
             // 
-            this.mAKEITRAINToolStripMenuItem.Name = "mAKEITRAINToolStripMenuItem";
-            this.mAKEITRAINToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.mAKEITRAINToolStripMenuItem.Text = "MAKE IT RAIN";
-            this.mAKEITRAINToolStripMenuItem.Click += new System.EventHandler(this.mAKEITRAINToolStripMenuItem_Click);
+            this.axWindowsMediaPlayer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(0, 0);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(1280, 720);
+            this.axWindowsMediaPlayer1.TabIndex = 1;
+            this.axWindowsMediaPlayer1.Visible = false;
             // 
             // PopoutNotifaction
             // 
@@ -172,7 +185,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Lime;
-            this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -191,6 +205,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -214,6 +229,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private CommandBotDataSetTableAdapters.SettingsTableAdapter settingsTableAdapter1;
         private System.Windows.Forms.ToolStripMenuItem mAKEITRAINToolStripMenuItem;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
 
 
     }
