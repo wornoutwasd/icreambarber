@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 using System.Net;
 using System.Media;
 using Newtonsoft.Json;
-
+using IrcClientDemoCS.Classes.Commander_Classes;
 
 namespace IrcClientDemoCS
 {
@@ -110,7 +110,7 @@ namespace IrcClientDemoCS
         private static int intPointTimer;
         private static int intMessageQueTimer = 20;
         private static List<ChatBotMessage> listChatBotMessageQue = new List<ChatBotMessage>();
-
+        
         
 
         
@@ -331,17 +331,17 @@ namespace IrcClientDemoCS
                 //rtbOutput.AppendText(u + ":\t" + m + "\n");
                 //rtbOutput.ScrollToCaret();
 
-                string currtime = DateTime.Now.ToString("H:mm");
+                
                 string strHTML = webBrowser1.DocumentText;
-                Image img = Image.FromFile(@"C:\Users\DavidServer\Documents\GitHub\icreambarber\IrcClientDemoCS\IrcClientDemoCS\Resources\ViewerIcon.png");
 
-                strHTML += currtime + " " + "<img src=\"http://static-cdn.jtvnw.net/jtv_user_pictures/wornoutwasd-profile_image-2a4f4766cd1e59bf-300x300.jpeg\" style=\" width: 15px; height: 15px\">" + "<img src=\"http://png.findicons.com/files/icons/2198/dark_glass/128/bookmark_add.png\" style=\" width: 15px; height: 15px\">" + " " + "<span style=\"color:red\">" + u + "</span>" + ": " + m + "<br>";
+                Commander_HTMLWriter cw = new Commander_HTMLWriter();
+                //get a user's info from usertable + membership icon
+                DataTable dt = usersTableAdapter.GetSpecificUserJoin(u);
+                
+                strHTML += cw.ChatMessage(dt, u, m);
                 //this makes annoying click noise
                 DisableClickSounds();
                 webBrowser1.DocumentText = strHTML;
-
-                //webBrowser1.Document.OpenNew(true);
-                //webBrowser1.Document.Write(strHTML);
                 ScrollToBottom();
 
             };

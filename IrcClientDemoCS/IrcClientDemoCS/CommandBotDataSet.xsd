@@ -227,7 +227,7 @@ WHERE        (Id = @Original_Id);
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateGraphicIndicatorQuery" Modifier="Public" Name="UpdateGraphicIndicatorQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="UpdateGraphicIndicatorQuery">
+              <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateGraphicIndicatorQuery" Modifier="Public" Name="UpdateGraphicIndicatorQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateGraphicIndicatorQuery">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Settings
@@ -241,7 +241,7 @@ WHERE        (Id = @Original_Id);
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateGreeting" Modifier="Public" Name="UpdateGreeting" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateGreeting">
+              <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateGreeting" Modifier="Public" Name="UpdateGreeting" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdateGreeting">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Settings
@@ -256,7 +256,7 @@ WHERE        (Id = @Id);
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateInfoIndicatorQuery" Modifier="Public" Name="UpdateInfoIndicatorQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="UpdateInfoIndicatorQuery">
+              <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateInfoIndicatorQuery" Modifier="Public" Name="UpdateInfoIndicatorQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="UpdateInfoIndicatorQuery">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Settings
@@ -270,7 +270,7 @@ WHERE        (Id = @Original_Id);
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdatePointSettings" Modifier="Public" Name="UpdatePointSettings" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdatePointSettings">
+              <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdatePointSettings" Modifier="Public" Name="UpdatePointSettings" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="UpdatePointSettings">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Settings
@@ -285,7 +285,7 @@ WHERE        (Id = @Original_Id);
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdatePointsIndicatorQuery" Modifier="Public" Name="UpdatePointsIndicatorQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="UpdatePointsIndicatorQuery">
+              <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdatePointsIndicatorQuery" Modifier="Public" Name="UpdatePointsIndicatorQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="UpdatePointsIndicatorQuery">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Settings
@@ -299,7 +299,7 @@ WHERE        (Id = @Original_Id);
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateRaffleIndicatorQuery" Modifier="Public" Name="UpdateRaffleIndicatorQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="UpdateRaffleIndicatorQuery">
+              <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateRaffleIndicatorQuery" Modifier="Public" Name="UpdateRaffleIndicatorQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="UpdateRaffleIndicatorQuery">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Settings
@@ -450,11 +450,11 @@ WHERE        (UserName = @Original_UserName)</CommandText>
               <DbSource ConnectionRef="CommandBotConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBySpecificUserJoin" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetSpecificUserJoin" GeneratorSourceName="FillBySpecificUserJoin" GetMethodModifier="Public" GetMethodName="GetSpecificUserJoin" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetSpecificUserJoin" UserSourceName="FillBySpecificUserJoin">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Users.UserName, Users.CurrentPoints, Users.InGame, Users.TotalPointsEarned, MembershipLevels.MembershipLevel, MembershipLevels.Multiplier, 
-                         MembershipLevels.MembershipLevelName
+                    <CommandText>SELECT        Users.UserName, Users.display_name, Users.logo, Users.ChatColor, Users.CurrentPoints, Users.InGame, Users.TotalPointsEarned, MembershipLevels.MembershipLevel, 
+                         MembershipLevels.Multiplier, MembershipLevels.MembershipLevelName, MembershipLevels.membership_icon
 FROM            Users INNER JOIN
                          MembershipLevels ON Users.MembershipLevel = MembershipLevels.MembershipLevel
-Where Users.UserName = @UserName</CommandText>
+WHERE        (Users.UserName = @UserName)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="UserName" ColumnName="UserName" DataSourceName="[C:\USERS\DAVIDSERVER\DOCUMENTS\GITHUB\ICREAMBARBER\IRCCLIENTDEMOCS\IRCCLIENTDEMOCS\COMMANDBOT.MDF].dbo.Users" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@UserName" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="UserName" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -710,7 +710,7 @@ SELECT Id, GiveAwayName, EntryCommand, Advertisement, Congratulations, Cost, Adv
   <xs:element name="CommandBotDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="CommandBotDataSet" msprop:Generator_UserDSName="CommandBotDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="IRCConnections" msprop:Generator_TableClassName="IRCConnectionsDataTable" msprop:Generator_TableVarName="tableIRCConnections" msprop:Generator_RowChangedName="IRCConnectionsRowChanged" msprop:Generator_TablePropName="IRCConnections" msprop:Generator_RowDeletingName="IRCConnectionsRowDeleting" msprop:Generator_RowChangingName="IRCConnectionsRowChanging" msprop:Generator_RowEvHandlerName="IRCConnectionsRowChangeEventHandler" msprop:Generator_RowDeletedName="IRCConnectionsRowDeleted" msprop:Generator_RowClassName="IRCConnectionsRow" msprop:Generator_UserTableName="IRCConnections" msprop:Generator_RowEvArgName="IRCConnectionsRowChangeEvent">
+        <xs:element name="IRCConnections" msprop:Generator_TableClassName="IRCConnectionsDataTable" msprop:Generator_TableVarName="tableIRCConnections" msprop:Generator_TablePropName="IRCConnections" msprop:Generator_RowDeletingName="IRCConnectionsRowDeleting" msprop:Generator_RowChangingName="IRCConnectionsRowChanging" msprop:Generator_RowEvHandlerName="IRCConnectionsRowChangeEventHandler" msprop:Generator_RowDeletedName="IRCConnectionsRowDeleted" msprop:Generator_UserTableName="IRCConnections" msprop:Generator_RowChangedName="IRCConnectionsRowChanged" msprop:Generator_RowEvArgName="IRCConnectionsRowChangeEvent" msprop:Generator_RowClassName="IRCConnectionsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -747,7 +747,7 @@ SELECT Id, GiveAwayName, EntryCommand, Advertisement, Congratulations, Cost, Adv
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Settings" msprop:Generator_TableClassName="SettingsDataTable" msprop:Generator_TableVarName="tableSettings" msprop:Generator_RowChangedName="SettingsRowChanged" msprop:Generator_TablePropName="Settings" msprop:Generator_RowDeletingName="SettingsRowDeleting" msprop:Generator_RowChangingName="SettingsRowChanging" msprop:Generator_RowEvHandlerName="SettingsRowChangeEventHandler" msprop:Generator_RowDeletedName="SettingsRowDeleted" msprop:Generator_RowClassName="SettingsRow" msprop:Generator_UserTableName="Settings" msprop:Generator_RowEvArgName="SettingsRowChangeEvent">
+        <xs:element name="Settings" msprop:Generator_TableClassName="SettingsDataTable" msprop:Generator_TableVarName="tableSettings" msprop:Generator_TablePropName="Settings" msprop:Generator_RowDeletingName="SettingsRowDeleting" msprop:Generator_RowChangingName="SettingsRowChanging" msprop:Generator_RowEvHandlerName="SettingsRowChangeEventHandler" msprop:Generator_RowDeletedName="SettingsRowDeleted" msprop:Generator_UserTableName="Settings" msprop:Generator_RowChangedName="SettingsRowChanged" msprop:Generator_RowEvArgName="SettingsRowChangeEvent" msprop:Generator_RowClassName="SettingsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -792,7 +792,7 @@ SELECT Id, GiveAwayName, EntryCommand, Advertisement, Congratulations, Cost, Adv
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="UserTransactions" msprop:Generator_TableClassName="UserTransactionsDataTable" msprop:Generator_TableVarName="tableUserTransactions" msprop:Generator_RowChangedName="UserTransactionsRowChanged" msprop:Generator_TablePropName="UserTransactions" msprop:Generator_RowDeletingName="UserTransactionsRowDeleting" msprop:Generator_RowChangingName="UserTransactionsRowChanging" msprop:Generator_RowEvHandlerName="UserTransactionsRowChangeEventHandler" msprop:Generator_RowDeletedName="UserTransactionsRowDeleted" msprop:Generator_RowClassName="UserTransactionsRow" msprop:Generator_UserTableName="UserTransactions" msprop:Generator_RowEvArgName="UserTransactionsRowChangeEvent">
+        <xs:element name="UserTransactions" msprop:Generator_TableClassName="UserTransactionsDataTable" msprop:Generator_TableVarName="tableUserTransactions" msprop:Generator_TablePropName="UserTransactions" msprop:Generator_RowDeletingName="UserTransactionsRowDeleting" msprop:Generator_RowChangingName="UserTransactionsRowChanging" msprop:Generator_RowEvHandlerName="UserTransactionsRowChangeEventHandler" msprop:Generator_RowDeletedName="UserTransactionsRowDeleted" msprop:Generator_UserTableName="UserTransactions" msprop:Generator_RowChangedName="UserTransactionsRowChanged" msprop:Generator_RowEvArgName="UserTransactionsRowChangeEvent" msprop:Generator_RowClassName="UserTransactionsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -808,7 +808,7 @@ SELECT Id, GiveAwayName, EntryCommand, Advertisement, Congratulations, Cost, Adv
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Users" msprop:Generator_TableClassName="UsersDataTable" msprop:Generator_TableVarName="tableUsers" msprop:Generator_RowChangedName="UsersRowChanged" msprop:Generator_TablePropName="Users" msprop:Generator_RowDeletingName="UsersRowDeleting" msprop:Generator_RowChangingName="UsersRowChanging" msprop:Generator_RowEvHandlerName="UsersRowChangeEventHandler" msprop:Generator_RowDeletedName="UsersRowDeleted" msprop:Generator_RowClassName="UsersRow" msprop:Generator_UserTableName="Users" msprop:Generator_RowEvArgName="UsersRowChangeEvent">
+        <xs:element name="Users" msprop:Generator_TableClassName="UsersDataTable" msprop:Generator_TableVarName="tableUsers" msprop:Generator_TablePropName="Users" msprop:Generator_RowDeletingName="UsersRowDeleting" msprop:Generator_RowChangingName="UsersRowChanging" msprop:Generator_RowEvHandlerName="UsersRowChangeEventHandler" msprop:Generator_RowDeletedName="UsersRowDeleted" msprop:Generator_UserTableName="Users" msprop:Generator_RowChangedName="UsersRowChanged" msprop:Generator_RowEvArgName="UsersRowChangeEvent" msprop:Generator_RowClassName="UsersRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="UserName" msprop:Generator_ColumnVarNameInTable="columnUserName" msprop:Generator_ColumnPropNameInRow="UserName" msprop:Generator_ColumnPropNameInTable="UserNameColumn" msprop:Generator_UserColumnName="UserName">
@@ -825,7 +825,7 @@ SELECT Id, GiveAwayName, EntryCommand, Advertisement, Congratulations, Cost, Adv
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MembershipLevels" msprop:Generator_TableClassName="MembershipLevelsDataTable" msprop:Generator_TableVarName="tableMembershipLevels" msprop:Generator_TablePropName="MembershipLevels" msprop:Generator_RowDeletingName="MembershipLevelsRowDeleting" msprop:Generator_RowChangingName="MembershipLevelsRowChanging" msprop:Generator_RowEvHandlerName="MembershipLevelsRowChangeEventHandler" msprop:Generator_RowDeletedName="MembershipLevelsRowDeleted" msprop:Generator_UserTableName="MembershipLevels" msprop:Generator_RowChangedName="MembershipLevelsRowChanged" msprop:Generator_RowEvArgName="MembershipLevelsRowChangeEvent" msprop:Generator_RowClassName="MembershipLevelsRow">
+        <xs:element name="MembershipLevels" msprop:Generator_TableClassName="MembershipLevelsDataTable" msprop:Generator_TableVarName="tableMembershipLevels" msprop:Generator_RowChangedName="MembershipLevelsRowChanged" msprop:Generator_TablePropName="MembershipLevels" msprop:Generator_RowDeletingName="MembershipLevelsRowDeleting" msprop:Generator_RowChangingName="MembershipLevelsRowChanging" msprop:Generator_RowEvHandlerName="MembershipLevelsRowChangeEventHandler" msprop:Generator_RowDeletedName="MembershipLevelsRowDeleted" msprop:Generator_RowClassName="MembershipLevelsRow" msprop:Generator_UserTableName="MembershipLevels" msprop:Generator_RowEvArgName="MembershipLevelsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MembershipLevel" msprop:Generator_ColumnVarNameInTable="columnMembershipLevel" msprop:Generator_ColumnPropNameInRow="MembershipLevel" msprop:Generator_ColumnPropNameInTable="MembershipLevelColumn" msprop:Generator_UserColumnName="MembershipLevel" type="xs:short" />
@@ -840,7 +840,7 @@ SELECT Id, GiveAwayName, EntryCommand, Advertisement, Congratulations, Cost, Adv
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Drawings" msprop:Generator_TableClassName="DrawingsDataTable" msprop:Generator_TableVarName="tableDrawings" msprop:Generator_RowChangedName="DrawingsRowChanged" msprop:Generator_TablePropName="Drawings" msprop:Generator_RowDeletingName="DrawingsRowDeleting" msprop:Generator_RowChangingName="DrawingsRowChanging" msprop:Generator_RowEvHandlerName="DrawingsRowChangeEventHandler" msprop:Generator_RowDeletedName="DrawingsRowDeleted" msprop:Generator_RowClassName="DrawingsRow" msprop:Generator_UserTableName="Drawings" msprop:Generator_RowEvArgName="DrawingsRowChangeEvent">
+        <xs:element name="Drawings" msprop:Generator_TableClassName="DrawingsDataTable" msprop:Generator_TableVarName="tableDrawings" msprop:Generator_TablePropName="Drawings" msprop:Generator_RowDeletingName="DrawingsRowDeleting" msprop:Generator_RowChangingName="DrawingsRowChanging" msprop:Generator_RowEvHandlerName="DrawingsRowChangeEventHandler" msprop:Generator_RowDeletedName="DrawingsRowDeleted" msprop:Generator_UserTableName="Drawings" msprop:Generator_RowChangedName="DrawingsRowChanged" msprop:Generator_RowEvArgName="DrawingsRowChangeEvent" msprop:Generator_RowClassName="DrawingsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />

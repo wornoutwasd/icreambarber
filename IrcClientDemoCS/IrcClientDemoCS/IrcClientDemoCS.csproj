@@ -122,10 +122,13 @@
     <Compile Include="StreamInfo.Designer.cs">
       <DependentUpon>StreamInfo.cs</DependentUpon>
     </Compile>
+    <Content Include="Resources\bookmark_add.png" />
     <Content Include="Resources\Cha_Ching_Register.wav" />
     <Content Include="Resources\Dollars2.png" />
+    <Content Include="Resources\dollar_48.png" />
     <Content Include="Resources\FallingMoney3.gif" />
     <Content Include="Resources\Follwer.wav" />
+    <Content Include="Resources\golden_star.png" />
     <Content Include="Resources\wornWASD.png" />
     <None Include="Resources\backgroundcolor1.png" />
     <None Include="Resources\backgroundcolor.png" />

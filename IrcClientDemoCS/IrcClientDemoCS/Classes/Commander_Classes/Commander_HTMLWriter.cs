@@ -21,7 +21,7 @@ namespace IrcClientDemoCS.Classes.Commander_Classes
 
             htmlOut = currtime + " " + imgHTML(userTable.Rows[0]["logo"].ToString(), styleHTML("15", "15", ""))
             + imgHTML(userTable.Rows[0]["membership_icon"].ToString(), styleHTML("15", "15", "")) + " "
-            + userHTML(userTable.Rows[0]["display_name"].ToString(), userTable.Rows[0]["ChatColor"].ToString()) + ": " + chatMessage + "<br>";
+            + userHTML(userTable.Rows[0]["display_name"].ToString() == "" ? chatUser : userTable.Rows[0]["display_name"].ToString(), userTable.Rows[0]["ChatColor"].ToString()) + ": " + "" + chatMessage + "" + "<br>";
             return htmlOut;
         }
         ////reformats filepath for HTML -- actually might not need, we'll see
@@ -35,6 +35,7 @@ namespace IrcClientDemoCS.Classes.Commander_Classes
         //returns HTML for imgsrc to make img
         private string userHTML(string displayName, string chatColor)
         {
+            if (chatColor == "") chatColor = "White";
             string userSpan = "<span " + styleHTML("", "", chatColor) + ">" + displayName + "</span>";
 
 

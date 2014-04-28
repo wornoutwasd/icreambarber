@@ -5091,11 +5091,11 @@ SELECT UserName, MembershipLevel, CurrentPoints, InGame, TotalPointsEarned FROM 
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT        Users.UserName, Users.CurrentPoints, Users.InGame, Users.TotalPointsEarned, MembershipLevels.MembershipLevel, MembershipLevels.Multiplier, 
-                         MembershipLevels.MembershipLevelName
+            this._commandCollection[2].CommandText = @"SELECT        Users.UserName, Users.display_name, Users.logo, Users.ChatColor, Users.CurrentPoints, Users.InGame, Users.TotalPointsEarned, MembershipLevels.MembershipLevel, 
+                         MembershipLevels.Multiplier, MembershipLevels.MembershipLevelName, MembershipLevels.membership_icon
 FROM            Users INNER JOIN
                          MembershipLevels ON Users.MembershipLevel = MembershipLevels.MembershipLevel
-Where Users.UserName = @UserName";
+WHERE        (Users.UserName = @UserName)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
